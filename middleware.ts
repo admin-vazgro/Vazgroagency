@@ -4,53 +4,66 @@ import { canUseLocalAdminAccess, resolveUserRole } from "@/lib/auth/resolve-role
 import { getPostLoginDestination, isHubRole } from "@/lib/auth/roles";
 
 export async function middleware(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request });
-
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() { return request.cookies.getAll(); },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-          supabaseResponse = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          );
-        },
-      },
-    }
-  );
-
-  const { data: { user } } = await supabase.auth.getUser();
   const { pathname } = request.nextUrl;
 
-  // Public routes — no auth needed
   const publicRoutes = ["/", "/login", "/auth", "/work", "/services", "/privacy", "/terms"];
-  const isPublic = publicRoutes.some((r) => pathname === r || pathname.startsWith(r + "/"));
-  if (isPublic) return supabaseResponse;
-
-  // Not logged in — redirect to login
-  if (!user) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  const isPublic = publicRoutes.some((route) => pathname === route || pathname.startsWith(route + "/"));
+  if (isPublic) {
+    return NextResponse.next({ request });
   }
 
-  // Get role from profile
-  const role = await resolveUserRole(supabase, user);
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  // Route by role
-  if (pathname.startsWith("/workspace") && role !== "client") {
-    return NextResponse.redirect(new URL(getPostLoginDestination(role), request.url));
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return NextResponse.redirect(new URL("/login?error=auth_unavailable", request.url));
   }
 
-  if (pathname.startsWith("/hub") && !isHubRole(role)) {
-    return NextResponse.redirect(new URL(getPostLoginDestination(role), request.url));
-  }
+  let supabaseResponse = NextResponse.next({ request });
 
-  // Admin-only routes
-  if (pathname.startsWith("/hub/admin") && role !== "admin" && !canUseLocalAdminAccess(user)) {
-    return NextResponse.redirect(new URL("/hub", request.url));
+  try {
+    const supabase = createServerClient(
+      supabaseUrl,
+      supabaseAnonKey,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll();
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+            supabaseResponse = NextResponse.next({ request });
+            cookiesToSet.forEach(({ name, value, options }) =>
+              supabaseResponse.cookies.set(name, value, options)
+            );
+          },
+        },
+      }
+    );
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    const role = await resolveUserRole(supabase, user);
+
+    if (pathname.startsWith("/workspace") && role !== "client") {
+      return NextResponse.redirect(new URL(getPostLoginDestination(role), request.url));
+    }
+
+    if (pathname.startsWith("/hub") && !isHubRole(role)) {
+      return NextResponse.redirect(new URL(getPostLoginDestination(role), request.url));
+    }
+
+    if (pathname.startsWith("/hub/admin") && role !== "admin" && !canUseLocalAdminAccess(user)) {
+      return NextResponse.redirect(new URL("/hub", request.url));
+    }
+  } catch (error) {
+    return NextResponse.redirect(new URL("/login?error=auth_unavailable", request.url));
   }
 
   return supabaseResponse;
