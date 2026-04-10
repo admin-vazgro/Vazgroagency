@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { resolveUserRole } from "@/lib/auth/resolve-role";
+import { canUseLocalAdminAccess, resolveUserRole } from "@/lib/auth/resolve-role";
+import { getPostLoginDestination, isHubRole } from "@/lib/auth/roles";
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
@@ -40,15 +41,15 @@ export async function middleware(request: NextRequest) {
 
   // Route by role
   if (pathname.startsWith("/workspace") && role !== "client") {
-    return NextResponse.redirect(new URL("/hub", request.url));
+    return NextResponse.redirect(new URL(getPostLoginDestination(role), request.url));
   }
 
-  if (pathname.startsWith("/hub") && role === "client") {
-    return NextResponse.redirect(new URL("/workspace", request.url));
+  if (pathname.startsWith("/hub") && !isHubRole(role)) {
+    return NextResponse.redirect(new URL(getPostLoginDestination(role), request.url));
   }
 
   // Admin-only routes
-  if (pathname.startsWith("/hub/admin") && role !== "admin") {
+  if (pathname.startsWith("/hub/admin") && role !== "admin" && !canUseLocalAdminAccess(user)) {
     return NextResponse.redirect(new URL("/hub", request.url));
   }
 

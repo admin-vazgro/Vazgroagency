@@ -11,10 +11,68 @@
   --bg-primary: #0A0A0A;
   --text-light: #F5F5F0;
   --text-gray: #FFFFFF;
-  --text-muted: #555555;
-  --text-dim: #444444;
+  --text-muted: #D0D0C8;
+  --text-dim: #BDBDB6;
   --border-dark: #2D2D2D;
   --border-subtle: #1D1D1D;
+}
+
+.portal-shell {
+  --portal-bg: #0a0a0a;
+  --portal-surface: #0f0f0f;
+  --portal-surface-alt: #111111;
+  --portal-surface-subtle: #1a1a1a;
+  --portal-border: #1d1d1d;
+  --portal-border-strong: #2d2d2d;
+  --portal-text: #f5f5f0;
+  --portal-text-soft: #e4e4dd;
+  --portal-text-muted: #d0d0c8;
+  --portal-text-dim: #c6c6be;
+  --portal-text-faint: #8e8e84;
+  --portal-accent: #d6e264;
+  --portal-accent-hover: #c9d64f;
+  --portal-accent-contrast: #0a0a0a;
+  --portal-accent-soft: rgba(214, 226, 100, 0.08);
+  --portal-accent-strong-soft: rgba(214, 226, 100, 0.16);
+  --portal-warning: #ff6b35;
+  --portal-warning-hover: #e55a24;
+  --portal-warning-soft: rgba(255, 107, 53, 0.08);
+  --portal-warning-strong-soft: rgba(255, 107, 53, 0.16);
+  --portal-muted-soft: rgba(255, 255, 255, 0.08);
+  --portal-active-bg: #1a1a0a;
+  --portal-success-tint: #1a2a0a;
+  --portal-danger: #ff4444;
+  --portal-danger-soft: rgba(255, 0, 0, 0.125);
+  background: var(--portal-bg);
+  color: var(--portal-text);
+}
+
+.portal-shell[data-portal-theme="light"] {
+  --portal-bg: #f4f1e9;
+  --portal-surface: #fffdf8;
+  --portal-surface-alt: #f6f1e6;
+  --portal-surface-subtle: #ece5d8;
+  --portal-border: #d8d1c3;
+  --portal-border-strong: #c7beae;
+  --portal-text: #161411;
+  --portal-text-soft: #2f2922;
+  --portal-text-muted: #5b5146;
+  --portal-text-dim: #7b7267;
+  --portal-text-faint: #90877d;
+  --portal-accent: #93a400;
+  --portal-accent-hover: #819100;
+  --portal-accent-contrast: #fffef8;
+  --portal-accent-soft: rgba(147, 164, 0, 0.12);
+  --portal-accent-strong-soft: rgba(147, 164, 0, 0.2);
+  --portal-warning: #d85a28;
+  --portal-warning-hover: #bc4b1e;
+  --portal-warning-soft: rgba(216, 90, 40, 0.12);
+  --portal-warning-strong-soft: rgba(216, 90, 40, 0.18);
+  --portal-muted-soft: rgba(45, 38, 28, 0.08);
+  --portal-active-bg: rgba(147, 164, 0, 0.12);
+  --portal-success-tint: rgba(147, 164, 0, 0.18);
+  --portal-danger: #d33b3b;
+  --portal-danger-soft: rgba(211, 59, 59, 0.12);
 }
 
 @utility font-grotesk {

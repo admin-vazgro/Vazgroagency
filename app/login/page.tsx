@@ -22,6 +22,10 @@ export default function LoginPage() {
       setError("Login link expired or could not be verified. Please try again.");
       setSent(false);
     }
+    if (authError === "access_denied") {
+      setError("Your account does not have access to that area.");
+      setSent(false);
+    }
   }, []);
 
   async function handleMagicLink(e: React.FormEvent) {
@@ -90,7 +94,7 @@ export default function LoginPage() {
             <h1 className="font-grotesk text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] mt-2">
               Welcome back.
             </h1>
-            <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[0.5px] mt-1">
+            <p className="font-ibm-mono text-[11px] text-[#F0F0EA] tracking-[0.5px] mt-1">
               Clients · Partners · Internal team — one login.
             </p>
           </div>
@@ -100,14 +104,14 @@ export default function LoginPage() {
             <button
               onClick={() => { setMode("magic"); setError(""); setSent(false); }}
               className="flex-1 py-3 font-ibm-mono text-[10px] tracking-[2px] transition-colors cursor-pointer border-none"
-              style={{ background: mode === "magic" ? "#D6E264" : "#111111", color: mode === "magic" ? "#0A0A0A" : "#555" }}
+              style={{ background: mode === "magic" ? "#D6E264" : "#111111", color: mode === "magic" ? "#0A0A0A" : "#C6C6BE" }}
             >
               MAGIC LINK
             </button>
             <button
               onClick={() => { setMode("password"); setError(""); setSent(false); }}
               className="flex-1 py-3 font-ibm-mono text-[10px] tracking-[2px] transition-colors cursor-pointer border-none border-l border-[#1D1D1D]"
-              style={{ background: mode === "password" ? "#D6E264" : "#111111", color: mode === "password" ? "#0A0A0A" : "#555" }}
+              style={{ background: mode === "password" ? "#D6E264" : "#111111", color: mode === "password" ? "#0A0A0A" : "#C6C6BE" }}
             >
               PASSWORD
             </button>
@@ -119,18 +123,18 @@ export default function LoginPage() {
                 <div className="w-14 h-14 bg-[#D6E264] flex items-center justify-center text-[24px]">✓</div>
                 <div>
                   <p className="font-grotesk text-[18px] font-bold text-[#F5F5F0]">Check your email</p>
-                  <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[0.5px] mt-2 leading-[1.7]">
+                  <p className="font-ibm-mono text-[11px] text-[#F0F0EA] tracking-[0.5px] mt-2 leading-[1.7]">
                     We sent a magic link to <span className="text-[#D6E264]">{email}</span>.<br />Click it to sign in — no password needed.
                   </p>
                 </div>
-                <button onClick={() => { setSent(false); setEmail(""); }} className="font-ibm-mono text-[10px] text-[#555] hover:text-[#AAAAAA] tracking-[1px] cursor-pointer bg-transparent border-none mt-2">
+                <button onClick={() => { setSent(false); setEmail(""); }} className="font-ibm-mono text-[10px] text-[#C6C6BE] hover:text-[#F0F0EA] tracking-[1px] cursor-pointer bg-transparent border-none mt-2">
                   ← Use a different email
                 </button>
               </div>
             ) : (
               <form onSubmit={mode === "magic" ? handleMagicLink : handlePassword} className="flex flex-col gap-4">
                 <div>
-                  <label className="font-ibm-mono text-[10px] font-bold text-[#AAAAAA] tracking-[2px] block mb-2">EMAIL ADDRESS</label>
+                  <label className="font-ibm-mono text-[10px] font-bold text-[#F0F0EA] tracking-[2px] block mb-2">EMAIL ADDRESS</label>
                   <input
                     type="email"
                     className={inputClass}
@@ -143,7 +147,7 @@ export default function LoginPage() {
 
                 {mode === "password" && (
                   <div>
-                    <label className="font-ibm-mono text-[10px] font-bold text-[#AAAAAA] tracking-[2px] block mb-2">PASSWORD</label>
+                    <label className="font-ibm-mono text-[10px] font-bold text-[#F0F0EA] tracking-[2px] block mb-2">PASSWORD</label>
                     <input
                       type="password"
                       className={inputClass}
@@ -186,9 +190,9 @@ export default function LoginPage() {
         {/* Footer */}
         <p className="font-ibm-mono text-[10px] text-[#333] text-center mt-6 tracking-[1px]">
           VAZGRO LTD · LONDON, UK ·{" "}
-          <a href="/privacy" className="hover:text-[#AAAAAA] transition-colors">PRIVACY</a>
+          <a href="/privacy" className="hover:text-[#F0F0EA] transition-colors">PRIVACY</a>
           {" "}·{" "}
-          <a href="/terms" className="hover:text-[#AAAAAA] transition-colors">TERMS</a>
+          <a href="/terms" className="hover:text-[#F0F0EA] transition-colors">TERMS</a>
         </p>
       </div>
     </div>

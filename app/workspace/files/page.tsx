@@ -14,21 +14,12 @@ type Deliverable = {
   size: string;
 };
 
-const deliverables: Deliverable[] = [
-  { id: "d-008", name: "Brand Strategy Document v2", type: "PDF", engagement: "Brand & Website Package", pillar: "LAUNCH", status: "Awaiting approval", uploadedBy: "Rohith M.", date: "08 Apr 2026", size: "2.4 MB" },
-  { id: "d-007", name: "Moodboard v1", type: "Figma", engagement: "Brand & Website Package", pillar: "LAUNCH", status: "Approved", uploadedBy: "Priya K.", date: "06 Apr 2026", size: "—" },
-  { id: "d-006", name: "Month 2 Content Plan", type: "PDF", engagement: "Social Media Management", pillar: "GROW", status: "Awaiting approval", uploadedBy: "Aisha B.", date: "05 Apr 2026", size: "1.1 MB" },
-  { id: "d-005", name: "Discovery Call Notes", type: "Doc", engagement: "Brand & Website Package", pillar: "LAUNCH", status: "Approved", uploadedBy: "Rohith M.", date: "02 Apr 2026", size: "420 KB" },
-  { id: "d-004", name: "Competitor Analysis", type: "PDF", engagement: "Brand & Website Package", pillar: "LAUNCH", status: "Approved", uploadedBy: "Priya K.", date: "28 Mar 2026", size: "3.2 MB" },
-  { id: "d-003", name: "Month 1 Content Calendar", type: "Spreadsheet", engagement: "Social Media Management", pillar: "GROW", status: "Approved", uploadedBy: "Aisha B.", date: "25 Mar 2026", size: "890 KB" },
-  { id: "d-002", name: "Social Audit Report", type: "PDF", engagement: "Social Media Management", pillar: "GROW", status: "Revision requested", uploadedBy: "Tom W.", date: "10 Mar 2026", size: "1.8 MB" },
-  { id: "d-001", name: "Client Brief", type: "Doc", engagement: "Brand & Website Package", pillar: "LAUNCH", status: "Approved", uploadedBy: "Rohith M.", date: "10 Mar 2026", size: "210 KB" },
-];
+const deliverables: Deliverable[] = [];
 
 const statusColors = {
-  "Awaiting approval": { bg: "#FF6B3520", text: "#FF6B35" },
-  Approved: { bg: "#D6E26420", text: "#D6E264" },
-  "Revision requested": { bg: "#FFFFFF10", text: "#888" },
+  "Awaiting approval": { bg: "var(--portal-warning-strong-soft)", text: "var(--portal-warning)" },
+  Approved: { bg: "var(--portal-accent-strong-soft)", text: "var(--portal-accent)" },
+  "Revision requested": { bg: "var(--portal-muted-soft)", text: "var(--portal-text-soft)" },
 };
 
 const typeIcons: Record<string, string> = {
@@ -52,38 +43,38 @@ export default function FilesPage() {
 
   return (
     <div className="p-8">
-      <div className="mb-8 border-b border-[#1D1D1D] pb-6">
-        <span className="font-ibm-mono text-[10px] text-[#D6E264] tracking-[3px]">// FILES & DELIVERABLES</span>
-        <h1 className="font-grotesk text-[32px] font-bold text-[#F5F5F0] tracking-[-1px] mt-1">Files</h1>
+      <div className="mb-8 border-b border-[var(--portal-border)] pb-6">
+        <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// FILES & DELIVERABLES</span>
+        <h1 className="font-grotesk text-[32px] font-bold text-[var(--portal-text)] tracking-[-1px] mt-1">Files</h1>
         {pending > 0 && (
           <p className="font-ibm-mono text-[12px] mt-1">
-            <span className="text-[#FF6B35]">{pending} file{pending !== 1 ? "s" : ""} awaiting your approval.</span>{" "}
-            <span className="text-[#666]">Review and approve or request revisions below.</span>
+            <span className="text-[var(--portal-warning)]">{pending} file{pending !== 1 ? "s" : ""} awaiting your approval.</span>{" "}
+            <span className="text-[var(--portal-text-muted)]">Review and approve or request revisions below.</span>
           </p>
         )}
       </div>
 
       {/* Filters */}
       <div className="flex items-center gap-3 mb-6 flex-wrap">
-        <div className="flex border border-[#1D1D1D]">
+        <div className="flex border border-[var(--portal-border)]">
           {(["All", "Awaiting approval", "Approved", "Revision requested"] as const).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors cursor-pointer border-none border-r border-[#1D1D1D] last:border-r-0"
-              style={{ background: filter === f ? "#D6E264" : "#111", color: filter === f ? "#0A0A0A" : "#666" }}
+              className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors cursor-pointer border-none border-r border-[var(--portal-border)] last:border-r-0"
+              style={{ background: filter === f ? "var(--portal-accent)" : "var(--portal-surface-alt)", color: filter === f ? "var(--portal-accent-contrast)" : "var(--portal-text-muted)" }}
             >
               {f.toUpperCase()}
             </button>
           ))}
         </div>
-        <div className="flex border border-[#1D1D1D]">
+        <div className="flex border border-[var(--portal-border)]">
           {(["All", "LAUNCH", "GROW", "BUILD"] as const).map((f) => (
             <button
               key={f}
               onClick={() => setPillarFilter(f)}
-              className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors cursor-pointer border-none border-r border-[#1D1D1D] last:border-r-0"
-              style={{ background: pillarFilter === f ? "#1A1A0A" : "#111", color: pillarFilter === f ? "#D6E264" : "#666" }}
+              className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors cursor-pointer border-none border-r border-[var(--portal-border)] last:border-r-0"
+              style={{ background: pillarFilter === f ? "var(--portal-active-bg)" : "var(--portal-surface-alt)", color: pillarFilter === f ? "var(--portal-accent)" : "var(--portal-text-muted)" }}
             >
               {f}
             </button>
@@ -92,36 +83,36 @@ export default function FilesPage() {
       </div>
 
       {/* Table */}
-      <div className="border border-[#1D1D1D] bg-[#0F0F0F]">
-        <div className="grid grid-cols-[32px_1fr_100px_160px_140px_100px_100px] gap-4 px-5 py-3 border-b border-[#1D1D1D]">
+      <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
+        <div className="grid grid-cols-[32px_1fr_100px_160px_140px_100px_100px] gap-4 px-5 py-3 border-b border-[var(--portal-border)]">
           {["", "Name", "Type", "Engagement", "Status", "Uploaded", "Actions"].map((h, i) => (
-            <span key={i} className="font-ibm-mono text-[9px] text-[#555] tracking-[2px]">{h}</span>
+            <span key={i} className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] tracking-[2px]">{h}</span>
           ))}
         </div>
         {filtered.map((d) => {
           const sc = statusColors[d.status];
           return (
-            <div key={d.id} className="grid grid-cols-[32px_1fr_100px_160px_140px_100px_100px] gap-4 px-5 py-4 border-b border-[#1D1D1D] hover:bg-[#111] transition-colors items-center">
-              <span className="font-ibm-mono text-[14px] text-[#444]">{typeIcons[d.type] ?? "◌"}</span>
+            <div key={d.id} className="grid grid-cols-[32px_1fr_100px_160px_140px_100px_100px] gap-4 px-5 py-4 border-b border-[var(--portal-border)] hover:bg-[var(--portal-surface-alt)] transition-colors items-center">
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-faint)]">{typeIcons[d.type] ?? "◌"}</span>
               <div>
-                <p className="font-ibm-mono text-[11px] text-[#CCCCCC]">{d.name}</p>
-                <p className="font-ibm-mono text-[10px] text-[#555] mt-0.5">by {d.uploadedBy} · {d.size}</p>
+                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{d.name}</p>
+                <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-0.5">by {d.uploadedBy} · {d.size}</p>
               </div>
-              <span className="font-ibm-mono text-[10px] text-[#777]">{d.type}</span>
-              <span className="font-ibm-mono text-[10px] text-[#777]">{d.engagement}</span>
+              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{d.type}</span>
+              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{d.engagement}</span>
               <span className="font-ibm-mono text-[9px] tracking-[1px] px-2 py-1 w-fit" style={{ background: sc.bg, color: sc.text }}>
                 {d.status.toUpperCase()}
               </span>
-              <span className="font-ibm-mono text-[10px] text-[#555]">{d.date}</span>
+              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{d.date}</span>
               <div className="flex gap-2">
                 {d.status === "Awaiting approval" && (
                   <>
-                    <button className="font-ibm-mono text-[9px] text-[#D6E264] hover:opacity-80 cursor-pointer bg-transparent border-none tracking-[1px]">APPROVE</button>
-                    <button className="font-ibm-mono text-[9px] text-[#888] hover:opacity-80 cursor-pointer bg-transparent border-none tracking-[1px]">REVISE</button>
+                    <button className="font-ibm-mono text-[9px] text-[var(--portal-accent)] hover:opacity-80 cursor-pointer bg-transparent border-none tracking-[1px]">APPROVE</button>
+                    <button className="font-ibm-mono text-[9px] text-[var(--portal-text-soft)] hover:opacity-80 cursor-pointer bg-transparent border-none tracking-[1px]">REVISE</button>
                   </>
                 )}
                 {d.status !== "Awaiting approval" && (
-                  <button className="font-ibm-mono text-[9px] text-[#555] hover:text-[#888] cursor-pointer bg-transparent border-none tracking-[1px]">VIEW</button>
+                  <button className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] cursor-pointer bg-transparent border-none tracking-[1px]">VIEW</button>
                 )}
               </div>
             </div>
@@ -129,7 +120,7 @@ export default function FilesPage() {
         })}
         {filtered.length === 0 && (
           <div className="px-5 py-12 text-center">
-            <p className="font-ibm-mono text-[12px] text-[#444]">No files match your filters.</p>
+            <p className="font-ibm-mono text-[12px] text-[var(--portal-text-faint)]">No files match your filters.</p>
           </div>
         )}
       </div>
