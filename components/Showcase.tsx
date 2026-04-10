@@ -74,20 +74,22 @@ export default function Showcase() {
   return (
       <section id="showcase" className="flex flex-col w-full bg-[#080808] pt-16 md:pt-[100px] pb-0 gap-8 md:gap-[48px]">
       {/* Header */}
-      <div className="flex items-end justify-between px-6 md:px-[120px]">
+      <div className="flex flex-col gap-6 px-6 md:px-[120px] md:flex-row md:items-end md:justify-between">
         <SectionHeader
           label="[07] // SHOWCASE"
           title={"REAL PROJECTS,\nREAL RESULTS."}
           titleWidth="w-full max-w-[600px]"
         />
-        <div className="flex items-center gap-[8px] shrink-0">
+        <div className="flex items-center gap-[8px] shrink-0 self-start md:self-auto">
           <button
+            type="button"
             onClick={prev}
             className="flex items-center justify-center w-[48px] h-[48px] bg-[#111111] border-2 border-[#3D3D3D] hover:border-[#888888] transition-colors"
           >
             <span className="font-grotesk text-[18px] font-normal text-[#FFFFFF]">&lt;</span>
           </button>
           <button
+            type="button"
             onClick={next}
             className="flex items-center justify-center w-[48px] h-[48px] bg-[#D6E264] hover:bg-[#e6c200] transition-colors"
           >
@@ -173,6 +175,7 @@ export default function Showcase() {
         {slides.map((_, i) => (
           <button
             key={i}
+            type="button"
             onClick={() => setActive(i)}
             className="h-[4px] transition-all"
             style={{ width: i === active ? 32 : 8, backgroundColor: i === active ? "#D6E264" : "#333333" }}
@@ -181,7 +184,7 @@ export default function Showcase() {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between px-6 md:px-[120px] pb-16 md:pb-[100px]">
+      <div className="flex flex-col items-start gap-3 px-6 pb-16 md:px-[120px] md:pb-[100px] sm:flex-row sm:items-center sm:justify-between">
         <span className="font-ibm-mono text-[11px] text-[#999999] tracking-[2px]">
           SHOWING 0{active + 1} OF 04 PROJECTS
         </span>

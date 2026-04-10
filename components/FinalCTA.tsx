@@ -13,12 +13,12 @@ export default function FinalCTA() {
       </div>
 
       {/* Title */}
-      <h2 className="font-grotesk text-[44px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none text-center w-full max-w-[1000px] whitespace-pre-line">
+      <h2 className="font-grotesk text-[36px] sm:text-[44px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-2px] leading-[0.95] text-center w-full max-w-[1000px] whitespace-pre-line">
         <GlitchText text={"LET'S GROW YOUR\nBUSINESS DIGITALLY."} speed={40} delay={200} />
       </h2>
 
       {/* Subtitle */}
-      <p className="font-ibm-mono text-[10px] md:text-[14px] text-[#BBBBBB] tracking-[0.5px] md:tracking-[2px] text-center text-pretty w-full max-w-[700px] px-2">
+      <p className="font-ibm-mono text-[11px] md:text-[14px] text-[#BBBBBB] tracking-[0.5px] md:tracking-[2px] leading-[1.7] text-center text-pretty w-full max-w-[700px] px-2">
         <GlitchText text="FREE 30-MINUTE STRATEGY CALL. NO COMMITMENT. NO PRESSURE. JUST RESULTS." speed={20} delay={450} />
       </p>
 

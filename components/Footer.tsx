@@ -18,7 +18,7 @@ export default function Footer() {
           <p className="font-ibm-mono text-[11px] text-[#FFFFFF] tracking-[1px] leading-[1.6] max-w-[260px]">
             UK DIGITAL AGENCY — WEB DESIGN, MARKETING &amp; AI FOR GROWING BUSINESSES. LONDON, UK.
           </p>
-          <div className="flex gap-[12px]">
+          <div className="flex flex-wrap gap-[12px]">
             {[
               { label: "YT", href: "https://www.youtube.com" },
               { label: "FB", href: "https://www.facebook.com" },
@@ -42,7 +42,7 @@ export default function Footer() {
         </div>
 
         {/* Link columns */}
-        <div className="grid grid-cols-3 md:flex md:flex-1 gap-8 md:gap-[80px]">
+        <div className="grid grid-cols-2 md:flex md:flex-1 gap-8 md:gap-[80px]">
           {[
             { heading: "SERVICES", links: serviceLinks },
             { heading: "COMPANY", links: companyLinks },
@@ -65,7 +65,7 @@ export default function Footer() {
           ))}
 
           {/* Get started col */}
-          <div className="flex flex-col gap-4 md:gap-[20px]">
+          <div className="flex flex-col gap-4 md:gap-[20px] col-span-2 md:col-span-1">
             <span className="font-grotesk text-[11px] font-normal text-[#F5F5F0] tracking-[2px]">
               GET STARTED
             </span>
@@ -87,7 +87,7 @@ export default function Footer() {
         <span className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px]">
           © 2026 VAZGRO LTD · REGISTERED IN ENGLAND &amp; WALES · LONDON, UK
         </span>
-        <div className="flex items-center gap-6 md:gap-[32px]">
+        <div className="flex flex-wrap items-center gap-4 md:gap-[32px]">
           <a href="#" className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors">
             PRIVACY
           </a>

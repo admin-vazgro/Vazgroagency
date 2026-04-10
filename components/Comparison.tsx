@@ -67,34 +67,32 @@ export default function Comparison() {
 
       {/* Mobile: card-per-feature layout */}
       <div className="flex flex-col md:hidden w-full gap-[2px]">
-        {/* Header row */}
-        <div className="grid grid-cols-5 bg-[#111111] border border-[#D6E264] border-b-2">
-          <div className="col-span-2 px-3 py-3">
-            <span className="font-grotesk text-[9px] font-normal text-[#FFFFFF] tracking-[1px]">FEATURE</span>
-          </div>
-          <div className="px-2 py-3 bg-[#1A1A1A]">
-            <span className="font-grotesk text-[9px] font-normal text-[#D6E264] tracking-[1px]">VZ</span>
-          </div>
-          <div className="px-2 py-3">
-            <span className="font-grotesk text-[9px] font-normal text-[#AAAAAA] tracking-[1px]">AGN</span>
-          </div>
-          <div className="px-2 py-3">
-            <span className="font-grotesk text-[9px] font-normal text-[#AAAAAA] tracking-[1px]">FRL</span>
-          </div>
-        </div>
         {rows.map((row, i) => (
-          <div key={row.feature} className={`grid grid-cols-5 border border-[#1D1D1D] ${i % 2 === 0 ? "bg-[#0A0A0A]" : "bg-[#0D0D0D]"}`}>
-            <div className="col-span-2 flex items-center px-3 py-4">
-              <span className="font-ibm-mono text-[9px] text-[#CCCCCC] tracking-[1px] leading-[1.4]">{row.feature}</span>
+          <div
+            key={row.feature}
+            className={`flex flex-col gap-4 border border-[#1D1D1D] p-4 ${i % 2 === 0 ? "bg-[#0A0A0A]" : "bg-[#0D0D0D]"}`}
+          >
+            <div className="flex items-center justify-between gap-4">
+              <span className="font-ibm-mono text-[10px] text-[#CCCCCC] tracking-[1px] leading-[1.5]">
+                {row.feature}
+              </span>
+              <span className="font-ibm-mono text-[10px] text-[#D6E264] tracking-[1.5px] shrink-0">
+                VAZGRO {row.vz}
+              </span>
             </div>
-            <div className="flex items-center px-2 py-4 bg-[#0D0D0D]">
-              <span className="font-ibm-mono text-[12px] text-[#D6E264] font-normal">{row.vz}</span>
-            </div>
-            <div className="flex items-center px-2 py-4">
-              <span className={`font-ibm-mono text-[11px] ${cellColor(row.agency)}`}>{row.agency}</span>
-            </div>
-            <div className="flex items-center px-2 py-4">
-              <span className={`font-ibm-mono text-[11px] ${cellColor(row.freelance)}`}>{row.freelance}</span>
+            <div className="grid grid-cols-3 gap-[2px]">
+              {[
+                { label: "AGENCY", value: row.agency },
+                { label: "FREELANCER", value: row.freelance },
+                { label: "DIY", value: row.diy },
+              ].map((item) => (
+                <div key={item.label} className="flex flex-col gap-2 border border-[#1D1D1D] bg-[#111111] px-3 py-3">
+                  <span className="font-grotesk text-[8px] font-normal text-[#AAAAAA] tracking-[1px]">
+                    {item.label}
+                  </span>
+                  <span className={`font-ibm-mono text-[12px] ${cellColor(item.value)}`}>{item.value}</span>
+                </div>
+              ))}
             </div>
           </div>
         ))}
