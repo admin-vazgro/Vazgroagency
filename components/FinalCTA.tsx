@@ -13,12 +13,12 @@ export default function FinalCTA() {
       </div>
 
       {/* Title */}
-      <h2 className="font-grotesk text-[36px] sm:text-[44px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-2px] leading-[0.95] text-center w-full max-w-[1000px] whitespace-pre-line">
+      <h2 className="w-full max-w-[1000px] whitespace-pre-line text-center font-grotesk text-[32px] sm:text-[44px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-1.5px] md:tracking-[-2px] leading-[0.95]">
         <GlitchText text={"LET'S GROW YOUR\nBUSINESS DIGITALLY."} speed={40} delay={200} />
       </h2>
 
       {/* Subtitle */}
-      <p className="font-ibm-mono text-[11px] md:text-[14px] text-[#BBBBBB] tracking-[0.5px] md:tracking-[2px] leading-[1.7] text-center text-pretty w-full max-w-[700px] px-2">
+      <p className="w-full max-w-[700px] px-2 text-center text-pretty font-ibm-mono text-[11px] md:text-[14px] text-[#BBBBBB] tracking-[0.3px] md:tracking-[2px] leading-[1.7]">
         <GlitchText text="FREE 30-MINUTE STRATEGY CALL. NO COMMITMENT. NO PRESSURE. JUST RESULTS." speed={20} delay={450} />
       </p>
 
@@ -28,7 +28,7 @@ export default function FinalCTA() {
           href="mailto:hello@vazgro.com"
           className="flex items-center justify-center w-full sm:w-[280px] h-[64px] bg-[#D6E264] hover:bg-[#e6c200] transition-colors no-underline"
         >
-          <span className="font-grotesk text-[13px] font-normal text-[#0A0A0A] tracking-[2px]">
+          <span className="text-center font-grotesk text-[12px] md:text-[13px] font-normal text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px]">
             BOOK A FREE STRATEGY CALL
           </span>
         </a>
@@ -36,13 +36,13 @@ export default function FinalCTA() {
           href="mailto:hello@vazgro.com"
           className="flex items-center justify-center w-full sm:w-[220px] h-[64px] bg-[#0A0A0A] border-2 border-[#3D3D3D] hover:border-[#888888] transition-colors no-underline"
         >
-          <span className="font-ibm-mono text-[12px] text-[#BBBBBB] tracking-[2px]">
+          <span className="text-center font-ibm-mono text-[11px] md:text-[12px] text-[#BBBBBB] tracking-[1.5px] md:tracking-[2px]">
             EMAIL US
           </span>
         </a>
       </div>
 
-      <p className="font-ibm-mono text-[11px] text-[#999999] tracking-[2px] text-center">
+      <p className="max-w-[320px] text-center font-ibm-mono text-[10px] md:max-w-none md:text-[11px] text-[#999999] tracking-[1px] md:tracking-[2px] leading-[1.7]">
         HELLO@VAZGRO.COM // LONDON, UK // SERVING CLIENTS WORLDWIDE
       </p>
     </section>

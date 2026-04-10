@@ -79,7 +79,7 @@ export default function ProgrizeCase() {
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           <div className="flex-1">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="mb-6 flex flex-wrap items-center gap-3">
               <span className="font-ibm-mono text-[10px] font-normal text-[#D6E264] border border-[#D6E264] px-3 py-1 tracking-[2px]">
                 [PRODUCT BUILD]
               </span>
@@ -94,7 +94,7 @@ export default function ProgrizeCase() {
             </p>
             <div className="flex flex-wrap gap-[2px]">
               {["UX DESIGN", "MOBILE APP", "WEB PLATFORM", "AI INTEGRATION", "DESIGN SYSTEM"].map((t) => (
-                <span key={t} className="font-ibm-mono text-[9px] tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
+                <span key={t} className="font-ibm-mono text-[9px] tracking-[1px] md:tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
                   {t}
                 </span>
               ))}

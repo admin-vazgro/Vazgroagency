@@ -45,7 +45,7 @@ function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className="flex flex-col gap-8 p-8 md:p-[40px] w-full md:flex-1"
+      className="flex min-w-0 flex-col gap-8 overflow-hidden p-6 md:w-full md:flex-1 md:p-[40px]"
       style={{ backgroundColor: bgColor, border: `${borderWidth}px solid ${borderColor}` }}
     >
       <div
@@ -59,12 +59,12 @@ function PricingCard({
       <span className="font-grotesk text-[28px] font-normal tracking-[1px]" style={{ color: nameColor }}>
         {name}
       </span>
-      <div className="flex items-end gap-[4px]">
-        <span className="font-grotesk text-[48px] font-normal tracking-[-2px] leading-none" style={{ color: priceColor }}>
+      <div className="flex flex-wrap items-end gap-[4px]">
+        <span className="font-grotesk text-[40px] md:text-[48px] font-normal tracking-[-2px] leading-none" style={{ color: priceColor }}>
           {price}
         </span>
         {priceSuffix && (
-          <span className="font-ibm-mono text-[13px] text-[#AAAAAA] tracking-[1px] mb-[6px]">{priceSuffix}</span>
+          <span className="font-ibm-mono text-[12px] md:text-[13px] text-[#AAAAAA] tracking-[1px] mb-[6px]">{priceSuffix}</span>
         )}
       </div>
 
@@ -72,7 +72,7 @@ function PricingCard({
       <div className="flex flex-col gap-[10px]" style={{ borderTop: `1px solid ${borderColor === "#0F0F0F" ? "#2D2D2D" : borderColor}` }}>
         <div className="pt-6 flex flex-col gap-[10px]">
           {features.map((f, i) => (
-            <div key={i} className="flex items-center gap-3">
+            <div key={i} className="flex min-w-0 items-start gap-3">
               <span
                 className="font-ibm-mono text-[14px] leading-none shrink-0"
                 style={{ color: f.included ? accentColor : "#888888" }}
@@ -80,7 +80,7 @@ function PricingCard({
                 {f.included ? "+" : "—"}
               </span>
               <span
-                className="font-ibm-mono text-[11px] tracking-[1px]"
+                className="min-w-0 break-words font-ibm-mono text-[11px] tracking-[0.8px] leading-[1.6]"
                 style={{ color: f.included ? "#CCCCCC" : "#888888" }}
               >
                 {f.label}
@@ -92,10 +92,10 @@ function PricingCard({
 
       <a
         href={href}
-        className="flex items-center justify-center w-full h-[48px] mt-auto no-underline"
+        className="mt-auto flex h-[48px] w-full items-center justify-center no-underline"
         style={{ backgroundColor: btnBg, border: `2px solid ${btnBorderColor}` }}
       >
-        <span className="font-ibm-mono text-[12px] tracking-[2px]" style={{ color: btnLabelColor }}>
+        <span className="text-center font-ibm-mono text-[11px] md:text-[12px] tracking-[1.5px] md:tracking-[2px]" style={{ color: btnLabelColor }}>
           {btnLabel}
         </span>
       </a>
@@ -145,7 +145,7 @@ export default function Pricing() {
         subtitle="ALL LAUNCH AND GROW PRICES ARE FINAL. BUILD IS SCOPED INDIVIDUALLY — FREE CALL FIRST."
       />
 
-      <div className="flex flex-col md:flex-row w-full gap-[2px]">
+      <div className="flex w-full flex-col gap-[2px] md:flex-row">
         <PricingCard
           tier="⚡ LAUNCH"
           name="FIXED-FEE"

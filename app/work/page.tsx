@@ -84,7 +84,7 @@ export default function WorkPage() {
             {/* Meta */}
             <div className="flex flex-col justify-between flex-1">
               <div>
-                <div className="flex items-center gap-4 mb-5">
+                <div className="mb-5 flex flex-wrap items-center gap-3">
                   <span
                     className="font-ibm-mono text-[10px] font-normal tracking-[2px] border px-3 py-1"
                     style={{ color: p.tagColor, borderColor: p.tagColor }}
@@ -108,7 +108,7 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#1D1D1D]">
+              <div className="mt-8 flex flex-col gap-3 border-t border-[#1D1D1D] pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <span className="font-ibm-mono text-[11px] text-[#999999] tracking-[2px]">SERVICE // {p.service}</span>
                 <span className="font-ibm-mono text-[11px] font-normal tracking-[2px] group-hover:underline" style={{ color: p.tagColor }}>
                   VIEW CASE STUDY →

@@ -26,7 +26,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="flex items-center gap-[8px] h-[32px] px-[12px] md:px-[16px] bg-[#1A1A1A] border-2 border-[#D6E264]">
             <div className="w-[8px] h-[8px] bg-[#D6E264] shrink-0" />
-            <span className="font-ibm-mono text-[9px] md:text-[11px] font-normal text-[#D6E264] tracking-[1px] md:tracking-[2px] whitespace-nowrap">
+            <span className="font-ibm-mono text-[9px] md:text-[11px] font-normal text-[#D6E264] tracking-[1px] md:tracking-[2px]">
               [⚡] // UK DIGITAL AGENCY — LONDON
             </span>
           </div>

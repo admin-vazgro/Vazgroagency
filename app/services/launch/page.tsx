@@ -244,11 +244,11 @@ export default function LaunchPage() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[2px]">
+        <div className="grid grid-cols-1 gap-[2px] md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((pkg) => (
             <div
               key={pkg.id}
-              className="flex flex-col gap-5 p-8 bg-[#0F0F0F] border border-[#2D2D2D] relative"
+              className="relative flex min-w-0 flex-col gap-5 overflow-hidden bg-[#0F0F0F] border border-[#2D2D2D] p-6 md:p-8"
             >
               {pkg.popular && (
                 <span className="absolute top-4 right-4 font-ibm-mono text-[9px] font-bold tracking-[2px] px-3 py-1 bg-[#D6E264] text-[#0A0A0A]">
@@ -266,20 +266,20 @@ export default function LaunchPage() {
                 </p>
               </div>
 
-              <div className="flex items-end gap-3">
-                <span className="font-grotesk text-[40px] font-bold text-[#F5F5F0] tracking-[-2px] leading-none">
+              <div className="flex flex-wrap items-end gap-3">
+                <span className="font-grotesk text-[34px] md:text-[40px] font-bold text-[#F5F5F0] tracking-[-2px] leading-none">
                   £{pkg.price.toLocaleString()}
                 </span>
-                <span className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px] pb-1">
+                <span className="font-ibm-mono text-[10px] md:text-[11px] text-[#AAAAAA] tracking-[1px] pb-1">
                   ⏱ {pkg.deliveryDays} DAYS
                 </span>
               </div>
 
-              <div className="flex flex-col gap-2 flex-1">
+              <div className="flex flex-1 flex-col gap-2">
                 {pkg.features.map((f) => (
-                  <div key={f} className="flex items-start gap-2">
-                    <span className="font-ibm-mono text-[10px] text-[#D6E264] mt-0.5">+</span>
-                    <span className="font-ibm-mono text-[11px] text-[#CCCCCC] tracking-[0.5px] leading-[1.5]">{f}</span>
+                  <div key={f} className="flex min-w-0 items-start gap-2">
+                    <span className="mt-0.5 font-ibm-mono text-[10px] text-[#D6E264]">+</span>
+                    <span className="min-w-0 break-words font-ibm-mono text-[11px] text-[#CCCCCC] tracking-[0.4px] leading-[1.5]">{f}</span>
                   </div>
                 ))}
               </div>
@@ -288,7 +288,7 @@ export default function LaunchPage() {
                 onClick={() => setSelected(pkg)}
                 className="mt-auto flex items-center justify-center h-[48px] bg-[#D6E264] hover:bg-[#c9d64f] transition-colors cursor-pointer border-none w-full"
               >
-                <span className="font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[2px]">
+                <span className="text-center font-grotesk text-[10px] md:text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px]">
                   START THIS PACKAGE →
                 </span>
               </button>

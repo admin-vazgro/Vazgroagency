@@ -32,7 +32,7 @@ type Step = 1 | 2 | 3;
 const inputClass =
   "w-full bg-[#0A0A0A] border border-[#2D2D2D] text-[#F5F5F0] font-ibm-mono text-[12px] tracking-[0.5px] px-4 py-3 focus:outline-none focus:border-[#D6E264] transition-colors placeholder:text-[#777777]";
 
-const labelClass = "font-ibm-mono text-[10px] font-bold text-[#AAAAAA] tracking-[2px] block mb-2";
+const labelClass = "font-ibm-mono text-[10px] font-bold text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] block mb-2";
 
 export default function LaunchModal({ pkg, onClose }: Props) {
   const [step, setStep] = useState<Step>(1);
@@ -90,14 +90,15 @@ export default function LaunchModal({ pkg, onClose }: Props) {
       style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(4px)" }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="bg-[#0F0F0F] border border-[#2D2D2D] w-full sm:max-w-[560px] flex flex-col max-h-[95dvh] overflow-hidden">
+      <div className="flex max-h-[95dvh] w-full flex-col overflow-hidden border border-[#2D2D2D] bg-[#0F0F0F] sm:max-w-[560px]">
 
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1D1D1D] shrink-0">
-          <div>
-            <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[2px]">⚡ LAUNCH · {pkg.name.toUpperCase()}</span>
-            <div className="flex items-center gap-3 mt-1">
-              <span className="font-grotesk text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] leading-none">
+        <div className="shrink-0 border-b border-[#1D1D1D] px-4 py-4 sm:px-6">
+          <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[1.5px] md:tracking-[2px] break-words">⚡ LAUNCH · {pkg.name.toUpperCase()}</span>
+            <div className="mt-1 flex flex-wrap items-center gap-3">
+              <span className="font-grotesk text-[24px] sm:text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] leading-none">
                 £{pkg.price.toLocaleString()}
               </span>
               <span className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1px] border border-[#2D2D2D] px-2 py-1">
@@ -112,6 +113,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
           >
             <span className="font-ibm-mono text-[12px]">✕</span>
           </button>
+          </div>
         </div>
 
         {/* Step bar */}
@@ -125,7 +127,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               }}
             >
               <span
-                className="font-ibm-mono text-[9px] font-bold tracking-[2px]"
+                className="font-ibm-mono text-[9px] font-bold tracking-[1px] md:tracking-[2px]"
                 style={{ color: step === s.n ? "#0A0A0A" : step > s.n ? "#D6E264" : "#333" }}
               >
                 {step > s.n ? "✓ " : ""}{s.label}
@@ -135,7 +137,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
         </div>
 
         {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6">
 
           {/* Step 1 — Details */}
           {step === 1 && (
@@ -143,7 +145,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               <h3 className="font-grotesk text-[18px] font-bold text-[#F5F5F0] tracking-[-0.5px]">
                 Let&apos;s start with your details
               </h3>
-              <div className="grid grid-cols-2 gap-[2px]">
+              <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-2">
                 <div>
                   <label className={labelClass}>FIRST NAME *</label>
                   <input className={inputClass} placeholder="Marcus" value={s1.firstName} onChange={(e) => setS1((p) => ({ ...p, firstName: e.target.value }))} />
@@ -172,7 +174,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               <button
                 onClick={() => setStep(2)}
                 disabled={!s1Valid}
-                className="w-full h-[52px] bg-[#D6E264] hover:bg-[#c9d64f] disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer border-none font-grotesk text-[12px] font-bold text-[#0A0A0A] tracking-[2px] mt-2"
+                className="mt-2 h-[52px] w-full border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 NEXT: PROJECT REQUIREMENTS →
               </button>
@@ -193,7 +195,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
 
               {/* What's included */}
               <div className="flex flex-col gap-2 p-4 border border-[#D6E264] bg-[#0A0A0A]">
-                <span className="font-ibm-mono text-[9px] font-bold text-[#D6E264] tracking-[2px]">WHAT&apos;S INCLUDED</span>
+                <span className="font-ibm-mono text-[9px] font-bold text-[#D6E264] tracking-[1px] md:tracking-[2px]">WHAT&apos;S INCLUDED</span>
                 {pkg.whatsIncluded.map((item) => (
                   <div key={item} className="flex items-start gap-2">
                     <span className="font-ibm-mono text-[10px] text-[#D6E264] mt-0.5 shrink-0">✓</span>
@@ -203,7 +205,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               </div>
 
               {/* Fields */}
-              <span className="font-ibm-mono text-[9px] font-bold text-[#999999] tracking-[2px]">WHAT WE NEED FROM YOU</span>
+              <span className="font-ibm-mono text-[9px] font-bold text-[#999999] tracking-[1px] md:tracking-[2px]">WHAT WE NEED FROM YOU</span>
               {pkg.requiresFrom.map((field) => (
                 <div key={field.label}>
                   <label className={labelClass}>
@@ -238,16 +240,16 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                 </div>
               ))}
 
-              <div className="flex gap-[2px] mt-2">
+              <div className="mt-2 flex flex-col gap-[2px] sm:flex-row">
                 <button
                   onClick={() => setStep(1)}
-                  className="h-[52px] px-6 bg-[#111111] border border-[#2D2D2D] hover:border-[#555] transition-colors cursor-pointer border-none font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[2px]"
+                  className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
                 >
                   ← BACK
                 </button>
                 <button
                   onClick={() => setStep(3)}
-                  className="flex-1 h-[52px] bg-[#D6E264] hover:bg-[#c9d64f] transition-colors cursor-pointer border-none font-grotesk text-[12px] font-bold text-[#0A0A0A] tracking-[2px]"
+                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f]"
                 >
                   NEXT: REVIEW & CONFIRM →
                 </button>
@@ -269,7 +271,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                     <span className="font-grotesk text-[16px] font-bold text-[#F5F5F0]">{pkg.icon} {pkg.name}</span>
                     <p className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1px] mt-1">DELIVERED IN {pkg.deliveryDays} DAYS</p>
                   </div>
-                  <span className="font-grotesk text-[22px] font-bold text-[#D6E264] tracking-[-1px]">£{pkg.price.toLocaleString()}</span>
+                  <span className="shrink-0 font-grotesk text-[20px] sm:text-[22px] font-bold text-[#D6E264] tracking-[-1px]">£{pkg.price.toLocaleString()}</span>
                 </div>
                 <div>
                   <span className="font-ibm-mono text-[9px] text-[#999999] tracking-[2px]">ORDER FOR</span>
@@ -280,7 +282,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
 
               {/* What happens next */}
               <div className="flex flex-col gap-2 p-4 bg-[#0A0A0A] border border-[#1D1D1D]">
-                <span className="font-ibm-mono text-[9px] font-bold text-[#D6E264] tracking-[2px]">WHAT HAPPENS NEXT</span>
+                <span className="font-ibm-mono text-[9px] font-bold text-[#D6E264] tracking-[1px] md:tracking-[2px]">WHAT HAPPENS NEXT</span>
                 {[
                   "Your request is sent directly to our team",
                   "Your dedicated PM contacts you within 2 business hours",
@@ -293,17 +295,17 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                 ))}
               </div>
 
-              <div className="flex gap-[2px] mt-2">
+              <div className="mt-2 flex flex-col gap-[2px] sm:flex-row">
                 <button
                   onClick={() => setStep(2)}
-                  className="h-[52px] px-6 bg-[#111111] border border-[#2D2D2D] hover:border-[#555] transition-colors cursor-pointer border-none font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[2px]"
+                  className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
                 >
                   ← BACK
                 </button>
                 <button
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="flex-1 h-[52px] bg-[#D6E264] hover:bg-[#c9d64f] disabled:opacity-40 transition-colors cursor-pointer border-none font-grotesk text-[12px] font-bold text-[#0A0A0A] tracking-[2px]"
+                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-40"
                 >
                   {submitting ? "OPENING EMAIL..." : `SUBMIT REQUEST — £${pkg.price.toLocaleString()} →`}
                 </button>
@@ -328,7 +330,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               </div>
               <button
                 onClick={onClose}
-                className="h-[48px] px-8 bg-[#1A1A1A] border border-[#2D2D2D] hover:border-[#D6E264] transition-colors cursor-pointer border-none font-grotesk text-[11px] font-bold text-[#F5F5F0] tracking-[2px]"
+                className="h-[48px] border border-[#2D2D2D] bg-[#1A1A1A] px-8 font-grotesk text-[11px] font-bold text-[#F5F5F0] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#D6E264]"
               >
                 CLOSE
               </button>

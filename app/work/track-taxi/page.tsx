@@ -80,7 +80,7 @@ export default function TrackTaxiCase() {
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           <div className="flex-1">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="mb-6 flex flex-wrap items-center gap-3">
               <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] border border-[#FF6B35] px-3 py-1 tracking-[2px]">
                 [SERVICE PRODUCT]
               </span>
@@ -95,7 +95,7 @@ export default function TrackTaxiCase() {
             </p>
             <div className="flex flex-wrap gap-[2px]">
               {["UX RESEARCH", "SERVICE DESIGN", "MOBILE-FIRST", "MOTION DESIGN", "PAYMENT UX"].map((t) => (
-                <span key={t} className="font-ibm-mono text-[9px] tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
+                <span key={t} className="font-ibm-mono text-[9px] tracking-[1px] md:tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
                   {t}
                 </span>
               ))}
