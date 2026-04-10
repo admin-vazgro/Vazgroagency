@@ -57,6 +57,15 @@ function firstParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
 
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error && error.message) return error.message;
+  if (error && typeof error === "object" && "message" in error) {
+    const message = (error as { message?: unknown }).message;
+    if (typeof message === "string" && message) return message;
+  }
+  return "Unable to load admin data.";
+}
+
 export default async function AdminPage(props: {
   searchParams?: Promise<SearchParams>;
 }) {
@@ -105,7 +114,7 @@ export default async function AdminPage(props: {
     engagements = engagementsResult.data ?? [];
     assignments = assignmentsResult.data ?? [];
   } catch (error) {
-    adminDataError = error instanceof Error ? error.message : "Unable to load admin data.";
+    adminDataError = getErrorMessage(error);
   }
 
   const profileById = new Map(profiles.map((profile) => [profile.id, profile]));
