@@ -1,20 +1,78 @@
-const serviceLinks = ["LAUNCH", "GROW", "BUILD", "PRICING"];
-const companyLinks = ["OUR WORK", "PRODUCTS", "ABOUT", "BLOG"];
-const resourceLinks = ["PARTNER PROGRAMME", "CLIENT PORTAL", "PROGRIZE"];
+import Link from "next/link";
+
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+  accent?: boolean;
+};
+
+const serviceLinks: FooterLink[] = [
+  { label: "LAUNCH", href: "/services/launch" },
+  { label: "GROW", href: "/services/grow" },
+  { label: "BUILD", href: "/services/build" },
+  { label: "PRICING", href: "/#pricing" },
+];
+
+const companyLinks: FooterLink[] = [
+  { label: "OUR WORK", href: "/work" },
+  { label: "PRODUCTS", href: "/work" },
+  { label: "ABOUT", href: "/about" },
+  { label: "BLOG", href: "/blog" },
+];
+
+const resourceLinks: FooterLink[] = [
+  { label: "PARTNER PROGRAMME", href: "/partner-programme" },
+  { label: "CLIENT PORTAL", href: "/client-portal" },
+  { label: "PROGRIZE", href: "https://www.progrize.com", external: true },
+];
+
+const getStartedLinks: FooterLink[] = [
+  { label: "CONTACT US", href: "mailto:hello@vazgro.com", external: true },
+  { label: "BOOK A FREE CALL", href: "/#pricing", accent: true },
+  { label: "HELLO@VAZGRO.COM", href: "mailto:hello@vazgro.com", external: true },
+];
+
+function FooterNavLink({ link }: { link: FooterLink }) {
+  const className = `font-ibm-mono text-[12px] tracking-[1px] transition-colors no-underline ${
+    link.accent
+      ? "text-[#D6E264] hover:text-[#e6c200]"
+      : "text-[#FFFFFF] hover:text-[#CCCCCC]"
+  }`;
+
+  if (link.external) {
+    const isMailto = link.href.startsWith("mailto:");
+
+    return (
+      <a
+        href={link.href}
+        className={className}
+        target={isMailto ? undefined : "_blank"}
+        rel={isMailto ? undefined : "noopener noreferrer"}
+      >
+        {link.label}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={link.href} className={className}>
+      {link.label}
+    </Link>
+  );
+}
 
 export default function Footer() {
   return (
     <footer className="flex flex-col w-full bg-[#050505]">
-      {/* Top */}
-      <div className="flex flex-col md:flex-row gap-12 md:gap-[80px] px-6 md:px-[120px] py-12 md:py-[64px]">
-        {/* Brand */}
+      <div className="flex flex-col gap-12 px-6 py-12 md:flex-row md:gap-[80px] md:px-[120px] md:py-[64px]">
         <div className="flex flex-col gap-6 md:w-[280px] md:shrink-0">
-          <div className="flex items-center gap-[12px]">
+          <Link href="/" className="flex items-center gap-[12px] no-underline">
             <div className="w-[10px] h-[10px] bg-[#D6E264] shrink-0" />
             <span className="font-grotesk text-[16px] font-normal text-[#D6E264] tracking-[3px]">
               VAZGRO
             </span>
-          </div>
+          </Link>
           <p className="font-ibm-mono text-[11px] text-[#FFFFFF] tracking-[1px] leading-[1.6] max-w-[260px]">
             UK DIGITAL AGENCY — WEB DESIGN, MARKETING &amp; AI FOR GROWING BUSINESSES. LONDON, UK.
           </p>
@@ -25,78 +83,63 @@ export default function Footer() {
               { label: "X", href: "https://x.com/vazgro" },
               { label: "IG", href: "https://www.instagram.com/vazgro" },
               { label: "IN", href: "https://www.linkedin.com/company/vazgro" },
-            ].map((s) => (
+            ].map((social) => (
               <a
-                key={s.label}
-                href={s.href}
+                key={social.label}
+                href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-[36px] h-[36px] bg-[#111111] border border-[#2D2D2D] hover:border-[#888888] transition-colors no-underline"
               >
                 <span className="font-grotesk text-[10px] font-normal text-[#AAAAAA]">
-                  {s.label}
+                  {social.label}
                 </span>
               </a>
             ))}
           </div>
         </div>
 
-        {/* Link columns */}
-        <div className="grid grid-cols-2 md:flex md:flex-1 gap-8 md:gap-[80px]">
+        <div className="grid grid-cols-2 gap-8 md:flex md:flex-1 md:gap-[80px]">
           {[
             { heading: "SERVICES", links: serviceLinks },
             { heading: "COMPANY", links: companyLinks },
             { heading: "RESOURCES", links: resourceLinks },
-          ].map((col) => (
-            <div key={col.heading} className="flex flex-col gap-4 md:gap-[20px]">
+          ].map((column) => (
+            <div key={column.heading} className="flex flex-col gap-4 md:gap-[20px]">
               <span className="font-grotesk text-[11px] font-normal text-[#F5F5F0] tracking-[2px]">
-                {col.heading}
+                {column.heading}
               </span>
-              {col.links.map((link) => (
-                <a
-                  key={link}
-                  href="mailto:hello@vazgro.com"
-                  className="font-ibm-mono text-[12px] text-[#FFFFFF] tracking-[1px] hover:text-[#CCCCCC] transition-colors no-underline"
-                >
-                  {link}
-                </a>
+              {column.links.map((link) => (
+                <FooterNavLink key={link.label} link={link} />
               ))}
             </div>
           ))}
 
-          {/* Get started col */}
           <div className="flex flex-col gap-4 md:gap-[20px] col-span-2 md:col-span-1">
             <span className="font-grotesk text-[11px] font-normal text-[#F5F5F0] tracking-[2px]">
               GET STARTED
             </span>
-            <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[12px] text-[#FFFFFF] tracking-[1px] hover:text-[#CCCCCC] transition-colors no-underline">
-              CONTACT US
-            </a>
-            <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[12px] text-[#D6E264] tracking-[1px] hover:text-[#e6c200] transition-colors no-underline font-normal">
-              BOOK A FREE CALL
-            </a>
-            <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[12px] text-[#FFFFFF] tracking-[1px] hover:text-[#CCCCCC] transition-colors no-underline">
-              HELLO@VAZGRO.COM
-            </a>
+            {getStartedLinks.map((link) => (
+              <FooterNavLink key={link.label} link={link} />
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full px-6 md:px-[120px] py-4 md:h-[56px] border-t border-t-[#1D1D1D] gap-3 sm:gap-0">
+      <div className="flex flex-col items-start justify-between gap-3 border-t border-t-[#1D1D1D] px-6 py-4 sm:flex-row sm:items-center sm:gap-0 md:px-[120px] md:h-[56px]">
         <span className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px]">
           © 2026 VAZGRO LTD · REGISTERED IN ENGLAND &amp; WALES · LONDON, UK
         </span>
         <div className="flex flex-wrap items-center gap-4 md:gap-[32px]">
-          <a href="#" className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors">
+          <Link href="/privacy" className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors no-underline">
             PRIVACY
-          </a>
-          <a href="#" className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors">
+          </Link>
+          <Link href="/terms" className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors no-underline">
             TERMS
-          </a>
-          <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[1px]">
+          </Link>
+          <Link href="/" className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[1px] no-underline">
             VAZGRO.COM
-          </span>
+          </Link>
         </div>
       </div>
     </footer>
