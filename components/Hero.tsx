@@ -34,7 +34,7 @@ export default function Hero() {
           <div className="h-8" />
 
           {/* Headline */}
-          <h1 className="font-grotesk text-[clamp(36px,7vw,88px)] font-normal text-[#F5F5F0] tracking-[-2px] leading-[0.95] w-full">
+          <h1 className="font-grotesk text-[clamp(36px,7vw,76px)] font-normal text-[#F5F5F0] tracking-[-2px] leading-[0.95] w-full">
             <GlitchText text="MORE" speed={45} delay={100} />
             <br />
             <GlitchText text="CUSTOMERS." speed={45} delay={200} />
@@ -98,7 +98,7 @@ export default function Hero() {
         <div className="relative w-full lg:flex-1 flex items-center justify-center">
           <div className="relative w-full max-w-[560px] aspect-square">
             <Image
-              src="/hero-photo.svg"
+              src="/hero-photo.jpg"
               alt="Vazgro digital agency hero"
               fill
               priority
