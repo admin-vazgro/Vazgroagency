@@ -94,6 +94,8 @@ export async function createUserAction(formData: FormData) {
   });
 
   if (profileError) {
+    // Clean up the auth user so creation can be retried without a duplicate-email error.
+    await admin.auth.admin.deleteUser(data.user.id);
     redirect(toQueryMessage("error", profileError.message));
   }
 
@@ -115,6 +117,10 @@ export async function deleteUserAction(formData: FormData) {
   }
 
   const admin = getAdminClientOrRedirect();
+
+  // Delete the profile row first so no orphaned record remains if auth deletion fails.
+  await admin.from("profiles").delete().eq("id", userId);
+
   const { error } = await admin.auth.admin.deleteUser(userId);
   if (error) {
     redirect(toQueryMessage("error", error.message));

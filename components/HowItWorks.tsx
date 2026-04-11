@@ -19,7 +19,7 @@ function StepCard({
 }: StepCardProps) {
   return (
     <div
-      className="flex flex-col gap-4 p-8 md:p-[40px] border w-full md:flex-1 md:h-[280px]"
+      className="flex flex-col gap-4 p-8 lg:p-[40px] border w-full lg:flex-1 lg:h-[280px]"
       style={{ backgroundColor: bgColor, borderColor, borderWidth }}
     >
       <span className="font-grotesk text-[48px] font-normal text-[#D6E264] tracking-[-2px]">
@@ -37,14 +37,14 @@ function StepCard({
 
 export default function HowItWorks() {
   return (
-    <section id="process" className="flex flex-col w-full bg-[#0D0D0D] py-16 px-6 md:py-[100px] md:px-[120px] gap-12 md:gap-[64px]">
+    <section id="process" className="flex flex-col w-full bg-[#0D0D0D] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <SectionHeader
         label="[02] // OUR PROCESS"
         title={"SIMPLE. HONEST.\nREPEATABLE."}
         subtitle="WE'VE STRIPPED OUT EVERYTHING THAT WASTES TIME OR MONEY. WHAT'S LEFT GETS YOU RESULTS FAST."
       />
 
-      <div className="flex flex-col md:flex-row w-full gap-[2px]">
+      <div className="flex flex-col lg:flex-row w-full gap-[2px]">
         <StepCard
           number="01"
           title={"CHOOSE YOUR\nSERVICE"}

@@ -45,7 +45,7 @@ function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className="flex min-w-0 flex-col gap-8 overflow-hidden p-6 md:w-full md:flex-1 md:p-[40px]"
+      className="flex min-w-0 flex-col gap-8 overflow-hidden p-6 lg:w-full lg:flex-1 lg:p-[40px]"
       style={{ backgroundColor: bgColor, border: `${borderWidth}px solid ${borderColor}` }}
     >
       <div
@@ -60,11 +60,11 @@ function PricingCard({
         {name}
       </span>
       <div className="flex flex-wrap items-end gap-[4px]">
-        <span className="font-grotesk text-[40px] md:text-[48px] font-normal tracking-[-2px] leading-none" style={{ color: priceColor }}>
+        <span className="font-grotesk text-[40px] lg:text-[48px] font-normal tracking-[-2px] leading-none" style={{ color: priceColor }}>
           {price}
         </span>
         {priceSuffix && (
-          <span className="font-ibm-mono text-[12px] md:text-[13px] text-[#AAAAAA] tracking-[1px] mb-[6px]">{priceSuffix}</span>
+          <span className="font-ibm-mono text-[12px] lg:text-[13px] text-[#AAAAAA] tracking-[1px] mb-[6px]">{priceSuffix}</span>
         )}
       </div>
 
@@ -138,14 +138,14 @@ const BUILD_FEATURES = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="flex flex-col w-full bg-[#080808] py-16 px-6 md:py-[100px] md:px-[120px] gap-12 md:gap-[64px]">
+    <section id="pricing" className="flex flex-col w-full bg-[#080808] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <SectionHeader
         label="[09] // PRICING"
         title={"TRANSPARENT.\nNO SURPRISES."}
         subtitle="ALL LAUNCH AND GROW PRICES ARE FINAL. BUILD IS SCOPED INDIVIDUALLY — FREE CALL FIRST."
       />
 
-      <div className="flex w-full flex-col gap-[2px] md:flex-row">
+      <div className="flex w-full flex-col gap-[2px] lg:flex-row">
         <PricingCard
           tier="⚡ LAUNCH"
           name="FIXED-FEE"

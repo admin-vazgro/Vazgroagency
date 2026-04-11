@@ -23,7 +23,7 @@ function cellColor(val: string) {
 
 export default function Comparison() {
   return (
-    <section id="comparison" className="flex flex-col w-full bg-[#050505] py-16 px-6 md:py-[100px] md:px-[120px] gap-12 md:gap-[64px]">
+    <section id="comparison" className="flex flex-col w-full bg-[#050505] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <SectionHeader
         label="[06] // VS. THE REST"
         title={"WHY VAZGRO\nWINS."}
@@ -31,7 +31,7 @@ export default function Comparison() {
       />
 
       {/* Desktop table */}
-      <div className="hidden md:flex flex-col w-full border border-[#2D2D2D]">
+      <div className="hidden lg:flex flex-col w-full border border-[#2D2D2D]">
         {/* Header */}
         <div className="flex w-full h-[56px] bg-[#111111] border-b-2 border-b-[#D6E264]">
           <div className="flex items-center w-[400px] shrink-0 px-[32px] border-r border-r-[#2D2D2D]">
@@ -66,7 +66,7 @@ export default function Comparison() {
       </div>
 
       {/* Mobile: card-per-feature layout */}
-      <div className="flex flex-col md:hidden w-full gap-[2px]">
+      <div className="flex flex-col lg:hidden w-full gap-[2px]">
         {rows.map((row, i) => (
           <div
             key={row.feature}

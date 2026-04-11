@@ -4,7 +4,7 @@ import GlitchText from "@/components/GlitchText";
 
 export default function FinalCTA() {
   return (
-    <section className="flex flex-col items-center w-full bg-[#0A0A0A] py-16 px-6 md:p-[120px] gap-10 md:gap-[48px] border-t-2 border-t-[#D6E264]">
+    <section className="flex flex-col items-center w-full bg-[#0A0A0A] py-16 px-6 md:px-8 md:py-[80px] lg:p-[120px] gap-10 md:gap-[48px] border-t-2 border-t-[#D6E264]">
       {/* Badge */}
       <div className="flex items-center justify-center gap-[8px] h-[32px] px-[16px] bg-[#1A1A1A] border-2 border-[#D6E264]">
         <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[2px]">

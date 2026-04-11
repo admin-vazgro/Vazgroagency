@@ -2,7 +2,7 @@ const logos = ["PROGRIZE", "DASHMETRIC", "BRIEFLY AI", "TRACK TAXI", "VAZGRO LAB
 
 export default function Logos() {
   return (
-    <section className="flex flex-col items-center w-full bg-[#0F0F0F] py-[48px] px-6 md:px-[120px] gap-[32px]">
+    <section className="flex flex-col items-center w-full bg-[#0F0F0F] py-[48px] px-6 md:px-8 lg:px-[120px] gap-[32px]">
       <span className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[3px]">
         PRODUCTS &amp; CLIENTS WE&apos;VE BUILT FOR
       </span>

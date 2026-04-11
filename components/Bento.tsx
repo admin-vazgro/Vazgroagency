@@ -2,7 +2,7 @@ import SectionHeader from "./SectionHeader";
 
 export default function Bento() {
   return (
-    <section className="flex flex-col w-full bg-[#0D0D0D] py-16 px-6 md:py-[100px] md:px-[120px] gap-10 md:gap-[48px]">
+    <section className="flex flex-col w-full bg-[#0D0D0D] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-10 md:gap-[48px]">
       <SectionHeader
         label="[05] // CAPABILITIES"
         title={"THE FULL STACK.\nIN ONE AGENCY."}
@@ -11,9 +11,9 @@ export default function Bento() {
 
       <div className="flex flex-col w-full gap-[2px]">
         {/* Row 1 */}
-        <div className="flex flex-col md:flex-row w-full gap-[2px]">
+        <div className="flex flex-col lg:flex-row w-full gap-[2px]">
           {/* Bento A — Yellow */}
-          <div className="flex flex-col gap-5 p-8 md:p-[40px] md:h-[320px] bg-[#D6E264] w-full md:flex-1">
+          <div className="flex flex-col gap-5 p-8 lg:p-[40px] lg:h-[320px] bg-[#D6E264] w-full lg:flex-1">
             <span className="font-ibm-mono text-[11px] font-normal text-[#1A1A1A] tracking-[2px]">[01]</span>
             <h3 className="font-grotesk text-[24px] md:text-[28px] font-normal text-[#0A0A0A] tracking-[-1px] leading-[1.1] whitespace-pre-line">
               {"WEB DESIGN\n& DEVELOPMENT"}
@@ -27,7 +27,7 @@ export default function Bento() {
           </div>
 
           {/* Bento B */}
-          <div className="flex flex-col gap-5 p-8 md:p-[40px] md:h-[320px] bg-[#111111] border border-[#2D2D2D] w-full md:flex-1">
+          <div className="flex flex-col gap-5 p-8 lg:p-[40px] lg:h-[320px] bg-[#111111] border border-[#2D2D2D] w-full lg:flex-1">
             <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[2px]">[02]</span>
             <h3 className="font-grotesk text-[24px] md:text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.1] whitespace-pre-line">
               {"BRAND\nIDENTITY"}
@@ -38,7 +38,7 @@ export default function Bento() {
           </div>
 
           {/* Bento C */}
-          <div className="flex flex-col gap-5 p-8 md:p-[40px] md:h-[320px] bg-[#0A0A0A] border border-[#2D2D2D] w-full md:flex-1">
+          <div className="flex flex-col gap-5 p-8 lg:p-[40px] lg:h-[320px] bg-[#0A0A0A] border border-[#2D2D2D] w-full lg:flex-1">
             <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[2px]">[03]</span>
             <h3 className="font-grotesk text-[24px] md:text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.1] whitespace-pre-line">
               {"SOCIAL MEDIA\nMANAGEMENT"}
@@ -53,9 +53,9 @@ export default function Bento() {
         </div>
 
         {/* Row 2 */}
-        <div className="flex flex-col md:flex-row w-full gap-[2px]">
+        <div className="flex flex-col lg:flex-row w-full gap-[2px]">
           {/* Bento D */}
-          <div className="flex flex-col gap-5 p-8 md:p-[40px] md:h-[260px] bg-[#111111] border border-[#2D2D2D] w-full md:flex-1">
+          <div className="flex flex-col gap-5 p-8 lg:p-[40px] lg:h-[260px] bg-[#111111] border border-[#2D2D2D] w-full lg:flex-1">
             <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[2px]">[04]</span>
             <h3 className="font-grotesk text-[24px] md:text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.1] whitespace-pre-line">
               {"AI CHATBOT\n& AUTOMATION"}
@@ -66,7 +66,7 @@ export default function Bento() {
           </div>
 
           {/* Bento E */}
-          <div className="flex flex-col gap-5 p-8 md:p-[40px] md:h-[260px] bg-[#0F0F0F] border-2 border-[#FF6B35] w-full md:flex-1">
+          <div className="flex flex-col gap-5 p-8 lg:p-[40px] lg:h-[260px] bg-[#0F0F0F] border-2 border-[#FF6B35] w-full lg:flex-1">
             <span className="font-ibm-mono text-[11px] font-normal text-[#FF6B35] tracking-[2px]">[05]</span>
             <h3 className="font-grotesk text-[24px] md:text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.1] whitespace-pre-line">
               {"MVP &\nPRODUCT BUILD"}
@@ -80,7 +80,7 @@ export default function Bento() {
           </div>
 
           {/* Bento F */}
-          <div className="flex flex-col gap-5 p-8 md:p-[40px] md:h-[260px] bg-[#0A0A0A] border border-[#2D2D2D] w-full md:flex-1">
+          <div className="flex flex-col gap-5 p-8 lg:p-[40px] lg:h-[260px] bg-[#0A0A0A] border border-[#2D2D2D] w-full lg:flex-1">
             <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[2px]">[06]</span>
             <h3 className="font-grotesk text-[24px] md:text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.1] whitespace-pre-line">
               {"DEDICATED PM\n& SLACK ACCESS"}

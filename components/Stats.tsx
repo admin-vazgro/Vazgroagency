@@ -9,7 +9,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-[120px] gap-12 md:gap-[64px]">
+    <section className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <div className="flex flex-col gap-3">
         <span className="font-ibm-mono text-[12px] font-normal text-[#D6E264] tracking-[3px]">
           [03] // YOUR NEXT CUSTOMER IS ALREADY ONLINE

@@ -17,7 +17,7 @@ function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <div
-      className="flex flex-col gap-6 p-8 md:p-[40px] border-l-4 w-full md:flex-1"
+      className="flex flex-col gap-6 p-8 lg:p-[40px] border-l-4 w-full lg:flex-1"
       style={{ backgroundColor: bgColor, borderLeftColor: accentColor }}
     >
       <p className="font-ibm-mono text-[13px] text-[#CCCCCC] tracking-[1px] leading-[1.6]">
@@ -40,13 +40,13 @@ function TestimonialCard({
 
 export default function Testimonials() {
   return (
-    <section className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-[120px] gap-12 md:gap-[64px]">
+    <section className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <SectionHeader
         label="[04] // WHAT CLIENTS SAY"
         title={"REAL CLIENTS.\nREAL RESULTS."}
       />
 
-      <div className="flex flex-col md:flex-row w-full gap-[2px]">
+      <div className="flex flex-col lg:flex-row w-full gap-[2px]">
         <TestimonialCard
           quote="THEY DIDN'T JUST MAKE THE BRAND. THEY BUILT TRUST. VAZGRO DELIVERED FASTER THAN ANY AGENCY I'D WORKED WITH AND THE QUALITY WAS EXCEPTIONAL."
           name="GEORGE A."

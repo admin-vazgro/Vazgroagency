@@ -74,7 +74,7 @@ export default function Showcase() {
   return (
       <section id="showcase" className="flex flex-col w-full bg-[#080808] pt-16 md:pt-[100px] pb-0 gap-8 md:gap-[48px]">
       {/* Header */}
-      <div className="flex flex-col gap-6 px-6 md:px-[120px] md:flex-row md:items-end md:justify-between">
+      <div className="flex flex-col gap-6 px-6 md:px-8 lg:px-[120px] md:flex-row md:items-end md:justify-between">
         <SectionHeader
           label="[07] // SHOWCASE"
           title={"REAL PROJECTS,\nREAL RESULTS."}
@@ -99,7 +99,7 @@ export default function Showcase() {
       </div>
 
       {/* Mobile: single card */}
-      <div className="md:hidden px-6">
+      <div className="lg:hidden px-6">
         <div
           className="flex flex-col gap-5 p-6 border-2 w-full"
           style={{ backgroundColor: slide.bg, borderColor: slide.border }}
@@ -131,7 +131,7 @@ export default function Showcase() {
       </div>
 
       {/* Desktop: carousel track */}
-      <div className="hidden md:overflow-hidden h-[416px] md:block px-[120px]">
+      <div className="hidden lg:overflow-hidden h-[416px] lg:block lg:px-[120px]">
         <div
           className="flex gap-[2px] transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(calc(-${active} * (560px + 2px)))` }}
@@ -171,7 +171,7 @@ export default function Showcase() {
       </div>
 
       {/* Dots */}
-      <div className="flex items-center gap-[8px] px-6 md:px-[120px]">
+      <div className="flex items-center gap-[8px] px-6 md:px-8 lg:px-[120px]">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -184,7 +184,7 @@ export default function Showcase() {
       </div>
 
       {/* Footer */}
-      <div className="flex flex-col items-start gap-3 px-6 pb-16 md:px-[120px] md:pb-[100px] sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-start gap-3 px-6 pb-16 md:px-8 md:pb-[100px] lg:px-[120px] sm:flex-row sm:items-center sm:justify-between">
         <span className="font-ibm-mono text-[11px] text-[#999999] tracking-[2px]">
           SHOWING 0{active + 1} OF 04 PROJECTS
         </span>

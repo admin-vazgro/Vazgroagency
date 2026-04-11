@@ -65,7 +65,7 @@ function FooterNavLink({ link }: { link: FooterLink }) {
 export default function Footer() {
   return (
     <footer className="flex flex-col w-full bg-[#050505]">
-      <div className="flex flex-col gap-12 px-6 py-12 md:flex-row md:gap-[80px] md:px-[120px] md:py-[64px]">
+      <div className="flex flex-col gap-12 px-6 py-12 md:flex-row md:gap-[80px] md:px-8 lg:px-[120px] md:py-[64px]">
         <div className="flex flex-col gap-6 md:w-[280px] md:shrink-0">
           <Link href="/" className="flex items-center gap-[12px] no-underline">
             <div className="w-[10px] h-[10px] bg-[#D6E264] shrink-0" />
@@ -78,8 +78,8 @@ export default function Footer() {
           </p>
           <div className="flex flex-wrap gap-[12px]">
             {[
-              { label: "YT", href: "https://www.youtube.com" },
-              { label: "FB", href: "https://www.facebook.com" },
+              { label: "YT", href: "https://www.youtube.com/@vazgro" },
+              { label: "FB", href: "https://www.facebook.com/vazgro" },
               { label: "X", href: "https://x.com/vazgro" },
               { label: "IG", href: "https://www.instagram.com/vazgro" },
               { label: "IN", href: "https://www.linkedin.com/company/vazgro" },
@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col items-start justify-between gap-3 border-t border-t-[#1D1D1D] px-6 py-4 sm:flex-row sm:items-center sm:gap-0 md:px-[120px] md:h-[56px]">
+      <div className="flex flex-col items-start justify-between gap-3 border-t border-t-[#1D1D1D] px-6 py-4 sm:flex-row sm:items-center sm:gap-0 md:px-8 lg:px-[120px] md:h-[56px]">
         <span className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px]">
           © 2026 VAZGRO LTD · REGISTERED IN ENGLAND &amp; WALES · LONDON, UK
         </span>

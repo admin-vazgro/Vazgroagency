@@ -16,7 +16,7 @@ export default function Hero() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-[120px] overflow-hidden">
+    <section className="relative flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] overflow-hidden">
 
       {/* ── Two-column layout ── */}
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 w-full max-w-[1200px] mx-auto">

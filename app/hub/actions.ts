@@ -294,6 +294,8 @@ export async function createPartnerAction(formData: FormData) {
   });
 
   if (profileError) {
+    // Clean up the auth user so the invite can be retried without a duplicate-email error.
+    await admin.auth.admin.deleteUser(data.user.id);
     redirect(toPageMessage("/hub/partners", "error", profileError.message));
   }
 
@@ -306,6 +308,9 @@ export async function createPartnerAction(formData: FormData) {
   });
 
   if (partnerError) {
+    // Clean up both auth user and profile so the invite can be retried cleanly.
+    await admin.from("profiles").delete().eq("id", data.user.id);
+    await admin.auth.admin.deleteUser(data.user.id);
     redirect(toPageMessage("/hub/partners", "error", partnerError.message));
   }
 

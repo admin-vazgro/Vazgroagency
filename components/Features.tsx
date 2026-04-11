@@ -38,7 +38,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-[120px] gap-12 md:gap-[64px]"
+      className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]"
     >
       <SectionHeader
         label="[01] // THREE WAYS TO WORK WITH US"
@@ -46,19 +46,19 @@ export default function Features() {
         subtitle="FIXED-PRICE PACKAGES, MONTHLY SUBSCRIPTIONS, AND CUSTOM DIGITAL BUILDS."
       />
 
-      <div className="flex flex-col md:flex-row w-full gap-[2px]">
+      <div className="flex flex-col lg:flex-row w-full gap-[2px]">
         {services.map((s) => (
           <Link
             key={s.href}
             href={s.href}
-            className="group flex flex-col gap-5 p-8 md:p-[32px] border w-full md:flex-1 md:h-[360px] no-underline hover:opacity-90 transition-opacity"
+            className="group flex flex-col gap-5 p-8 lg:p-[32px] border w-full lg:flex-1 lg:h-[360px] no-underline hover:opacity-90 transition-opacity"
             style={{ backgroundColor: s.bgColor, borderColor: s.borderColor }}
           >
             <div className="w-[40px] h-[40px] shrink-0" style={{ backgroundColor: s.iconColor }} />
             <h3 className="font-grotesk text-[18px] font-normal text-[#F5F5F0] tracking-[1px] leading-[1.2] whitespace-pre-line">
               {s.title}
             </h3>
-            <p className="font-ibm-mono text-[13px] md:text-[14px] text-[#D0D0D0] tracking-[0.8px] leading-[1.7] flex-1">
+            <p className="font-ibm-mono text-[13px] lg:text-[14px] text-[#D0D0D0] tracking-[0.8px] leading-[1.7] flex-1">
               {s.description}
             </p>
             <div className="flex items-center justify-between">
