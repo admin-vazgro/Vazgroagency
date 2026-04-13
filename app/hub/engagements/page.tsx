@@ -145,13 +145,19 @@ export default async function HubEngagementsPage(props: {
             </select>
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">ACCOUNT</label>
-            <select name="account_id" defaultValue="" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
-              <option value="">Select account</option>
+            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">ACCOUNT *</label>
+            <select name="account_id" required defaultValue="" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+              <option value="" disabled>Select account</option>
               {accounts.map((account) => (
                 <option key={account.id} value={account.id}>{account.name}</option>
               ))}
             </select>
+            {!accounts.length ? (
+              <p className="mt-1.5 font-ibm-mono text-[10px] text-[var(--portal-warning)]">
+                No accounts yet —{" "}
+                <a href="/hub/accounts?new=1" className="underline">create one first</a>.
+              </p>
+            ) : null}
           </div>
           <div>
             <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">STATUS</label>

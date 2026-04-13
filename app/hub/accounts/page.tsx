@@ -70,6 +70,7 @@ export default async function AccountsPage(props: {
 
   const totalMrr = accounts.reduce((sum, account) => sum + toNumber(account.mrr_gbp), 0);
   const totalActiveEngagements = [...activeEngagementCounts.values()].reduce((sum, count) => sum + count, 0);
+  const activeClientCount = accounts.filter((a) => (activeEngagementCounts.get(a.id) ?? 0) > 0).length;
 
   return (
     <div className="p-8">
@@ -78,7 +79,7 @@ export default async function AccountsPage(props: {
           <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// ACCOUNTS</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Accounts</h1>
           <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
-            {accounts.length} accounts · {accounts.length} active clients
+            {accounts.length} accounts · {activeClientCount} active clients
           </p>
         </div>
         <Link
@@ -145,7 +146,7 @@ export default async function AccountsPage(props: {
         </div>
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
           <p className="mb-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-muted)]">ACTIVE CLIENTS</p>
-          <p className="font-grotesk text-[28px] font-normal text-[var(--portal-text)]">{accounts.length}</p>
+          <p className="font-grotesk text-[28px] font-normal text-[var(--portal-text)]">{activeClientCount}</p>
         </div>
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
           <p className="mb-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-muted)]">ACTIVE ENGAGEMENTS</p>

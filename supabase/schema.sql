@@ -356,7 +356,7 @@ insert into hub_settings (key, value, description) values
   ('sla_qualify_working_days', '5', 'Working days to qualify a lead'),
   ('sla_stale_deal_working_days', '10', 'Working days before deal is considered stale'),
   ('sla_stale_deal_warning_days', '7', 'Working days before stale deal warning'),
-  ('partner_concurrent_leads_cap', '{"tier1": 10, "tier2": 20, "tier3": 50}', 'Max concurrent open leads per tier'),
+  ('partner_concurrent_leads_cap', '{"tier1": 10, "tier2": 25, "tier3": 50}', 'Max concurrent open leads per tier'),
   ('claw_back_window_days', '30', 'Days before commission is released from claw-back hold'),
   ('currencies', '["GBP","EUR","USD","INR","AED"]', 'Supported currencies'),
   ('pipeline_stages_launch', '["new","contacted","qualified","proposal_sent","negotiating","closed_won","closed_lost"]', 'LAUNCH pipeline stages'),

@@ -201,6 +201,10 @@ export async function createEngagementAction(formData: FormData) {
     redirect(toPageMessage("/hub/engagements", "error", "Title and pillar are required."));
   }
 
+  if (!accountId) {
+    redirect(toPageMessage("/hub/engagements", "error", "An account must be linked to every engagement."));
+  }
+
   if (!isAllowedValue(pillar, PILLARS)) {
     redirect(toPageMessage("/hub/engagements", "error", "Invalid service pillar."));
   }

@@ -6,7 +6,7 @@ import { getPostLoginDestination, isHubRole } from "@/lib/auth/roles";
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const publicRoutes = ["/", "/login", "/auth", "/work", "/services", "/privacy", "/terms"];
+  const publicRoutes = ["/", "/login", "/auth", "/work", "/services", "/privacy", "/terms", "/partner-programme"];
   const isPublic = publicRoutes.some((route) => pathname === route || pathname.startsWith(route + "/"));
   if (isPublic) {
     return NextResponse.next({ request });
@@ -61,6 +61,10 @@ export async function middleware(request: NextRequest) {
 
     if (pathname.startsWith("/hub/admin") && role !== "admin" && !canUseLocalAdminAccess(user)) {
       return NextResponse.redirect(new URL("/hub", request.url));
+    }
+
+    if (pathname.startsWith("/partners") && role !== "partner") {
+      return NextResponse.redirect(new URL(getPostLoginDestination(role), request.url));
     }
   } catch (error) {
     return NextResponse.redirect(new URL("/login?error=auth_unavailable", request.url));

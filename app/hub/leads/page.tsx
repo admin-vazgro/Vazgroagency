@@ -173,19 +173,25 @@ export default async function LeadsPage(props: {
         </form>
       ) : null}
 
-      <form method="get" className="mb-6 flex flex-wrap gap-3">
-        <select name="stage" defaultValue={stageFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
-          {stageOptions.map((stage) => (
-            <option key={stage.value} value={stage.value}>{stage.label.toUpperCase()}</option>
-          ))}
-        </select>
-        <select name="pillar" defaultValue={pillarFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
-          {pillarOptions.map((pillar) => (
-            <option key={pillar} value={pillar}>{pillar}</option>
-          ))}
-        </select>
+      <form method="get" className="mb-6 flex flex-wrap items-end gap-4">
+        <div className="flex flex-col gap-1.5">
+          <label className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">STAGE</label>
+          <select name="stage" defaultValue={stageFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+            {stageOptions.map((stage) => (
+              <option key={stage.value} value={stage.value}>{stage.label.toUpperCase()}</option>
+            ))}
+          </select>
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">PILLAR</label>
+          <select name="pillar" defaultValue={pillarFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+            {pillarOptions.map((pillar) => (
+              <option key={pillar} value={pillar}>{pillar}</option>
+            ))}
+          </select>
+        </div>
         <button type="submit" className="border border-[var(--portal-border-strong)] px-4 py-2 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
-          APPLY FILTERS
+          APPLY
         </button>
       </form>
 

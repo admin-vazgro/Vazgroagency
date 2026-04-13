@@ -125,9 +125,9 @@ export default async function AdminPage(props: {
     <div className="p-8">
       <div className="mb-8 border-b border-[var(--portal-border)] pb-6">
         <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// ADMIN</span>
-        <h1 className="font-grotesk text-[32px] font-bold text-[var(--portal-text)] tracking-[-1px] mt-1">Admin Dashboard</h1>
+        <h1 className="font-grotesk text-[32px] font-bold text-[var(--portal-text)] tracking-[-1px] mt-1">Settings & Users</h1>
         <p className="font-ibm-mono text-[12px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">
-          Manage roles, assignments, hub settings, and system readiness.
+          Hub settings, user management, staff allocation, and system status.
         </p>
       </div>
 

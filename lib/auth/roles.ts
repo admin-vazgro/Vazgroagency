@@ -24,6 +24,7 @@ export function isHubRole(role: string | null | undefined) {
 
 export function getPostLoginDestination(role: string | null | undefined) {
   if (role === "client") return "/workspace";
+  if (role === "partner") return "/partners";
   if (isHubRole(role)) return "/hub";
   return "/login?error=access_denied";
 }
