@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createPartnerAction } from "@/app/hub/actions";
+import { approveApplicationAction, createPartnerAction, rejectApplicationAction, updatePartnerAction } from "@/app/hub/actions";
 import {
   displayProfileName,
   firstParam,
@@ -15,8 +15,25 @@ type PartnerRow = {
   status: "pending" | "active" | "suspended" | "rejected";
   type: "referral" | "commission_sdr" | "white_label";
   company_name: string | null;
+  kyc_verified: boolean | null;
+  tax_form_url: string | null;
   open_leads_count: number | null;
   total_closed_gbp: number | string | null;
+  created_at: string;
+};
+
+type ApplicationRow = {
+  id: string;
+  first_name: string;
+  last_name: string | null;
+  email: string;
+  phone: string | null;
+  company_name: string | null;
+  website: string | null;
+  linkedin_url: string | null;
+  description: string | null;
+  how_heard: string | null;
+  status: "pending" | "approved" | "rejected";
   created_at: string;
 };
 
@@ -84,18 +101,20 @@ export default async function PartnersPage(props: {
   let profiles: ProfileRow[] = [];
   let commissionTiers: CommissionTierSetting[] = [];
   let growTaper: GrowTaperEntry[] = [];
+  let applications: ApplicationRow[] = [];
   let dataError = "";
 
   try {
     const admin = getHubAdminClient();
-    const [partnersResult, profilesResult, tiersResult, taperResult] = await Promise.all([
+    const [partnersResult, profilesResult, tiersResult, taperResult, appsResult] = await Promise.all([
       admin
         .from("partners")
-        .select("id, profile_id, tier, status, type, company_name, open_leads_count, total_closed_gbp, created_at")
+        .select("id, profile_id, tier, status, type, company_name, kyc_verified, tax_form_url, open_leads_count, total_closed_gbp, created_at")
         .order("created_at", { ascending: false }),
       admin.from("profiles").select("id, first_name, last_name, email"),
       admin.from("hub_settings").select("value").eq("key", "commission_tiers").maybeSingle(),
       admin.from("hub_settings").select("value").eq("key", "grow_taper").maybeSingle(),
+      admin.from("partner_applications").select("id, first_name, last_name, email, phone, company_name, website, linkedin_url, description, how_heard, status, created_at").eq("status", "pending").order("created_at", { ascending: false }),
     ]);
 
     if (partnersResult.error) throw partnersResult.error;
@@ -103,6 +122,7 @@ export default async function PartnersPage(props: {
 
     partners = (partnersResult.data ?? []) as PartnerRow[];
     profiles = (profilesResult.data ?? []) as ProfileRow[];
+    applications = (appsResult.data ?? []) as ApplicationRow[];
 
     if (tiersResult.data?.value && Array.isArray(tiersResult.data.value)) {
       commissionTiers = tiersResult.data.value as CommissionTierSetting[];
@@ -182,30 +202,24 @@ export default async function PartnersPage(props: {
             <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">COMPANY NAME *</label>
             <input name="company_name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
+          {/* Tier is auto-calculated from monthly revenue — hidden, always starts at tier1 */}
+          <input type="hidden" name="tier" value="tier1" />
+
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">TIER</label>
-            <select name="tier" defaultValue="tier1" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
-              <option value="tier1">TIER 1</option>
-              <option value="tier2">TIER 2</option>
-              <option value="tier3">TIER 3</option>
-              <option value="white_label">WHITE LABEL</option>
+            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">PROGRAMME TYPE</label>
+            <select name="type" defaultValue="commission_sdr" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+              <option value="commission_sdr">STANDARD — Referral + SDR (full access)</option>
+              <option value="white_label">WHITE LABEL — Reseller programme</option>
             </select>
+            <p className="mt-1.5 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+              All standard partners can submit referrals and claim/close pool leads. Tier auto-upgrades from Tier 1 as they close more revenue.
+            </p>
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">TYPE</label>
-            <select name="type" defaultValue="referral" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
-              <option value="referral">REFERRAL</option>
-              <option value="commission_sdr">COMMISSION SDR</option>
-              <option value="white_label">WHITE LABEL</option>
-            </select>
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">STATUS</label>
+            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">INITIAL STATUS</label>
             <select name="status" defaultValue="pending" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
-              <option value="pending">PENDING</option>
-              <option value="active">ACTIVE</option>
-              <option value="suspended">SUSPENDED</option>
-              <option value="rejected">REJECTED</option>
+              <option value="pending">PENDING — Awaiting review</option>
+              <option value="active">ACTIVE — Immediately active</option>
             </select>
           </div>
           <div className="lg:col-span-2 flex gap-3">
@@ -275,6 +289,86 @@ export default async function PartnersPage(props: {
         )}
       </div>
 
+      {/* Pending applications */}
+      {applications.length > 0 && (
+        <div className="mb-8 border border-[var(--portal-warning)] bg-[var(--portal-surface)]">
+          <div className="border-b border-[var(--portal-warning)] px-6 py-4 flex items-center justify-between">
+            <div>
+              <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-warning)]">PENDING APPLICATIONS</p>
+              <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                {applications.length} application{applications.length !== 1 ? "s" : ""} awaiting review
+              </p>
+            </div>
+            <Link href="/apply" target="_blank" className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)] hover:text-[var(--portal-accent)] transition-colors">
+              View Apply Page →
+            </Link>
+          </div>
+          <div className="divide-y divide-[var(--portal-border)]">
+            {applications.map((app) => (
+              <div key={app.id} className="px-6 py-5 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_auto]">
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <p className="font-ibm-mono text-[12px] text-[var(--portal-text)]">
+                      {[app.first_name, app.last_name].filter(Boolean).join(" ")}
+                    </p>
+                    {app.company_name && (
+                      <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">· {app.company_name}</span>
+                    )}
+                  </div>
+                  <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{app.email}</p>
+                  {app.phone && <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-0.5">{app.phone}</p>}
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    {app.website && (
+                      <a href={app.website} target="_blank" rel="noopener noreferrer" className="font-ibm-mono text-[10px] text-[var(--portal-accent)] hover:opacity-80">
+                        Website →
+                      </a>
+                    )}
+                    {app.linkedin_url && (
+                      <a href={app.linkedin_url} target="_blank" rel="noopener noreferrer" className="font-ibm-mono text-[10px] text-[var(--portal-accent)] hover:opacity-80">
+                        LinkedIn →
+                      </a>
+                    )}
+                  </div>
+                  {app.description && (
+                    <p className="mt-3 font-ibm-mono text-[10px] leading-[1.7] text-[var(--portal-text-soft)] max-w-prose">
+                      {app.description}
+                    </p>
+                  )}
+                  <p className="mt-2 font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">
+                    Applied {new Date(app.created_at).toLocaleDateString("en-GB")}
+                    {app.how_heard ? ` · via ${app.how_heard}` : ""}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 lg:items-end">
+                  <form action={approveApplicationAction}>
+                    <input type="hidden" name="application_id" value={app.id} />
+                    <input type="hidden" name="email" value={app.email} />
+                    <input type="hidden" name="first_name" value={app.first_name} />
+                    <input type="hidden" name="last_name" value={app.last_name ?? ""} />
+                    <input type="hidden" name="company_name" value={app.company_name ?? ""} />
+                    <button
+                      type="submit"
+                      className="w-full lg:w-auto bg-[var(--portal-accent)] px-4 py-2 font-ibm-mono text-[9px] tracking-[1.5px] text-[var(--portal-accent-contrast)] hover:bg-[var(--portal-accent-hover)] transition-colors"
+                    >
+                      APPROVE & CREATE ACCOUNT
+                    </button>
+                  </form>
+                  <form action={rejectApplicationAction}>
+                    <input type="hidden" name="application_id" value={app.id} />
+                    <button
+                      type="submit"
+                      className="w-full lg:w-auto border border-[var(--portal-border-strong)] px-4 py-2 font-ibm-mono text-[9px] tracking-[1.5px] text-[var(--portal-text-dim)] hover:border-[var(--portal-warning)] hover:text-[var(--portal-warning)] transition-colors"
+                    >
+                      REJECT
+                    </button>
+                  </form>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Partner cards */}
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         {partners.map((partner) => {
@@ -330,20 +424,100 @@ export default async function PartnersPage(props: {
               </div>
               <div className="grid grid-cols-2 gap-3 border-t border-[var(--portal-border)] pt-4">
                 {[
-                  { label: "Programme", value: partner.type.replaceAll("_", " ") },
+                  { label: "Programme", value: partner.type === "white_label" ? "White Label" : "Standard (SDR + Referral)" },
                   { label: "Revenue Closed", value: `£${toNumber(partner.total_closed_gbp).toLocaleString()}` },
+                  { label: "Tier (auto)", value: tierLabel },
                   { label: "Active Leads", value: partner.open_leads_count ?? 0 },
                   { label: "Joined", value: new Date(partner.created_at).toLocaleDateString("en-GB") },
-                  { label: "Tier", value: tierLabel },
-                  { label: "Status", value: formatStatus(partner.status) },
+                  { label: "Tax Form", value: partner.tax_form_url ? "Uploaded" : "Not uploaded" },
+                  { label: "KYC", value: partner.kyc_verified ? "Verified" : "Pending" },
                 ].map(({ label, value }) => (
                   <div key={label}>
                     <p className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">
                       {label.toUpperCase()}
                     </p>
-                    <p className="mt-0.5 font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{value}</p>
+                    <p
+                      className="mt-0.5 font-ibm-mono text-[11px]"
+                      style={{
+                        color:
+                          label === "Tax Form" && !partner.tax_form_url
+                            ? "var(--portal-warning)"
+                            : label === "KYC" && !partner.kyc_verified
+                            ? "var(--portal-warning)"
+                            : "var(--portal-text-muted)",
+                      }}
+                    >
+                      {value}
+                    </p>
                   </div>
                 ))}
+              </div>
+
+              {/* Tax form link */}
+              {partner.tax_form_url ? (
+                <div className="mt-3 border-t border-[var(--portal-border)] pt-3">
+                  <a
+                    href={partner.tax_form_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-ibm-mono text-[10px] text-[var(--portal-accent)] hover:opacity-80 transition-opacity"
+                  >
+                    VIEW TAX FORM →
+                  </a>
+                </div>
+              ) : null}
+
+              {/* Admin actions */}
+              <div className="mt-3 border-t border-[var(--portal-border)] pt-3 flex flex-wrap gap-2">
+                {/* Approve / Suspend */}
+                {partner.status !== "active" ? (
+                  <form action={updatePartnerAction}>
+                    <input type="hidden" name="partner_id" value={partner.id} />
+                    <input type="hidden" name="status" value="active" />
+                    <button
+                      type="submit"
+                      className="font-ibm-mono text-[9px] tracking-[1px] px-3 py-1.5 border border-[var(--portal-accent)] text-[var(--portal-accent)] hover:bg-[var(--portal-accent)] hover:text-[var(--portal-accent-contrast)] transition-colors"
+                    >
+                      APPROVE
+                    </button>
+                  </form>
+                ) : (
+                  <form action={updatePartnerAction}>
+                    <input type="hidden" name="partner_id" value={partner.id} />
+                    <input type="hidden" name="status" value="suspended" />
+                    <button
+                      type="submit"
+                      className="font-ibm-mono text-[9px] tracking-[1px] px-3 py-1.5 border border-[var(--portal-border-strong)] text-[var(--portal-text-dim)] hover:border-[var(--portal-warning)] hover:text-[var(--portal-warning)] transition-colors"
+                    >
+                      SUSPEND
+                    </button>
+                  </form>
+                )}
+
+                {/* KYC toggle */}
+                {!partner.kyc_verified ? (
+                  <form action={updatePartnerAction}>
+                    <input type="hidden" name="partner_id" value={partner.id} />
+                    <input type="hidden" name="kyc_verified" value="true" />
+                    <button
+                      type="submit"
+                      className="font-ibm-mono text-[9px] tracking-[1px] px-3 py-1.5 border border-[var(--portal-accent)] text-[var(--portal-accent)] hover:bg-[var(--portal-accent)] hover:text-[var(--portal-accent-contrast)] transition-colors"
+                    >
+                      MARK KYC VERIFIED
+                    </button>
+                  </form>
+                ) : (
+                  <form action={updatePartnerAction}>
+                    <input type="hidden" name="partner_id" value={partner.id} />
+                    <input type="hidden" name="kyc_verified" value="false" />
+                    <button
+                      type="submit"
+                      className="font-ibm-mono text-[9px] tracking-[1px] px-3 py-1.5 border border-[var(--portal-border-strong)] text-[var(--portal-text-dim)] hover:border-[var(--portal-warning)] hover:text-[var(--portal-warning)] transition-colors"
+                    >
+                      REVOKE KYC
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           );

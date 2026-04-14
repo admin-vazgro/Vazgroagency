@@ -95,6 +95,10 @@ export async function submitLeadAction(formData: FormData) {
   const pillar = getField(formData, "pillar");
   const source = getField(formData, "source");
   const notes = getField(formData, "notes");
+  const estimatedValueRaw = getField(formData, "estimated_value_gbp");
+  const estimatedValue = estimatedValueRaw ? Number(estimatedValueRaw) || null : null;
+  const servicesRaw = formData.getAll("services_interested");
+  const services = servicesRaw.filter((v): v is string => typeof v === "string" && v.length > 0);
 
   if (!firstName || !email) {
     redirectWithMessage("/partners/leads", "error", "First name and email are required.");
@@ -122,6 +126,8 @@ export async function submitLeadAction(formData: FormData) {
     stage: "new",
     source: source || "partner_referral",
     notes: notes || null,
+    estimated_value_gbp: estimatedValue,
+    services_interested: services.length > 0 ? services : null,
     owner_id: user.id,
     partner_id: partner.id,
     referrer_id: partner.id,
@@ -146,14 +152,11 @@ export async function submitLeadAction(formData: FormData) {
 export async function claimLeadFromPoolAction(formData: FormData) {
   const { user, admin, partner } = await getPartnerContext();
 
-  if (partner.type !== "commission_sdr") {
-    redirectWithMessage("/partners/leads", "error", "Only commission SDR partners can claim from the pool.");
-  }
   if (partner.status !== "active") {
     redirectWithMessage("/partners/leads", "error", "Your partner account must be active to claim pool leads.");
   }
   if (!partner.kyc_verified) {
-    redirectWithMessage("/partners/leads", "error", "Complete KYC before claiming pool leads.");
+    redirectWithMessage("/partners/leads", "error", "Complete KYC verification before claiming pool leads.");
   }
 
   const capSettings = await getPartnerCapSettings(admin);
@@ -369,6 +372,43 @@ export async function logActivityAction(formData: FormData) {
 
   revalidatePath("/partners");
   redirectWithMessage(redirectTo, "status", "Activity logged.");
+}
+
+export async function saveTaxFormAction(formData: FormData) {
+  const { admin, partner } = await getPartnerContext();
+
+  const taxFormUrl = getField(formData, "tax_form_url");
+  const companyName = getField(formData, "company_name");
+  const companyNumber = getField(formData, "company_number");
+  const vatNumber = getField(formData, "vat_number");
+  const bankAccountName = getField(formData, "bank_account_name");
+  const bankSortCode = getField(formData, "bank_sort_code");
+  const bankAccountNumber = getField(formData, "bank_account_number");
+
+  const updatePayload: Record<string, string | null> = {};
+
+  if (companyName) updatePayload.company_name = companyName;
+
+  const metadata: Record<string, string> = {};
+  if (companyNumber) metadata.company_number = companyNumber;
+  if (vatNumber) metadata.vat_number = vatNumber;
+  if (bankAccountName) metadata.bank_account_name = bankAccountName;
+  if (bankSortCode) metadata.bank_sort_code = bankSortCode;
+  if (bankAccountNumber) metadata.bank_account_number = bankAccountNumber;
+  if (taxFormUrl) updatePayload.tax_form_url = taxFormUrl;
+
+  const { error } = await admin
+    .from("partners")
+    .update(updatePayload)
+    .eq("id", partner.id);
+
+  if (error) {
+    redirectWithMessage("/partners/onboarding", "error", error.message);
+  }
+
+  revalidatePath("/partners");
+  revalidatePath("/partners/onboarding");
+  redirectWithMessage("/partners/onboarding", "status", "Details saved. Vazgro will review and verify your account.");
 }
 
 export async function advanceDealStageAction(formData: FormData) {

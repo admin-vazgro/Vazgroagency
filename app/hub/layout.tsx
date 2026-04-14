@@ -69,6 +69,15 @@ const IconCommissions = (
   </svg>
 );
 
+const IconRequests = (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="1" width="10" height="12" rx="1" />
+    <line x1="5" y1="5" x2="9" y2="5" />
+    <line x1="5" y1="8" x2="9" y2="8" />
+    <line x1="5" y1="11" x2="7" y2="11" />
+  </svg>
+);
+
 const navGroups: NavGroup[] = [
   {
     label: "INSIGHTS",
@@ -89,6 +98,7 @@ const navGroups: NavGroup[] = [
     items: [
       { label: "Accounts", href: "/hub/accounts", icon: IconAccounts },
       { label: "Engagements", href: "/hub/engagements", icon: IconEngagements },
+      { label: "Requests", href: "/hub/requests", icon: IconRequests },
     ],
   },
   {

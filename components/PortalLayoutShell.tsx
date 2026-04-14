@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 type ThemeMode = "dark" | "light";
 
@@ -54,8 +55,7 @@ export default function PortalLayoutShell({
   }, [theme]);
 
   async function handleSignOut() {
-    const { createClient: mkClient } = await import("@/lib/supabase/client");
-    const supabase = mkClient();
+    const supabase = createClient();
     await supabase.auth.signOut();
     router.push("/login");
   }

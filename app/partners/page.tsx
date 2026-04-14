@@ -218,15 +218,23 @@ export default async function PartnerDashboard() {
       </div>
 
       {needsOnboarding ? (
-        <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-5 py-4">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">
-            Finish onboarding to unlock the full portal.
-          </p>
-          <p className="mt-2 font-ibm-mono text-[10px] leading-[1.7] text-[var(--portal-text-soft)]">
-            {partner.status !== "active" ? "Approval is still pending. " : ""}
-            {!partner.tax_form_url ? "Tax form not uploaded. " : ""}
-            {!partner.kyc_verified ? "Stripe Connect KYC not complete." : ""}
-          </p>
+        <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-5 py-4 flex items-start justify-between gap-4">
+          <div>
+            <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">
+              Finish onboarding to unlock the full portal.
+            </p>
+            <p className="mt-2 font-ibm-mono text-[10px] leading-[1.7] text-[var(--portal-text-soft)]">
+              {partner.status !== "active" ? "Approval is still pending. " : ""}
+              {!partner.tax_form_url ? "Tax form not uploaded. " : ""}
+              {!partner.kyc_verified ? "Stripe Connect KYC not complete." : ""}
+            </p>
+          </div>
+          <Link
+            href="/partners/onboarding"
+            className="shrink-0 font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-warning)] border border-[var(--portal-warning)] px-3 py-1.5 hover:bg-[var(--portal-warning)] hover:text-[var(--portal-bg)] transition-colors"
+          >
+            COMPLETE ONBOARDING →
+          </Link>
         </div>
       ) : null}
 

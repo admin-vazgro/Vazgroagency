@@ -38,6 +38,13 @@ const IconLibrary = (
   </svg>
 );
 
+const IconOnboarding = (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="7" cy="7" r="6" />
+    <path d="M7 4v3l2 2" />
+  </svg>
+);
+
 const navGroups: NavGroup[] = [
   {
     label: "HOME",
@@ -62,6 +69,12 @@ const navGroups: NavGroup[] = [
     label: "RESOURCES",
     items: [
       { label: "Sales Library", href: "/partners/library", icon: IconLibrary },
+    ],
+  },
+  {
+    label: "ACCOUNT",
+    items: [
+      { label: "Onboarding", href: "/partners/onboarding", icon: IconOnboarding },
     ],
   },
 ];

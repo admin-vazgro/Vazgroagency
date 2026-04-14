@@ -6,7 +6,7 @@ import { getPostLoginDestination, isHubRole } from "@/lib/auth/roles";
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const publicRoutes = ["/", "/login", "/auth", "/work", "/services", "/privacy", "/terms", "/partner-programme"];
+  const publicRoutes = ["/", "/login", "/auth", "/work", "/services", "/privacy", "/terms", "/partner-programme", "/apply"];
   const isPublic = publicRoutes.some((route) => pathname === route || pathname.startsWith(route + "/"));
   if (isPublic) {
     return NextResponse.next({ request });

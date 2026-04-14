@@ -7,12 +7,15 @@ import {
   submitLeadAction,
 } from "@/app/partners/actions";
 import {
+  closerRate,
   firstParam,
   getPartnerCapSettings,
   getPartnerContext,
   getPartnerLeadCap,
+  normalizeTierSettings,
   type PartnerSearchParams,
 } from "@/app/partners/lib";
+import PartnerLeadForm from "@/components/PartnerLeadForm";
 
 type LeadRow = {
   id: string;
@@ -24,6 +27,8 @@ type LeadRow = {
   stage: string;
   source: string | null;
   notes: string | null;
+  estimated_value_gbp: number | null;
+  services_interested: string[] | null;
   sla_contacted_deadline: string | null;
   last_activity_at: string | null;
   created_at: string;
@@ -81,33 +86,37 @@ export default async function PartnerLeadsPage(props: {
   const statusMessage = firstParam(searchParams.status);
   const errorMessage = firstParam(searchParams.error);
 
-  const capSettings = await getPartnerCapSettings(admin);
+  const [capSettings, tierSettingsResult] = await Promise.all([
+    getPartnerCapSettings(admin),
+    admin.from("hub_settings").select("value").eq("key", "commission_tiers").maybeSingle(),
+  ]);
   const cap = getPartnerLeadCap(partner, capSettings);
+  const tiers = normalizeTierSettings(tierSettingsResult.data?.value);
+  const partnerCloserRate = closerRate(partner.tier, tiers);
+
+  // Show pool to all active + KYC-verified partners (type restriction removed)
+  const canAccessPool = partner.status === "active" && !!partner.kyc_verified;
 
   const [leadsResult, poolResult] = await Promise.all([
     admin
       .from("leads")
-      .select("id, first_name, last_name, email, company, pillar, stage, source, notes, sla_contacted_deadline, last_activity_at, created_at")
+      .select("id, first_name, last_name, email, company, pillar, stage, source, notes, estimated_value_gbp, services_interested, sla_contacted_deadline, last_activity_at, created_at")
       .or(`owner_id.eq.${user.id},partner_id.eq.${partner.id}`)
       .order("created_at", { ascending: false }),
-    partner.type === "commission_sdr"
+    canAccessPool
       ? admin
           .from("leads")
-          .select("id, first_name, last_name, email, company, pillar, stage, source, notes, sla_contacted_deadline, last_activity_at, created_at")
+          .select("id, first_name, last_name, email, company, pillar, stage, source, notes, estimated_value_gbp, sla_contacted_deadline, last_activity_at, created_at")
           .is("owner_id", null)
           .is("partner_id", null)
           .in("stage", [...activePoolStages])
           .order("created_at", { ascending: false })
-          .limit(8)
+          .limit(12)
       : Promise.resolve({ data: [], error: null }),
   ]);
 
-  if (leadsResult.error) {
-    throw leadsResult.error;
-  }
-  if (poolResult.error) {
-    throw poolResult.error;
-  }
+  if (leadsResult.error) throw leadsResult.error;
+  if (poolResult.error) throw poolResult.error;
 
   const leads = (leadsResult.data ?? []) as LeadRow[];
   const poolLeads = (poolResult.data ?? []) as LeadRow[];
@@ -124,13 +133,11 @@ export default async function PartnerLeadsPage(props: {
         .limit(12)
     : { data: [] as ActivityRow[], error: null };
 
-  if (activitiesResult.error) {
-    throw activitiesResult.error;
-  }
+  if (activitiesResult.error) throw activitiesResult.error;
 
   const activities = (activitiesResult.data ?? []) as ActivityRow[];
   const openLeadCount = partner.open_leads_count ?? 0;
-  const canClaimFromPool = partner.type === "commission_sdr" && partner.status === "active" && !!partner.kyc_verified && openLeadCount < cap;
+  const canClaimFromPool = canAccessPool && openLeadCount < cap;
 
   return (
     <div className="p-8">
@@ -149,7 +156,7 @@ export default async function PartnerLeadsPage(props: {
           >
             + SUBMIT A LEAD
           </Link>
-          {partner.type === "commission_sdr" ? (
+          {canAccessPool ? (
             <a
               href="#lead-pool"
               className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]"
@@ -173,113 +180,89 @@ export default async function PartnerLeadsPage(props: {
       ) : null}
 
       {partner.status !== "active" || !partner.kyc_verified ? (
-        <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
+        <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3 flex items-center justify-between gap-4">
           <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">
             {partner.status !== "active"
               ? `Your partner account is ${partner.status}. Lead claiming and submissions are restricted until reactivated.`
               : "Complete KYC to unlock claiming from the shared lead pool and commission payouts."}
           </p>
+          <Link
+            href="/partners/onboarding"
+            className="shrink-0 font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-warning)] border border-[var(--portal-warning)] px-3 py-1.5 hover:bg-[var(--portal-warning)] hover:text-[var(--portal-bg)] transition-colors"
+          >
+            COMPLETE ONBOARDING →
+          </Link>
         </div>
       ) : null}
 
       {showNew ? (
-        <form action={submitLeadAction} className="mb-8 grid grid-cols-1 gap-4 border border-[var(--portal-border)] bg-[var(--portal-surface)] p-6 lg:grid-cols-2">
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">FIRST NAME *</label>
-            <input name="first_name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">LAST NAME</label>
-            <input name="last_name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">EMAIL *</label>
-            <input type="email" name="email" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">COMPANY</label>
-            <input name="company" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">WEBSITE</label>
-            <input name="website" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">COUNTRY</label>
-            <input name="country" defaultValue="GB" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">PILLAR</label>
-            <select name="pillar" defaultValue="" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
-              <option value="">Select pillar</option>
-              <option value="LAUNCH">LAUNCH</option>
-              <option value="GROW">GROW</option>
-              <option value="BUILD">BUILD</option>
-            </select>
-          </div>
-          <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">SOURCE</label>
-            <input name="source" defaultValue="partner_referral" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div className="lg:col-span-2">
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">NOTES</label>
-            <textarea name="notes" rows={4} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
-          </div>
-          <div className="lg:col-span-2 flex gap-3">
-            <button type="submit" className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]">
-              SAVE LEAD
-            </button>
-            <Link href="/partners/leads" className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
-              CANCEL
-            </Link>
-          </div>
-        </form>
+        <PartnerLeadForm
+          action={submitLeadAction}
+          closerRate={partnerCloserRate}
+          cancelHref="/partners/leads"
+        />
       ) : null}
 
-      {partner.type === "commission_sdr" ? (
+      {canAccessPool ? (
         <section id="lead-pool" className="mb-8 border border-[var(--portal-border)] bg-[var(--portal-surface)]">
           <div className="flex flex-col gap-2 border-b border-[var(--portal-border)] px-6 py-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">LEAD POOL</p>
+              <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">SHARED LEAD POOL</p>
               <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
-                Warm unclaimed leads available to commission SDR partners.
+                Unclaimed warm leads. Claim one, contact within 24 hours, and close it for your commission.
               </p>
             </div>
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-accent)]">
-              {canClaimFromPool ? "Claiming available" : "Claiming locked"}
+            <p className="font-ibm-mono text-[10px]" style={{ color: canClaimFromPool ? "var(--portal-accent)" : "var(--portal-warning)" }}>
+              {canClaimFromPool ? `${cap - openLeadCount} claim slots free` : "Lead cap reached"}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 p-6 lg:grid-cols-2">
-            {poolLeads.map((lead) => (
-              <div key={lead.id} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] p-4">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{formatName(lead)}</p>
-                    <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{lead.email}</p>
+            {poolLeads.map((lead) => {
+              const commPreview = lead.estimated_value_gbp
+                ? Math.round(lead.estimated_value_gbp * partnerCloserRate) / 100
+                : null;
+              return (
+                <div key={lead.id} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{formatName(lead)}</p>
+                      <p className="mt-0.5 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{lead.email}</p>
+                    </div>
+                    <span className="font-ibm-mono text-[9px]" style={{ color: lead.pillar ? pillarColors[lead.pillar] : "var(--portal-text-muted)" }}>
+                      {lead.pillar ?? "—"}
+                    </span>
                   </div>
-                  <span className="font-ibm-mono text-[9px]" style={{ color: lead.pillar ? pillarColors[lead.pillar] : "var(--portal-text-muted)" }}>
-                    {lead.pillar ?? "—"}
-                  </span>
+                  {lead.estimated_value_gbp && (
+                    <div className="mt-2 flex items-center gap-3">
+                      <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">
+                        Est. £{Number(lead.estimated_value_gbp).toLocaleString()}
+                      </span>
+                      {commPreview && (
+                        <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)]">
+                          → £{commPreview.toLocaleString()} commission
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  <div className="mt-3 flex items-center justify-between">
+                    <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{formatSla(lead.sla_contacted_deadline)}</span>
+                    <form action={claimLeadFromPoolAction}>
+                      <input type="hidden" name="lead_id" value={lead.id} />
+                      <button
+                        type="submit"
+                        disabled={!canClaimFromPool}
+                        className="bg-[var(--portal-accent)] px-4 py-2 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)] disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        CLAIM →
+                      </button>
+                    </form>
+                  </div>
                 </div>
-                <p className="mt-3 font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{lead.source || "Unlabelled source"}</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{formatSla(lead.sla_contacted_deadline)}</span>
-                  <form action={claimLeadFromPoolAction}>
-                    <input type="hidden" name="lead_id" value={lead.id} />
-                    <button
-                      type="submit"
-                      disabled={!canClaimFromPool}
-                      className="bg-[var(--portal-accent)] px-4 py-2 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)] disabled:cursor-not-allowed disabled:opacity-40"
-                    >
-                      CLAIM
-                    </button>
-                  </form>
-                </div>
-              </div>
-            ))}
+              );
+            })}
             {!poolLeads.length ? (
               <div className="lg:col-span-2">
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No pool leads available right now.</p>
+                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No pool leads available right now. Check back soon.</p>
               </div>
             ) : null}
           </div>
@@ -414,6 +397,31 @@ export default async function PartnerLeadsPage(props: {
                 <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">FIRST-TOUCH SLA</p>
                 <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-text)]">{formatSla(selectedLead.sla_contacted_deadline)}</p>
               </div>
+              {selectedLead.estimated_value_gbp ? (
+                <div>
+                  <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">ESTIMATED VALUE</p>
+                  <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-text)]">£{Number(selectedLead.estimated_value_gbp).toLocaleString()}</p>
+                </div>
+              ) : null}
+              {selectedLead.estimated_value_gbp ? (
+                <div>
+                  <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">YOUR COMMISSION EST.</p>
+                  <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-accent)]">
+                    £{Math.round(Number(selectedLead.estimated_value_gbp) * partnerCloserRate / 100).toLocaleString()}
+                    <span className="ml-1 text-[var(--portal-text-dim)]">({partnerCloserRate}%)</span>
+                  </p>
+                </div>
+              ) : null}
+              {selectedLead.services_interested && selectedLead.services_interested.length > 0 ? (
+                <div className="lg:col-span-3">
+                  <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">SERVICES INTERESTED IN</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {selectedLead.services_interested.map((s) => (
+                      <span key={s} className="border border-[var(--portal-border)] px-2 py-1 font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{s}</span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
             <div className="border-t border-[var(--portal-border)] px-6 py-5">
               <form action={advanceLeadStageAction} className="grid grid-cols-1 gap-3 lg:grid-cols-[1fr_auto]">

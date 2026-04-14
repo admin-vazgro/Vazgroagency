@@ -130,6 +130,9 @@ export async function createLeadAction(formData: FormData) {
     redirect(toPageMessage("/hub/leads", "error", message));
   }
 
+  const estimatedValue = getField(formData, "estimated_value_gbp");
+  const parsedValue = estimatedValue ? Number(estimatedValue) || null : null;
+
   const { error } = await admin.from("leads").insert({
     first_name: firstName,
     last_name: lastName || null,
@@ -142,6 +145,7 @@ export async function createLeadAction(formData: FormData) {
     source: source || null,
     notes: notes || null,
     owner_id: ownerId,
+    estimated_value_gbp: parsedValue,
     sla_contacted_deadline: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
   });
 
@@ -322,4 +326,219 @@ export async function createPartnerAction(formData: FormData) {
   revalidatePath("/hub/partners");
   revalidatePath("/hub/admin");
   redirect(toPageMessage("/hub/partners", "status", `Partner invited: ${email}`));
+}
+
+export async function updatePartnerAction(formData: FormData) {
+  await requireHubAccess();
+  const partnerId = getField(formData, "partner_id");
+  const newStatus = getField(formData, "status");
+  const kycVerified = getField(formData, "kyc_verified");
+
+  if (!partnerId) {
+    redirect(toPageMessage("/hub/partners", "error", "Partner ID missing."));
+  }
+
+  const admin = getAdminClientOrRedirect("/hub/partners");
+
+  const updatePayload: Record<string, string | boolean | null> = {};
+
+  if (newStatus) {
+    if (!isAllowedValue(newStatus, PARTNER_STATUSES)) {
+      redirect(toPageMessage("/hub/partners", "error", "Invalid partner status."));
+    }
+    updatePayload.status = newStatus;
+  }
+
+  if (kycVerified !== "") {
+    updatePayload.kyc_verified = kycVerified === "true";
+  }
+
+  if (Object.keys(updatePayload).length === 0) {
+    redirect(toPageMessage("/hub/partners", "error", "Nothing to update."));
+  }
+
+  const { error } = await admin.from("partners").update(updatePayload).eq("id", partnerId);
+
+  if (error) {
+    redirect(toPageMessage("/hub/partners", "error", error.message));
+  }
+
+  revalidatePath("/hub");
+  revalidatePath("/hub/partners");
+  redirect(toPageMessage("/hub/partners", "status", "Partner updated."));
+}
+
+// ─── PARTNER APPLICATIONS ─────────────────────────────────────────────────────
+
+export async function approveApplicationAction(formData: FormData) {
+  await requireHubAccess();
+  const applicationId = getField(formData, "application_id");
+  const email = getField(formData, "email").toLowerCase();
+  const firstName = getField(formData, "first_name");
+  const lastName = getField(formData, "last_name");
+  const companyName = getField(formData, "company_name");
+
+  if (!applicationId || !email) {
+    redirect(toPageMessage("/hub/partners", "error", "Application ID and email are required."));
+  }
+
+  const admin = getAdminClientOrRedirect("/hub/partners");
+
+  // Create auth user
+  const tempPassword = Math.random().toString(36).slice(-10) + "A1!";
+  const { data: userData, error: userError } = await admin.auth.admin.createUser({
+    email,
+    password: tempPassword,
+    email_confirm: true,
+    app_metadata: { role: "partner" },
+    user_metadata: { first_name: firstName, last_name: lastName, role: "partner" },
+  });
+
+  if (userError || !userData.user) {
+    redirect(toPageMessage("/hub/partners", "error", userError?.message ?? "Could not create partner login."));
+  }
+
+  // Upsert profile
+  await admin.from("profiles").upsert({
+    id: userData.user.id,
+    email,
+    first_name: firstName || null,
+    last_name: lastName || null,
+    role: "partner",
+    company: companyName || null,
+  });
+
+  // Create partner record (pending, tier1, full commission_sdr access)
+  const { error: partnerError } = await admin.from("partners").insert({
+    profile_id: userData.user.id,
+    company_name: companyName || null,
+    tier: "tier1",
+    type: "commission_sdr",
+    status: "pending",
+  });
+
+  if (partnerError) {
+    await admin.from("profiles").delete().eq("id", userData.user.id);
+    await admin.auth.admin.deleteUser(userData.user.id);
+    redirect(toPageMessage("/hub/partners", "error", partnerError.message));
+  }
+
+  // Mark application approved
+  await admin
+    .from("partner_applications")
+    .update({ status: "approved", reviewed_at: new Date().toISOString() })
+    .eq("id", applicationId);
+
+  revalidatePath("/hub/partners");
+  redirect(toPageMessage("/hub/partners", "status", `Partner account created for ${email}. They'll receive a magic-link to set their password.`));
+}
+
+export async function rejectApplicationAction(formData: FormData) {
+  await requireHubAccess();
+  const applicationId = getField(formData, "application_id");
+  const reason = getField(formData, "reason");
+
+  if (!applicationId) {
+    redirect(toPageMessage("/hub/partners", "error", "Application ID missing."));
+  }
+
+  const admin = getAdminClientOrRedirect("/hub/partners");
+  const { error } = await admin
+    .from("partner_applications")
+    .update({ status: "rejected", rejection_reason: reason || null, reviewed_at: new Date().toISOString() })
+    .eq("id", applicationId);
+
+  if (error) redirect(toPageMessage("/hub/partners", "error", error.message));
+
+  revalidatePath("/hub/partners");
+  redirect(toPageMessage("/hub/partners", "status", "Application rejected."));
+}
+
+// ─── LEAD → DEAL CONVERSION ───────────────────────────────────────────────────
+
+export async function convertLeadToDealAction(formData: FormData) {
+  await requireHubAccess();
+  const leadId = getField(formData, "lead_id");
+  const accountId = getField(formData, "account_id");
+  const title = getField(formData, "title");
+  const valueGbp = getField(formData, "value_gbp");
+  const pillar = getField(formData, "pillar");
+
+  if (!leadId || !title || !pillar) {
+    redirect(toPageMessage("/hub/leads", "error", "Lead, title, and pillar are required."));
+  }
+
+  if (!isAllowedValue(pillar, ["LAUNCH", "GROW", "BUILD"] as const)) {
+    redirect(toPageMessage("/hub/leads", "error", "Invalid pillar."));
+  }
+
+  const admin = getAdminClientOrRedirect("/hub/leads");
+
+  // Fetch lead to carry forward partner attribution
+  const { data: lead, error: leadError } = await admin
+    .from("leads")
+    .select("id, partner_id, referrer_id, pillar, estimated_value_gbp")
+    .eq("id", leadId)
+    .maybeSingle();
+
+  if (leadError || !lead) {
+    redirect(toPageMessage("/hub/leads", "error", "Lead not found."));
+  }
+
+  const parsed = Number(valueGbp) || null;
+
+  const { error } = await admin.from("deals").insert({
+    lead_id: leadId,
+    account_id: accountId || null,
+    title,
+    pillar: (pillar as "LAUNCH" | "GROW" | "BUILD"),
+    value_gbp: parsed ?? lead.estimated_value_gbp ?? null,
+    stage: "discovery",
+    partner_id: lead.partner_id ?? null,
+    referrer_id: lead.referrer_id ?? null,
+    last_activity_at: new Date().toISOString(),
+  });
+
+  if (error) {
+    redirect(toPageMessage("/hub/leads", "error", error.message));
+  }
+
+  revalidatePath("/hub");
+  revalidatePath("/hub/leads");
+  revalidatePath("/hub/deals");
+  redirect(toPageMessage("/hub/leads", "status", `Deal created from lead. Go to Deals to manage the pipeline.`));
+}
+
+// ─── REQUEST MANAGEMENT ───────────────────────────────────────────────────────
+
+const REQUEST_STATUSES = ["submitted", "in_review", "in_progress", "delivered", "approved", "revision_requested"] as const;
+
+export async function updateRequestStatusAction(formData: FormData) {
+  await requireHubAccess();
+  const requestId = getField(formData, "request_id");
+  const newStatus = getField(formData, "status");
+  const assignedTo = getField(formData, "assigned_to");
+  const revisionNotes = getField(formData, "revision_notes");
+
+  if (!requestId) redirect(toPageMessage("/hub/requests", "error", "Request ID missing."));
+
+  if (newStatus && !isAllowedValue(newStatus, REQUEST_STATUSES)) {
+    redirect(toPageMessage("/hub/requests", "error", "Invalid status."));
+  }
+
+  const admin = getAdminClientOrRedirect("/hub/requests");
+  const updatePayload: Record<string, string | null> = {};
+
+  if (newStatus) updatePayload.status = newStatus;
+  if (assignedTo) updatePayload.assigned_to = assignedTo;
+  if (revisionNotes) updatePayload.revision_notes = revisionNotes;
+  if (newStatus === "delivered") updatePayload.delivered_at = new Date().toISOString();
+  if (newStatus === "approved") updatePayload.approved_at = new Date().toISOString();
+
+  const { error } = await admin.from("requests").update(updatePayload).eq("id", requestId);
+  if (error) redirect(toPageMessage("/hub/requests", "error", error.message));
+
+  revalidatePath("/hub/requests");
+  revalidatePath("/workspace/requests");
+  redirect(toPageMessage("/hub/requests", "status", "Request updated."));
 }
