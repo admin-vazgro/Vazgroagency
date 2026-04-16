@@ -26,7 +26,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="flex items-center gap-[8px] h-[32px] px-[12px] md:px-[16px] bg-[#1A1A1A] border-2 border-[#D6E264]">
             <div className="w-[8px] h-[8px] bg-[#D6E264] shrink-0" />
-            <span className="font-ibm-mono text-[9px] md:text-[11px] font-normal text-[#D6E264] tracking-[1px] md:tracking-[2px]">
+            <span className="font-ibm-mono text-[14px] md:text-[14px] font-normal text-[#D6E264] tracking-[1px] md:tracking-[2px]">
               [⚡] // UK DIGITAL AGENCY — LONDON
             </span>
           </div>
@@ -53,7 +53,7 @@ export default function Hero() {
           <div className="h-8" />
 
           {/* Subheading */}
-          <p className="font-ibm-mono text-[12px] md:text-[13px] text-[#FFFFFF] tracking-[1px] leading-[1.7] max-w-[520px]">
+          <p className="font-ibm-mono text-[14px] md:text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.7] max-w-[520px]">
             WE BUILD THE WEBSITES, RUN THE MARKETING, AND SHIP THE AI PRODUCTS THAT TURN YOUR BUSINESS INTO A DIGITAL POWERHOUSE.
           </p>
 
@@ -62,7 +62,7 @@ export default function Hero() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto">
             <a href="mailto:hello@vazgro.com" className="flex items-center justify-center w-full sm:w-[260px] h-[56px] bg-[#D6E264] hover:bg-[#c9d64f] transition-colors no-underline">
-              <span className="font-grotesk text-[12px] font-normal text-[#0A0A0A] tracking-[2px]">
+              <span className="font-grotesk text-[14px] font-normal text-[#0A0A0A] tracking-[2px]">
                 BOOK A FREE STRATEGY CALL
               </span>
             </a>
@@ -70,7 +70,7 @@ export default function Hero() {
               onClick={() => { const el = document.getElementById("features"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
               className="flex items-center justify-center w-full sm:w-[200px] h-[56px] bg-[#0A0A0A] border-2 border-[#3D3D3D] hover:border-[#888888] transition-colors"
             >
-              <span className="font-ibm-mono text-[12px] text-[#FFFFFF] tracking-[2px]">
+              <span className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[2px]">
                 SEE WHAT WE DO &gt;
               </span>
             </button>
@@ -88,8 +88,8 @@ export default function Hero() {
               ))}
             </div>
             <div className="flex flex-col gap-[2px]">
-              <span className="font-grotesk text-[13px] font-normal text-[#F5F5F0] tracking-[0.5px]">500+ Reviews</span>
-              <span className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1px]">4.9/5 · 94% RETENTION</span>
+              <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[0.5px]">500+ Reviews</span>
+              <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">4.9/5 · 94% RETENTION</span>
             </div>
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function Hero() {
               <div className="w-[8px] h-[8px] bg-[#D6E264] shrink-0 animate-pulse" />
               <div>
                 <div className="font-grotesk text-[18px] font-normal text-[#D6E264] leading-none">7 DAYS</div>
-                <div className="font-ibm-mono text-[9px] text-[#AAAAAA] tracking-[1px] mt-1">AVG. DELIVERY</div>
+                <div className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] mt-1">AVG. DELIVERY</div>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function Hero() {
               <div className="w-[8px] h-[8px] bg-[#FF6B35] shrink-0 animate-pulse" />
               <div>
                 <div className="font-grotesk text-[18px] font-normal text-[#F5F5F0] leading-none">£149</div>
-                <div className="font-ibm-mono text-[9px] text-[#AAAAAA] tracking-[1px] mt-1">STARTS FROM</div>
+                <div className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] mt-1">STARTS FROM</div>
               </div>
             </div>
           </div>

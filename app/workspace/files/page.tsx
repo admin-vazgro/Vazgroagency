@@ -100,11 +100,11 @@ export default async function BrandHubPage(props: {
     <div className="p-8">
       <div className="mb-8 flex items-end justify-between border-b border-[var(--portal-border)] pb-6">
         <div>
-          <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// BRAND HUB</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// BRAND HUB</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">
             Deliverables
           </h1>
-          <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+          <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
             {deliverables.length} files · {awaitingCount} awaiting approval
           </p>
         </div>
@@ -112,26 +112,26 @@ export default async function BrandHubPage(props: {
 
       {statusMessage && (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       )}
       {(errorMessage || dataError) && (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
         </div>
       )}
 
       {awaitingCount > 0 && (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-5 py-4 flex items-center justify-between">
           <div>
-            <p className="font-ibm-mono text-[11px] tracking-[1px] text-[var(--portal-warning)]">ACTION REQUIRED</p>
-            <p className="mt-1 font-ibm-mono text-[12px] text-[var(--portal-text-muted)]">
+            <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-warning)]">ACTION REQUIRED</p>
+            <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">
               {awaitingCount} deliverable{awaitingCount !== 1 ? "s" : ""} awaiting your approval.
             </p>
           </div>
           <a
             href="?filter=awaiting"
-            className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-warning)] hover:opacity-80 transition-opacity"
+            className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-warning)] hover:opacity-80 transition-opacity"
           >
             REVIEW NOW →
           </a>
@@ -148,7 +148,7 @@ export default async function BrandHubPage(props: {
           <a
             key={key}
             href={`?filter=${key}`}
-            className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors"
+            className="px-4 py-2 font-ibm-mono text-[14px] tracking-[1px] transition-colors"
             style={{
               background: statusFilter === key ? "var(--portal-accent)" : "var(--portal-surface-alt)",
               color: statusFilter === key ? "var(--portal-accent-contrast)" : "var(--portal-text-muted)",
@@ -162,8 +162,8 @@ export default async function BrandHubPage(props: {
 
       {!accountId && !dataError && (
         <div className="border border-dashed border-[var(--portal-border-strong)] p-8">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No account linked yet.</p>
-          <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No account linked yet.</p>
+          <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
             Deliverables from your Vazgro team will appear here once your account is set up.
           </p>
         </div>
@@ -174,7 +174,7 @@ export default async function BrandHubPage(props: {
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
           <div className="grid grid-cols-[1fr_100px_120px_100px_120px] gap-4 border-b border-[var(--portal-border)] px-5 py-3">
             {["Name", "Type", "Project", "Uploaded", "Status"].map((h) => (
-              <span key={h} className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">{h}</span>
+              <span key={h} className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">{h}</span>
             ))}
           </div>
 
@@ -189,30 +189,30 @@ export default async function BrandHubPage(props: {
                 className="grid grid-cols-[1fr_100px_120px_100px_120px] gap-4 border-b border-[var(--portal-border)] px-5 py-4 transition-colors hover:bg-[var(--portal-surface-alt)] items-center"
               >
                 <div>
-                  <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{d.name}</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{d.name}</p>
                   {d.file_url && (
                     <a
                       href={d.file_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-0.5 font-ibm-mono text-[10px] text-[var(--portal-accent)] hover:opacity-80 transition-opacity"
+                      className="mt-0.5 font-ibm-mono text-[14px] text-[var(--portal-accent)] hover:opacity-80 transition-opacity"
                     >
                       Download ↓
                     </a>
                   )}
                 </div>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">
                   {d.file_type || "—"}
                 </span>
-                <span className="truncate font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">
+                <span className="truncate font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">
                   {engTitle || "—"}
                 </span>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">
                   {new Date(d.created_at).toLocaleDateString("en-GB")}
                 </span>
                 <div className="flex flex-col gap-1.5">
                   <span
-                    className="w-fit px-2 py-1 font-ibm-mono text-[9px] tracking-[1px]"
+                    className="w-fit px-2 py-1 font-ibm-mono text-[14px] tracking-[1px]"
                     style={{ background: sc.bg, color: sc.text }}
                   >
                     {statusLabels[status]}
@@ -227,10 +227,10 @@ export default async function BrandHubPage(props: {
 
           {filtered.length === 0 && (
             <div className="px-5 py-12">
-              <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">
                 {statusFilter === "awaiting" ? "Nothing awaiting your approval." : "No deliverables yet."}
               </p>
-              <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+              <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                 Files uploaded by your Vazgro team will appear here.
               </p>
             </div>

@@ -69,11 +69,11 @@ export default function PortalLayoutShell({
         <div className="border-b border-[var(--portal-border)] px-5 py-5 shrink-0">
           <Link href="/" className="flex items-center gap-3">
             <div className="flex h-7 w-7 items-center justify-center bg-[var(--portal-accent)]">
-              <span className="font-grotesk text-[12px] font-bold text-[var(--portal-accent-contrast)]">V</span>
+              <span className="font-grotesk text-[14px] font-bold text-[var(--portal-accent-contrast)]">V</span>
             </div>
-            <span className="font-grotesk text-[12px] font-bold tracking-[2px] text-[var(--portal-text)]">VAZGRO</span>
+            <span className="font-grotesk text-[14px] font-bold tracking-[2px] text-[var(--portal-text)]">VAZGRO</span>
           </Link>
-          <p className="mt-1.5 font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">{portalLabel}</p>
+          <p className="mt-1.5 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">{portalLabel}</p>
         </div>
 
         {/* Nav */}
@@ -103,7 +103,7 @@ export default function PortalLayoutShell({
                     <span className="shrink-0 w-[14px] h-[14px] flex items-center justify-center">
                       {icon}
                     </span>
-                    <span className="font-ibm-mono text-[10px] tracking-[1px]">
+                    <span className="font-ibm-mono text-[14px] tracking-[1px]">
                       {label.toUpperCase()}
                     </span>
                   </Link>
@@ -121,7 +121,7 @@ export default function PortalLayoutShell({
               className="flex items-center gap-3 px-3 py-2 text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] transition-colors"
             >
               <IconAdmin />
-              <span className="font-ibm-mono text-[10px] tracking-[1px]">ADMIN</span>
+              <span className="font-ibm-mono text-[14px] tracking-[1px]">ADMIN</span>
             </Link>
           ) : null}
           {libraryHref ? (
@@ -130,7 +130,7 @@ export default function PortalLayoutShell({
               className="flex items-center gap-3 px-3 py-2 text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] transition-colors"
             >
               <IconLibrary />
-              <span className="font-ibm-mono text-[10px] tracking-[1px]">LIBRARY</span>
+              <span className="font-ibm-mono text-[14px] tracking-[1px]">LIBRARY</span>
             </Link>
           ) : null}
           <button
@@ -138,7 +138,7 @@ export default function PortalLayoutShell({
             className="flex items-center gap-3 px-3 py-2 w-full text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] transition-colors bg-transparent border-none cursor-pointer text-left"
           >
             <IconTheme dark={theme === "dark"} />
-            <span className="font-ibm-mono text-[10px] tracking-[1px]">
+            <span className="font-ibm-mono text-[14px] tracking-[1px]">
               {theme === "dark" ? "LIGHT MODE" : "DARK MODE"}
             </span>
           </button>
@@ -147,7 +147,7 @@ export default function PortalLayoutShell({
             className="flex items-center gap-3 px-3 py-2 w-full text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] transition-colors bg-transparent border-none cursor-pointer text-left"
           >
             <IconSignOut />
-            <span className="font-ibm-mono text-[10px] tracking-[1px]">SIGN OUT</span>
+            <span className="font-ibm-mono text-[14px] tracking-[1px]">SIGN OUT</span>
           </button>
         </div>
       </aside>

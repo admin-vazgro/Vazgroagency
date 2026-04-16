@@ -58,7 +58,7 @@ export default function Features() {
             <h3 className="font-grotesk text-[18px] font-normal text-[#F5F5F0] tracking-[1px] leading-[1.2] whitespace-pre-line">
               {s.title}
             </h3>
-            <p className="font-ibm-mono text-[13px] lg:text-[14px] text-[#D0D0D0] tracking-[0.8px] leading-[1.7] flex-1">
+            <p className="font-ibm-mono text-[14px] lg:text-[14px] text-[#D0D0D0] tracking-[0.8px] leading-[1.7] flex-1">
               {s.description}
             </p>
             <div className="flex items-center justify-between">
@@ -66,11 +66,11 @@ export default function Features() {
                 className="flex items-center justify-center h-[28px] px-[12px] bg-[#1A1A1A] border w-fit"
                 style={{ borderColor: s.tagColor }}
               >
-                <span className="font-ibm-mono text-[11px] tracking-[2px]" style={{ color: s.tagColor }}>
+                <span className="font-ibm-mono text-[14px] tracking-[2px]" style={{ color: s.tagColor }}>
                   {s.tag}
                 </span>
               </div>
-              <span className="font-ibm-mono text-[10px] tracking-[2px] group-hover:underline" style={{ color: s.tagColor }}>
+              <span className="font-ibm-mono text-[14px] tracking-[2px] group-hover:underline" style={{ color: s.tagColor }}>
                 VIEW SERVICE →
               </span>
             </div>

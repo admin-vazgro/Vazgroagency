@@ -19,7 +19,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className="flex flex-col gap-[16px] w-full">
-      <span className="font-ibm-mono text-[10px] md:text-[12px] font-normal text-[#D6E264] tracking-[1.5px] md:tracking-[3px]">
+      <span className="font-ibm-mono text-[14px] md:text-[14px] font-normal text-[#D6E264] tracking-[1.5px] md:tracking-[3px]">
         <GlitchText text={label} speed={30} />
       </span>
       <h2
@@ -29,7 +29,7 @@ export default function SectionHeader({
       </h2>
       {subtitle && (
         <p
-          className={`font-ibm-mono text-[11px] md:text-[14px] text-[#C2C2C2] tracking-[0.5px] md:tracking-[1px] leading-[1.7] text-pretty ${subtitleWidth}`}
+          className={`font-ibm-mono text-[14px] md:text-[14px] text-[#C2C2C2] tracking-[0.5px] md:tracking-[1px] leading-[1.7] text-pretty ${subtitleWidth}`}
         >
           <GlitchText text={subtitle} speed={20} delay={350} />
         </p>

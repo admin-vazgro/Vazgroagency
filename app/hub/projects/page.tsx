@@ -52,17 +52,17 @@ export default async function HubProjectsPage() {
   return (
     <div className="p-8">
       <div className="mb-8 border-b border-[var(--portal-border)] pb-6">
-        <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// DELIVERY</span>
+        <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// DELIVERY</span>
         <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Projects</h1>
-        <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+        <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
           {engList.length} active project{engList.length !== 1 ? "s" : ""}. Click a project to open the workspace.
         </p>
       </div>
 
       {engList.length === 0 ? (
         <div className="border border-dashed border-[var(--portal-border-strong)] p-12 text-center">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No active projects yet.</p>
-          <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Projects appear here when engagements are created.</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No active projects yet.</p>
+          <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Projects appear here when engagements are created.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-3">
@@ -80,30 +80,30 @@ export default async function HubProjectsPage() {
                 className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5 block hover:border-[var(--portal-accent)] transition-colors"
               >
                 <div className="mb-3 flex items-start justify-between gap-2">
-                  <span className="font-ibm-mono text-[10px] tracking-[2px]" style={{ color: pillarColors[eng.pillar] }}>{eng.pillar}</span>
+                  <span className="font-ibm-mono text-[14px] tracking-[2px]" style={{ color: pillarColors[eng.pillar] }}>{eng.pillar}</span>
                   <span
-                    className="px-2 py-0.5 font-ibm-mono text-[9px] tracking-[1px]"
+                    className="px-2 py-0.5 font-ibm-mono text-[14px] tracking-[1px]"
                     style={{ background: statusColors[eng.status]?.bg ?? "var(--portal-muted-soft)", color: statusColors[eng.status]?.text ?? "var(--portal-text-soft)" }}
                   >
                     {eng.status.toUpperCase()}
                   </span>
                 </div>
                 <p className="font-grotesk text-[16px] font-normal text-[var(--portal-text)] leading-tight">{eng.title}</p>
-                <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{account?.name ?? "—"}</p>
+                <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{account?.name ?? "—"}</p>
                 <div className="mt-4 flex items-center justify-between border-t border-[var(--portal-border)] pt-3">
                   <div>
-                    <p className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">PM</p>
-                    <p className="mt-0.5 font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{pmName}</p>
+                    <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">PM</p>
+                    <p className="mt-0.5 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{pmName}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">VALUE</p>
+                    <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">VALUE</p>
                     <p className="mt-0.5 font-grotesk text-[14px] font-normal text-[var(--portal-accent)]">
                       £{value.toLocaleString()}{eng.pillar === "GROW" ? "/mo" : ""}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">DAYS</p>
-                    <p className="mt-0.5 font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{days}</p>
+                    <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">DAYS</p>
+                    <p className="mt-0.5 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{days}</p>
                   </div>
                 </div>
               </Link>

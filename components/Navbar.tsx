@@ -114,7 +114,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-[10px] shrink-0 group">
           <span className="w-[10px] h-[10px] bg-[#D6E264] group-hover:scale-110 transition-transform" />
           <span
-            className="font-grotesk text-[13px] font-normal tracking-[2.5px] transition-colors duration-300"
+            className="font-grotesk text-[14px] font-normal tracking-[2.5px] transition-colors duration-300"
             style={{ color: useLightText ? "#F5F5F0" : "#0A0A0A" }}
           >
             VAZGRO
@@ -130,7 +130,7 @@ export default function Navbar() {
                 key={label}
                 type="button"
                 onClick={() => navigateToSection(section)}
-                className="relative font-ibm-mono text-[11px] tracking-[1.5px] transition-colors duration-150 bg-transparent border-none cursor-pointer"
+                className="relative font-ibm-mono text-[14px] tracking-[1.5px] transition-colors duration-150 bg-transparent border-none cursor-pointer"
                 style={{ color: isActive ? "#D6E264" : navTextColor }}
                 onMouseEnter={(e) => {
                   if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = navHoverColor;
@@ -153,7 +153,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-[14px]">
           <a
             href="mailto:hello@vazgro.com"
-            className="font-ibm-mono text-[11px] tracking-[1.5px] hover:text-[#FFFFFF] transition-colors"
+            className="font-ibm-mono text-[14px] tracking-[1.5px] hover:text-[#FFFFFF] transition-colors"
             style={{ color: contactColor }}
           >
             CONTACT
@@ -161,7 +161,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => navigateToSection("pricing")}
-            className="font-grotesk text-[11px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[9px] hover:bg-[#F5F5F0] transition-colors"
+            className="font-grotesk text-[14px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[9px] hover:bg-[#F5F5F0] transition-colors"
           >
             BOOK A CALL
           </button>
@@ -206,7 +206,7 @@ export default function Navbar() {
                 key={label}
                 type="button"
                 onClick={() => navigateToSection(section)}
-                className="flex items-center gap-2 w-full font-ibm-mono text-[12px] tracking-[2px] py-[14px] border-b border-[#141414] transition-colors bg-transparent border-x-0 border-t-0 cursor-pointer"
+                className="flex items-center gap-2 w-full font-ibm-mono text-[14px] tracking-[2px] py-[14px] border-b border-[#141414] transition-colors bg-transparent border-x-0 border-t-0 cursor-pointer"
                 style={{ color: isActive ? "#D6E264" : mobileTextColor }}
               >
                 <span
@@ -220,7 +220,7 @@ export default function Navbar() {
           <div className="flex flex-col gap-[10px] pt-5">
             <a
               href="mailto:hello@vazgro.com"
-              className="font-ibm-mono text-[12px] tracking-[1.5px]"
+              className="font-ibm-mono text-[14px] tracking-[1.5px]"
               style={{ color: contactColor }}
             >
               CONTACT
@@ -228,7 +228,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => navigateToSection("pricing")}
-              className="font-grotesk text-[11px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[11px] text-center hover:bg-[#F5F5F0] transition-colors"
+              className="font-grotesk text-[14px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[11px] text-center hover:bg-[#F5F5F0] transition-colors"
             >
               BOOK A CALL
             </button>

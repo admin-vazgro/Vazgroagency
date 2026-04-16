@@ -112,19 +112,19 @@ export default function Showcase() {
               className="flex items-center justify-center h-[24px] px-[10px] border"
               style={{ backgroundColor: slide.tagBg, borderColor: slide.tagBorder || "transparent" }}
             >
-              <span className="font-ibm-mono text-[9px] font-normal tracking-[1px]" style={{ color: slide.tagColor }}>
+              <span className="font-ibm-mono text-[14px] font-normal tracking-[1px]" style={{ color: slide.tagColor }}>
                 {slide.tag}
               </span>
             </div>
-            <span className="font-ibm-mono text-[11px] tracking-[2px]" style={{ color: slide.idxColor }}>
+            <span className="font-ibm-mono text-[14px] tracking-[2px]" style={{ color: slide.idxColor }}>
               {slide.idx}
             </span>
           </div>
           <h3 className="font-grotesk text-[20px] font-normal text-[#F5F5F0] tracking-[1px] leading-[1.2] whitespace-pre-line">
             {slide.title}
           </h3>
-          <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px]">{slide.by}</p>
-          <a href={slide.href} className="font-ibm-mono text-[10px] font-normal text-[#D6E264] tracking-[2px] no-underline hover:underline mt-1">
+          <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">{slide.by}</p>
+          <a href={slide.href} className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[2px] no-underline hover:underline mt-1">
             VIEW CASE STUDY &gt;
           </a>
         </div>
@@ -150,19 +150,19 @@ export default function Showcase() {
                 className="flex items-center justify-center h-[24px] px-[10px] border"
                 style={{ backgroundColor: s.tagBg, borderColor: s.tagBorder || "transparent" }}
               >
-                <span className="font-ibm-mono text-[9px] font-normal tracking-[1px]" style={{ color: s.tagColor }}>
+                <span className="font-ibm-mono text-[14px] font-normal tracking-[1px]" style={{ color: s.tagColor }}>
                   {s.tag}
                 </span>
               </div>
-              <span className="font-ibm-mono text-[11px] tracking-[2px]" style={{ color: s.idxColor }}>
+              <span className="font-ibm-mono text-[14px] tracking-[2px]" style={{ color: s.idxColor }}>
                 {s.idx}
               </span>
             </div>
             <h3 className="font-grotesk text-[20px] font-normal text-[#F5F5F0] tracking-[1px] leading-[1.2] whitespace-pre-line">
               {s.title}
             </h3>
-            <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px]">{s.by}</p>
-            <a href={s.href} className="font-ibm-mono text-[10px] font-normal text-[#D6E264] tracking-[2px] no-underline hover:underline mt-1">
+            <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">{s.by}</p>
+            <a href={s.href} className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[2px] no-underline hover:underline mt-1">
               VIEW CASE STUDY &gt;
             </a>
           </div>
@@ -185,10 +185,10 @@ export default function Showcase() {
 
       {/* Footer */}
       <div className="flex flex-col items-start gap-3 px-6 pb-16 md:px-8 md:pb-[100px] lg:px-[120px] sm:flex-row sm:items-center sm:justify-between">
-        <span className="font-ibm-mono text-[11px] text-[#999999] tracking-[2px]">
+        <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">
           SHOWING 0{active + 1} OF 04 PROJECTS
         </span>
-        <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[11px] text-[#D6E264] tracking-[2px] cursor-pointer hover:underline no-underline">
+        <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[14px] text-[#D6E264] tracking-[2px] cursor-pointer hover:underline no-underline">
           ENQUIRE ABOUT YOUR PROJECT &gt;
         </a>
       </div>

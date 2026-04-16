@@ -10,8 +10,8 @@ interface Props {
 type Step = 1 | 2 | 3 | 4 | 5 | 6;
 
 const inputClass =
-  "w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none placeholder:text-[var(--portal-text-dim)]";
-const labelClass = "block font-ibm-mono text-[9px] tracking-[1.5px] text-[var(--portal-text-dim)] mb-1.5";
+  "w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none placeholder:text-[var(--portal-text-dim)]";
+const labelClass = "block font-ibm-mono text-[14px] tracking-[1.5px] text-[var(--portal-text-dim)] mb-1.5";
 
 export default function OnboardingWizard({ profileName, onDismiss }: Props) {
   const [step, setStep] = useState<Step>(1);
@@ -54,8 +54,8 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
         {/* Header */}
         <div className="border-b border-[var(--portal-border)] px-6 py-4">
           <div className="flex items-center justify-between">
-            <span className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent)]">// WELCOME TO YOUR WORKSPACE</span>
-            <button onClick={onDismiss} className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] bg-transparent border-none cursor-pointer">
+            <span className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent)]">// WELCOME TO YOUR WORKSPACE</span>
+            <button onClick={onDismiss} className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] bg-transparent border-none cursor-pointer">
               SKIP
             </button>
           </div>
@@ -70,7 +70,7 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
             {steps.map((s) => (
               <span
                 key={s.n}
-                className="font-ibm-mono text-[9px]"
+                className="font-ibm-mono text-[14px]"
                 style={{ color: step === s.n ? "var(--portal-accent)" : step > s.n ? "var(--portal-text-soft)" : "var(--portal-text-dim)" }}
               >
                 {step > s.n ? "✓" : s.n}
@@ -86,21 +86,21 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
             <div className="flex flex-col gap-5">
               <div>
                 <h2 className="font-grotesk text-[24px] font-normal tracking-[-1px] text-[var(--portal-text)]">Welcome, {profileName}.</h2>
-                <p className="mt-2 font-ibm-mono text-[12px] leading-[1.8] text-[var(--portal-text-soft)]">
+                <p className="mt-2 font-ibm-mono text-[14px] leading-[1.8] text-[var(--portal-text-soft)]">
                   Your workspace is ready. This quick setup takes 2 minutes and helps your Vazgro team start work immediately.
                 </p>
               </div>
               <div className="flex flex-col gap-2">
                 {["Tell us about your brand", "Upload logos or guidelines (optional)", "Invite your team (optional)", "Set notification preferences", "You're ready to go"].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)]">0{i + 1}</span>
-                    <span className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">{item}</span>
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">0{i + 1}</span>
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{item}</span>
                   </div>
                 ))}
               </div>
               <button
                 onClick={() => setStep(2)}
-                className="h-[48px] w-full border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-grotesk text-[11px] font-bold text-[var(--portal-accent-contrast)] tracking-[1.5px] transition-colors cursor-pointer"
+                className="h-[48px] w-full border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-grotesk text-[14px] font-bold text-[var(--portal-accent-contrast)] tracking-[1.5px] transition-colors cursor-pointer"
               >
                 GET STARTED →
               </button>
@@ -137,8 +137,8 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
                 </select>
               </div>
               <div className="flex gap-3">
-                <button onClick={() => setStep(1)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[10px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
-                <button onClick={() => setStep(3)} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer">
+                <button onClick={() => setStep(1)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[14px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
+                <button onClick={() => setStep(3)} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[14px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer">
                   NEXT →
                 </button>
               </div>
@@ -148,16 +148,16 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
           {step === 3 && (
             <div className="flex flex-col gap-5">
               <h2 className="font-grotesk text-[20px] font-normal tracking-[-0.5px] text-[var(--portal-text)]">Upload brand basics</h2>
-              <p className="font-ibm-mono text-[11px] leading-[1.7] text-[var(--portal-text-soft)]">
+              <p className="font-ibm-mono text-[14px] leading-[1.7] text-[var(--portal-text-soft)]">
                 Upload your logos and brand guidelines so your team can start without waiting. This is optional — you can do it any time from Brand Hub.
               </p>
               <div className="border border-dashed border-[var(--portal-border-strong)] p-8 text-center">
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">File uploads go to Brand Hub → Brand Library</p>
-                <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Upload via Brand Hub after setup</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">File uploads go to Brand Hub → Brand Library</p>
+                <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Upload via Brand Hub after setup</p>
               </div>
               <div className="flex gap-3">
-                <button onClick={() => setStep(2)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[10px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
-                <button onClick={() => setStep(4)} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer">
+                <button onClick={() => setStep(2)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[14px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
+                <button onClick={() => setStep(4)} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[14px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer">
                   NEXT → <span className="opacity-60">(skip)</span>
                 </button>
               </div>
@@ -167,7 +167,7 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
           {step === 4 && (
             <div className="flex flex-col gap-5">
               <h2 className="font-grotesk text-[20px] font-normal tracking-[-0.5px] text-[var(--portal-text)]">Invite your team</h2>
-              <p className="font-ibm-mono text-[11px] leading-[1.7] text-[var(--portal-text-soft)]">
+              <p className="font-ibm-mono text-[14px] leading-[1.7] text-[var(--portal-text-soft)]">
                 Add colleagues to your workspace. They&apos;ll get a magic link via email. This is optional.
               </p>
               <div>
@@ -181,8 +181,8 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
                 />
               </div>
               <div className="flex gap-3">
-                <button onClick={() => setStep(3)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[10px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
-                <button onClick={handleStep4Invite} disabled={submitting} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer disabled:opacity-50">
+                <button onClick={() => setStep(3)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[14px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
+                <button onClick={handleStep4Invite} disabled={submitting} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[14px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer disabled:opacity-50">
                   {submitting ? "INVITING..." : inviteEmail ? "INVITE & CONTINUE →" : "SKIP →"}
                 </button>
               </div>
@@ -205,18 +205,18 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
                       }}
                       onClick={() => item.set(!item.state)}
                     >
-                      {item.state && <span className="font-ibm-mono text-[10px] text-[var(--portal-accent-contrast)]">✓</span>}
+                      {item.state && <span className="font-ibm-mono text-[14px] text-[var(--portal-accent-contrast)]">✓</span>}
                     </div>
                     <div>
-                      <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{item.label}</p>
-                      <p className="mt-0.5 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{item.desc}</p>
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{item.label}</p>
+                      <p className="mt-0.5 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{item.desc}</p>
                     </div>
                   </label>
                 ))}
               </div>
               <div className="flex gap-3">
-                <button onClick={() => setStep(4)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[10px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
-                <button onClick={() => setStep(6)} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer">
+                <button onClick={() => setStep(4)} className="h-[44px] px-5 border border-[var(--portal-border)] bg-transparent font-ibm-mono text-[14px] text-[var(--portal-text-muted)] cursor-pointer">← BACK</button>
+                <button onClick={() => setStep(6)} className="h-[44px] flex-1 border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[14px] tracking-[1.5px] text-[var(--portal-accent-contrast)] cursor-pointer">
                   SAVE & CONTINUE →
                 </button>
               </div>
@@ -230,13 +230,13 @@ export default function OnboardingWizard({ profileName, onDismiss }: Props) {
               </div>
               <div>
                 <h2 className="font-grotesk text-[24px] font-normal tracking-[-1px] text-[var(--portal-text)]">You&apos;re all set.</h2>
-                <p className="mt-2 font-ibm-mono text-[12px] leading-[1.8] text-[var(--portal-text-soft)]">
+                <p className="mt-2 font-ibm-mono text-[14px] leading-[1.8] text-[var(--portal-text-soft)]">
                   Your workspace is ready. Your first request has been added to the kanban so you can try it out.
                 </p>
               </div>
               <button
                 onClick={onDismiss}
-                className="h-[48px] w-full border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-grotesk text-[11px] font-bold text-[var(--portal-accent-contrast)] tracking-[1.5px] transition-colors cursor-pointer"
+                className="h-[48px] w-full border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-grotesk text-[14px] font-bold text-[var(--portal-accent-contrast)] tracking-[1.5px] transition-colors cursor-pointer"
               >
                 GO TO MY WORKSPACE →
               </button>

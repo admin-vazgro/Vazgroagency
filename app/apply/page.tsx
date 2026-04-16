@@ -2,8 +2,8 @@ import Link from "next/link";
 import { submitApplicationAction } from "./actions";
 
 const inputClass =
-  "w-full border border-gray-300 bg-white px-4 py-3 font-ibm-mono text-[13px] text-gray-900 focus:border-gray-900 focus:outline-none placeholder:text-gray-400";
-const labelClass = "mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-gray-500";
+  "w-full border border-gray-300 bg-white px-4 py-3 font-ibm-mono text-[14px] text-gray-900 focus:border-gray-900 focus:outline-none placeholder:text-gray-400";
+const labelClass = "mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-gray-500";
 
 export default async function ApplyPage({
   searchParams,
@@ -23,7 +23,7 @@ export default async function ApplyPage({
         </Link>
         <Link
           href="/login"
-          className="font-ibm-mono text-[10px] tracking-[2px] text-gray-500 hover:text-gray-900 transition-colors"
+          className="font-ibm-mono text-[14px] tracking-[2px] text-gray-500 hover:text-gray-900 transition-colors"
         >
           Partner Login →
         </Link>
@@ -33,16 +33,16 @@ export default async function ApplyPage({
         {submitted ? (
           <div className="text-center">
             <div className="mb-6 inline-block border border-green-600 bg-green-50 px-6 py-4">
-              <p className="font-ibm-mono text-[12px] text-green-700">Application received.</p>
+              <p className="font-ibm-mono text-[14px] text-green-700">Application received.</p>
             </div>
             <h1 className="font-grotesk text-[32px] font-normal tracking-[-1px] text-gray-900">
               Thanks for applying.
             </h1>
-            <p className="mt-4 font-ibm-mono text-[12px] leading-[1.8] text-gray-500">
+            <p className="mt-4 font-ibm-mono text-[14px] leading-[1.8] text-gray-500">
               We review every application and aim to respond within 1–2 business days.
               You'll receive an email with your login details once approved.
             </p>
-            <p className="mt-6 font-ibm-mono text-[11px] text-gray-400">
+            <p className="mt-6 font-ibm-mono text-[14px] text-gray-400">
               Questions?{" "}
               <a href="mailto:partners@vazgro.com" className="text-gray-700 hover:underline">
                 partners@vazgro.com
@@ -52,11 +52,11 @@ export default async function ApplyPage({
         ) : (
           <>
             <div className="mb-10 border-b border-gray-200 pb-8">
-              <span className="font-ibm-mono text-[10px] tracking-[3px] text-gray-400">// PARTNER PROGRAMME</span>
+              <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-400">// PARTNER PROGRAMME</span>
               <h1 className="mt-2 font-grotesk text-[40px] font-normal tracking-[-1.5px] text-gray-900">
                 Join as a Partner
               </h1>
-              <p className="mt-3 font-ibm-mono text-[13px] leading-[1.8] text-gray-500">
+              <p className="mt-3 font-ibm-mono text-[14px] leading-[1.8] text-gray-500">
                 Refer clients or actively close deals — earn commissions on every client you bring to Vazgro.
                 Tier 1 to Tier 3 based on your monthly revenue performance.
               </p>
@@ -69,12 +69,12 @@ export default async function ApplyPage({
                   { label: "Tier 3", detail: "15% closer · 7% referrer" },
                 ].map((tier) => (
                   <div key={tier.label} className="border border-gray-200 p-3">
-                    <p className="font-ibm-mono text-[10px] tracking-[1px] text-gray-900">{tier.label}</p>
-                    <p className="mt-0.5 font-ibm-mono text-[10px] text-gray-400">{tier.detail}</p>
+                    <p className="font-ibm-mono text-[14px] tracking-[1px] text-gray-900">{tier.label}</p>
+                    <p className="mt-0.5 font-ibm-mono text-[14px] text-gray-400">{tier.detail}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-3 font-ibm-mono text-[10px] text-gray-400 leading-[1.7]">
+              <p className="mt-3 font-ibm-mono text-[14px] text-gray-400 leading-[1.7]">
                 Tiers are calculated automatically based on your total closed revenue each calendar month.
                 Everyone starts at Tier 1 and upgrades as you close more business.
               </p>
@@ -82,7 +82,7 @@ export default async function ApplyPage({
 
             {error && (
               <div className="mb-6 border border-red-300 bg-red-50 px-4 py-3">
-                <p className="font-ibm-mono text-[11px] text-red-700">{decodeURIComponent(error)}</p>
+                <p className="font-ibm-mono text-[14px] text-red-700">{decodeURIComponent(error)}</p>
               </div>
             )}
 
@@ -131,7 +131,7 @@ export default async function ApplyPage({
                   name="description"
                   required
                   rows={4}
-                  className="w-full border border-gray-300 bg-white px-4 py-3 font-ibm-mono text-[13px] text-gray-900 focus:border-gray-900 focus:outline-none placeholder:text-gray-400 resize-y"
+                  className="w-full border border-gray-300 bg-white px-4 py-3 font-ibm-mono text-[14px] text-gray-900 focus:border-gray-900 focus:outline-none placeholder:text-gray-400 resize-y"
                   placeholder="Tell us about your network, how you generate leads, or what kind of clients you typically work with..."
                 />
               </div>
@@ -152,11 +152,11 @@ export default async function ApplyPage({
               <div className="border-t border-gray-200 pt-5">
                 <button
                   type="submit"
-                  className="w-full bg-gray-900 px-6 py-4 font-ibm-mono text-[11px] tracking-[3px] text-white hover:bg-gray-700 transition-colors"
+                  className="w-full bg-gray-900 px-6 py-4 font-ibm-mono text-[14px] tracking-[3px] text-white hover:bg-gray-700 transition-colors"
                 >
                   SUBMIT APPLICATION →
                 </button>
-                <p className="mt-3 font-ibm-mono text-[10px] text-center text-gray-400 leading-[1.7]">
+                <p className="mt-3 font-ibm-mono text-[14px] text-center text-gray-400 leading-[1.7]">
                   By applying you agree to the{" "}
                   <Link href="/terms" className="underline hover:text-gray-700">
                     Partner Terms

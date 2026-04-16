@@ -116,9 +116,9 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
   return (
     <div className="p-8">
       <div className="mb-6 border-b border-[var(--portal-border)] pb-6">
-        <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// TEAM</span>
+        <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// TEAM</span>
         <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Team</h1>
-        <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+        <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
           Manage your team and view your Vazgro contacts.
         </p>
       </div>
@@ -132,7 +132,7 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
           <a
             key={tab.key}
             href={`?tab=${tab.key}`}
-            className="px-6 py-3 font-ibm-mono text-[10px] tracking-[1px] transition-colors border-b-2"
+            className="px-6 py-3 font-ibm-mono text-[14px] tracking-[1px] transition-colors border-b-2"
             style={{
               color: activeTab === tab.key ? "var(--portal-accent)" : "var(--portal-text-muted)",
               borderColor: activeTab === tab.key ? "var(--portal-accent)" : "transparent",
@@ -145,12 +145,12 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
 
       {statusMessage && (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       )}
       {(errorMessage || dataError) && (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
         </div>
       )}
 
@@ -159,7 +159,7 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
         <div className="flex flex-col gap-6">
           {/* Invite form */}
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-6">
-            <p className="mb-4 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-muted)]">INVITE A TEAM MEMBER</p>
+            <p className="mb-4 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-muted)]">INVITE A TEAM MEMBER</p>
             <TeamInviteForm />
           </div>
 
@@ -168,7 +168,7 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
             <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
               <div className="grid grid-cols-[1fr_120px_100px_120px] gap-4 border-b border-[var(--portal-border)] px-5 py-3">
                 {["Name", "Role", "Status", "Joined"].map((h) => (
-                  <span key={h} className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">{h}</span>
+                  <span key={h} className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">{h}</span>
                 ))}
               </div>
               {clientMembers.map((member) => {
@@ -183,26 +183,26 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className="flex h-8 w-8 flex-shrink-0 items-center justify-center font-ibm-mono text-[11px]"
+                        className="flex h-8 w-8 flex-shrink-0 items-center justify-center font-ibm-mono text-[14px]"
                         style={{ background: "var(--portal-border)", color: "var(--portal-text-soft)" }}
                       >
                         {getInitials(profile)}
                       </div>
                       <div>
-                        <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">
-                          {displayName(profile)}{isCurrentUser && <span className="ml-2 font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">(you)</span>}
+                        <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">
+                          {displayName(profile)}{isCurrentUser && <span className="ml-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">(you)</span>}
                         </p>
-                        <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{profile.email}</p>
+                        <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{profile.email}</p>
                       </div>
                     </div>
                     <span
-                      className="font-ibm-mono text-[9px] tracking-[1px] px-2 py-1 w-fit"
+                      className="font-ibm-mono text-[14px] tracking-[1px] px-2 py-1 w-fit"
                       style={{ background: "var(--portal-border)", color: workspaceRoleColors[wsRole] ?? "var(--portal-text-soft)" }}
                     >
                       {wsRole.toUpperCase()}
                     </span>
-                    <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)]">ACTIVE</span>
-                    <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">ACTIVE</span>
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                       {new Date(member.created_at).toLocaleDateString("en-GB")}
                     </span>
                   </div>
@@ -213,13 +213,13 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
 
           {clientMembers.length === 0 && (
             <div className="border border-dashed border-[var(--portal-border-strong)] p-8 text-center">
-              <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No team members yet.</p>
-              <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Invite colleagues above to give them access to your workspace.</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No team members yet.</p>
+              <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Invite colleagues above to give them access to your workspace.</p>
             </div>
           )}
 
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-            <p className="font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-text-muted)] mb-2">ROLES EXPLAINED</p>
+            <p className="font-ibm-mono text-[14px] tracking-[1.5px] text-[var(--portal-text-muted)] mb-2">ROLES EXPLAINED</p>
             <div className="flex flex-col gap-2">
               {[
                 ["OWNER", "Full access including billing and team management"],
@@ -227,8 +227,8 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
                 ["VIEWER", "Read-only access — cannot submit requests or upload files"],
               ].map(([role, desc]) => (
                 <div key={role} className="flex gap-3">
-                  <span className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-accent)] shrink-0 mt-0.5 w-[52px]">{role}</span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{desc}</span>
+                  <span className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-accent)] shrink-0 mt-0.5 w-[52px]">{role}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{desc}</span>
                 </div>
               ))}
             </div>
@@ -241,8 +241,8 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
         <div className="flex flex-col gap-4">
           {uniqueHubMembers.length === 0 && (
             <div className="border border-dashed border-[var(--portal-border-strong)] p-8">
-              <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No team members assigned yet.</p>
-              <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No team members assigned yet.</p>
+              <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                 Your Vazgro project manager will be assigned when your project kicks off.
               </p>
             </div>
@@ -263,12 +263,12 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-grotesk text-[16px] font-normal text-[var(--portal-text)]">{displayName(member)}</p>
-                      <p className="mt-0.5 font-ibm-mono text-[10px]" style={{ color: roleColor }}>
+                      <p className="mt-0.5 font-ibm-mono text-[14px]" style={{ color: roleColor }}>
                         {member.role.replace(/_/g, " ").toUpperCase()}
                       </p>
                       <a
                         href={`mailto:${member.email}`}
-                        className="mt-1 block font-ibm-mono text-[10px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-accent)]"
+                        className="mt-1 block font-ibm-mono text-[14px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-accent)]"
                       >
                         {member.email}
                       </a>
@@ -276,12 +276,12 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
                   </div>
                   <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[var(--portal-border)] pt-4">
                     <div>
-                      <p className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">TIMEZONE</p>
-                      <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{member.timezone || "Europe/London"}</p>
+                      <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">TIMEZONE</p>
+                      <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{member.timezone || "Europe/London"}</p>
                     </div>
                     <div>
-                      <p className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">RESPONSE TIME</p>
-                      <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">Within 1 business day</p>
+                      <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">RESPONSE TIME</p>
+                      <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">Within 1 business day</p>
                     </div>
                   </div>
                 </div>
@@ -289,8 +289,8 @@ export default async function TeamPage(props: { searchParams?: Promise<Workspace
             })}
           </div>
           <div className="mt-4 border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-            <p className="font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-dim)]">GENERAL CONTACT</p>
-            <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">
+            <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">GENERAL CONTACT</p>
+            <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">
               For general queries:{" "}
               <a href="mailto:hello@vazgro.com" className="text-[var(--portal-accent)] hover:opacity-80">hello@vazgro.com</a>
             </p>

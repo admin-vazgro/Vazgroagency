@@ -73,28 +73,28 @@ export default function ProgrizeCase() {
 
       {/* ── Hero ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[100px] border-b border-[#1D1D1D]">
-        <Link href="/work" className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[2px] no-underline hover:text-[#D6E264] transition-colors mb-8 inline-flex items-center gap-2">
+        <Link href="/work" className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[2px] no-underline hover:text-[#D6E264] transition-colors mb-8 inline-flex items-center gap-2">
           ← BACK TO ALL WORK
         </Link>
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           <div className="flex-1">
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="font-ibm-mono text-[10px] font-normal text-[#D6E264] border border-[#D6E264] px-3 py-1 tracking-[2px]">
+              <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] border border-[#D6E264] px-3 py-1 tracking-[2px]">
                 [PRODUCT BUILD]
               </span>
-              <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[2px]">2024</span>
-              <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[2px]">// BUILD SERVICE</span>
+              <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">2024</span>
+              <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">// BUILD SERVICE</span>
             </div>
             <h1 className="font-grotesk text-[56px] md:text-[96px] font-normal text-[#F5F5F0] tracking-[-4px] leading-none mb-6">
               PROGRIZE
             </h1>
-            <p className="font-ibm-mono text-[13px] text-[#FFFFFF] tracking-[1px] leading-[1.7] max-w-[540px] mb-8">
+            <p className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.7] max-w-[540px] mb-8">
               A multi-surface career platform combining mobile-first job discovery, desktop-optimised career research, and an embedded AI interview prep layer. Built from concept to delivery in 5 weeks.
             </p>
             <div className="flex flex-wrap gap-[2px]">
               {["UX DESIGN", "MOBILE APP", "WEB PLATFORM", "AI INTEGRATION", "DESIGN SYSTEM"].map((t) => (
-                <span key={t} className="font-ibm-mono text-[9px] tracking-[1px] md:tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
+                <span key={t} className="font-ibm-mono text-[14px] tracking-[1px] md:tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
                   {t}
                 </span>
               ))}
@@ -106,7 +106,7 @@ export default function ProgrizeCase() {
             {metrics.map((m) => (
               <div key={m.label} className="flex flex-col gap-2 p-6 bg-[#111111] border border-[#2D2D2D]">
                 <span className="font-grotesk text-[40px] font-normal text-[#D6E264] tracking-[-2px] leading-none">{m.value}</span>
-                <span className="font-ibm-mono text-[9px] font-normal text-[#AAAAAA] tracking-[2px]">{m.label}</span>
+                <span className="font-ibm-mono text-[14px] font-normal text-[#AAAAAA] tracking-[2px]">{m.label}</span>
               </div>
             ))}
           </div>
@@ -126,7 +126,7 @@ export default function ProgrizeCase() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/60 to-transparent" />
           <div className="absolute bottom-6 left-8">
-            <span className="font-ibm-mono text-[10px] font-normal text-[#D6E264] tracking-[2px]">// PROGRIZE APP — MOBILE SURFACE</span>
+            <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[2px]">// PROGRIZE APP — MOBILE SURFACE</span>
           </div>
         </div>
       </section>
@@ -134,13 +134,13 @@ export default function ProgrizeCase() {
       {/* ── Challenge ── */}
       <section className="flex flex-col lg:flex-row gap-12 w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
         <div className="w-full lg:w-[200px] shrink-0">
-          <span className="font-ibm-mono text-[10px] font-normal text-[#D6E264] tracking-[3px]">// THE CHALLENGE</span>
+          <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">// THE CHALLENGE</span>
         </div>
         <div className="flex-1 max-w-[720px]">
           <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#F5F5F0] tracking-[-2px] leading-[1.05] mb-6">
             JOB PLATFORMS ARE BROKEN.<br />WE NEEDED TO FIX THEM.
           </h2>
-          <div className="space-y-4 font-ibm-mono text-[13px] text-[#FFFFFF] tracking-[0.5px] leading-[1.8]">
+          <div className="space-y-4 font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[0.5px] leading-[1.8]">
             <p>
               The founder of Progrize came to Vazgro with a clear problem statement: every existing job platform is either a spammy feed or an overwhelming database. Neither helps candidates actually grow their careers.
             </p>
@@ -156,17 +156,17 @@ export default function ProgrizeCase() {
 
       {/* ── User Research ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] bg-[#0D0D0D] border-t border-b border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#D6E264] tracking-[3px] mb-8">// USER RESEARCH FINDINGS</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-8">// USER RESEARCH FINDINGS</span>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[2px]">
           {researchInsights.map((r) => (
             <div key={r.stat} className="flex flex-col gap-4 p-8 bg-[#111111] border border-[#2D2D2D]">
               <span className="font-grotesk text-[56px] font-normal text-[#D6E264] tracking-[-3px] leading-none">{r.stat}</span>
-              <p className="font-ibm-mono text-[12px] text-[#FFFFFF] tracking-[0.5px] leading-[1.7]">{r.insight}</p>
+              <p className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[0.5px] leading-[1.7]">{r.insight}</p>
             </div>
           ))}
         </div>
         <div className="mt-6 p-6 bg-[#111111] border border-[#2D2D2D]">
-          <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px]">
+          <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">
             RESEARCH METHOD // 40 interviews with job seekers aged 22–35 across the UK and India · Usability testing on 3 prototype iterations · Competitive audit of 8 platforms
           </p>
         </div>
@@ -174,20 +174,20 @@ export default function ProgrizeCase() {
 
       {/* ── Design phases ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[100px]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#D6E264] tracking-[3px] mb-12">// DESIGN & BUILD PROCESS</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-12">// DESIGN & BUILD PROCESS</span>
         <div className="flex flex-col gap-[2px]">
           {phases.map((phase) => (
             <div key={phase.num} className="flex flex-col lg:flex-row gap-8 p-8 md:p-[48px] bg-[#0F0F0F] border border-[#2D2D2D]">
               <div className="flex flex-col gap-2 w-full lg:w-[180px] shrink-0">
                 <span className="font-grotesk text-[48px] font-normal text-[#D6E264] tracking-[-3px] leading-none">{phase.num}</span>
-                <span className="font-ibm-mono text-[9px] text-[#999999] tracking-[2px]">{phase.duration}</span>
+                <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">{phase.duration}</span>
               </div>
               <div className="flex-1">
                 <h3 className="font-grotesk text-[22px] md:text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] mb-4">{phase.title}</h3>
-                <p className="font-ibm-mono text-[12px] text-[#CCCCCC] tracking-[0.5px] leading-[1.8] mb-6">{phase.body}</p>
+                <p className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.8] mb-6">{phase.body}</p>
                 <div className="flex flex-wrap gap-[2px]">
                   {phase.deliverables.map((d) => (
-                    <span key={d} className="font-ibm-mono text-[9px] text-[#AAAAAA] tracking-[1px] bg-[#1A1A1A] border border-[#2D2D2D] px-3 py-1.5">
+                    <span key={d} className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] bg-[#1A1A1A] border border-[#2D2D2D] px-3 py-1.5">
                       ✓ {d}
                     </span>
                   ))}
@@ -210,14 +210,14 @@ export default function ProgrizeCase() {
             <Image src="/websiteprogrize.svg" alt="Progrize Web" fill className="object-cover" sizes="50vw" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
             <div className="absolute bottom-4 left-4">
-              <span className="font-ibm-mono text-[9px] font-normal text-[#D6E264] tracking-[2px]">// WEB PLATFORM</span>
+              <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[2px]">// WEB PLATFORM</span>
             </div>
           </div>
           <div className="relative overflow-hidden bg-[#111] border border-[#2D2D2D]" style={{ aspectRatio: "16/9" }}>
             <Image src="/progrizelearn.svg" alt="Progrize Learn" fill className="object-cover" sizes="50vw" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
             <div className="absolute bottom-4 left-4">
-              <span className="font-ibm-mono text-[9px] font-normal text-[#FF6B35] tracking-[2px]">// LEARN LAYER</span>
+              <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] tracking-[2px]">// LEARN LAYER</span>
             </div>
           </div>
         </div>
@@ -236,7 +236,7 @@ export default function ProgrizeCase() {
             </div>
             <div>
               <div className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[0.5px]">GEORGE A.</div>
-              <div className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[2px]">FOUNDER, PROGRIZE</div>
+              <div className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[2px]">FOUNDER, PROGRIZE</div>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@ export default function ProgrizeCase() {
 
       {/* ── Outcomes ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#D6E264] tracking-[3px] mb-8">// OUTCOMES</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-8">// OUTCOMES</span>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
           {[
             { title: "DELIVERED ON TIME", body: "All three surfaces shipped within the 5-week window. No scope creep. No missed milestones." },
@@ -253,7 +253,7 @@ export default function ProgrizeCase() {
           ].map((o) => (
             <div key={o.title} className="flex flex-col gap-4 p-8 bg-[#111111] border border-[#2D2D2D]">
               <span className="font-grotesk text-[18px] font-normal text-[#D6E264] tracking-[0.5px]">{o.title}</span>
-              <p className="font-ibm-mono text-[12px] text-[#CCCCCC] tracking-[0.5px] leading-[1.7]">{o.body}</p>
+              <p className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.7]">{o.body}</p>
             </div>
           ))}
         </div>
@@ -261,7 +261,7 @@ export default function ProgrizeCase() {
 
       {/* ── CTA ── */}
       <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] bg-[#D6E264]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#1A1A1A] tracking-[3px] mb-4">// HAVE A SIMILAR PROJECT?</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#1A1A1A] tracking-[3px] mb-4">// HAVE A SIMILAR PROJECT?</span>
         <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-8">
           LET&apos;S BUILD YOURS.
         </h2>
@@ -270,13 +270,13 @@ export default function ProgrizeCase() {
             href="mailto:hello@vazgro.com"
             className="flex items-center justify-center h-[56px] px-10 bg-[#0A0A0A] hover:bg-[#1A1A1A] transition-colors no-underline"
           >
-            <span className="font-grotesk text-[12px] font-normal text-[#D6E264] tracking-[2px]">
+            <span className="font-grotesk text-[14px] font-normal text-[#D6E264] tracking-[2px]">
               BOOK A FREE STRATEGY CALL
             </span>
           </a>
           <Link
             href="/work"
-            className="font-ibm-mono text-[11px] font-normal text-[#1A1A1A] tracking-[2px] no-underline hover:underline"
+            className="font-ibm-mono text-[14px] font-normal text-[#1A1A1A] tracking-[2px] no-underline hover:underline"
           >
             ← VIEW ALL PROJECTS
           </Link>

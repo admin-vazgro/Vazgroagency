@@ -11,9 +11,9 @@ const rows = [
 
 function cellStyle(val: string) {
   if (val === "[✓]") return "font-normal text-[14px]";
-  if (val === "[✗]") return "text-[#CCCCCC] text-[13px]";
-  if (val === "[—]") return "text-[#999999] text-[13px]";
-  return "text-[#999999] text-[10px]";
+  if (val === "[✗]") return "text-[#CCCCCC] text-[14px]";
+  if (val === "[—]") return "text-[#999999] text-[14px]";
+  return "text-[#999999] text-[14px]";
 }
 
 function cellColor(val: string) {
@@ -35,14 +35,14 @@ export default function Comparison() {
         {/* Header */}
         <div className="flex w-full h-[56px] bg-[#111111] border-b-2 border-b-[#D6E264]">
           <div className="flex items-center w-[400px] shrink-0 px-[32px] border-r border-r-[#2D2D2D]">
-            <span className="font-grotesk text-[11px] font-normal text-[#FFFFFF] tracking-[2px]">FEATURE</span>
+            <span className="font-grotesk text-[14px] font-normal text-[#FFFFFF] tracking-[2px]">FEATURE</span>
           </div>
           <div className="flex items-center flex-1 px-[32px] bg-[#1A1A1A] border-r border-r-[#2D2D2D]">
-            <span className="font-grotesk text-[11px] font-normal text-[#D6E264] tracking-[2px]">VAZGRO</span>
+            <span className="font-grotesk text-[14px] font-normal text-[#D6E264] tracking-[2px]">VAZGRO</span>
           </div>
           {["TRAD. AGENCY", "FREELANCER", "DIY"].map((tool, i) => (
             <div key={tool} className={`flex items-center flex-1 px-[32px] ${i < 2 ? "border-r border-r-[#2D2D2D]" : ""}`}>
-              <span className="font-grotesk text-[11px] font-normal text-[#AAAAAA] tracking-[2px]">{tool}</span>
+              <span className="font-grotesk text-[14px] font-normal text-[#AAAAAA] tracking-[2px]">{tool}</span>
             </div>
           ))}
         </div>
@@ -51,7 +51,7 @@ export default function Comparison() {
         {rows.map((row, i) => (
           <div key={row.feature} className={`flex w-full h-[56px] ${i < rows.length - 1 ? "border-b border-b-[#1D1D1D]" : ""}`}>
             <div className="flex items-center w-[400px] shrink-0 px-[32px] border-r border-r-[#2D2D2D]">
-              <span className="font-ibm-mono text-[12px] text-[#CCCCCC] tracking-[1px]">{row.feature}</span>
+              <span className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[1px]">{row.feature}</span>
             </div>
             <div className="flex items-center flex-1 px-[32px] bg-[#0D0D0D] border-r border-r-[#2D2D2D]">
               <span className="font-ibm-mono tracking-[1px] text-[#D6E264] font-normal text-[14px]">{row.vz}</span>
@@ -73,10 +73,10 @@ export default function Comparison() {
             className={`flex flex-col gap-4 border border-[#1D1D1D] p-4 ${i % 2 === 0 ? "bg-[#0A0A0A]" : "bg-[#0D0D0D]"}`}
           >
             <div className="flex items-center justify-between gap-4">
-              <span className="font-ibm-mono text-[10px] text-[#CCCCCC] tracking-[1px] leading-[1.5]">
+              <span className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[1px] leading-[1.5]">
                 {row.feature}
               </span>
-              <span className="font-ibm-mono text-[10px] text-[#D6E264] tracking-[1.5px] shrink-0">
+              <span className="font-ibm-mono text-[14px] text-[#D6E264] tracking-[1.5px] shrink-0">
                 VAZGRO {row.vz}
               </span>
             </div>
@@ -90,7 +90,7 @@ export default function Comparison() {
                   <span className="font-grotesk text-[8px] font-normal text-[#AAAAAA] tracking-[1px]">
                     {item.label}
                   </span>
-                  <span className={`font-ibm-mono text-[12px] ${cellColor(item.value)}`}>{item.value}</span>
+                  <span className={`font-ibm-mono text-[14px] ${cellColor(item.value)}`}>{item.value}</span>
                 </div>
               ))}
             </div>

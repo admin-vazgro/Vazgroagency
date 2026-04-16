@@ -20,16 +20,16 @@ function TestimonialCard({
       className="flex flex-col gap-6 p-8 lg:p-[40px] border-l-4 w-full lg:flex-1"
       style={{ backgroundColor: bgColor, borderLeftColor: accentColor }}
     >
-      <p className="font-ibm-mono text-[13px] text-[#CCCCCC] tracking-[1px] leading-[1.6]">
+      <p className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[1px] leading-[1.6]">
         &ldquo;{quote}&rdquo;
       </p>
       <div className="flex items-center gap-[12px]">
         <div className="w-[36px] h-[36px] rounded-full bg-[#333333] shrink-0" />
         <div className="flex flex-col gap-[2px]">
-          <span className="font-grotesk text-[13px] font-normal text-[#F5F5F0] tracking-[1px]">
+          <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[1px]">
             {name}
           </span>
-          <span className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px]">
+          <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">
             {role}
           </span>
         </div>

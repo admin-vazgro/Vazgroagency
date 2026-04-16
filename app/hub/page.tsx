@@ -121,18 +121,18 @@ export default async function HubDashboard() {
     <div className="p-8">
       {/* Header */}
       <div className="mb-8 border-b border-[var(--portal-border)] pb-6">
-        <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// INTERNAL HUB</span>
+        <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[3px]">// INTERNAL HUB</span>
         <h1 className="font-grotesk text-[32px] font-bold text-[var(--portal-text)] tracking-[-1px] mt-1">Command Centre</h1>
-        <p className="font-ibm-mono text-[12px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">{formattedDate}</p>
+        <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">{formattedDate}</p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4 mb-8">
         {stats.map(({ label, value, delta, color }) => (
           <div key={label} className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">{label.toUpperCase()}</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">{label.toUpperCase()}</p>
             <p className="font-grotesk text-[28px] font-bold" style={{ color }}>{value}</p>
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-1">{delta}</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-1">{delta}</p>
           </div>
         ))}
       </div>
@@ -142,13 +142,13 @@ export default async function HubDashboard() {
         <div>
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] mb-6">
             <div className="px-6 py-4 border-b border-[var(--portal-border)] flex items-center justify-between">
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px]">RECENT LEADS</span>
-              <Link href="/hub/leads" className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">VIEW ALL →</Link>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px]">RECENT LEADS</span>
+              <Link href="/hub/leads" className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">VIEW ALL →</Link>
             </div>
             <div>
               <div className="grid grid-cols-[80px_1fr_80px_120px_100px_60px] gap-4 px-5 py-3 border-b border-[var(--portal-border)]">
                 {["ID", "Company", "Pillar", "Stage", "Source", "Days"].map((h) => (
-                  <span key={h} className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] tracking-[2px]">{h}</span>
+                  <span key={h} className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] tracking-[2px]">{h}</span>
                 ))}
               </div>
               {recentLeads.length ? recentLeads.map((lead) => (
@@ -156,27 +156,27 @@ export default async function HubDashboard() {
                   key={lead.id}
                   className="grid grid-cols-[80px_1fr_80px_120px_100px_60px] gap-4 px-5 py-3.5 border-b border-[var(--portal-border)]"
                 >
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{lead.id.slice(0, 8)}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{lead.id.slice(0, 8)}</span>
                   <div>
-                    <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)] font-bold">{lead.company || "—"}</p>
-                    <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                    <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] font-bold">{lead.company || "—"}</p>
+                    <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                       {[lead.first_name, lead.last_name].filter(Boolean).join(" ")}
                     </p>
                   </div>
                   <span
-                    className="font-ibm-mono text-[10px]"
+                    className="font-ibm-mono text-[14px]"
                     style={{ color: lead.pillar ? pillarColors[lead.pillar] : "var(--portal-text-muted)" }}
                   >
                     {lead.pillar || "—"}
                   </span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{formatStage(lead.stage)}</span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{lead.source || "—"}</span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{daysSince(lead.created_at)}d</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{formatStage(lead.stage)}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{lead.source || "—"}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{daysSince(lead.created_at)}d</span>
                 </div>
               )) : (
                 <div className="px-5 py-12">
-                  <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No lead data yet.</p>
-                  <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-2">Leads will appear here once they exist in the system.</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No lead data yet.</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-2">Leads will appear here once they exist in the system.</p>
                 </div>
               )}
             </div>
@@ -194,8 +194,8 @@ export default async function HubDashboard() {
                 href={href}
                 className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-4 hover:border-[var(--portal-accent)] transition-colors group"
               >
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)] group-hover:text-[var(--portal-accent)] transition-colors">+ {label}</p>
-                <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-1">{desc}</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] group-hover:text-[var(--portal-accent)] transition-colors">+ {label}</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-1">{desc}</p>
               </Link>
             ))}
           </div>
@@ -204,17 +204,17 @@ export default async function HubDashboard() {
         {/* Right — activity feed */}
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
           <div className="px-5 py-4 border-b border-[var(--portal-border)]">
-            <span className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px]">RECENT ACTIVITY</span>
+            <span className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px]">RECENT ACTIVITY</span>
           </div>
           <div className="divide-y divide-[var(--portal-border)]">
             {recentActivity.length ? recentActivity.map((a, i) => (
               <div key={i} className="px-5 py-3.5">
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)] leading-[1.5]">{a.text}</p>
-                <p className="font-ibm-mono text-[10px] text-[var(--portal-text-faint)] mt-1">{a.time}</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] leading-[1.5]">{a.text}</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-faint)] mt-1">{a.time}</p>
               </div>
             )) : (
               <div className="px-5 py-12">
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No activity recorded yet.</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No activity recorded yet.</p>
               </div>
             )}
           </div>

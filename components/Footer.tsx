@@ -34,7 +34,7 @@ const getStartedLinks: FooterLink[] = [
 ];
 
 function FooterNavLink({ link }: { link: FooterLink }) {
-  const className = `font-ibm-mono text-[12px] tracking-[1px] transition-colors no-underline ${
+  const className = `font-ibm-mono text-[14px] tracking-[1px] transition-colors no-underline ${
     link.accent
       ? "text-[#D6E264] hover:text-[#e6c200]"
       : "text-[#FFFFFF] hover:text-[#CCCCCC]"
@@ -73,7 +73,7 @@ export default function Footer() {
               VAZGRO
             </span>
           </Link>
-          <p className="font-ibm-mono text-[11px] text-[#FFFFFF] tracking-[1px] leading-[1.6] max-w-[260px]">
+          <p className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.6] max-w-[260px]">
             UK DIGITAL AGENCY — WEB DESIGN, MARKETING &amp; AI FOR GROWING BUSINESSES. LONDON, UK.
           </p>
           <div className="flex flex-wrap gap-[12px]">
@@ -91,7 +91,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-[36px] h-[36px] bg-[#111111] border border-[#2D2D2D] hover:border-[#888888] transition-colors no-underline"
               >
-                <span className="font-grotesk text-[10px] font-normal text-[#AAAAAA]">
+                <span className="font-grotesk text-[14px] font-normal text-[#AAAAAA]">
                   {social.label}
                 </span>
               </a>
@@ -106,7 +106,7 @@ export default function Footer() {
             { heading: "RESOURCES", links: resourceLinks },
           ].map((column) => (
             <div key={column.heading} className="flex flex-col gap-4 md:gap-[20px]">
-              <span className="font-grotesk text-[11px] font-normal text-[#F5F5F0] tracking-[2px]">
+              <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[2px]">
                 {column.heading}
               </span>
               {column.links.map((link) => (
@@ -116,7 +116,7 @@ export default function Footer() {
           ))}
 
           <div className="flex flex-col gap-4 md:gap-[20px] col-span-2 md:col-span-1">
-            <span className="font-grotesk text-[11px] font-normal text-[#F5F5F0] tracking-[2px]">
+            <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[2px]">
               GET STARTED
             </span>
             {getStartedLinks.map((link) => (
@@ -127,17 +127,17 @@ export default function Footer() {
       </div>
 
       <div className="flex flex-col items-start justify-between gap-3 border-t border-t-[#1D1D1D] px-6 py-4 sm:flex-row sm:items-center sm:gap-0 md:px-8 lg:px-[120px] md:h-[56px]">
-        <span className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px]">
+        <span className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px]">
           © 2026 VAZGRO LTD · REGISTERED IN ENGLAND &amp; WALES · LONDON, UK
         </span>
         <div className="flex flex-wrap items-center gap-4 md:gap-[32px]">
-          <Link href="/privacy" className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors no-underline">
+          <Link href="/privacy" className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors no-underline">
             PRIVACY
           </Link>
-          <Link href="/terms" className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors no-underline">
+          <Link href="/terms" className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] hover:text-[#AAAAAA] transition-colors no-underline">
             TERMS
           </Link>
-          <Link href="/" className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[1px] no-underline">
+          <Link href="/" className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[1px] no-underline">
             VAZGRO.COM
           </Link>
         </div>

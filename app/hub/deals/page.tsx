@@ -102,34 +102,34 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
   return (
     <div className="p-8">
       <div className="mb-6 border-b border-[var(--portal-border)] pb-6">
-        <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// SALES</span>
+        <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[3px]">// SALES</span>
         <h1 className="font-grotesk text-[32px] font-normal text-[var(--portal-text)] tracking-[-1px] mt-1">Deal Pipeline</h1>
-        <p className="font-ibm-mono text-[12px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">{allDeals.length} deals total</p>
+        <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">{allDeals.length} deals total</p>
       </div>
 
       {/* Summary KPIs */}
       <div className="grid grid-cols-2 gap-4 mb-6 lg:grid-cols-4">
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-          <p className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">PIPELINE VALUE</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">PIPELINE VALUE</p>
           <p className="font-grotesk text-[26px] font-normal text-[var(--portal-accent)]">£{pipelineValue.toLocaleString()}</p>
-          <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{openDeals.length} open deals</p>
+          <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{openDeals.length} open deals</p>
         </div>
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-          <p className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">WEIGHTED VALUE</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">WEIGHTED VALUE</p>
           <p className="font-grotesk text-[26px] font-normal text-[var(--portal-text)]">£{Math.round(weightedValue).toLocaleString()}</p>
-          <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">probability-adjusted</p>
+          <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">probability-adjusted</p>
         </div>
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-          <p className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">CLOSED WON</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">CLOSED WON</p>
           <p className="font-grotesk text-[26px] font-normal text-[var(--portal-accent)]">£{wonValue.toLocaleString()}</p>
-          <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{closedWon.length} deals closed</p>
+          <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{closedWon.length} deals closed</p>
         </div>
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-          <p className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">AVG DEAL SIZE</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">AVG DEAL SIZE</p>
           <p className="font-grotesk text-[26px] font-normal text-[var(--portal-text)]">
             £{closedWon.length ? Math.round(wonValue / closedWon.length).toLocaleString() : "—"}
           </p>
-          <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">closed won avg</p>
+          <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">closed won avg</p>
         </div>
       </div>
 
@@ -140,7 +140,7 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
             <Link
               key={p}
               href={`/hub/deals?pillar=${p}&view=${view}`}
-              className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors border-r border-[var(--portal-border)] last:border-r-0"
+              className="px-4 py-2 font-ibm-mono text-[14px] tracking-[1px] transition-colors border-r border-[var(--portal-border)] last:border-r-0"
               style={{
                 background: pillarFilter === p ? "var(--portal-active-bg)" : "var(--portal-surface-alt)",
                 color: pillarFilter === p ? "var(--portal-accent)" : "var(--portal-text-muted)",
@@ -155,7 +155,7 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
             <Link
               key={v}
               href={`/hub/deals?pillar=${pillarFilter}&view=${v}`}
-              className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors border-r border-[var(--portal-border)] last:border-r-0"
+              className="px-4 py-2 font-ibm-mono text-[14px] tracking-[1px] transition-colors border-r border-[var(--portal-border)] last:border-r-0"
               style={{
                 background: view === v ? "var(--portal-active-bg)" : "var(--portal-surface-alt)",
                 color: view === v ? "var(--portal-accent)" : "var(--portal-text-muted)",
@@ -176,10 +176,10 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
             return (
               <div key={stage} className="flex-shrink-0 w-[280px]">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="font-ibm-mono text-[10px] tracking-[1.5px]" style={{ color: stageHeaderColors[stage] }}>
+                  <span className="font-ibm-mono text-[14px] tracking-[1.5px]" style={{ color: stageHeaderColors[stage] }}>
                     {STAGE_LABELS[stage].toUpperCase()}
                   </span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                     {stageDeals.length} · £{stageValue.toLocaleString()}
                   </span>
                 </div>
@@ -190,33 +190,33 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
                       className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-4 hover:border-[var(--portal-accent)] transition-colors cursor-pointer"
                     >
                       <div className="mb-2 flex items-start justify-between gap-2">
-                        <span className="font-ibm-mono text-[9px] tracking-[1px]" style={{ color: pillarColors[deal.pillar] }}>{deal.pillar}</span>
-                        <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">{daysSince(deal.last_activity_at || deal.created_at)}d</span>
+                        <span className="font-ibm-mono text-[14px] tracking-[1px]" style={{ color: pillarColors[deal.pillar] }}>{deal.pillar}</span>
+                        <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{daysSince(deal.last_activity_at || deal.created_at)}d</span>
                       </div>
-                      <p className="font-ibm-mono text-[11px] text-[var(--portal-text)] leading-tight">{deal.title}</p>
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text)] leading-tight">{deal.title}</p>
                       {deal.account_id && accountsMap.get(deal.account_id) && (
-                        <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{accountsMap.get(deal.account_id)}</p>
+                        <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{accountsMap.get(deal.account_id)}</p>
                       )}
                       <div className="mt-3 flex items-center justify-between">
                         <span className="font-grotesk text-[14px] font-normal text-[var(--portal-accent)]">
                           £{toNumber(deal.value_gbp).toLocaleString()}
                         </span>
                         {deal.expected_close_date && (
-                          <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">
+                          <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                             {new Date(deal.expected_close_date).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
                           </span>
                         )}
                       </div>
                       {stage === "closed_won" && !deal.stripe_payment_id && (
                         <div className="mt-2 border border-[var(--portal-warning)] px-2 py-1">
-                          <p className="font-ibm-mono text-[9px] text-[var(--portal-warning)]">⚠ No payment ID linked</p>
+                          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">⚠ No payment ID linked</p>
                         </div>
                       )}
                     </div>
                   ))}
                   {stageDeals.length === 0 && (
                     <div className="border border-dashed border-[var(--portal-border)] p-6">
-                      <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">No deals</p>
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">No deals</p>
                     </div>
                   )}
                 </div>
@@ -227,17 +227,17 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
           {/* Closed Lost column */}
           <div className="flex-shrink-0 w-[200px] opacity-50">
             <div className="mb-3">
-              <span className="font-ibm-mono text-[10px] tracking-[1.5px] text-[var(--portal-text-dim)]">CLOSED LOST</span>
+              <span className="font-ibm-mono text-[14px] tracking-[1.5px] text-[var(--portal-text-dim)]">CLOSED LOST</span>
             </div>
             <div className="flex flex-col gap-2">
               {dealsByStage.closed_lost.slice(0, 5).map((deal) => (
                 <div key={deal.id} className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-3">
-                  <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] line-clamp-2">{deal.title}</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">£{toNumber(deal.value_gbp).toLocaleString()}</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] line-clamp-2">{deal.title}</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">£{toNumber(deal.value_gbp).toLocaleString()}</p>
                 </div>
               ))}
               {dealsByStage.closed_lost.length > 5 && (
-                <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] px-1">+{dealsByStage.closed_lost.length - 5} more</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] px-1">+{dealsByStage.closed_lost.length - 5} more</p>
               )}
             </div>
           </div>
@@ -249,7 +249,7 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
           <div className="grid grid-cols-[1fr_80px_180px_100px_120px_100px_60px] gap-4 px-5 py-3 border-b border-[var(--portal-border)]">
             {["Deal", "Pillar", "Account", "Value", "Stage", "Close Date", "Prob."].map((h) => (
-              <span key={h} className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] tracking-[2px]">{h}</span>
+              <span key={h} className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] tracking-[2px]">{h}</span>
             ))}
           </div>
           {deals.map((deal) => {
@@ -261,23 +261,23 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
                 className="grid grid-cols-[1fr_80px_180px_100px_120px_100px_60px] gap-4 px-5 py-4 border-b border-[var(--portal-border)] hover:bg-[var(--portal-surface-alt)] transition-colors items-center"
                 style={{ opacity: lost ? 0.5 : 1 }}
               >
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{deal.title}</p>
-                <span className="font-ibm-mono text-[10px]" style={{ color: pillarColors[deal.pillar] }}>{deal.pillar}</span>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)] truncate">
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{deal.title}</p>
+                <span className="font-ibm-mono text-[14px]" style={{ color: pillarColors[deal.pillar] }}>{deal.pillar}</span>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] truncate">
                   {deal.account_id ? (accountsMap.get(deal.account_id) ?? "—") : "—"}
                 </span>
-                <span className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">£{toNumber(deal.value_gbp).toLocaleString()}</span>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">£{toNumber(deal.value_gbp).toLocaleString()}</span>
                 <span
-                  className="font-ibm-mono text-[10px]"
+                  className="font-ibm-mono text-[14px]"
                   style={{ color: won ? "var(--portal-accent)" : lost ? "var(--portal-text-dim)" : "var(--portal-text-soft)" }}
                 >
                   {STAGE_LABELS[deal.stage as Stage] ?? deal.stage}
                 </span>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">
                   {deal.expected_close_date ? new Date(deal.expected_close_date).toLocaleDateString("en-GB") : "—"}
                 </span>
                 <span
-                  className="font-ibm-mono text-[10px]"
+                  className="font-ibm-mono text-[14px]"
                   style={{ color: (STAGE_PROBS[deal.stage as Stage] ?? 0) >= 70 ? "var(--portal-accent)" : (STAGE_PROBS[deal.stage as Stage] ?? 0) >= 40 ? "var(--portal-warning)" : "var(--portal-text-dim)" }}
                 >
                   {STAGE_PROBS[deal.stage as Stage] ?? "—"}%
@@ -287,15 +287,15 @@ export default async function HubDealsPage(props: { searchParams?: Promise<HubSe
           })}
           {deals.length === 0 && (
             <div className="px-5 py-12">
-              <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No deals yet.</p>
-              <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-2">Convert leads to deals from the Leads page.</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No deals yet.</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-2">Convert leads to deals from the Leads page.</p>
             </div>
           )}
         </div>
       )}
 
       <div className="mt-4">
-        <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+        <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
           Closing a deal as Won requires a Stripe payment ID.{" "}
           <Link href="/hub/leads" className="text-[var(--portal-accent)]">Convert a lead →</Link>
         </p>

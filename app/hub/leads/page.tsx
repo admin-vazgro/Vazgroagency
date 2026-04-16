@@ -95,15 +95,15 @@ export default async function LeadsPage(props: {
     <div className="p-8">
       <div className="mb-8 flex items-end justify-between border-b border-[var(--portal-border)] pb-6">
         <div>
-          <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// LEADS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// LEADS</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Lead Pipeline</h1>
-          <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+          <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
             {leads.length} leads · {activeLeads} active
           </p>
         </div>
         <Link
           href={showNew ? "/hub/leads" : "/hub/leads?new=1"}
-          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
+          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
         >
           {showNew ? "CLOSE" : "+ ADD LEAD"}
         </Link>
@@ -111,45 +111,45 @@ export default async function LeadsPage(props: {
 
       {statusMessage ? (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       ) : null}
 
       {errorMessage || dataError ? (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
         </div>
       ) : null}
 
       {showNew ? (
         <form action={createLeadAction} className="mb-8 grid grid-cols-1 gap-4 border border-[var(--portal-border)] bg-[var(--portal-surface)] p-6 lg:grid-cols-2">
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">FIRST NAME *</label>
-            <input name="first_name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">FIRST NAME *</label>
+            <input name="first_name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">LAST NAME</label>
-            <input name="last_name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">LAST NAME</label>
+            <input name="last_name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">EMAIL *</label>
-            <input type="email" name="email" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">EMAIL *</label>
+            <input type="email" name="email" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">COMPANY</label>
-            <input name="company" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">COMPANY</label>
+            <input name="company" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">WEBSITE</label>
-            <input name="website" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">WEBSITE</label>
+            <input name="website" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">COUNTRY</label>
-            <input name="country" defaultValue="GB" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">COUNTRY</label>
+            <input name="country" defaultValue="GB" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">PILLAR</label>
-            <select name="pillar" defaultValue="" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">PILLAR</label>
+            <select name="pillar" defaultValue="" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
               <option value="">Select pillar</option>
               {pillarOptions.filter((pillar) => pillar !== "All").map((pillar) => (
                 <option key={pillar} value={pillar}>{pillar}</option>
@@ -157,30 +157,30 @@ export default async function LeadsPage(props: {
             </select>
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">STAGE</label>
-            <select name="stage" defaultValue="new" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">STAGE</label>
+            <select name="stage" defaultValue="new" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
               {stageOptions.filter((stage) => stage.value !== "All").map((stage) => (
                 <option key={stage.value} value={stage.value}>{stage.label}</option>
               ))}
             </select>
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">SOURCE</label>
-            <input name="source" placeholder="website, referral, outbound..." className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] placeholder:text-[var(--portal-text-faint)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">SOURCE</label>
+            <input name="source" placeholder="website, referral, outbound..." className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] placeholder:text-[var(--portal-text-faint)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">ESTIMATED VALUE (£)</label>
-            <input name="estimated_value_gbp" type="number" min="0" step="1" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" placeholder="e.g. 3000" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">ESTIMATED VALUE (£)</label>
+            <input name="estimated_value_gbp" type="number" min="0" step="1" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" placeholder="e.g. 3000" />
           </div>
           <div className="lg:col-span-2">
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">NOTES</label>
-            <textarea name="notes" rows={4} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">NOTES</label>
+            <textarea name="notes" rows={4} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div className="lg:col-span-2 flex gap-3">
-            <button type="submit" className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]">
+            <button type="submit" className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]">
               SAVE LEAD
             </button>
-            <Link href="/hub/leads" className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
+            <Link href="/hub/leads" className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
               CANCEL
             </Link>
           </div>
@@ -189,22 +189,22 @@ export default async function LeadsPage(props: {
 
       <form method="get" className="mb-6 flex flex-wrap items-end gap-4">
         <div className="flex flex-col gap-1.5">
-          <label className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">STAGE</label>
-          <select name="stage" defaultValue={stageFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+          <label className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">STAGE</label>
+          <select name="stage" defaultValue={stageFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
             {stageOptions.map((stage) => (
               <option key={stage.value} value={stage.value}>{stage.label.toUpperCase()}</option>
             ))}
           </select>
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">PILLAR</label>
-          <select name="pillar" defaultValue={pillarFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+          <label className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">PILLAR</label>
+          <select name="pillar" defaultValue={pillarFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
             {pillarOptions.map((pillar) => (
               <option key={pillar} value={pillar}>{pillar}</option>
             ))}
           </select>
         </div>
-        <button type="submit" className="border border-[var(--portal-border-strong)] px-4 py-2 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
+        <button type="submit" className="border border-[var(--portal-border-strong)] px-4 py-2 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
           APPLY
         </button>
       </form>
@@ -212,7 +212,7 @@ export default async function LeadsPage(props: {
       <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
         <div className="grid grid-cols-[80px_1.3fr_1fr_90px_110px_100px_110px] gap-3 border-b border-[var(--portal-border)] px-5 py-3">
           {["ID", "Company / Contact", "Email", "Pillar", "Stage", "Est. Value", "Action"].map((heading) => (
-            <span key={heading} className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">{heading}</span>
+            <span key={heading} className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">{heading}</span>
           ))}
         </div>
         {filtered.map((lead) => {
@@ -225,33 +225,33 @@ export default async function LeadsPage(props: {
                 className="grid grid-cols-[80px_1.3fr_1fr_90px_110px_100px_110px] gap-3 border-b border-[var(--portal-border)] px-5 py-4 transition-colors hover:bg-[var(--portal-surface-alt)]"
                 style={{ background: isExpanded ? "var(--portal-accent-soft)" : undefined }}
               >
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{lead.id.slice(0, 8)}</span>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{lead.id.slice(0, 8)}</span>
                 <div>
-                  <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{lead.company || "—"}</p>
-                  <p className="mt-0.5 font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{lead.company || "—"}</p>
+                  <p className="mt-0.5 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">
                     {[lead.first_name, lead.last_name].filter(Boolean).join(" ")}
                   </p>
                 </div>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)] self-center">{lead.email}</span>
-                <span className="font-ibm-mono text-[10px] self-center" style={{ color: lead.pillar ? pillarColors[lead.pillar] : "var(--portal-text-muted)" }}>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] self-center">{lead.email}</span>
+                <span className="font-ibm-mono text-[14px] self-center" style={{ color: lead.pillar ? pillarColors[lead.pillar] : "var(--portal-text-muted)" }}>
                   {lead.pillar || "—"}
                 </span>
                 <div className="self-center">
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{formatStage(lead.stage)}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{formatStage(lead.stage)}</span>
                   {!isClosedWon && (
-                    <p className="font-ibm-mono text-[9px]" style={{ color: slaText === "Overdue" ? "var(--portal-warning)" : "var(--portal-text-dim)" }}>
+                    <p className="font-ibm-mono text-[14px]" style={{ color: slaText === "Overdue" ? "var(--portal-warning)" : "var(--portal-text-dim)" }}>
                       {slaText}
                     </p>
                   )}
                 </div>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)] self-center">
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] self-center">
                   {lead.estimated_value_gbp ? `£${Number(lead.estimated_value_gbp).toLocaleString()}` : "—"}
                 </span>
                 <div className="self-center">
                   {isClosedWon ? (
                     <Link
                       href={isExpanded ? `/hub/leads?stage=${stageFilter}&pillar=${pillarFilter}` : `/hub/leads?stage=${stageFilter}&pillar=${pillarFilter}&convert=${lead.id}`}
-                      className="font-ibm-mono text-[9px] tracking-[1px] border px-2 py-1 transition-colors"
+                      className="font-ibm-mono text-[14px] tracking-[1px] border px-2 py-1 transition-colors"
                       style={{
                         borderColor: isExpanded ? "var(--portal-border)" : "var(--portal-accent)",
                         color: isExpanded ? "var(--portal-text-dim)" : "var(--portal-accent)",
@@ -260,7 +260,7 @@ export default async function LeadsPage(props: {
                       {isExpanded ? "CANCEL" : "→ DEAL"}
                     </Link>
                   ) : (
-                    <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">—</span>
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">—</span>
                   )}
                 </div>
               </div>
@@ -268,41 +268,41 @@ export default async function LeadsPage(props: {
               {/* Convert to Deal inline form */}
               {isExpanded && (
                 <div className="border-b border-[var(--portal-border)] bg-[var(--portal-accent-soft)] px-5 py-5">
-                  <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent)] mb-4">CONVERT TO DEAL</p>
+                  <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent)] mb-4">CONVERT TO DEAL</p>
                   <form action={convertLeadToDealAction} className="grid grid-cols-1 gap-3 lg:grid-cols-3">
                     <input type="hidden" name="lead_id" value={lead.id} />
                     <div>
-                      <label className="mb-1.5 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">DEAL TITLE *</label>
+                      <label className="mb-1.5 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">DEAL TITLE *</label>
                       <input
                         name="title"
                         defaultValue={lead.company ? `${lead.company} — ${lead.pillar ?? "Deal"}` : `${lead.first_name} ${lead.last_name ?? ""} — ${lead.pillar ?? "Deal"}`}
-                        className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none"
+                        className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none"
                         required
                       />
                     </div>
                     <div>
-                      <label className="mb-1.5 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">PILLAR</label>
-                      <select name="pillar" defaultValue={lead.pillar ?? "LAUNCH"} className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+                      <label className="mb-1.5 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">PILLAR</label>
+                      <select name="pillar" defaultValue={lead.pillar ?? "LAUNCH"} className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
                         <option value="LAUNCH">LAUNCH</option>
                         <option value="GROW">GROW</option>
                         <option value="BUILD">BUILD</option>
                       </select>
                     </div>
                     <div>
-                      <label className="mb-1.5 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">DEAL VALUE (£)</label>
+                      <label className="mb-1.5 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">DEAL VALUE (£)</label>
                       <input
                         name="value_gbp"
                         type="number"
                         min="0"
                         step="1"
                         defaultValue={lead.estimated_value_gbp ?? ""}
-                        className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none"
+                        className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none"
                         placeholder="e.g. 3000"
                       />
                     </div>
                     <div>
-                      <label className="mb-1.5 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">LINK TO ACCOUNT</label>
-                      <select name="account_id" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+                      <label className="mb-1.5 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">LINK TO ACCOUNT</label>
+                      <select name="account_id" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-3 py-2.5 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
                         <option value="">No account yet</option>
                         {accounts.map((acc) => (
                           <option key={acc.id} value={acc.id}>{acc.name}</option>
@@ -310,7 +310,7 @@ export default async function LeadsPage(props: {
                       </select>
                     </div>
                     <div className="lg:col-span-2 flex items-end">
-                      <button type="submit" className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] hover:bg-[var(--portal-accent-hover)] transition-colors">
+                      <button type="submit" className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] hover:bg-[var(--portal-accent-hover)] transition-colors">
                         CREATE DEAL →
                       </button>
                     </div>
@@ -322,8 +322,8 @@ export default async function LeadsPage(props: {
         })}
         {!filtered.length ? (
           <div className="px-5 py-12">
-            <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No leads yet.</p>
-            <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Use the add lead action to create your first live record.</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No leads yet.</p>
+            <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Use the add lead action to create your first live record.</p>
           </div>
         ) : null}
       </div>

@@ -82,9 +82,9 @@ export default async function RequestsPage(props: {
     <div className="p-8">
       <div className="mb-8 flex items-end justify-between border-b border-[var(--portal-border)] pb-6">
         <div>
-          <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// REQUESTS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// REQUESTS</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Requests</h1>
-          <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+          <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
             {requests.length} total · {openCount} in progress
           </p>
         </div>
@@ -92,14 +92,14 @@ export default async function RequestsPage(props: {
 
       {dataError && (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{dataError}</p>
         </div>
       )}
 
       {!accountId && !dataError && (
         <div className="border border-dashed border-[var(--portal-border-strong)] p-8">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No account linked yet.</p>
-          <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No account linked yet.</p>
+          <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
             Your Vazgro team will link your account and you'll be able to submit requests.
           </p>
         </div>

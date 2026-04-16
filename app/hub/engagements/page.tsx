@@ -103,16 +103,16 @@ export default async function HubEngagementsPage(props: {
     <div className="p-8">
       <div className="mb-8 flex items-end justify-between border-b border-[var(--portal-border)] pb-6">
         <div>
-          <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// ENGAGEMENTS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// ENGAGEMENTS</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">All Engagements</h1>
-          <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+          <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
             {engagements.filter((engagement) => engagement.status !== "completed" && engagement.status !== "cancelled").length} active ·{" "}
             {engagements.filter((engagement) => engagement.status === "completed").length} completed
           </p>
         </div>
         <Link
           href={showNew ? "/hub/engagements" : "/hub/engagements?new=1"}
-          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
+          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
         >
           {showNew ? "CLOSE" : "+ NEW ENGAGEMENT"}
         </Link>
@@ -120,48 +120,48 @@ export default async function HubEngagementsPage(props: {
 
       {statusMessage ? (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       ) : null}
 
       {errorMessage || dataError ? (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
         </div>
       ) : null}
 
       {showNew ? (
         <form action={createEngagementAction} className="mb-8 grid grid-cols-1 gap-4 border border-[var(--portal-border)] bg-[var(--portal-surface)] p-6 lg:grid-cols-2">
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">TITLE *</label>
-            <input name="title" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">TITLE *</label>
+            <input name="title" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">PILLAR *</label>
-            <select name="pillar" defaultValue="LAUNCH" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">PILLAR *</label>
+            <select name="pillar" defaultValue="LAUNCH" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
               <option value="LAUNCH">LAUNCH</option>
               <option value="GROW">GROW</option>
               <option value="BUILD">BUILD</option>
             </select>
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">ACCOUNT *</label>
-            <select name="account_id" required defaultValue="" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">ACCOUNT *</label>
+            <select name="account_id" required defaultValue="" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
               <option value="" disabled>Select account</option>
               {accounts.map((account) => (
                 <option key={account.id} value={account.id}>{account.name}</option>
               ))}
             </select>
             {!accounts.length ? (
-              <p className="mt-1.5 font-ibm-mono text-[10px] text-[var(--portal-warning)]">
+              <p className="mt-1.5 font-ibm-mono text-[14px] text-[var(--portal-warning)]">
                 No accounts yet —{" "}
                 <a href="/hub/accounts?new=1" className="underline">create one first</a>.
               </p>
             ) : null}
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">STATUS</label>
-            <select name="status" defaultValue="active" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">STATUS</label>
+            <select name="status" defaultValue="active" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
               <option value="active">ACTIVE</option>
               <option value="paused">PAUSED</option>
               <option value="completed">COMPLETED</option>
@@ -169,26 +169,26 @@ export default async function HubEngagementsPage(props: {
             </select>
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">START DATE</label>
-            <input type="date" name="start_date" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">START DATE</label>
+            <input type="date" name="start_date" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">END DATE</label>
-            <input type="date" name="end_date" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">END DATE</label>
+            <input type="date" name="end_date" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">MONTHLY VALUE (GBP)</label>
-            <input type="number" min="0" step="0.01" name="monthly_value_gbp" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">MONTHLY VALUE (GBP)</label>
+            <input type="number" min="0" step="0.01" name="monthly_value_gbp" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div className="lg:col-span-2">
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">BRIEF</label>
-            <textarea name="brief" rows={4} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">BRIEF</label>
+            <textarea name="brief" rows={4} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div className="lg:col-span-2 flex gap-3">
-            <button type="submit" className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]">
+            <button type="submit" className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]">
               SAVE ENGAGEMENT
             </button>
-            <Link href="/hub/engagements" className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
+            <Link href="/hub/engagements" className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
               CANCEL
             </Link>
           </div>
@@ -196,13 +196,13 @@ export default async function HubEngagementsPage(props: {
       ) : null}
 
       <form method="get" className="mb-6 flex gap-3">
-        <select name="pillar" defaultValue={pillarFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+        <select name="pillar" defaultValue={pillarFilter} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-3 py-2 font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
           <option value="All">All</option>
           <option value="LAUNCH">LAUNCH</option>
           <option value="GROW">GROW</option>
           <option value="BUILD">BUILD</option>
         </select>
-        <button type="submit" className="border border-[var(--portal-border-strong)] px-4 py-2 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
+        <button type="submit" className="border border-[var(--portal-border-strong)] px-4 py-2 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
           APPLY FILTER
         </button>
       </form>
@@ -215,39 +215,39 @@ export default async function HubEngagementsPage(props: {
             <div key={engagement.id} className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5 transition-colors hover:border-[var(--portal-border-strong)]">
               <div className="mb-4 flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="px-2 py-1 font-ibm-mono text-[9px] tracking-[2px]" style={{ background: `${pillarColors[engagement.pillar]}20`, color: pillarColors[engagement.pillar] }}>
+                  <span className="px-2 py-1 font-ibm-mono text-[14px] tracking-[2px]" style={{ background: `${pillarColors[engagement.pillar]}20`, color: pillarColors[engagement.pillar] }}>
                     {engagement.pillar}
                   </span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{engagement.id.slice(0, 8)}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{engagement.id.slice(0, 8)}</span>
                 </div>
-                <span className="px-2 py-1 font-ibm-mono text-[9px] tracking-[1px]" style={{ background: statusColor.bg, color: statusColor.text }}>
+                <span className="px-2 py-1 font-ibm-mono text-[14px] tracking-[1px]" style={{ background: statusColor.bg, color: statusColor.text }}>
                   {engagement.status.toUpperCase()}
                 </span>
               </div>
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr_160px_160px] lg:items-start">
                 <div>
                   <p className="font-grotesk text-[18px] font-normal text-[var(--portal-text)]">{engagement.title}</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{accountById.get(engagement.account_id || "") || "No account linked"}</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{accountById.get(engagement.account_id || "") || "No account linked"}</p>
                   {engagement.brief ? (
-                    <p className="mt-3 font-ibm-mono text-[10px] leading-[1.7] text-[var(--portal-text-muted)]">{engagement.brief}</p>
+                    <p className="mt-3 font-ibm-mono text-[14px] leading-[1.7] text-[var(--portal-text-muted)]">{engagement.brief}</p>
                   ) : null}
                 </div>
                 <div>
-                  <p className="font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-dim)]">PROJECT LEAD</p>
-                  <p className="mt-1 font-ibm-mono text-[11px] text-[var(--portal-text)]">{pm ? displayProfileName(pm) : "Unassigned"}</p>
+                  <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">PROJECT LEAD</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text)]">{pm ? displayProfileName(pm) : "Unassigned"}</p>
                 </div>
                 <div>
-                  <p className="font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-dim)]">TIMELINE</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text)]">
+                  <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">TIMELINE</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text)]">
                     {engagement.start_date || "TBD"} → {engagement.end_date || "TBD"}
                   </p>
                 </div>
                 <div>
-                  <p className="font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-dim)]">MONTHLY VALUE</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text)]">
+                  <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">MONTHLY VALUE</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text)]">
                     {toNumber(engagement.monthly_value_gbp) ? `£${toNumber(engagement.monthly_value_gbp).toLocaleString()}` : "—"}
                   </p>
-                  <p className="mt-3 font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{formatStatus(engagement.status)}</p>
+                  <p className="mt-3 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{formatStatus(engagement.status)}</p>
                 </div>
               </div>
             </div>
@@ -255,8 +255,8 @@ export default async function HubEngagementsPage(props: {
         })}
         {!filtered.length ? (
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-6">
-            <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No engagements yet.</p>
-            <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Create an engagement to track active delivery work.</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No engagements yet.</p>
+            <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Create an engagement to track active delivery work.</p>
           </div>
         ) : null}
       </div>

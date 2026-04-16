@@ -137,9 +137,9 @@ export default async function PartnerDealsPage(props: {
     <div className="p-8">
       <div className="mb-8 flex flex-col gap-4 border-b border-[var(--portal-border)] pb-6 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// MY DEALS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// MY DEALS</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Deals</h1>
-          <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+          <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
             {deals.length} deals in scope · {tierLabel(partner.tier, tiers)} rate card live
           </p>
         </div>
@@ -147,13 +147,13 @@ export default async function PartnerDealsPage(props: {
 
       {statusMessage ? (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       ) : null}
 
       {errorMessage ? (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage}</p>
         </div>
       ) : null}
 
@@ -163,7 +163,7 @@ export default async function PartnerDealsPage(props: {
             <Link
               key={option}
               href={`/partners/deals?view=${option}${selectedDeal ? `&deal=${selectedDeal.id}` : ""}`}
-              className="px-4 py-2 font-ibm-mono text-[10px] tracking-[2px]"
+              className="px-4 py-2 font-ibm-mono text-[14px] tracking-[2px]"
               style={{
                 background: view === option ? "var(--portal-accent)" : "var(--portal-surface-alt)",
                 color: view === option ? "var(--portal-accent-contrast)" : "var(--portal-text-soft)",
@@ -174,14 +174,14 @@ export default async function PartnerDealsPage(props: {
           ))}
         </div>
         <div className="flex flex-wrap gap-2">
-          <Link href={`/partners/deals?view=${view}`} className="border border-[var(--portal-border)] px-3 py-2 font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">
+          <Link href={`/partners/deals?view=${view}`} className="border border-[var(--portal-border)] px-3 py-2 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">
             ALL
           </Link>
           {stages.map((stage) => (
             <Link
               key={stage}
               href={`/partners/deals?view=${view}&stage=${stage}${selectedDeal ? `&deal=${selectedDeal.id}` : ""}`}
-              className="border border-[var(--portal-border)] px-3 py-2 font-ibm-mono text-[9px] tracking-[2px]"
+              className="border border-[var(--portal-border)] px-3 py-2 font-ibm-mono text-[14px] tracking-[2px]"
               style={{
                 color: stageFilter === stage ? "var(--portal-accent)" : "var(--portal-text-dim)",
                 borderColor: stageFilter === stage ? "var(--portal-accent)" : "var(--portal-border)",
@@ -200,8 +200,8 @@ export default async function PartnerDealsPage(props: {
             return (
               <div key={stage} className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
                 <div className="border-b border-[var(--portal-border)] px-4 py-3">
-                  <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">{formatStage(stage).toUpperCase()}</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{stageDeals.length} deal(s)</p>
+                  <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text)]">{formatStage(stage).toUpperCase()}</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{stageDeals.length} deal(s)</p>
                 </div>
                 <div className="space-y-3 p-4">
                   {stageDeals.map((deal) => {
@@ -212,21 +212,21 @@ export default async function PartnerDealsPage(props: {
                         href={detailHref(view, stageFilter, deal.id)}
                         className="block border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] p-3 transition-colors hover:border-[var(--portal-border-strong)]"
                       >
-                        <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{deal.title}</p>
+                        <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{deal.title}</p>
                         <div className="mt-2 flex items-center justify-between">
-                          <span className="font-ibm-mono text-[9px]" style={{ color: pillarColors[deal.pillar] ?? "var(--portal-text-soft)" }}>
+                          <span className="font-ibm-mono text-[14px]" style={{ color: pillarColors[deal.pillar] ?? "var(--portal-text-soft)" }}>
                             {deal.pillar}
                           </span>
-                          <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">{formatCurrency(deal.value_gbp)}</span>
+                          <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{formatCurrency(deal.value_gbp)}</span>
                         </div>
-                        <p className="mt-2 font-ibm-mono text-[9px] text-[var(--portal-accent)]">
+                        <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-accent)]">
                           {formatCurrency(toNumber(deal.value_gbp) * previewRate / 100)} expected
                         </p>
                       </Link>
                     );
                   })}
                   {!stageDeals.length ? (
-                    <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">No deals.</p>
+                    <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">No deals.</p>
                   ) : null}
                 </div>
               </div>
@@ -237,31 +237,31 @@ export default async function PartnerDealsPage(props: {
         <div className="mb-8 border border-[var(--portal-border)] bg-[var(--portal-surface)]">
           <div className="grid grid-cols-[1.1fr_100px_120px_120px_120px_110px] gap-4 border-b border-[var(--portal-border)] px-5 py-3">
             {["TITLE", "PILLAR", "VALUE", "STAGE", "IDLE", ""].map((heading) => (
-              <span key={heading} className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">{heading}</span>
+              <span key={heading} className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">{heading}</span>
             ))}
           </div>
           {selectedDeals.map((deal) => (
             <div key={deal.id} className="grid grid-cols-[1.1fr_100px_120px_120px_120px_110px] gap-4 border-b border-[var(--portal-border)] px-5 py-4 hover:bg-[var(--portal-surface-alt)]">
               <div>
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{deal.title}</p>
-                <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{deal.title}</p>
+                <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                   {deal.partner_id === partner.id ? "Closer commission" : "Referrer commission"}
                 </p>
               </div>
-              <span className="font-ibm-mono text-[10px]" style={{ color: pillarColors[deal.pillar] ?? "var(--portal-text-soft)" }}>
+              <span className="font-ibm-mono text-[14px]" style={{ color: pillarColors[deal.pillar] ?? "var(--portal-text-soft)" }}>
                 {deal.pillar}
               </span>
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{formatCurrency(deal.value_gbp)}</span>
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{formatStage(deal.stage)}</span>
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{formatIdleDate(deal.last_activity_at)}</span>
-              <Link href={detailHref(view, stageFilter, deal.id)} className="font-ibm-mono text-[10px] text-[var(--portal-accent)]">
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{formatCurrency(deal.value_gbp)}</span>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{formatStage(deal.stage)}</span>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{formatIdleDate(deal.last_activity_at)}</span>
+              <Link href={detailHref(view, stageFilter, deal.id)} className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">
                 OPEN →
               </Link>
             </div>
           ))}
           {!selectedDeals.length ? (
             <div className="px-5 py-12">
-              <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No deals yet.</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No deals yet.</p>
             </div>
           ) : null}
         </div>
@@ -271,23 +271,23 @@ export default async function PartnerDealsPage(props: {
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.15fr_0.85fr]">
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
             <div className="border-b border-[var(--portal-border)] px-6 py-4">
-              <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">DEAL DETAIL</p>
-              <p className="mt-1 font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">{selectedDeal.title}</p>
+              <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text)]">DEAL DETAIL</p>
+              <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{selectedDeal.title}</p>
             </div>
             <div className="grid grid-cols-1 gap-4 px-6 py-5 lg:grid-cols-3">
               <div>
-                <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">LINKED LEAD</p>
-                <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-text)]">
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">LINKED LEAD</p>
+                <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text)]">
                   {leadRef ? leadRef.company || [leadRef.first_name, leadRef.last_name].filter(Boolean).join(" ") : "No linked lead"}
                 </p>
               </div>
               <div>
-                <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">ACCOUNT</p>
-                <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-text)]">{accountRef?.name || "No account linked"}</p>
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">ACCOUNT</p>
+                <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text)]">{accountRef?.name || "No account linked"}</p>
               </div>
               <div>
-                <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">EXPECTED COMMISSION</p>
-                <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-accent)]">
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">EXPECTED COMMISSION</p>
+                <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-accent)]">
                   {formatCurrency(
                     toNumber(selectedDeal.value_gbp) *
                       (selectedDeal.partner_id === partner.id ? currentCloserRate : currentReferrerRate) /
@@ -298,23 +298,23 @@ export default async function PartnerDealsPage(props: {
             </div>
             <div className="border-t border-[var(--portal-border)] px-6 py-5">
               <div className="flex items-center justify-between">
-                <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">ACTIVITY TIMELINE</p>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{activities.length} entries</span>
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text)]">ACTIVITY TIMELINE</p>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{activities.length} entries</span>
               </div>
               <div className="mt-4 space-y-3">
                 {activities.map((activity) => (
                   <div key={activity.id} className="border border-[var(--portal-border)] bg-[var(--portal-surface-alt)] px-4 py-3">
                     <div className="flex items-center justify-between gap-3">
-                      <p className="font-ibm-mono text-[10px] text-[var(--portal-text)]">{activity.subject || activity.type}</p>
-                      <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">{new Date(activity.created_at).toLocaleString("en-GB")}</span>
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{activity.subject || activity.type}</p>
+                      <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{new Date(activity.created_at).toLocaleString("en-GB")}</span>
                     </div>
                     {activity.body ? (
-                      <p className="mt-2 font-ibm-mono text-[10px] leading-[1.6] text-[var(--portal-text-soft)]">{activity.body}</p>
+                      <p className="mt-2 font-ibm-mono text-[14px] leading-[1.6] text-[var(--portal-text-soft)]">{activity.body}</p>
                     ) : null}
                   </div>
                 ))}
                 {!activities.length ? (
-                  <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">No activity yet.</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">No activity yet.</p>
                 ) : null}
               </div>
             </div>
@@ -323,8 +323,8 @@ export default async function PartnerDealsPage(props: {
           <div className="flex flex-col gap-6">
             <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
               <div className="border-b border-[var(--portal-border)] px-6 py-4">
-                <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">UPDATE DEAL</p>
-                <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text)]">UPDATE DEAL</p>
+                <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                   Closing won requires a Stripe payment or invoice reference.
                 </p>
               </div>
@@ -332,18 +332,18 @@ export default async function PartnerDealsPage(props: {
                 <input type="hidden" name="deal_id" value={selectedDeal.id} />
                 <input type="hidden" name="redirect_to" value={detailHref(view, stageFilter, selectedDeal.id)} />
                 <div>
-                  <label className="mb-2 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">STAGE</label>
-                  <select name="stage" defaultValue={selectedDeal.stage} className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+                  <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">STAGE</label>
+                  <select name="stage" defaultValue={selectedDeal.stage} className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
                     {stages.map((stage) => (
                       <option key={stage} value={stage}>{formatStage(stage).toUpperCase()}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="mb-2 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">PAYMENT / INVOICE REFERENCE</label>
-                  <input name="payment_reference" placeholder="pi_... or invoice_..." className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+                  <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">PAYMENT / INVOICE REFERENCE</label>
+                  <input name="payment_reference" placeholder="pi_... or invoice_..." className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
                 </div>
-                <button type="submit" className="bg-[var(--portal-accent)] px-4 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)]">
+                <button type="submit" className="bg-[var(--portal-accent)] px-4 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)]">
                   SAVE STAGE
                 </button>
               </form>
@@ -351,14 +351,14 @@ export default async function PartnerDealsPage(props: {
 
             <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
               <div className="border-b border-[var(--portal-border)] px-6 py-4">
-                <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">LOG DEAL ACTIVITY</p>
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text)]">LOG DEAL ACTIVITY</p>
               </div>
               <form action={logActivityAction} className="space-y-4 p-6">
                 <input type="hidden" name="deal_id" value={selectedDeal.id} />
                 <input type="hidden" name="redirect_to" value={detailHref(view, stageFilter, selectedDeal.id)} />
                 <div>
-                  <label className="mb-2 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">TYPE</label>
-                  <select name="type" defaultValue="note" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
+                  <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">TYPE</label>
+                  <select name="type" defaultValue="note" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none">
                     <option value="note">NOTE</option>
                     <option value="call">CALL</option>
                     <option value="email">EMAIL</option>
@@ -366,14 +366,14 @@ export default async function PartnerDealsPage(props: {
                   </select>
                 </div>
                 <div>
-                  <label className="mb-2 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">SUBJECT</label>
-                  <input name="subject" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+                  <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">SUBJECT</label>
+                  <input name="subject" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
                 </div>
                 <div>
-                  <label className="mb-2 block font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">DETAIL</label>
-                  <textarea name="body" rows={5} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[11px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+                  <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">DETAIL</label>
+                  <textarea name="body" rows={5} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
                 </div>
-                <button type="submit" className="bg-[var(--portal-accent)] px-4 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)]">
+                <button type="submit" className="bg-[var(--portal-accent)] px-4 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)]">
                   LOG ENTRY
                 </button>
               </form>
@@ -382,7 +382,7 @@ export default async function PartnerDealsPage(props: {
         </div>
       ) : (
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] px-6 py-8">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No deals found.</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No deals found.</p>
         </div>
       )}
     </div>

@@ -43,7 +43,7 @@ export default function GrowPage() {
     <main className="flex flex-col w-full bg-[#0A0A0A] pt-[60px]">
       {/* Header */}
       <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[3px]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">
           // YOUR ALWAYS-ON DIGITAL TEAM
         </span>
         <div className="h-5" />
@@ -51,7 +51,7 @@ export default function GrowPage() {
           📈 GROW
         </h1>
         <div className="h-4" />
-        <p className="font-ibm-mono text-[13px] text-[#BBBBBB] tracking-[1px] leading-[1.6] max-w-[560px]">
+        <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] leading-[1.6] max-w-[560px]">
           DESIGN, DEVELOPMENT, AND MARKETING DELIVERED ON SUBSCRIPTION. FAST TURNAROUND, DEDICATED TEAM, FULL TRANSPARENCY.
         </p>
         <div className="h-10" />
@@ -67,7 +67,7 @@ export default function GrowPage() {
               <span className="font-grotesk text-[28px] md:text-[36px] font-normal text-[#D6E264] tracking-[-2px] leading-none">
                 {val}
               </span>
-              <span className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[2px]">{label}</span>
+              <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[2px]">{label}</span>
             </div>
           ))}
         </div>
@@ -81,7 +81,7 @@ export default function GrowPage() {
             <button
               key={track}
               onClick={() => setActiveTrack(track)}
-              className="font-ibm-mono text-[10px] tracking-[2px] px-5 py-2.5 border transition-colors cursor-pointer"
+              className="font-ibm-mono text-[14px] tracking-[2px] px-5 py-2.5 border transition-colors cursor-pointer"
               style={{
                 background: activeTrack === track ? trackColors[track] : "#111111",
                 color: activeTrack === track ? "#0A0A0A" : "#555",
@@ -106,7 +106,7 @@ export default function GrowPage() {
             >
               {plan.popular && (
                 <span
-                  className="absolute top-4 right-4 font-ibm-mono text-[9px] font-normal tracking-[2px] px-3 py-1"
+                  className="absolute top-4 right-4 font-ibm-mono text-[14px] font-normal tracking-[2px] px-3 py-1"
                   style={{ background: accent, color: "#0A0A0A" }}
                 >
                   POPULAR
@@ -114,30 +114,30 @@ export default function GrowPage() {
               )}
               <div className="text-[28px]">{plan.icon}</div>
               <div>
-                <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[2px]">{plan.track.toUpperCase()} TRACK</span>
+                <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">{plan.track.toUpperCase()} TRACK</span>
                 <h2 className="font-grotesk text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] leading-none mt-1">
                   {plan.name}
                 </h2>
-                <p className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[1px] mt-2">{plan.capacity}</p>
+                <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] mt-2">{plan.capacity}</p>
               </div>
 
               <div className="flex items-end gap-2">
                 <span className="font-grotesk text-[40px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none">
                   £{plan.price.toLocaleString()}
                 </span>
-                <span className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px] pb-1">/MO</span>
+                <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] pb-1">/MO</span>
               </div>
 
               <div className="flex flex-col gap-2">
                 {plan.features.map((f) => (
                   <div key={f} className="flex items-start gap-2">
-                    <span className="font-ibm-mono text-[10px] mt-0.5" style={{ color: accent }}>+</span>
-                    <span className="font-ibm-mono text-[11px] text-[#CCCCCC] tracking-[0.5px] leading-[1.5]">{f}</span>
+                    <span className="font-ibm-mono text-[14px] mt-0.5" style={{ color: accent }}>+</span>
+                    <span className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.5]">{f}</span>
                   </div>
                 ))}
               </div>
 
-              <p className="font-ibm-mono text-[10px] text-[#999999] tracking-[1px] mt-1">
+              <p className="font-ibm-mono text-[14px] text-[#999999] tracking-[1px] mt-1">
                 MIN. {plan.minMonths} MONTH COMMITMENT
               </p>
 
@@ -145,7 +145,7 @@ export default function GrowPage() {
                 href="mailto:hello@vazgro.com"
                 className="mt-auto flex items-center justify-center h-[48px] bg-[#1A1A1A] border border-[#2D2D2D] hover:border-[#D6E264] hover:bg-[#D6E264] hover:text-[#0A0A0A] transition-all no-underline group"
               >
-                <span className="font-grotesk text-[11px] font-normal text-[#F5F5F0] tracking-[2px] group-hover:text-[#0A0A0A] transition-colors">
+                <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[2px] group-hover:text-[#0A0A0A] transition-colors">
                   BOOK DISCOVERY CALL →
                 </span>
               </a>
@@ -156,7 +156,7 @@ export default function GrowPage() {
 
       {/* What's included */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[3px] mb-4">// EVERY GROW PLAN INCLUDES</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// EVERY GROW PLAN INCLUDES</span>
         <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-10">
           BUILT FOR SERIOUS<br />BUSINESSES.
         </h2>
@@ -165,7 +165,7 @@ export default function GrowPage() {
             <div key={item.t} className="flex flex-col gap-3 p-8 bg-[#0F0F0F] border border-[#2D2D2D]">
               <span className="text-[24px]">{item.ico}</span>
               <h3 className="font-grotesk text-[18px] font-normal text-[#F5F5F0] tracking-[-0.5px]">{item.t}</h3>
-              <p className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[0.5px] leading-[1.7]">{item.d}</p>
+              <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[0.5px] leading-[1.7]">{item.d}</p>
             </div>
           ))}
         </div>
@@ -173,18 +173,18 @@ export default function GrowPage() {
 
       {/* CTA */}
       <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D] bg-[#0F0F0F]">
-        <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[3px] mb-4">// READY FOR AN ALWAYS-ON TEAM?</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// READY FOR AN ALWAYS-ON TEAM?</span>
         <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-3">
           LET&apos;S MATCH YOU WITH<br />THE RIGHT PLAN.
         </h2>
-        <p className="font-ibm-mono text-[12px] text-[#AAAAAA] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
+        <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
           BOOK A FREE DISCOVERY CALL. WE&apos;LL RECOMMEND THE RIGHT TRACK AND PLAN FOR YOUR BUSINESS.
         </p>
         <a
           href="mailto:hello@vazgro.com"
           className="flex items-center justify-center h-[56px] px-10 bg-[#D6E264] hover:bg-[#c9d64f] transition-colors no-underline"
         >
-          <span className="font-grotesk text-[12px] font-normal text-[#0A0A0A] tracking-[2px]">
+          <span className="font-grotesk text-[14px] font-normal text-[#0A0A0A] tracking-[2px]">
             BOOK YOUR DISCOVERY CALL
           </span>
         </a>

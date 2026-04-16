@@ -34,9 +34,9 @@ const PILLAR_HINT: Record<string, string> = {
 };
 
 const inputClass =
-  "w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none";
+  "w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none";
 const labelClass =
-  "mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]";
+  "mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]";
 
 type Props = {
   action: (formData: FormData) => void | Promise<void>;
@@ -84,8 +84,8 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
   return (
     <form action={action} className="mb-8 border border-[var(--portal-border)] bg-[var(--portal-surface)]">
       <div className="px-6 py-4 border-b border-[var(--portal-border)]">
-        <p className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text)]">SUBMIT A NEW LEAD</p>
-        <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-1">
+        <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text)]">SUBMIT A NEW LEAD</p>
+        <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-1">
           Your closer commission: <span className="text-[var(--portal-accent)]">{closerRate}%</span> on closed value.
         </p>
       </div>
@@ -136,7 +136,7 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
             <option value="BUILD">BUILD — Custom scoped</option>
           </select>
           {pillar && (
-            <p className="mt-1.5 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+            <p className="mt-1.5 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
               {PILLAR_HINT[pillar]}
             </p>
           )}
@@ -167,9 +167,9 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
                       className="accent-[var(--portal-accent)]"
                     />
                     <div>
-                      <span className="font-ibm-mono text-[10px] text-[var(--portal-text)]">{svc.label}</span>
+                      <span className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{svc.label}</span>
                       {svc.price !== null && (
-                        <span className="ml-1.5 font-ibm-mono text-[10px] text-[var(--portal-accent)]">
+                        <span className="ml-1.5 font-ibm-mono text-[14px] text-[var(--portal-accent)]">
                           £{svc.price.toLocaleString()}
                         </span>
                       )}
@@ -200,7 +200,7 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
                   className={inputClass}
                   placeholder="e.g. 8000"
                 />
-                <p className="mt-1.5 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                <p className="mt-1.5 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                   Enter your best estimate. This helps us prioritise and size the opportunity.
                 </p>
               </>
@@ -212,7 +212,7 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
                   value={autoValue ?? ""}
                 />
                 <div
-                  className="border border-[var(--portal-border)] px-4 py-3 font-ibm-mono text-[12px]"
+                  className="border border-[var(--portal-border)] px-4 py-3 font-ibm-mono text-[14px]"
                   style={{ background: "var(--portal-surface-alt)", color: "var(--portal-text-muted)" }}
                 >
                   {autoValue ? `£${autoValue.toLocaleString()}` : "Select services above to calculate"}
@@ -224,10 +224,10 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
             {commissionPreview !== null && commissionPreview > 0 && (
               <div className="mt-3 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3 flex items-center justify-between">
                 <div>
-                  <p className="font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-accent)]">
+                  <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-accent)]">
                     YOUR COMMISSION ESTIMATE
                   </p>
-                  <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-0.5">
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-0.5">
                     {closerRate}% closer rate × £{estimatedValue.toLocaleString()} deal value
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
           <textarea
             name="notes"
             rows={4}
-            className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none"
+            className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none"
             placeholder="Background on the lead, their challenges, timeline, budget signals..."
           />
         </div>
@@ -254,13 +254,13 @@ export default function PartnerLeadForm({ action, closerRate, cancelHref }: Prop
         <div className="lg:col-span-2 flex gap-3">
           <button
             type="submit"
-            className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
+            className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
           >
             SUBMIT LEAD →
           </button>
           <a
             href={cancelHref}
-            className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]"
+            className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]"
           >
             CANCEL
           </a>

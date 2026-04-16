@@ -23,10 +23,10 @@ export default function InboxPage() {
       {/* Header */}
       <div className="px-8 py-6 border-b border-[var(--portal-border)] flex items-center justify-between shrink-0">
         <div>
-          <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// INBOX</span>
+          <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[3px]">// INBOX</span>
           <h1 className="font-grotesk text-[24px] font-bold text-[var(--portal-text)] mt-0.5">Inbox {unread > 0 && <span className="font-ibm-mono text-[14px] text-[var(--portal-warning)] ml-2">{unread}</span>}</h1>
         </div>
-        <button className="px-5 py-2 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] text-[var(--portal-accent-contrast)] tracking-[2px] transition-colors cursor-pointer border-none">
+        <button className="px-5 py-2 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[14px] text-[var(--portal-accent-contrast)] tracking-[2px] transition-colors cursor-pointer border-none">
           + COMPOSE
         </button>
       </div>
@@ -37,7 +37,7 @@ export default function InboxPage() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className="px-3 py-1.5 font-ibm-mono text-[9px] tracking-[1px] transition-colors cursor-pointer border border-[var(--portal-border)]"
+            className="px-3 py-1.5 font-ibm-mono text-[14px] tracking-[1px] transition-colors cursor-pointer border border-[var(--portal-border)]"
             style={{ background: filter === f ? "var(--portal-accent)" : "transparent", color: filter === f ? "var(--portal-accent-contrast)" : "var(--portal-text-muted)" }}
           >
             {f.toUpperCase()}
@@ -60,22 +60,22 @@ export default function InboxPage() {
               }}
             >
               <div className="flex items-start justify-between mb-1">
-                <span className="font-ibm-mono text-[11px] font-bold" style={{ color: msg.read ? "var(--portal-text-soft)" : "var(--portal-text)" }}>{msg.from}</span>
-                <span className="font-ibm-mono text-[9px] text-[var(--portal-text-faint)]">{msg.time}</span>
+                <span className="font-ibm-mono text-[14px] font-bold" style={{ color: msg.read ? "var(--portal-text-soft)" : "var(--portal-text)" }}>{msg.from}</span>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-faint)]">{msg.time}</span>
               </div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-ibm-mono text-[9px] tracking-[1px] px-1.5 py-0.5" style={{ background: typeColors[msg.type].bg, color: typeColors[msg.type].text }}>
+                <span className="font-ibm-mono text-[14px] tracking-[1px] px-1.5 py-0.5" style={{ background: typeColors[msg.type].bg, color: typeColors[msg.type].text }}>
                   {msg.type.toUpperCase()}
                 </span>
-                <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{msg.company}</span>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{msg.company}</span>
               </div>
-              <p className="font-ibm-mono text-[10px] font-bold" style={{ color: msg.read ? "var(--portal-text-muted)" : "var(--portal-text-muted)" }}>{msg.subject}</p>
-              <p className="font-ibm-mono text-[10px] text-[var(--portal-text-faint)] mt-1 leading-[1.5] line-clamp-2">{msg.preview}</p>
+              <p className="font-ibm-mono text-[14px] font-bold" style={{ color: msg.read ? "var(--portal-text-muted)" : "var(--portal-text-muted)" }}>{msg.subject}</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-faint)] mt-1 leading-[1.5] line-clamp-2">{msg.preview}</p>
               {!msg.read && <div className="w-1.5 h-1.5 rounded-full bg-[var(--portal-warning)] mt-2" />}
             </button>
           )) : (
             <div className="p-6">
-              <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No messages yet.</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No messages yet.</p>
             </div>
           )}
         </div>
@@ -87,28 +87,28 @@ export default function InboxPage() {
               <div className="border-b border-[var(--portal-border)] pb-5 mb-6">
                 <h2 className="font-grotesk text-[22px] font-bold text-[var(--portal-text)] mb-3">{selectedMsg.subject}</h2>
                 <div className="flex items-center gap-4">
-                  <span className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{selectedMsg.from}</span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{selectedMsg.company}</span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-faint)]">{selectedMsg.time}</span>
-                  <span className="font-ibm-mono text-[9px] tracking-[1px] px-2 py-0.5" style={{ background: typeColors[selectedMsg.type].bg, color: typeColors[selectedMsg.type].text }}>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{selectedMsg.from}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{selectedMsg.company}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-faint)]">{selectedMsg.time}</span>
+                  <span className="font-ibm-mono text-[14px] tracking-[1px] px-2 py-0.5" style={{ background: typeColors[selectedMsg.type].bg, color: typeColors[selectedMsg.type].text }}>
                     {selectedMsg.type.toUpperCase()}
                   </span>
                 </div>
               </div>
-              <p className="font-ibm-mono text-[13px] text-[var(--portal-text-muted)] leading-[1.8]">{selectedMsg.preview}</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] leading-[1.8]">{selectedMsg.preview}</p>
 
               {/* Reply box */}
               <div className="mt-8 border border-[var(--portal-border)] bg-[var(--portal-surface)]">
                 <div className="px-4 py-3 border-b border-[var(--portal-border)]">
-                  <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] tracking-[2px]">REPLY</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] tracking-[2px]">REPLY</span>
                 </div>
                 <textarea
                   placeholder="Write your reply..."
                   rows={5}
-                  className="w-full bg-transparent text-[var(--portal-text-muted)] font-ibm-mono text-[12px] px-4 py-3 focus:outline-none resize-none placeholder:text-[#333]"
+                  className="w-full bg-transparent text-[var(--portal-text-muted)] font-ibm-mono text-[14px] px-4 py-3 focus:outline-none resize-none placeholder:text-[#333]"
                 />
                 <div className="px-4 py-3 border-t border-[var(--portal-border)] flex justify-end">
-                  <button className="px-5 py-2 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] text-[var(--portal-accent-contrast)] tracking-[2px] transition-colors cursor-pointer border-none">
+                  <button className="px-5 py-2 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[14px] text-[var(--portal-accent-contrast)] tracking-[2px] transition-colors cursor-pointer border-none">
                     SEND →
                   </button>
                 </div>
@@ -116,7 +116,7 @@ export default function InboxPage() {
             </div>
           ) : (
             <div className="flex items-center justify-center h-full">
-              <p className="font-ibm-mono text-[12px] text-[var(--portal-text-muted)]">No message selected.</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">No message selected.</p>
             </div>
           )}
         </div>

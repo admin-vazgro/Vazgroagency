@@ -63,7 +63,7 @@ export default function PartnerProgrammePage() {
       {/* Hero */}
       <section className="border-b border-gray-200 px-8 py-20 lg:px-20">
         <div className="mx-auto max-w-[800px]">
-          <span className="font-ibm-mono text-[12px] tracking-[3px] text-gray-500">// PARTNER PROGRAMME</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-500">// PARTNER PROGRAMME</span>
           <h1 className="mt-4 font-grotesk text-[52px] font-normal tracking-[-2px] text-gray-900 leading-[1.05]">
             Earn commissions<br />bringing clients to Vazgro.
           </h1>
@@ -74,13 +74,13 @@ export default function PartnerProgrammePage() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/apply"
-              className="bg-gray-900 px-8 py-4 font-ibm-mono text-[12px] tracking-[3px] text-white hover:bg-gray-700 transition-colors"
+              className="bg-gray-900 px-8 py-4 font-ibm-mono text-[14px] tracking-[3px] text-white hover:bg-gray-700 transition-colors"
             >
               APPLY NOW →
             </Link>
             <Link
               href="/login"
-              className="border border-gray-400 px-8 py-4 font-ibm-mono text-[12px] tracking-[3px] text-gray-700 hover:text-gray-900 hover:border-gray-700 transition-colors"
+              className="border border-gray-400 px-8 py-4 font-ibm-mono text-[14px] tracking-[3px] text-gray-700 hover:text-gray-900 hover:border-gray-700 transition-colors"
             >
               PARTNER LOGIN
             </Link>
@@ -91,7 +91,7 @@ export default function PartnerProgrammePage() {
       {/* Commission tiers */}
       <section className="border-b border-gray-200 px-8 py-16 lg:px-20">
         <div className="mx-auto max-w-[900px]">
-          <span className="font-ibm-mono text-[12px] tracking-[3px] text-gray-500">// COMMISSION TIERS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-500">// COMMISSION TIERS</span>
           <h2 className="mt-3 font-grotesk text-[32px] font-normal tracking-[-0.5px] text-gray-900">
             Automatic tier upgrades based on monthly revenue.
           </h2>
@@ -102,15 +102,15 @@ export default function PartnerProgrammePage() {
           <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
             {tiers.map((t) => (
               <div key={t.tier} className="border border-gray-200 p-6">
-                <p className="font-ibm-mono text-[12px] tracking-[2px] text-gray-900 font-medium">{t.tier.toUpperCase()}</p>
-                <p className="mt-1 font-ibm-mono text-[13px] text-gray-600">{t.range}</p>
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-gray-900 font-medium">{t.tier.toUpperCase()}</p>
+                <p className="mt-1 font-ibm-mono text-[14px] text-gray-600">{t.range}</p>
                 <div className="mt-5 space-y-3">
                   <div className="flex items-baseline justify-between">
-                    <span className="font-ibm-mono text-[12px] text-gray-600">Closer rate</span>
+                    <span className="font-ibm-mono text-[14px] text-gray-600">Closer rate</span>
                     <span className="font-grotesk text-[28px] text-gray-900">{t.closer}</span>
                   </div>
                   <div className="flex items-baseline justify-between">
-                    <span className="font-ibm-mono text-[12px] text-gray-600">Referrer rate</span>
+                    <span className="font-ibm-mono text-[14px] text-gray-600">Referrer rate</span>
                     <span className="font-grotesk text-[20px] text-gray-700">{t.referrer}</span>
                   </div>
                 </div>
@@ -123,17 +123,17 @@ export default function PartnerProgrammePage() {
       {/* What you can sell */}
       <section className="border-b border-gray-200 px-8 py-16 lg:px-20">
         <div className="mx-auto max-w-[900px]">
-          <span className="font-ibm-mono text-[12px] tracking-[3px] text-gray-500">// SERVICES YOU PITCH</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-500">// SERVICES YOU PITCH</span>
           <h2 className="mt-3 font-grotesk text-[32px] font-normal tracking-[-0.5px] text-gray-900">
             Three pillars. Fixed and custom pricing.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
             {pillars.map((p) => (
               <div key={p.name} className="border border-gray-200 p-6">
-                <p className="font-ibm-mono text-[12px] tracking-[3px] text-gray-900 font-medium">{p.name}</p>
+                <p className="font-ibm-mono text-[14px] tracking-[3px] text-gray-900 font-medium">{p.name}</p>
                 <p className="mt-2 font-grotesk text-[24px] text-gray-900">{p.range}</p>
-                <p className="mt-3 font-ibm-mono text-[13px] leading-[1.8] text-gray-700">{p.description}</p>
-                <p className="mt-3 font-ibm-mono text-[12px] text-gray-500 leading-[1.7]">{p.examples}</p>
+                <p className="mt-3 font-ibm-mono text-[14px] leading-[1.8] text-gray-700">{p.description}</p>
+                <p className="mt-3 font-ibm-mono text-[14px] text-gray-500 leading-[1.7]">{p.examples}</p>
               </div>
             ))}
           </div>
@@ -143,7 +143,7 @@ export default function PartnerProgrammePage() {
       {/* How it works */}
       <section className="border-b border-gray-200 px-8 py-16 lg:px-20">
         <div className="mx-auto max-w-[800px]">
-          <span className="font-ibm-mono text-[12px] tracking-[3px] text-gray-500">// HOW IT WORKS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-500">// HOW IT WORKS</span>
           <h2 className="mt-3 font-grotesk text-[32px] font-normal tracking-[-0.5px] text-gray-900">Simple. You bring the client, we deliver.</h2>
           <div className="mt-8 space-y-8">
             {[
@@ -156,7 +156,7 @@ export default function PartnerProgrammePage() {
                 <span className="font-ibm-mono text-[15px] text-gray-400 shrink-0 w-8 mt-0.5">{step}</span>
                 <div>
                   <p className="font-ibm-mono text-[14px] font-medium text-gray-900">{title}</p>
-                  <p className="mt-2 font-ibm-mono text-[13px] leading-[1.8] text-gray-600">{desc}</p>
+                  <p className="mt-2 font-ibm-mono text-[14px] leading-[1.8] text-gray-600">{desc}</p>
                 </div>
               </div>
             ))}
@@ -167,12 +167,12 @@ export default function PartnerProgrammePage() {
       {/* FAQ */}
       <section className="border-b border-gray-200 px-8 py-16 lg:px-20">
         <div className="mx-auto max-w-[700px]">
-          <span className="font-ibm-mono text-[12px] tracking-[3px] text-gray-500">// FAQ</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-500">// FAQ</span>
           <div className="mt-6 space-y-0">
             {faqs.map(({ q, a }) => (
               <div key={q} className="border-b border-gray-200 py-6">
                 <p className="font-ibm-mono text-[14px] font-medium text-gray-900 mb-3">{q}</p>
-                <p className="font-ibm-mono text-[13px] leading-[1.9] text-gray-600">{a}</p>
+                <p className="font-ibm-mono text-[14px] leading-[1.9] text-gray-600">{a}</p>
               </div>
             ))}
           </div>
@@ -185,7 +185,7 @@ export default function PartnerProgrammePage() {
         <p className="mt-4 font-ibm-mono text-[14px] text-gray-600">It takes 2 minutes to apply. We'll review and be in touch within 1–2 days.</p>
         <Link
           href="/apply"
-          className="mt-8 inline-block bg-gray-900 px-10 py-4 font-ibm-mono text-[12px] tracking-[3px] text-white hover:bg-gray-700 transition-colors"
+          className="mt-8 inline-block bg-gray-900 px-10 py-4 font-ibm-mono text-[14px] tracking-[3px] text-white hover:bg-gray-700 transition-colors"
         >
           APPLY TO JOIN →
         </Link>

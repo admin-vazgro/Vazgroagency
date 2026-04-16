@@ -3,8 +3,8 @@ import { firstParam, getPartnerContext, type PartnerSearchParams } from "@/app/p
 import { saveTaxFormAction } from "@/app/partners/actions";
 
 const inputClass =
-  "w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none";
-const labelClass = "mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]";
+  "w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none";
+const labelClass = "mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]";
 
 export default async function OnboardingPage(props: {
   searchParams?: Promise<PartnerSearchParams>;
@@ -55,11 +55,11 @@ export default async function OnboardingPage(props: {
   return (
     <div className="p-8">
       <div className="mb-8 border-b border-[var(--portal-border)] pb-6">
-        <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// ONBOARDING</span>
+        <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[3px]">// ONBOARDING</span>
         <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">
           Complete Your Setup
         </h1>
-        <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+        <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
           {completedCount} of {steps.length} steps complete
           {allDone ? " · Full portal access unlocked." : " · Complete all steps to unlock lead pool access and commission payouts."}
         </p>
@@ -67,12 +67,12 @@ export default async function OnboardingPage(props: {
 
       {statusMessage && (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       )}
       {errorMessage && (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage}</p>
         </div>
       )}
 
@@ -89,7 +89,7 @@ export default async function OnboardingPage(props: {
           >
             <div className="flex items-center gap-2 mb-2">
               <div
-                className="w-5 h-5 flex items-center justify-center font-ibm-mono text-[10px]"
+                className="w-5 h-5 flex items-center justify-center font-ibm-mono text-[14px]"
                 style={{
                   background: step.done ? "var(--portal-accent)" : "var(--portal-border-strong)",
                   color: step.done ? "var(--portal-accent-contrast)" : "var(--portal-text-dim)",
@@ -98,19 +98,19 @@ export default async function OnboardingPage(props: {
                 {step.done ? "✓" : i + 1}
               </div>
               <span
-                className="font-ibm-mono text-[10px] tracking-[1px]"
+                className="font-ibm-mono text-[14px] tracking-[1px]"
                 style={{ color: step.done ? "var(--portal-accent)" : "var(--portal-text-soft)" }}
               >
                 {step.done ? "DONE" : "PENDING"}
               </span>
             </div>
             <p
-              className="font-ibm-mono text-[11px] mb-1"
+              className="font-ibm-mono text-[14px] mb-1"
               style={{ color: step.done ? "var(--portal-text)" : "var(--portal-text-muted)" }}
             >
               {step.label}
             </p>
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] leading-[1.5]">{step.detail}</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] leading-[1.5]">{step.detail}</p>
           </div>
         ))}
       </div>
@@ -119,8 +119,8 @@ export default async function OnboardingPage(props: {
         {/* Main form */}
         <form action={saveTaxFormAction} className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
           <div className="px-6 py-4 border-b border-[var(--portal-border)]">
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px]">BUSINESS DETAILS</p>
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-1">Required for commission payouts and compliance.</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px]">BUSINESS DETAILS</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-1">Required for commission payouts and compliance.</p>
           </div>
           <div className="p-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div>
@@ -158,13 +158,13 @@ export default async function OnboardingPage(props: {
                 className={inputClass}
                 placeholder="https://drive.google.com/..."
               />
-              <p className="mt-1.5 font-ibm-mono text-[10px] text-[var(--portal-text-dim)] leading-[1.5]">
+              <p className="mt-1.5 font-ibm-mono text-[14px] text-[var(--portal-text-dim)] leading-[1.5]">
                 Upload your completed tax declaration to Google Drive or Dropbox and paste the link here.
               </p>
             </div>
 
             <div className="lg:col-span-2 border-t border-[var(--portal-border)] pt-4">
-              <p className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px] mb-4">BANK DETAILS (FOR PAYOUTS)</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px] mb-4">BANK DETAILS (FOR PAYOUTS)</p>
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 <div>
                   <label className={labelClass}>ACCOUNT NAME</label>
@@ -179,7 +179,7 @@ export default async function OnboardingPage(props: {
                   <input name="bank_account_number" className={inputClass} placeholder="12345678" />
                 </div>
               </div>
-              <p className="mt-3 font-ibm-mono text-[10px] text-[var(--portal-text-dim)] leading-[1.5]">
+              <p className="mt-3 font-ibm-mono text-[14px] text-[var(--portal-text-dim)] leading-[1.5]">
                 Bank details are stored securely and used only for commission payouts via Stripe Connect.
               </p>
             </div>
@@ -187,13 +187,13 @@ export default async function OnboardingPage(props: {
           <div className="px-6 pb-6 flex gap-3">
             <button
               type="submit"
-              className="bg-[var(--portal-accent)] px-6 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] hover:bg-[var(--portal-accent-hover)] transition-colors border-none cursor-pointer"
+              className="bg-[var(--portal-accent)] px-6 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] hover:bg-[var(--portal-accent-hover)] transition-colors border-none cursor-pointer"
             >
               SAVE & SUBMIT →
             </button>
             <Link
               href="/partners"
-              className="border border-[var(--portal-border-strong)] px-6 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] hover:text-[var(--portal-text)] transition-colors"
+              className="border border-[var(--portal-border-strong)] px-6 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)] hover:text-[var(--portal-text)] transition-colors"
             >
               BACK TO DASHBOARD
             </Link>
@@ -204,7 +204,7 @@ export default async function OnboardingPage(props: {
         <div className="flex flex-col gap-4">
           {/* What happens next */}
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px] mb-4">WHAT HAPPENS NEXT</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px] mb-4">WHAT HAPPENS NEXT</p>
             <div className="flex flex-col gap-3">
               {[
                 { step: "1", text: "Submit your business details and tax form link above." },
@@ -214,12 +214,12 @@ export default async function OnboardingPage(props: {
               ].map(({ step, text }) => (
                 <div key={step} className="flex gap-3">
                   <div
-                    className="w-5 h-5 flex items-center justify-center font-ibm-mono text-[9px] shrink-0 mt-0.5"
+                    className="w-5 h-5 flex items-center justify-center font-ibm-mono text-[14px] shrink-0 mt-0.5"
                     style={{ background: "var(--portal-border-strong)", color: "var(--portal-text-dim)" }}
                   >
                     {step}
                   </div>
-                  <p className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)] leading-[1.6]">{text}</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] leading-[1.6]">{text}</p>
                 </div>
               ))}
             </div>
@@ -227,7 +227,7 @@ export default async function OnboardingPage(props: {
 
           {/* Account status */}
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px] mb-4">YOUR ACCOUNT</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px] mb-4">YOUR ACCOUNT</p>
             <div className="flex flex-col gap-2">
               {[
                 { label: "Name", value: [profile?.first_name, profile?.last_name].filter(Boolean).join(" ") || "—" },
@@ -241,9 +241,9 @@ export default async function OnboardingPage(props: {
                 },
               ].map(({ label, value, highlight }) => (
                 <div key={label} className="flex items-center justify-between">
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{label}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{label}</span>
                   <span
-                    className="font-ibm-mono text-[10px]"
+                    className="font-ibm-mono text-[14px]"
                     style={{ color: highlight ? "var(--portal-warning)" : "var(--portal-text-muted)" }}
                   >
                     {value}
@@ -255,8 +255,8 @@ export default async function OnboardingPage(props: {
 
           {/* Help */}
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px] mb-2">NEED HELP?</p>
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] leading-[1.7]">
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px] mb-2">NEED HELP?</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] leading-[1.7]">
               Email{" "}
               <a href="mailto:partners@vazgro.com" className="text-[var(--portal-accent)] hover:opacity-80 transition-opacity">
                 partners@vazgro.com

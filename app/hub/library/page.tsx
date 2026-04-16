@@ -73,13 +73,13 @@ export default function LibraryPage() {
       {/* Header */}
       <div className="mb-8 border-b border-[var(--portal-border)] pb-6 flex items-end justify-between">
         <div>
-          <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// SALES ENABLEMENT HUB</span>
+          <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[3px]">// SALES ENABLEMENT HUB</span>
           <h1 className="font-grotesk text-[32px] font-normal text-[var(--portal-text)] tracking-[-1px] mt-1">Library</h1>
-          <p className="font-ibm-mono text-[12px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">
             Templates, proposals, case studies, and reference materials for your team and partners.
           </p>
         </div>
-        <button className="px-5 py-2.5 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] text-[var(--portal-accent-contrast)] tracking-[2px] transition-colors cursor-pointer border-none">
+        <button className="px-5 py-2.5 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[14px] text-[var(--portal-accent-contrast)] tracking-[2px] transition-colors cursor-pointer border-none">
           + UPLOAD ASSET
         </button>
       </div>
@@ -100,11 +100,11 @@ export default function LibraryPage() {
                 <span className="font-ibm-mono text-[16px]" style={{ color: isActive ? "var(--portal-accent)" : "var(--portal-text-dim)" }}>
                   {cat.icon}
                 </span>
-                <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">{count} items</span>
+                <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{count} items</span>
               </div>
-              <p className="font-grotesk text-[13px] font-normal text-[var(--portal-text)]">{cat.key}</p>
-              <p className="mt-1 font-ibm-mono text-[9px] text-[var(--portal-text-dim)] leading-[1.5]">{cat.desc}</p>
-              <p className="mt-2 font-ibm-mono text-[9px]" style={{ color: isActive ? "var(--portal-accent)" : "var(--portal-text-dim)" }}>
+              <p className="font-grotesk text-[14px] font-normal text-[var(--portal-text)]">{cat.key}</p>
+              <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)] leading-[1.5]">{cat.desc}</p>
+              <p className="mt-2 font-ibm-mono text-[14px]" style={{ color: isActive ? "var(--portal-accent)" : "var(--portal-text-dim)" }}>
                 {cat.scope.toUpperCase()}
               </p>
             </button>
@@ -119,14 +119,14 @@ export default function LibraryPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search assets..."
-          className="bg-[var(--portal-surface)] border border-[var(--portal-border-strong)] text-[var(--portal-text)] font-ibm-mono text-[11px] px-4 py-2 focus:outline-none focus:border-[var(--portal-accent)] transition-colors placeholder:text-[var(--portal-text-dim)] w-56"
+          className="bg-[var(--portal-surface)] border border-[var(--portal-border-strong)] text-[var(--portal-text)] font-ibm-mono text-[14px] px-4 py-2 focus:outline-none focus:border-[var(--portal-accent)] transition-colors placeholder:text-[var(--portal-text-dim)] w-56"
         />
         <div className="flex border border-[var(--portal-border)] overflow-hidden">
           {ALL_CATEGORIES.map((c) => (
             <button
               key={c}
               onClick={() => setCatFilter(c)}
-              className="px-3 py-2 font-ibm-mono text-[9px] tracking-[1px] transition-colors cursor-pointer border-none border-r border-[var(--portal-border)] last:border-r-0"
+              className="px-3 py-2 font-ibm-mono text-[14px] tracking-[1px] transition-colors cursor-pointer border-none border-r border-[var(--portal-border)] last:border-r-0"
               style={{
                 background: catFilter === c ? "var(--portal-accent)" : "var(--portal-surface-alt)",
                 color: catFilter === c ? "var(--portal-accent-contrast)" : "var(--portal-text-muted)",
@@ -139,7 +139,7 @@ export default function LibraryPage() {
         {(catFilter !== "All" || search) && (
           <button
             onClick={() => { setCatFilter("All"); setSearch(""); }}
-            className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] cursor-pointer bg-transparent border-none"
+            className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] hover:text-[var(--portal-text-soft)] cursor-pointer bg-transparent border-none"
           >
             CLEAR FILTERS ×
           </button>
@@ -150,7 +150,7 @@ export default function LibraryPage() {
       <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
         <div className="grid grid-cols-[72px_1fr_90px_90px_80px_72px_80px] gap-3 px-5 py-3 border-b border-[var(--portal-border)]">
           {["ID", "Name", "Type", "Category", "Access", "Ver.", ""].map((h) => (
-            <span key={h} className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] tracking-[2px]">{h}</span>
+            <span key={h} className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] tracking-[2px]">{h}</span>
           ))}
         </div>
         {filtered.map((item) => {
@@ -160,20 +160,20 @@ export default function LibraryPage() {
               key={item.id}
               className="grid grid-cols-[72px_1fr_90px_90px_80px_72px_80px] gap-3 px-5 py-4 border-b border-[var(--portal-border)] hover:bg-[var(--portal-surface-alt)] transition-colors items-start last:border-b-0"
             >
-              <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] pt-0.5">{item.id}</span>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] pt-0.5">{item.id}</span>
               <div>
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{item.name}</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{item.name}</p>
                 {item.description && (
-                  <p className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] mt-0.5 leading-[1.5]">{item.description}</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-0.5 leading-[1.5]">{item.description}</p>
                 )}
               </div>
-              <span className="font-ibm-mono text-[9px] pt-0.5" style={{ color: TYPE_COLORS[item.type] ?? "var(--portal-text-soft)" }}>
+              <span className="font-ibm-mono text-[14px] pt-0.5" style={{ color: TYPE_COLORS[item.type] ?? "var(--portal-text-soft)" }}>
                 {item.type.toUpperCase()}
               </span>
-              <span className="font-ibm-mono text-[9px] text-[var(--portal-text-soft)] pt-0.5">{item.category.toUpperCase()}</span>
-              <span className="font-ibm-mono text-[9px] pt-0.5" style={{ color: access.color }}>{access.label}</span>
-              <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] pt-0.5">{item.version}</span>
-              <button className="font-ibm-mono text-[9px] text-[var(--portal-accent)] hover:opacity-80 cursor-pointer bg-transparent border-none tracking-[1px] text-left pt-0.5">
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] pt-0.5">{item.category.toUpperCase()}</span>
+              <span className="font-ibm-mono text-[14px] pt-0.5" style={{ color: access.color }}>{access.label}</span>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] pt-0.5">{item.version}</span>
+              <button className="font-ibm-mono text-[14px] text-[var(--portal-accent)] hover:opacity-80 cursor-pointer bg-transparent border-none tracking-[1px] text-left pt-0.5">
                 ↓ USE
               </button>
             </div>
@@ -181,10 +181,10 @@ export default function LibraryPage() {
         })}
         {filtered.length === 0 && (
           <div className="px-5 py-12">
-            <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">
               {search ? `No assets matching "${search}".` : "No assets in this category."}
             </p>
-            <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+            <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
               Upload assets using the button above or adjust your filters.
             </p>
           </div>
@@ -193,12 +193,12 @@ export default function LibraryPage() {
 
       {/* Access scope legend */}
       <div className="mt-6 border border-[var(--portal-border)] bg-[var(--portal-surface)] px-5 py-4">
-        <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)] mb-3">ACCESS SCOPE</p>
+        <p className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)] mb-3">ACCESS SCOPE</p>
         <div className="flex flex-wrap gap-6">
           {Object.entries(ACCESS_LABELS).map(([, { label, color }]) => (
             <div key={label} className="flex items-center gap-2">
-              <span className="font-ibm-mono text-[10px]" style={{ color }}>{label}</span>
-              <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">
+              <span className="font-ibm-mono text-[14px]" style={{ color }}>{label}</span>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                 {label === "HUB ONLY" ? "Visible only to Vazgro hub staff" : label === "PARTNERS" ? "Visible to hub staff and active partners" : "Visible to all (clients and public)"}
               </span>
             </div>

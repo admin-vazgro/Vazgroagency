@@ -142,14 +142,14 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
     <div className="p-8">
       {/* Header */}
       <div className="mb-8 border-b border-[var(--portal-border)] pb-6">
-        <span className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[3px]">// YOUR WORKSPACE</span>
+        <span className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[3px]">// YOUR WORKSPACE</span>
         <h1 className="font-grotesk text-[32px] font-normal text-[var(--portal-text)] tracking-[-1px] mt-1">{greeting}</h1>
         {!accountId ? (
-          <p className="font-ibm-mono text-[12px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">
             Your workspace is ready. Projects, requests, and files will appear here once your team sets up your account.
           </p>
         ) : (
-          <p className="font-ibm-mono text-[12px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] tracking-[0.5px] mt-1">
             {new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
           </p>
         )}
@@ -164,14 +164,14 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
           { label: "Invoices Due", value: invoicesDueGbp > 0 ? `£${invoicesDueGbp.toLocaleString()}` : "£0", note: invoicesDueGbp > 0 ? "Payment required" : "All paid", warning: invoicesDueGbp > 0 },
         ].map(({ label, value, note, warning }) => (
           <div key={label} className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">{label.toUpperCase()}</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] tracking-[1px] mb-2">{label.toUpperCase()}</p>
             <p
               className="font-grotesk text-[28px] font-normal"
               style={{ color: warning ? "var(--portal-warning)" : "var(--portal-text)" }}
             >
               {value}
             </p>
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] tracking-[0.5px] mt-1">{note}</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] tracking-[0.5px] mt-1">{note}</p>
           </div>
         ))}
       </div>
@@ -180,8 +180,8 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
         {/* Active Projects */}
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
           <div className="px-6 py-4 border-b border-[var(--portal-border)] flex items-center justify-between">
-            <span className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px]">ACTIVE PROJECTS</span>
-            <Link href="/workspace/engagements" className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">
+            <span className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px]">ACTIVE PROJECTS</span>
+            <Link href="/workspace/engagements" className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">
               VIEW ALL →
             </Link>
           </div>
@@ -196,12 +196,12 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span
-                      className="font-ibm-mono text-[9px] tracking-[2px] px-2 py-1"
+                      className="font-ibm-mono text-[14px] tracking-[2px] px-2 py-1"
                       style={{ background: `${color}20`, color }}
                     >
                       {eng.pillar}
                     </span>
-                    <span className="font-ibm-mono text-[9px] text-[var(--portal-text-muted)] tracking-[1px]">
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)] tracking-[1px]">
                       {eng.status.toUpperCase()}
                     </span>
                   </div>
@@ -211,8 +211,8 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
             })}
             {engagementCards.length === 0 && (
               <div className="p-4 border border-dashed border-[var(--portal-border)]">
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No active projects yet.</p>
-                <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No active projects yet.</p>
+                <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                   Projects appear here when your Vazgro team creates them.
                 </p>
               </div>
@@ -225,8 +225,8 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
           {/* Recent deliverables */}
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
             <div className="px-6 py-4 border-b border-[var(--portal-border)] flex items-center justify-between">
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px]">RECENT DELIVERABLES</span>
-              <Link href="/workspace/files" className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px]">RECENT DELIVERABLES</span>
+              <Link href="/workspace/files" className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">
                 VIEW ALL →
               </Link>
             </div>
@@ -237,13 +237,13 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
                 return (
                   <div key={d.id} className="px-6 py-3 flex items-center justify-between">
                     <div>
-                      <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{d.name}</p>
-                      <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-0.5">
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{d.name}</p>
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-0.5">
                         {d.file_type || "File"} · {new Date(d.created_at).toLocaleDateString("en-GB")}
                       </p>
                     </div>
                     <span
-                      className="font-ibm-mono text-[9px] tracking-[1px] px-2 py-1"
+                      className="font-ibm-mono text-[14px] tracking-[1px] px-2 py-1"
                       style={{
                         background: isApproved ? "var(--portal-accent-strong-soft)" : isAwaiting ? "var(--portal-warning-strong-soft)" : "var(--portal-muted-soft)",
                         color: isApproved ? "var(--portal-accent)" : isAwaiting ? "var(--portal-warning)" : "var(--portal-text-soft)",
@@ -256,8 +256,8 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
               })}
               {recentDeliverables.length === 0 && (
                 <div className="px-6 py-6">
-                  <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No deliverables yet.</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Files uploaded by your team will appear here.</p>
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No deliverables yet.</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Files uploaded by your team will appear here.</p>
                 </div>
               )}
             </div>
@@ -266,8 +266,8 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
           {/* Recent requests */}
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
             <div className="px-6 py-4 border-b border-[var(--portal-border)] flex items-center justify-between">
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text)] tracking-[2px]">RECENT REQUESTS</span>
-              <Link href="/workspace/requests" className="font-ibm-mono text-[10px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text)] tracking-[2px]">RECENT REQUESTS</span>
+              <Link href="/workspace/requests" className="font-ibm-mono text-[14px] text-[var(--portal-accent)] tracking-[1px] hover:opacity-80">
                 VIEW ALL →
               </Link>
             </div>
@@ -281,13 +281,13 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
                 return (
                   <div key={r.id} className="px-6 py-3 flex items-center justify-between">
                     <div>
-                      <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{r.title}</p>
-                      <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-0.5">
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{r.title}</p>
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mt-0.5">
                         {r.id.slice(0, 8)} · {new Date(r.created_at).toLocaleDateString("en-GB")}
                       </p>
                     </div>
                     <span
-                      className="font-ibm-mono text-[9px] tracking-[1px] px-2 py-1"
+                      className="font-ibm-mono text-[14px] tracking-[1px] px-2 py-1"
                       style={{ background: badge.bg, color: badge.text }}
                     >
                       {badge.label.toUpperCase()}
@@ -297,8 +297,8 @@ export default async function WorkspaceDashboard(props: { searchParams?: Promise
               })}
               {recentRequests.length === 0 && (
                 <div className="px-6 py-6">
-                  <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No requests yet.</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No requests yet.</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                     <Link href="/workspace/requests" className="text-[var(--portal-accent)] hover:underline">
                       Raise your first request →
                     </Link>

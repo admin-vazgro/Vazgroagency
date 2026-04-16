@@ -30,9 +30,9 @@ interface Props {
 type Step = 1 | 2 | 3;
 
 const inputClass =
-  "w-full bg-[#0A0A0A] border border-[#2D2D2D] text-[#F5F5F0] font-ibm-mono text-[12px] tracking-[0.5px] px-4 py-3 focus:outline-none focus:border-[#D6E264] transition-colors placeholder:text-[#777777]";
+  "w-full bg-[#0A0A0A] border border-[#2D2D2D] text-[#F5F5F0] font-ibm-mono text-[14px] tracking-[0.5px] px-4 py-3 focus:outline-none focus:border-[#D6E264] transition-colors placeholder:text-[#777777]";
 
-const labelClass = "font-ibm-mono text-[10px] font-bold text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] block mb-2";
+const labelClass = "font-ibm-mono text-[14px] font-bold text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] block mb-2";
 
 export default function LaunchModal({ pkg, onClose }: Props) {
   const [step, setStep] = useState<Step>(1);
@@ -158,12 +158,12 @@ export default function LaunchModal({ pkg, onClose }: Props) {
         <div className="shrink-0 border-b border-[#1D1D1D] px-4 py-4 sm:px-6">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[1.5px] md:tracking-[2px] break-words">⚡ LAUNCH · {pkg.name.toUpperCase()}</span>
+              <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[1.5px] md:tracking-[2px] break-words">⚡ LAUNCH · {pkg.name.toUpperCase()}</span>
               <div className="mt-1 flex flex-wrap items-center gap-3">
                 <span className="font-grotesk text-[24px] sm:text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] leading-none">
                   £{pkg.price.toLocaleString()}
                 </span>
-                <span className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1px] border border-[#2D2D2D] px-2 py-1">
+                <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] border border-[#2D2D2D] px-2 py-1">
                   ⏱ {pkg.deliveryDays} DAYS
                 </span>
               </div>
@@ -173,7 +173,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               className="w-9 h-9 flex items-center justify-center border border-[#2D2D2D] hover:border-[#555] text-[#AAAAAA] hover:text-[#F5F5F0] transition-colors cursor-pointer bg-transparent"
               aria-label="Close"
             >
-              <span className="font-ibm-mono text-[12px]">✕</span>
+              <span className="font-ibm-mono text-[14px]">✕</span>
             </button>
           </div>
         </div>
@@ -189,7 +189,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               }}
             >
               <span
-                className="font-ibm-mono text-[9px] font-bold tracking-[1px] md:tracking-[2px]"
+                className="font-ibm-mono text-[14px] font-bold tracking-[1px] md:tracking-[2px]"
                 style={{ color: step === s.n ? "#0A0A0A" : step > s.n ? "#D6E264" : "#333" }}
               >
                 {step > s.n ? "✓ " : ""}{s.label}
@@ -201,7 +201,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
         {/* Error banner */}
         {error && (
           <div className="shrink-0 border-b border-[#FF4444] bg-[#1A0000] px-5 py-3">
-            <p className="font-ibm-mono text-[11px] text-[#FF6666]">{error}</p>
+            <p className="font-ibm-mono text-[14px] text-[#FF6666]">{error}</p>
           </div>
         )}
 
@@ -243,7 +243,7 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               <button
                 onClick={handleStep1Next}
                 disabled={!s1Valid || submitting}
-                className="mt-2 h-[52px] w-full border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-30 disabled:cursor-not-allowed"
+                className="mt-2 h-[52px] w-full border-none bg-[#D6E264] font-grotesk text-[14px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 {submitting ? "SAVING..." : "NEXT: PROJECT REQUIREMENTS →"}
               </button>
@@ -257,24 +257,24 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                 <h3 className="font-grotesk text-[18px] font-bold text-[#F5F5F0] tracking-[-0.5px]">
                   What&apos;s included & what we need
                 </h3>
-                <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[0.5px] mt-1">
+                <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[0.5px] mt-1">
                   Review the package, then fill in what you can provide.
                 </p>
               </div>
 
               {/* What's included */}
               <div className="flex flex-col gap-2 p-4 border border-[#D6E264] bg-[#0A0A0A]">
-                <span className="font-ibm-mono text-[9px] font-bold text-[#D6E264] tracking-[1px] md:tracking-[2px]">WHAT&apos;S INCLUDED</span>
+                <span className="font-ibm-mono text-[14px] font-bold text-[#D6E264] tracking-[1px] md:tracking-[2px]">WHAT&apos;S INCLUDED</span>
                 {pkg.whatsIncluded.map((item) => (
                   <div key={item} className="flex items-start gap-2">
-                    <span className="font-ibm-mono text-[10px] text-[#D6E264] mt-0.5 shrink-0">✓</span>
-                    <span className="font-ibm-mono text-[11px] text-[#CCCCCC] tracking-[0.5px] leading-[1.5]">{item}</span>
+                    <span className="font-ibm-mono text-[14px] text-[#D6E264] mt-0.5 shrink-0">✓</span>
+                    <span className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.5]">{item}</span>
                   </div>
                 ))}
               </div>
 
               {/* Fields */}
-              <span className="font-ibm-mono text-[9px] font-bold text-[#999999] tracking-[1px] md:tracking-[2px]">WHAT WE NEED FROM YOU</span>
+              <span className="font-ibm-mono text-[14px] font-bold text-[#999999] tracking-[1px] md:tracking-[2px]">WHAT WE NEED FROM YOU</span>
               {pkg.requiresFrom.map((field) => (
                 <div key={field.label}>
                   <label className={labelClass}>
@@ -313,14 +313,14 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                 <button
                   onClick={() => setStep(1)}
                   disabled={submitting}
-                  className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
+                  className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
                 >
                   ← BACK
                 </button>
                 <button
                   onClick={handleStep2Next}
                   disabled={submitting}
-                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-40"
+                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[14px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-40"
                 >
                   {submitting ? "SAVING..." : "NEXT: REVIEW & PAY →"}
                 </button>
@@ -340,20 +340,20 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                 <div className="flex items-start justify-between pb-3 border-b border-[#1D1D1D]">
                   <div>
                     <span className="font-grotesk text-[16px] font-bold text-[#F5F5F0]">{pkg.icon} {pkg.name}</span>
-                    <p className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1px] mt-1">DELIVERED IN {pkg.deliveryDays} DAYS</p>
+                    <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] mt-1">DELIVERED IN {pkg.deliveryDays} DAYS</p>
                   </div>
                   <span className="shrink-0 font-grotesk text-[20px] sm:text-[22px] font-bold text-[#D6E264] tracking-[-1px]">£{pkg.price.toLocaleString()}</span>
                 </div>
                 <div>
-                  <span className="font-ibm-mono text-[9px] text-[#999999] tracking-[2px]">ORDER FOR</span>
-                  <p className="font-ibm-mono text-[12px] text-[#CCCCCC] mt-1">{s1.firstName} {s1.lastName}</p>
-                  <p className="font-ibm-mono text-[11px] text-[#AAAAAA]">{s1.email}{s1.company ? ` · ${s1.company}` : ""}</p>
+                  <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">ORDER FOR</span>
+                  <p className="font-ibm-mono text-[14px] text-[#CCCCCC] mt-1">{s1.firstName} {s1.lastName}</p>
+                  <p className="font-ibm-mono text-[14px] text-[#AAAAAA]">{s1.email}{s1.company ? ` · ${s1.company}` : ""}</p>
                 </div>
               </div>
 
               {/* What happens next */}
               <div className="flex flex-col gap-2 p-4 bg-[#0A0A0A] border border-[#1D1D1D]">
-                <span className="font-ibm-mono text-[9px] font-bold text-[#D6E264] tracking-[1px] md:tracking-[2px]">WHAT HAPPENS NEXT</span>
+                <span className="font-ibm-mono text-[14px] font-bold text-[#D6E264] tracking-[1px] md:tracking-[2px]">WHAT HAPPENS NEXT</span>
                 {[
                   "Pay securely via Stripe — card or bank transfer",
                   "Your workspace is created automatically on payment",
@@ -361,8 +361,8 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                   "Your dedicated PM contacts you within 2 business hours",
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-2">
-                    <span className="font-ibm-mono text-[10px] text-[#D6E264] shrink-0 mt-0.5">{`0${i + 1}`}</span>
-                    <span className="font-ibm-mono text-[11px] text-[#BBBBBB] tracking-[0.5px] leading-[1.5]">{item}</span>
+                    <span className="font-ibm-mono text-[14px] text-[#D6E264] shrink-0 mt-0.5">{`0${i + 1}`}</span>
+                    <span className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[0.5px] leading-[1.5]">{item}</span>
                   </div>
                 ))}
               </div>
@@ -371,19 +371,19 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                 <button
                   onClick={() => setStep(2)}
                   disabled={submitting}
-                  className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
+                  className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
                 >
                   ← BACK
                 </button>
                 <button
                   onClick={handleCheckout}
                   disabled={submitting || !leadId}
-                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-40"
+                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[14px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-40"
                 >
                   {submitting ? "OPENING CHECKOUT..." : `PAY £${pkg.price.toLocaleString()} SECURELY →`}
                 </button>
               </div>
-              <p className="font-ibm-mono text-[10px] text-[#777777] text-center tracking-[1px]">
+              <p className="font-ibm-mono text-[14px] text-[#777777] text-center tracking-[1px]">
                 POWERED BY STRIPE · SSL ENCRYPTED · NO CARD STORED
               </p>
             </div>

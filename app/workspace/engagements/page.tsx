@@ -132,15 +132,15 @@ export default async function ProjectsPage() {
     <div className="p-8">
       <div className="mb-8 flex items-end justify-between border-b border-[var(--portal-border)] pb-6">
         <div>
-          <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// PROJECTS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// PROJECTS</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Your Projects</h1>
-          <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+          <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
             {active.length} active · {inactive.length} completed
           </p>
         </div>
         <Link
           href="/workspace/requests"
-          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
+          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
         >
           + RAISE A REQUEST
         </Link>
@@ -148,14 +148,14 @@ export default async function ProjectsPage() {
 
       {dataError && (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{dataError}</p>
         </div>
       )}
 
       {!accountId && !dataError && (
         <div className="border border-dashed border-[var(--portal-border-strong)] p-8">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">Your account isn't linked to any projects yet.</p>
-          <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">Your account isn't linked to any projects yet.</p>
+          <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
             Your Vazgro project manager will set up your projects and they'll appear here.
           </p>
         </div>
@@ -179,15 +179,15 @@ export default async function ProjectsPage() {
               <div className="mb-5 flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <span
-                    className="px-2 py-1 font-ibm-mono text-[9px] tracking-[2px]"
+                    className="px-2 py-1 font-ibm-mono text-[14px] tracking-[2px]"
                     style={{ background: `${color}20`, color }}
                   >
                     {eng.pillar}
                   </span>
-                  <span className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">{eng.id.slice(0, 8)}</span>
+                  <span className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">{eng.id.slice(0, 8)}</span>
                 </div>
                 <span
-                  className="px-2 py-1 font-ibm-mono text-[9px] tracking-[1px]"
+                  className="px-2 py-1 font-ibm-mono text-[14px] tracking-[1px]"
                   style={{ background: sc.bg, color: sc.text }}
                 >
                   {eng.status.toUpperCase()}
@@ -196,14 +196,14 @@ export default async function ProjectsPage() {
 
               <h3 className="mb-2 font-grotesk text-[20px] font-normal text-[var(--portal-text)]">{eng.title}</h3>
               {eng.brief && (
-                <p className="mb-4 font-ibm-mono text-[11px] leading-[1.7] text-[var(--portal-text-muted)]">{eng.brief}</p>
+                <p className="mb-4 font-ibm-mono text-[14px] leading-[1.7] text-[var(--portal-text-muted)]">{eng.brief}</p>
               )}
 
               {engMilestones.length > 0 && (
                 <div className="mb-5">
                   <div className="mb-1.5 flex items-center justify-between">
-                    <span className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">PROGRESS</span>
-                    <span className="font-ibm-mono text-[9px] text-[var(--portal-text-soft)]">
+                    <span className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">PROGRESS</span>
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">
                       {completedMilestones}/{engMilestones.length} milestones
                     </span>
                   </div>
@@ -215,25 +215,25 @@ export default async function ProjectsPage() {
 
               <div className="grid grid-cols-2 gap-4 border-t border-[var(--portal-border)] pt-4 lg:grid-cols-4">
                 <div>
-                  <p className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">PROJECT LEAD</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text)]">
+                  <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">PROJECT LEAD</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text)]">
                     {pm ? displayName(pm) : "To be assigned"}
                   </p>
                 </div>
                 <div>
-                  <p className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">TIMELINE</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text)]">
+                  <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">TIMELINE</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text)]">
                     {eng.start_date || "TBD"} → {eng.end_date || "Ongoing"}
                   </p>
                 </div>
                 <div>
-                  <p className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">OPEN REQUESTS</p>
-                  <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text)]">{openReqs}</p>
+                  <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">OPEN REQUESTS</p>
+                  <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text)]">{openReqs}</p>
                 </div>
                 {toNumber(eng.monthly_value_gbp) > 0 && (
                   <div>
-                    <p className="font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">MONTHLY VALUE</p>
-                    <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text)]">
+                    <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">MONTHLY VALUE</p>
+                    <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text)]">
                       £{toNumber(eng.monthly_value_gbp).toLocaleString()}
                     </p>
                   </div>
@@ -242,7 +242,7 @@ export default async function ProjectsPage() {
 
               {engMilestones.length > 0 && (
                 <div className="mt-4 border-t border-[var(--portal-border)] pt-4">
-                  <p className="mb-2 font-ibm-mono text-[9px] tracking-[1px] text-[var(--portal-text-dim)]">MILESTONES</p>
+                  <p className="mb-2 font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-dim)]">MILESTONES</p>
                   <div className="flex flex-col gap-1.5">
                     {engMilestones.slice(0, 5).map((m) => (
                       <div key={m.id} className="flex items-center gap-2">
@@ -256,16 +256,16 @@ export default async function ProjectsPage() {
                         >
                           {m.completed_at ? "✓" : ""}
                         </span>
-                        <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{m.title}</span>
+                        <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{m.title}</span>
                         {m.due_date && !m.completed_at && (
-                          <span className="ml-auto font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">
+                          <span className="ml-auto font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                             Due {m.due_date}
                           </span>
                         )}
                       </div>
                     ))}
                     {engMilestones.length > 5 && (
-                      <p className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
                         +{engMilestones.length - 5} more milestones
                       </p>
                     )}
@@ -276,7 +276,7 @@ export default async function ProjectsPage() {
               <div className="mt-4 border-t border-[var(--portal-border)] pt-4">
                 <Link
                   href={`/workspace/requests?project=${eng.id}`}
-                  className="font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-accent)] transition-opacity hover:opacity-80"
+                  className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-accent)] transition-opacity hover:opacity-80"
                 >
                   View requests for this project →
                 </Link>
@@ -287,8 +287,8 @@ export default async function ProjectsPage() {
 
         {engagements.length === 0 && accountId && !dataError && (
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-8">
-            <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No projects yet.</p>
-            <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No projects yet.</p>
+            <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">
               Your projects will appear here once your Vazgro team sets them up.
             </p>
           </div>

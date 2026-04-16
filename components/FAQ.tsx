@@ -60,7 +60,7 @@ export default function FAQ() {
               </button>
               {isOpen && faq.answer && (
                 <div className="pb-8">
-                  <p className="font-ibm-mono text-[12px] md:text-[13px] text-[#FFFFFF] tracking-[1px] leading-[1.6]">
+                  <p className="font-ibm-mono text-[14px] md:text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.6]">
                     {faq.answer}
                   </p>
                 </div>
@@ -73,10 +73,10 @@ export default function FAQ() {
 
       {/* CTA */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-[16px] pt-10 md:pt-[48px]">
-        <span className="font-ibm-mono text-[13px] text-[#AAAAAA] tracking-[1px]">
+        <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">
           STILL HAVE QUESTIONS?
         </span>
-        <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[13px] font-normal text-[#D6E264] tracking-[1px] cursor-pointer hover:underline no-underline">
+        <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[1px] cursor-pointer hover:underline no-underline">
           EMAIL US AT HELLO@VAZGRO.COM &gt;
         </a>
       </div>

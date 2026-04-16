@@ -74,28 +74,28 @@ export default function TrackTaxiCase() {
 
       {/* ── Hero ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[100px] border-b border-[#1D1D1D]">
-        <Link href="/work" className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[2px] no-underline hover:text-[#D6E264] transition-colors mb-8 inline-flex items-center gap-2">
+        <Link href="/work" className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[2px] no-underline hover:text-[#D6E264] transition-colors mb-8 inline-flex items-center gap-2">
           ← BACK TO ALL WORK
         </Link>
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           <div className="flex-1">
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] border border-[#FF6B35] px-3 py-1 tracking-[2px]">
+              <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] border border-[#FF6B35] px-3 py-1 tracking-[2px]">
                 [SERVICE PRODUCT]
               </span>
-              <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[2px]">2024</span>
-              <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[2px]">// BUILD SERVICE</span>
+              <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">2024</span>
+              <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">// BUILD SERVICE</span>
             </div>
             <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-4px] leading-none mb-6">
               TRACK YOUR<br />TAXI
             </h1>
-            <p className="font-ibm-mono text-[13px] text-[#FFFFFF] tracking-[1px] leading-[1.7] max-w-[540px] mb-8">
+            <p className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.7] max-w-[540px] mb-8">
               A service product concept rethinking the ride-tracking experience. Real-time motion, contextual payment information, and a mobile-first system designed entirely for one-handed use in motion.
             </p>
             <div className="flex flex-wrap gap-[2px]">
               {["UX RESEARCH", "SERVICE DESIGN", "MOBILE-FIRST", "MOTION DESIGN", "PAYMENT UX"].map((t) => (
-                <span key={t} className="font-ibm-mono text-[9px] tracking-[1px] md:tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
+                <span key={t} className="font-ibm-mono text-[14px] tracking-[1px] md:tracking-[1.5px] text-[#AAAAAA] bg-[#111] border border-[#2D2D2D] px-3 py-1.5">
                   {t}
                 </span>
               ))}
@@ -107,7 +107,7 @@ export default function TrackTaxiCase() {
             {metrics.map((m) => (
               <div key={m.label} className="flex flex-col gap-2 p-6 bg-[#111111] border border-[#2D2D2D]">
                 <span className="font-grotesk text-[40px] font-normal text-[#FF6B35] tracking-[-2px] leading-none">{m.value}</span>
-                <span className="font-ibm-mono text-[9px] font-normal text-[#AAAAAA] tracking-[2px]">{m.label}</span>
+                <span className="font-ibm-mono text-[14px] font-normal text-[#AAAAAA] tracking-[2px]">{m.label}</span>
               </div>
             ))}
           </div>
@@ -127,7 +127,7 @@ export default function TrackTaxiCase() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/70 to-transparent" />
           <div className="absolute bottom-6 left-8">
-            <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] tracking-[2px]">// LIVE TRACKING SURFACE — MOBILE VIEW</span>
+            <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] tracking-[2px]">// LIVE TRACKING SURFACE — MOBILE VIEW</span>
           </div>
         </div>
       </section>
@@ -135,13 +135,13 @@ export default function TrackTaxiCase() {
       {/* ── Challenge ── */}
       <section className="flex flex-col lg:flex-row gap-12 w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
         <div className="w-full lg:w-[200px] shrink-0">
-          <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] tracking-[3px]">// THE CHALLENGE</span>
+          <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] tracking-[3px]">// THE CHALLENGE</span>
         </div>
         <div className="flex-1 max-w-[720px]">
           <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#F5F5F0] tracking-[-2px] leading-[1.05] mb-6">
             RIDE TRACKING APPS<br />CREATE ANXIETY.<br />THEY SHOULDN&apos;T.
           </h2>
-          <div className="space-y-4 font-ibm-mono text-[13px] text-[#FFFFFF] tracking-[0.5px] leading-[1.8]">
+          <div className="space-y-4 font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[0.5px] leading-[1.8]">
             <p>
               The brief was a product concept exploration: what would a taxi tracking app look like if it was designed entirely around passenger psychology — not driver management or dispatch logistics?
             </p>
@@ -157,17 +157,17 @@ export default function TrackTaxiCase() {
 
       {/* ── User Research ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] bg-[#0D0D0D] border-t border-b border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] tracking-[3px] mb-8">// USER RESEARCH FINDINGS</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] tracking-[3px] mb-8">// USER RESEARCH FINDINGS</span>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[2px]">
           {researchInsights.map((r) => (
             <div key={r.stat} className="flex flex-col gap-4 p-8 bg-[#111111] border border-[#2D2D2D]">
               <span className="font-grotesk text-[56px] font-normal text-[#FF6B35] tracking-[-3px] leading-none">{r.stat}</span>
-              <p className="font-ibm-mono text-[12px] text-[#FFFFFF] tracking-[0.5px] leading-[1.7]">{r.insight}</p>
+              <p className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[0.5px] leading-[1.7]">{r.insight}</p>
             </div>
           ))}
         </div>
         <div className="mt-6 p-6 bg-[#111111] border border-[#2D2D2D]">
-          <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px]">
+          <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">
             RESEARCH METHOD // 20 interviews with regular taxi and ride-share users across London and Birmingham · Prototype usability testing with 16 participants across 2 rounds · Competitive audit of 6 ride apps
           </p>
         </div>
@@ -175,20 +175,20 @@ export default function TrackTaxiCase() {
 
       {/* ── Design phases ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[100px]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] tracking-[3px] mb-12">// DESIGN PROCESS</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] tracking-[3px] mb-12">// DESIGN PROCESS</span>
         <div className="flex flex-col gap-[2px]">
           {phases.map((phase) => (
             <div key={phase.num} className="flex flex-col lg:flex-row gap-8 p-8 md:p-[48px] bg-[#0F0F0F] border border-[#2D2D2D]">
               <div className="flex flex-col gap-2 w-full lg:w-[180px] shrink-0">
                 <span className="font-grotesk text-[48px] font-normal text-[#FF6B35] tracking-[-3px] leading-none">{phase.num}</span>
-                <span className="font-ibm-mono text-[9px] text-[#999999] tracking-[2px]">{phase.duration}</span>
+                <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">{phase.duration}</span>
               </div>
               <div className="flex-1">
                 <h3 className="font-grotesk text-[22px] md:text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] mb-4">{phase.title}</h3>
-                <p className="font-ibm-mono text-[12px] text-[#CCCCCC] tracking-[0.5px] leading-[1.8] mb-6">{phase.body}</p>
+                <p className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.8] mb-6">{phase.body}</p>
                 <div className="flex flex-wrap gap-[2px]">
                   {phase.deliverables.map((d) => (
-                    <span key={d} className="font-ibm-mono text-[9px] text-[#AAAAAA] tracking-[1px] bg-[#1A1A1A] border border-[#2D2D2D] px-3 py-1.5">
+                    <span key={d} className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] bg-[#1A1A1A] border border-[#2D2D2D] px-3 py-1.5">
                       ✓ {d}
                     </span>
                   ))}
@@ -206,7 +206,7 @@ export default function TrackTaxiCase() {
 
       {/* ── Key design decisions ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] bg-[#0D0D0D] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] tracking-[3px] mb-8">// KEY DESIGN DECISIONS</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] tracking-[3px] mb-8">// KEY DESIGN DECISIONS</span>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
           {[
             {
@@ -228,7 +228,7 @@ export default function TrackTaxiCase() {
             <div key={d.num} className="flex flex-col gap-4 p-8 bg-[#111111] border border-[#2D2D2D]">
               <span className="font-grotesk text-[40px] font-normal text-[#FF6B35] tracking-[-2px] leading-none">[{d.num}]</span>
               <h3 className="font-grotesk text-[16px] font-normal text-[#F5F5F0] tracking-[0.5px]">{d.title}</h3>
-              <p className="font-ibm-mono text-[11px] text-[#CCCCCC] tracking-[0.5px] leading-[1.7]">{d.body}</p>
+              <p className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.7]">{d.body}</p>
             </div>
           ))}
         </div>
@@ -236,7 +236,7 @@ export default function TrackTaxiCase() {
 
       {/* ── Outcomes ── */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#FF6B35] tracking-[3px] mb-8">// OUTCOMES</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#FF6B35] tracking-[3px] mb-8">// OUTCOMES</span>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
           {[
             { title: "34% BETTER TASK COMPLETION", body: "Removing bottom nav and surfacing information contextually increased task completion in usability tests by 34% vs. the baseline competitor app." },
@@ -245,7 +245,7 @@ export default function TrackTaxiCase() {
           ].map((o) => (
             <div key={o.title} className="flex flex-col gap-4 p-8 bg-[#111111] border border-[#2D2D2D]">
               <span className="font-grotesk text-[16px] font-normal text-[#FF6B35] tracking-[0.5px]">{o.title}</span>
-              <p className="font-ibm-mono text-[12px] text-[#CCCCCC] tracking-[0.5px] leading-[1.7]">{o.body}</p>
+              <p className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.7]">{o.body}</p>
             </div>
           ))}
         </div>
@@ -253,7 +253,7 @@ export default function TrackTaxiCase() {
 
       {/* ── CTA ── */}
       <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] bg-[#FF6B35]">
-        <span className="font-ibm-mono text-[10px] font-normal text-[#1A1A1A] tracking-[3px] mb-4">// HAVE A PRODUCT IDEA?</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#1A1A1A] tracking-[3px] mb-4">// HAVE A PRODUCT IDEA?</span>
         <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-8">
           LET&apos;S BUILD IT.
         </h2>
@@ -262,13 +262,13 @@ export default function TrackTaxiCase() {
             href="mailto:hello@vazgro.com"
             className="flex items-center justify-center h-[56px] px-10 bg-[#0A0A0A] hover:bg-[#1A1A1A] transition-colors no-underline"
           >
-            <span className="font-grotesk text-[12px] font-normal text-[#FF6B35] tracking-[2px]">
+            <span className="font-grotesk text-[14px] font-normal text-[#FF6B35] tracking-[2px]">
               BOOK A FREE STRATEGY CALL
             </span>
           </a>
           <Link
             href="/work"
-            className="font-ibm-mono text-[11px] font-normal text-[#1A1A1A] tracking-[2px] no-underline hover:underline"
+            className="font-ibm-mono text-[14px] font-normal text-[#1A1A1A] tracking-[2px] no-underline hover:underline"
           >
             ← VIEW ALL PROJECTS
           </Link>

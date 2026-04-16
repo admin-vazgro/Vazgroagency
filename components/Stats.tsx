@@ -11,7 +11,7 @@ export default function Stats() {
   return (
     <section className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <div className="flex flex-col gap-3">
-        <span className="font-ibm-mono text-[12px] font-normal text-[#D6E264] tracking-[3px]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">
           [03] // YOUR NEXT CUSTOMER IS ALREADY ONLINE
         </span>
         <h2 className="font-grotesk text-[36px] md:text-[56px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.05] max-w-[700px]">
@@ -38,7 +38,7 @@ export default function Stats() {
               <span className="font-grotesk text-[52px] md:text-[64px] font-normal text-[#D6E264] tracking-[-3px] leading-none">
                 {stat.value}
               </span>
-              <span className="font-ibm-mono text-[10px] md:text-[11px] font-normal text-[#FFFFFF] tracking-[2px] leading-[1.6]">
+              <span className="font-ibm-mono text-[14px] md:text-[14px] font-normal text-[#FFFFFF] tracking-[2px] leading-[1.6]">
                 {stat.label}
               </span>
             </div>

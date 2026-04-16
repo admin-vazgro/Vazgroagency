@@ -14,7 +14,7 @@ export default function ComingSoonPage({
   return (
     <main className="flex flex-col w-full bg-[#0A0A0A] pt-[60px]">
       <section className="flex flex-col items-start w-full px-6 py-16 md:px-[120px] md:py-[100px]">
-        <span className="font-ibm-mono text-[11px] font-normal text-[#D6E264] tracking-[3px]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">
           {eyebrow}
         </span>
         <div className="h-5" />
@@ -22,7 +22,7 @@ export default function ComingSoonPage({
           {title}
         </h1>
         <div className="h-6" />
-        <p className="max-w-[640px] font-ibm-mono text-[12px] md:text-[14px] text-[#C2C2C2] tracking-[0.5px] leading-[1.8]">
+        <p className="max-w-[640px] font-ibm-mono text-[14px] md:text-[14px] text-[#C2C2C2] tracking-[0.5px] leading-[1.8]">
           {description}
         </p>
         <div className="h-10" />
@@ -32,7 +32,7 @@ export default function ComingSoonPage({
             "If you want access first, email us and we’ll send details as soon as it’s live.",
           ].map((line) => (
             <div key={line} className="border border-[#1D1D1D] bg-[#0F0F0F] px-5 py-4">
-              <p className="font-ibm-mono text-[12px] md:text-[13px] text-[#D0D0D0] tracking-[0.5px] leading-[1.7]">
+              <p className="font-ibm-mono text-[14px] md:text-[14px] text-[#D0D0D0] tracking-[0.5px] leading-[1.7]">
                 {line}
               </p>
             </div>
@@ -42,13 +42,13 @@ export default function ComingSoonPage({
         <div className="flex flex-col gap-[2px] w-full sm:w-auto sm:flex-row">
           <a
             href="mailto:hello@vazgro.com"
-            className="flex items-center justify-center h-[56px] px-8 bg-[#D6E264] text-[#0A0A0A] no-underline hover:bg-[#c9d64f] transition-colors font-grotesk text-[12px] tracking-[2px]"
+            className="flex items-center justify-center h-[56px] px-8 bg-[#D6E264] text-[#0A0A0A] no-underline hover:bg-[#c9d64f] transition-colors font-grotesk text-[14px] tracking-[2px]"
           >
             EMAIL VAZGRO
           </a>
           <Link
             href="/"
-            className="flex items-center justify-center h-[56px] px-8 bg-[#111111] border border-[#2D2D2D] text-[#F5F5F0] no-underline hover:border-[#444444] transition-colors font-grotesk text-[12px] tracking-[2px]"
+            className="flex items-center justify-center h-[56px] px-8 bg-[#111111] border border-[#2D2D2D] text-[#F5F5F0] no-underline hover:border-[#444444] transition-colors font-grotesk text-[14px] tracking-[2px]"
           >
             BACK TO HOME
           </Link>

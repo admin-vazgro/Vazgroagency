@@ -33,12 +33,12 @@ export default function StripePortalButton({ label = "MANAGE BILLING →" }: Pro
       <button
         onClick={handleClick}
         disabled={loading}
-        className="border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] px-6 py-3 font-ibm-mono text-[11px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors cursor-pointer disabled:opacity-50"
+        className="border-none bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] px-6 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors cursor-pointer disabled:opacity-50"
       >
         {loading ? "OPENING PORTAL..." : label}
       </button>
       {error && (
-        <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-warning)]">{error}</p>
+        <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-warning)]">{error}</p>
       )}
     </div>
   );

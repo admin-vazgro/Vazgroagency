@@ -76,15 +76,15 @@ export default async function AccountsPage(props: {
     <div className="p-8">
       <div className="mb-8 flex items-end justify-between border-b border-[var(--portal-border)] pb-6">
         <div>
-          <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// ACCOUNTS</span>
+          <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// ACCOUNTS</span>
           <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Accounts</h1>
-          <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+          <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
             {accounts.length} accounts · {activeClientCount} active clients
           </p>
         </div>
         <Link
           href={showNew ? "/hub/accounts" : "/hub/accounts?new=1"}
-          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
+          className="bg-[var(--portal-accent)] px-5 py-2.5 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]"
         >
           {showNew ? "CLOSE" : "+ NEW ACCOUNT"}
         </Link>
@@ -92,47 +92,47 @@ export default async function AccountsPage(props: {
 
       {statusMessage ? (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       ) : null}
 
       {errorMessage || dataError ? (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
         </div>
       ) : null}
 
       {showNew ? (
         <form action={createAccountAction} className="mb-8 grid grid-cols-1 gap-4 border border-[var(--portal-border)] bg-[var(--portal-surface)] p-6 lg:grid-cols-2">
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">ACCOUNT NAME *</label>
-            <input name="name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">ACCOUNT NAME *</label>
+            <input name="name" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">WEBSITE</label>
-            <input name="website" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">WEBSITE</label>
+            <input name="website" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">INDUSTRY</label>
-            <input name="industry" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">INDUSTRY</label>
+            <input name="industry" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">COUNTRY</label>
-            <input name="country" defaultValue="GB" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">COUNTRY</label>
+            <input name="country" defaultValue="GB" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div>
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">MONTHLY REVENUE (GBP)</label>
-            <input type="number" min="0" step="0.01" name="mrr_gbp" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">MONTHLY REVENUE (GBP)</label>
+            <input type="number" min="0" step="0.01" name="mrr_gbp" className="w-full border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div className="lg:col-span-2">
-            <label className="mb-2 block font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)]">NOTES</label>
-            <textarea name="notes" rows={4} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[12px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
+            <label className="mb-2 block font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)]">NOTES</label>
+            <textarea name="notes" rows={4} className="w-full resize-y border border-[var(--portal-border-strong)] bg-[var(--portal-bg)] px-4 py-3 font-ibm-mono text-[14px] text-[var(--portal-text)] focus:border-[var(--portal-accent)] focus:outline-none" />
           </div>
           <div className="lg:col-span-2 flex gap-3">
-            <button type="submit" className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]">
+            <button type="submit" className="bg-[var(--portal-accent)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-accent-contrast)] transition-colors hover:bg-[var(--portal-accent-hover)]">
               SAVE ACCOUNT
             </button>
-            <Link href="/hub/accounts" className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
+            <Link href="/hub/accounts" className="border border-[var(--portal-border-strong)] px-5 py-3 font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-soft)] transition-colors hover:text-[var(--portal-text)]">
               CANCEL
             </Link>
           </div>
@@ -141,15 +141,15 @@ export default async function AccountsPage(props: {
 
       <div className="mb-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-          <p className="mb-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-muted)]">TOTAL MRR</p>
+          <p className="mb-2 font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-muted)]">TOTAL MRR</p>
           <p className="font-grotesk text-[28px] font-normal text-[var(--portal-accent)]">£{totalMrr.toLocaleString()}</p>
         </div>
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-          <p className="mb-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-muted)]">ACTIVE CLIENTS</p>
+          <p className="mb-2 font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-muted)]">ACTIVE CLIENTS</p>
           <p className="font-grotesk text-[28px] font-normal text-[var(--portal-text)]">{activeClientCount}</p>
         </div>
         <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
-          <p className="mb-2 font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-muted)]">ACTIVE ENGAGEMENTS</p>
+          <p className="mb-2 font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-text-muted)]">ACTIVE ENGAGEMENTS</p>
           <p className="font-grotesk text-[28px] font-normal text-[var(--portal-text)]">{totalActiveEngagements}</p>
         </div>
       </div>
@@ -157,7 +157,7 @@ export default async function AccountsPage(props: {
       <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
         <div className="grid grid-cols-[1.2fr_100px_1fr_1fr_110px_90px] gap-4 border-b border-[var(--portal-border)] px-5 py-3">
           {["Account", "Country", "Industry", "Website", "Engagements", "Status"].map((heading) => (
-            <span key={heading} className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">{heading}</span>
+            <span key={heading} className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">{heading}</span>
           ))}
         </div>
         {accounts.map((account) => {
@@ -167,14 +167,14 @@ export default async function AccountsPage(props: {
           return (
             <div key={account.id} className="grid grid-cols-[1.2fr_100px_1fr_1fr_110px_90px] gap-4 border-b border-[var(--portal-border)] px-5 py-4 transition-colors hover:bg-[var(--portal-surface-alt)]">
               <div>
-                <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{account.name}</p>
-                <p className="mt-0.5 font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">MRR £{toNumber(account.mrr_gbp).toLocaleString()}</p>
+                <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{account.name}</p>
+                <p className="mt-0.5 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">MRR £{toNumber(account.mrr_gbp).toLocaleString()}</p>
               </div>
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{account.country || "—"}</span>
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{account.industry || "—"}</span>
-              <span className="truncate font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{account.website || "—"}</span>
-              <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{activeEngagements}</span>
-              <span className="w-fit px-2 py-1 font-ibm-mono text-[9px] tracking-[1px]" style={{ background: statusColor.bg, color: statusColor.text }}>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{account.country || "—"}</span>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{account.industry || "—"}</span>
+              <span className="truncate font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{account.website || "—"}</span>
+              <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{activeEngagements}</span>
+              <span className="w-fit px-2 py-1 font-ibm-mono text-[14px] tracking-[1px]" style={{ background: statusColor.bg, color: statusColor.text }}>
                 {status.toUpperCase()}
               </span>
             </div>
@@ -182,8 +182,8 @@ export default async function AccountsPage(props: {
         })}
         {!accounts.length ? (
           <div className="px-5 py-12">
-            <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No account records yet.</p>
-            <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Use the new account action to add your first client company.</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No account records yet.</p>
+            <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Use the new account action to add your first client company.</p>
           </div>
         ) : null}
       </div>

@@ -28,7 +28,7 @@ function StepCard({
       <h3 className="font-grotesk text-[20px] font-normal text-[#F5F5F0] tracking-[1px] leading-[1.2] whitespace-pre-line">
         {title}
       </h3>
-      <p className="font-ibm-mono text-[11px] text-[#AAAAAA] tracking-[1px] leading-[1.5]">
+      <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] leading-[1.5]">
         {description}
       </p>
     </div>

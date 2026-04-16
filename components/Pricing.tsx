@@ -52,7 +52,7 @@ function PricingCard({
         className="flex items-center justify-center h-[28px] px-[12px] w-fit"
         style={{ backgroundColor: tierBg, border: `1px solid ${tierBorderColor}` }}
       >
-        <span className="font-ibm-mono text-[11px] tracking-[2px]" style={{ color: tierColor }}>
+        <span className="font-ibm-mono text-[14px] tracking-[2px]" style={{ color: tierColor }}>
           {tier}
         </span>
       </div>
@@ -64,7 +64,7 @@ function PricingCard({
           {price}
         </span>
         {priceSuffix && (
-          <span className="font-ibm-mono text-[12px] lg:text-[13px] text-[#AAAAAA] tracking-[1px] mb-[6px]">{priceSuffix}</span>
+          <span className="font-ibm-mono text-[14px] lg:text-[14px] text-[#AAAAAA] tracking-[1px] mb-[6px]">{priceSuffix}</span>
         )}
       </div>
 
@@ -80,7 +80,7 @@ function PricingCard({
                 {f.included ? "+" : "—"}
               </span>
               <span
-                className="min-w-0 break-words font-ibm-mono text-[11px] tracking-[0.8px] leading-[1.6]"
+                className="min-w-0 break-words font-ibm-mono text-[14px] tracking-[0.8px] leading-[1.6]"
                 style={{ color: f.included ? "#CCCCCC" : "#888888" }}
               >
                 {f.label}
@@ -95,7 +95,7 @@ function PricingCard({
         className="mt-auto flex h-[48px] w-full items-center justify-center no-underline"
         style={{ backgroundColor: btnBg, border: `2px solid ${btnBorderColor}` }}
       >
-        <span className="text-center font-ibm-mono text-[11px] md:text-[12px] tracking-[1.5px] md:tracking-[2px]" style={{ color: btnLabelColor }}>
+        <span className="text-center font-ibm-mono text-[14px] md:text-[14px] tracking-[1.5px] md:tracking-[2px]" style={{ color: btnLabelColor }}>
           {btnLabel}
         </span>
       </a>

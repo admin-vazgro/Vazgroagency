@@ -86,9 +86,9 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
   return (
     <div className="p-8">
       <div className="mb-6 border-b border-[var(--portal-border)] pb-6">
-        <span className="font-ibm-mono text-[10px] tracking-[3px] text-[var(--portal-accent)]">// BRAND HUB</span>
+        <span className="font-ibm-mono text-[14px] tracking-[3px] text-[var(--portal-accent)]">// BRAND HUB</span>
         <h1 className="mt-1 font-grotesk text-[32px] font-normal tracking-[-1px] text-[var(--portal-text)]">Brand Hub</h1>
-        <p className="mt-1 font-ibm-mono text-[12px] tracking-[0.5px] text-[var(--portal-text-soft)]">
+        <p className="mt-1 font-ibm-mono text-[14px] tracking-[0.5px] text-[var(--portal-text-soft)]">
           Your brand assets and deliverables in one place.
         </p>
       </div>
@@ -99,7 +99,7 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
           <Link
             key={tab.key}
             href={`/workspace/brand-hub?tab=${tab.key}`}
-            className="px-6 py-3 font-ibm-mono text-[10px] tracking-[1px] transition-colors border-b-2"
+            className="px-6 py-3 font-ibm-mono text-[14px] tracking-[1px] transition-colors border-b-2"
             style={{
               color: activeTab === tab.key ? "var(--portal-accent)" : "var(--portal-text-muted)",
               borderColor: activeTab === tab.key ? "var(--portal-accent)" : "transparent",
@@ -112,29 +112,29 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
 
       {statusMessage && (
         <div className="mb-6 border border-[var(--portal-accent)] bg-[var(--portal-accent-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-accent)]">{statusMessage}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-accent)]">{statusMessage}</p>
         </div>
       )}
       {(errorMessage || dataError) && (
         <div className="mb-6 border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-4 py-3">
-          <p className="font-ibm-mono text-[11px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
+          <p className="font-ibm-mono text-[14px] text-[var(--portal-warning)]">{errorMessage || dataError}</p>
         </div>
       )}
 
       {/* ── BRAND LIBRARY TAB ── */}
       {activeTab === "library" && (
         <div className="flex flex-col gap-6">
-          <p className="font-ibm-mono text-[11px] leading-[1.7] text-[var(--portal-text-soft)]">
+          <p className="font-ibm-mono text-[14px] leading-[1.7] text-[var(--portal-text-soft)]">
             Upload your brand assets here so your Vazgro team can access them. Logos, guidelines, copy, and reference material.
           </p>
 
           {/* Upload CTA */}
           <div className="border border-dashed border-[var(--portal-border-strong)] p-8 text-center">
-            <p className="font-ibm-mono text-[12px] text-[var(--portal-text-soft)] mb-2">Brand Library</p>
-            <p className="font-ibm-mono text-[11px] text-[var(--portal-text-dim)] mb-6 leading-[1.7]">
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)] mb-2">Brand Library</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)] mb-6 leading-[1.7]">
               Upload your logos, brand guidelines, copywriting, and reference material. Your Vazgro team will use these to deliver your work.
             </p>
-            <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">File upload requires DigitalOcean Spaces to be configured. Contact your PM to upload files.</p>
+            <p className="font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">File upload requires DigitalOcean Spaces to be configured. Contact your PM to upload files.</p>
           </div>
 
           {/* Categories */}
@@ -149,9 +149,9 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
             ].map((cat) => (
               <div key={cat.label} className="border border-[var(--portal-border)] bg-[var(--portal-surface)] p-5">
                 <span className="text-[20px]">{cat.icon}</span>
-                <p className="mt-2 font-ibm-mono text-[11px] text-[var(--portal-text)]">{cat.label}</p>
-                <p className="mt-1 font-ibm-mono text-[10px] text-[var(--portal-text-dim)] leading-[1.5]">{cat.desc}</p>
-                <p className="mt-3 font-ibm-mono text-[9px] text-[var(--portal-text-dim)]">0 files</p>
+                <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text)]">{cat.label}</p>
+                <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-dim)] leading-[1.5]">{cat.desc}</p>
+                <p className="mt-3 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">0 files</p>
               </div>
             ))}
           </div>
@@ -164,12 +164,12 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
           {awaitingCount > 0 && (
             <div className="mb-6 flex items-center justify-between border border-[var(--portal-warning)] bg-[var(--portal-warning-soft)] px-5 py-4">
               <div>
-                <p className="font-ibm-mono text-[11px] tracking-[1px] text-[var(--portal-warning)]">ACTION REQUIRED</p>
-                <p className="mt-1 font-ibm-mono text-[12px] text-[var(--portal-text-muted)]">
+                <p className="font-ibm-mono text-[14px] tracking-[1px] text-[var(--portal-warning)]">ACTION REQUIRED</p>
+                <p className="mt-1 font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">
                   {awaitingCount} deliverable{awaitingCount !== 1 ? "s" : ""} awaiting your approval.
                 </p>
               </div>
-              <Link href="?tab=deliverables&filter=awaiting" className="font-ibm-mono text-[10px] tracking-[2px] text-[var(--portal-warning)] hover:opacity-80">
+              <Link href="?tab=deliverables&filter=awaiting" className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-warning)] hover:opacity-80">
                 REVIEW NOW →
               </Link>
             </div>
@@ -184,7 +184,7 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
               <Link
                 key={key}
                 href={`?tab=deliverables&filter=${key}`}
-                className="px-4 py-2 font-ibm-mono text-[10px] tracking-[1px] transition-colors"
+                className="px-4 py-2 font-ibm-mono text-[14px] tracking-[1px] transition-colors"
                 style={{
                   background: statusFilter === key ? "var(--portal-accent)" : "var(--portal-surface-alt)",
                   color: statusFilter === key ? "var(--portal-accent-contrast)" : "var(--portal-text-muted)",
@@ -198,13 +198,13 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
 
           {!accountId ? (
             <div className="border border-dashed border-[var(--portal-border-strong)] p-8">
-              <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">No account linked yet.</p>
+              <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">No account linked yet.</p>
             </div>
           ) : (
             <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">
               <div className="grid grid-cols-[1fr_100px_120px_100px_120px] gap-4 border-b border-[var(--portal-border)] px-5 py-3">
                 {["Name", "Type", "Project", "Uploaded", "Status"].map((h) => (
-                  <span key={h} className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-text-dim)]">{h}</span>
+                  <span key={h} className="font-ibm-mono text-[14px] tracking-[2px] text-[var(--portal-text-dim)]">{h}</span>
                 ))}
               </div>
               {filtered.map((d) => {
@@ -214,18 +214,18 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
                 return (
                   <div key={d.id} className="grid grid-cols-[1fr_100px_120px_100px_120px] gap-4 border-b border-[var(--portal-border)] px-5 py-4 hover:bg-[var(--portal-surface-alt)] items-center last:border-b-0">
                     <div>
-                      <p className="font-ibm-mono text-[11px] text-[var(--portal-text)]">{d.name}</p>
+                      <p className="font-ibm-mono text-[14px] text-[var(--portal-text)]">{d.name}</p>
                       {d.file_url && (
-                        <a href={d.file_url} target="_blank" rel="noopener noreferrer" className="mt-0.5 font-ibm-mono text-[10px] text-[var(--portal-accent)] hover:opacity-80">
+                        <a href={d.file_url} target="_blank" rel="noopener noreferrer" className="mt-0.5 font-ibm-mono text-[14px] text-[var(--portal-accent)] hover:opacity-80">
                           Download ↓
                         </a>
                       )}
                     </div>
-                    <span className="font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{d.file_type || "—"}</span>
-                    <span className="truncate font-ibm-mono text-[10px] text-[var(--portal-text-soft)]">{engTitle || "—"}</span>
-                    <span className="font-ibm-mono text-[10px] text-[var(--portal-text-muted)]">{new Date(d.created_at).toLocaleDateString("en-GB")}</span>
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{d.file_type || "—"}</span>
+                    <span className="truncate font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">{engTitle || "—"}</span>
+                    <span className="font-ibm-mono text-[14px] text-[var(--portal-text-muted)]">{new Date(d.created_at).toLocaleDateString("en-GB")}</span>
                     <div className="flex flex-col gap-1.5">
-                      <span className="w-fit px-2 py-1 font-ibm-mono text-[9px] tracking-[1px]" style={{ background: sc.bg, color: sc.text }}>
+                      <span className="w-fit px-2 py-1 font-ibm-mono text-[14px] tracking-[1px]" style={{ background: sc.bg, color: sc.text }}>
                         {status === "awaiting" ? "AWAITING APPROVAL" : status.toUpperCase()}
                       </span>
                       {status === "awaiting" && <DeliverableActions deliverableId={d.id} />}
@@ -235,10 +235,10 @@ export default async function BrandHubPage(props: { searchParams?: Promise<Works
               })}
               {filtered.length === 0 && (
                 <div className="px-5 py-12">
-                  <p className="font-ibm-mono text-[11px] text-[var(--portal-text-soft)]">
+                  <p className="font-ibm-mono text-[14px] text-[var(--portal-text-soft)]">
                     {statusFilter === "awaiting" ? "Nothing awaiting your approval." : "No deliverables yet."}
                   </p>
-                  <p className="mt-2 font-ibm-mono text-[10px] text-[var(--portal-text-dim)]">Files uploaded by your Vazgro team will appear here.</p>
+                  <p className="mt-2 font-ibm-mono text-[14px] text-[var(--portal-text-dim)]">Files uploaded by your Vazgro team will appear here.</p>
                 </div>
               )}
             </div>
