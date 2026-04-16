@@ -26,10 +26,16 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen]           = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const navTextColor = "#C8C8C8";
-  const navHoverColor = "#FFFFFF";
-  const contactColor = "#D6D6D6";
-  const mobileTextColor = "#D0D0D0";
+  // On the homepage the background is always dark, so use light text.
+  // On all other pages (white bg) use dark text until the user scrolls and
+  // the frosted-dark backdrop kicks in.
+  const isHomepage = pathname === "/";
+  const useLightText = isHomepage || scrolled;
+
+  const navTextColor   = useLightText ? "#E8E8E8" : "#1A1A1A";
+  const navHoverColor  = useLightText ? "#FFFFFF"  : "#000000";
+  const contactColor   = useLightText ? "#E8E8E8" : "#1A1A1A";
+  const mobileTextColor = "#E8E8E8"; // mobile drawer always has dark bg
 
   function navigateToSection(section: string) {
     setMenuOpen(false);
@@ -99,7 +105,7 @@ export default function Navbar() {
         background:       scrolled ? "rgba(10,10,10,0.88)" : "transparent",
         backdropFilter:   scrolled ? "blur(14px)"          : "none",
         WebkitBackdropFilter: scrolled ? "blur(14px)"      : "none",
-        borderBottom:     scrolled ? "1px solid #1E1E1E"   : "1px solid transparent",
+        borderBottom:     scrolled ? "1px solid #1E1E1E" : useLightText ? "1px solid transparent" : "1px solid #E5E5E5",
       }}
     >
         <div className="flex items-center justify-between h-[60px] px-6 md:px-[48px] max-w-[1400px] mx-auto">
@@ -107,7 +113,10 @@ export default function Navbar() {
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-[10px] shrink-0 group">
           <span className="w-[10px] h-[10px] bg-[#D6E264] group-hover:scale-110 transition-transform" />
-          <span className="font-grotesk text-[13px] font-normal text-[#F5F5F0] tracking-[2.5px]">
+          <span
+            className="font-grotesk text-[13px] font-normal tracking-[2.5px] transition-colors duration-300"
+            style={{ color: useLightText ? "#F5F5F0" : "#0A0A0A" }}
+          >
             VAZGRO
           </span>
         </Link>
@@ -121,7 +130,7 @@ export default function Navbar() {
                 key={label}
                 type="button"
                 onClick={() => navigateToSection(section)}
-                className="relative font-ibm-mono text-[10px] tracking-[1.5px] transition-colors duration-150 bg-transparent border-none cursor-pointer"
+                className="relative font-ibm-mono text-[11px] tracking-[1.5px] transition-colors duration-150 bg-transparent border-none cursor-pointer"
                 style={{ color: isActive ? "#D6E264" : navTextColor }}
                 onMouseEnter={(e) => {
                   if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = navHoverColor;
@@ -144,7 +153,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-[14px]">
           <a
             href="mailto:hello@vazgro.com"
-            className="font-ibm-mono text-[10px] tracking-[1.5px] hover:text-[#F5F5F0] transition-colors"
+            className="font-ibm-mono text-[11px] tracking-[1.5px] hover:text-[#FFFFFF] transition-colors"
             style={{ color: contactColor }}
           >
             CONTACT
@@ -165,16 +174,16 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className="block w-[20px] h-[1.5px] bg-[#F5F5F0] transition-transform duration-200 origin-center"
-            style={{ transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : "none" }}
+            className="block w-[20px] h-[1.5px] transition-all duration-200 origin-center"
+            style={{ background: useLightText ? "#F5F5F0" : "#0A0A0A", transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : "none" }}
           />
           <span
-            className="block w-[20px] h-[1.5px] bg-[#F5F5F0] transition-opacity duration-200"
-            style={{ opacity: menuOpen ? 0 : 1 }}
+            className="block w-[20px] h-[1.5px] transition-all duration-200"
+            style={{ background: useLightText ? "#F5F5F0" : "#0A0A0A", opacity: menuOpen ? 0 : 1 }}
           />
           <span
-            className="block w-[20px] h-[1.5px] bg-[#F5F5F0] transition-transform duration-200 origin-center"
-            style={{ transform: menuOpen ? "translateY(-6.5px) rotate(-45deg)" : "none" }}
+            className="block w-[20px] h-[1.5px] transition-all duration-200 origin-center"
+            style={{ background: useLightText ? "#F5F5F0" : "#0A0A0A", transform: menuOpen ? "translateY(-6.5px) rotate(-45deg)" : "none" }}
           />
         </button>
       </div>

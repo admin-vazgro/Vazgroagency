@@ -98,6 +98,7 @@ const navGroups: NavGroup[] = [
     items: [
       { label: "Accounts", href: "/hub/accounts", icon: IconAccounts },
       { label: "Engagements", href: "/hub/engagements", icon: IconEngagements },
+      { label: "Projects", href: "/hub/projects", icon: IconEngagements },
       { label: "Requests", href: "/hub/requests", icon: IconRequests },
     ],
   },

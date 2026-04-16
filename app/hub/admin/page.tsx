@@ -50,7 +50,101 @@ function displayName(profile: Profile) {
 
 function stringifySettingValue(value: unknown) {
   if (typeof value === "string") return value;
-  return JSON.stringify(value);
+  if (typeof value === "number" || typeof value === "boolean") return String(value);
+  return JSON.stringify(value, null, 2);
+}
+
+type SettingMeta = {
+  label: string;
+  hint?: string;
+  inputType: "number" | "textarea" | "text";
+  rows?: number;
+  unit?: string;
+};
+
+const SETTING_META: Record<string, SettingMeta> = {
+  sla_first_touch_hours: { label: "First-touch SLA", hint: "Hours from lead creation before breach", inputType: "number", unit: "hours" },
+  sla_first_touch_warning_hours: { label: "First-touch warning", hint: "Hours from lead creation before warning shown", inputType: "number", unit: "hours" },
+  sla_qualify_working_days: { label: "Qualify deadline", hint: "Working days to qualify a lead", inputType: "number", unit: "days" },
+  sla_stale_deal_working_days: { label: "Stale deal deadline", hint: "Working days before deal is flagged stale", inputType: "number", unit: "days" },
+  sla_stale_deal_warning_days: { label: "Stale deal warning", hint: "Working days before stale deal warning", inputType: "number", unit: "days" },
+  claw_back_window_days: { label: "Claw-back window", hint: "Days before commission releases from hold", inputType: "number", unit: "days" },
+  commission_tiers: { label: "Commission tiers", hint: "JSON array: tier, min_gbp, max_gbp, closer_rate, referrer_rate", inputType: "textarea", rows: 10 },
+  grow_taper: { label: "GROW taper schedule", hint: "JSON array: months[] and multiplier per phase", inputType: "textarea", rows: 8 },
+  partner_concurrent_leads_cap: { label: "Concurrent leads cap", hint: "JSON object: max open leads per tier { tier1, tier2, tier3 }", inputType: "textarea", rows: 3 },
+  currencies: { label: "Supported currencies", hint: "JSON array of ISO currency codes", inputType: "textarea", rows: 2 },
+  pipeline_stages_launch: { label: "LAUNCH pipeline stages", hint: "JSON array of stage slugs", inputType: "textarea", rows: 3 },
+  pipeline_stages_grow: { label: "GROW pipeline stages", hint: "JSON array of stage slugs", inputType: "textarea", rows: 3 },
+  pipeline_stages_build: { label: "BUILD pipeline stages", hint: "JSON array of stage slugs", inputType: "textarea", rows: 3 },
+};
+
+const SETTING_GROUPS: Array<{ heading: string; keys: string[] }> = [
+  {
+    heading: "SLA Thresholds",
+    keys: ["sla_first_touch_hours", "sla_first_touch_warning_hours", "sla_qualify_working_days", "sla_stale_deal_working_days", "sla_stale_deal_warning_days"],
+  },
+  {
+    heading: "Commission & Payouts",
+    keys: ["commission_tiers", "grow_taper", "claw_back_window_days"],
+  },
+  {
+    heading: "Partner Caps",
+    keys: ["partner_concurrent_leads_cap"],
+  },
+  {
+    heading: "Currencies & Pipeline",
+    keys: ["currencies", "pipeline_stages_launch", "pipeline_stages_grow", "pipeline_stages_build"],
+  },
+];
+
+const inputCls = "w-full bg-[var(--portal-bg)] border border-[var(--portal-border-strong)] text-[var(--portal-text)] font-ibm-mono text-[11px] px-3 py-2 focus:outline-none focus:border-[var(--portal-accent)]";
+
+function SettingField({ setting }: { setting: HubSetting }) {
+  const meta = SETTING_META[setting.key] ?? { label: setting.key, inputType: "textarea" as const, rows: 3 };
+  const displayValue = stringifySettingValue(setting.value);
+
+  return (
+    <form action={updateSettingAction} className="flex flex-col gap-2">
+      <input type="hidden" name="key" value={setting.key} />
+      <div className="flex items-center justify-between gap-2">
+        <div>
+          <label className="block font-ibm-mono text-[10px] tracking-[1px] text-[var(--portal-text-muted)]">
+            {meta.label.toUpperCase()}
+          </label>
+          {meta.hint && (
+            <p className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] mt-0.5">{meta.hint}</p>
+          )}
+        </div>
+        {meta.inputType === "number" && meta.unit && (
+          <span className="font-ibm-mono text-[9px] text-[var(--portal-text-dim)] shrink-0">{meta.unit}</span>
+        )}
+      </div>
+      <div className="flex gap-2 items-start">
+        {meta.inputType === "number" ? (
+          <input
+            type="number"
+            name="value"
+            defaultValue={displayValue}
+            min={0}
+            className={`${inputCls} w-32`}
+          />
+        ) : (
+          <textarea
+            name="value"
+            defaultValue={displayValue}
+            rows={meta.rows ?? 3}
+            className={`${inputCls} resize-y flex-1`}
+          />
+        )}
+        <button
+          type="submit"
+          className="shrink-0 px-4 py-2 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] text-[var(--portal-accent-contrast)] tracking-[1px] transition-colors cursor-pointer border-none"
+        >
+          SAVE
+        </button>
+      </div>
+    </form>
+  );
 }
 
 function firstParam(value: string | string[] | undefined) {
@@ -168,38 +262,38 @@ export default async function AdminPage(props: {
                 Persisted in Supabase. Update values inline and save.
               </p>
             </div>
-            <div className="divide-y divide-[var(--portal-border)]">
-              {settings.map((setting) => (
-                <form key={setting.key} action={updateSettingAction} className="px-6 py-4 flex flex-col gap-3">
-                  <input type="hidden" name="key" value={setting.key} />
-                  <div>
-                    <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">{setting.key}</p>
-                    {setting.description ? (
-                      <p className="font-ibm-mono text-[10px] text-[var(--portal-text-dim)] mt-1 leading-[1.5]">{setting.description}</p>
-                    ) : null}
-                  </div>
-                  <div className="flex gap-3 items-start">
-                    <textarea
-                      name="value"
-                      defaultValue={stringifySettingValue(setting.value)}
-                      rows={2}
-                      className="flex-1 bg-[var(--portal-bg)] border border-[var(--portal-border-strong)] text-[var(--portal-text)] font-ibm-mono text-[11px] px-3 py-2 focus:outline-none focus:border-[var(--portal-accent)] resize-y"
-                    />
-                    <button
-                      type="submit"
-                      className="shrink-0 px-4 py-2 bg-[var(--portal-accent)] hover:bg-[var(--portal-accent-hover)] font-ibm-mono text-[10px] text-[var(--portal-accent-contrast)] tracking-[1px] transition-colors cursor-pointer border-none"
-                    >
-                      SAVE
-                    </button>
-                  </div>
-                </form>
-              ))}
-              {!settings.length && !adminDataError ? (
-                <div className="px-6 py-5">
-                  <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">No hub settings found.</p>
-                </div>
-              ) : null}
-            </div>
+            {!settings.length && !adminDataError ? (
+              <div className="px-6 py-5">
+                <p className="font-ibm-mono text-[11px] text-[var(--portal-text-muted)]">No hub settings found.</p>
+              </div>
+            ) : (
+              <div className="divide-y divide-[var(--portal-border)]">
+                {SETTING_GROUPS.map((group) => {
+                  const groupSettings = group.keys
+                    .map((k) => settings.find((s) => s.key === k))
+                    .filter((s): s is HubSetting => s != null);
+                  if (!groupSettings.length) return null;
+                  return (
+                    <div key={group.heading} className="px-6 py-5">
+                      <p className="font-ibm-mono text-[9px] tracking-[2px] text-[var(--portal-accent)] mb-4">{group.heading.toUpperCase()}</p>
+                      <div className="flex flex-col gap-5">
+                        {groupSettings.map((s) => (
+                          <SettingField key={s.key} setting={s} />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+                {/* Ungrouped settings fallback */}
+                {settings
+                  .filter((s) => !SETTING_GROUPS.flatMap((g) => g.keys).includes(s.key))
+                  .map((s) => (
+                    <div key={s.key} className="px-6 py-4">
+                      <SettingField setting={s} />
+                    </div>
+                  ))}
+              </div>
+            )}
           </div>
 
           <div className="border border-[var(--portal-border)] bg-[var(--portal-surface)]">

@@ -37,12 +37,13 @@ const labelClass = "font-ibm-mono text-[10px] font-bold text-[#AAAAAA] tracking-
 export default function LaunchModal({ pkg, onClose }: Props) {
   const [step, setStep] = useState<Step>(1);
   const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [s1, setS1] = useState({
     firstName: "", lastName: "", email: "", phone: "", company: "", website: "",
   });
   const [s2, setS2] = useState<Record<string, string>>({});
+  const [leadId, setLeadId] = useState<string | null>(null);
 
   // lock body scroll
   useEffect(() => {
@@ -52,36 +53,97 @@ export default function LaunchModal({ pkg, onClose }: Props) {
 
   const s1Valid = s1.firstName.trim() !== "" && s1.email.trim() !== "";
 
-  function handleSubmit() {
+  // Step 1 → Step 2: create lead in DB
+  async function handleStep1Next() {
     setSubmitting(true);
-    // Build mailto with all collected data
-    const requirements = pkg.requiresFrom
-      .map((f) => `${f.label}: ${s2[f.label] || "(not provided)"}`)
-      .join("\n");
-
-    const body = encodeURIComponent(
-      `PACKAGE: ${pkg.icon} ${pkg.name} — £${pkg.price.toLocaleString()} (${pkg.deliveryDays} days)\n\n` +
-      `--- CUSTOMER DETAILS ---\n` +
-      `Name: ${s1.firstName} ${s1.lastName}\n` +
-      `Email: ${s1.email}\n` +
-      `Phone: ${s1.phone || "—"}\n` +
-      `Company: ${s1.company || "—"}\n` +
-      `Website: ${s1.website || "—"}\n\n` +
-      `--- PROJECT REQUIREMENTS ---\n${requirements}`
-    );
-
-    const subject = encodeURIComponent(`New LAUNCH Order — ${pkg.name} — ${s1.firstName} ${s1.lastName}`);
-    window.location.href = `mailto:hello@vazgro.com?subject=${subject}&body=${body}`;
-    setTimeout(() => {
+    setError(null);
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: s1.firstName,
+          last_name: s1.lastName || undefined,
+          email: s1.email,
+          phone: s1.phone || undefined,
+          company: s1.company || undefined,
+          website: s1.website || undefined,
+          pillar: "LAUNCH",
+          source: "website",
+          package_id: pkg.id,
+          package_name: pkg.name,
+          package_price: pkg.price,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to save details");
+      setLeadId(data.id);
+      setStep(2);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
       setSubmitting(false);
-      setDone(true);
-    }, 800);
+    }
+  }
+
+  // Step 2 → Step 3: patch lead with requirements
+  async function handleStep2Next() {
+    setSubmitting(true);
+    setError(null);
+    try {
+      if (leadId) {
+        const requirements = pkg.requiresFrom.reduce<Record<string, string>>((acc, f) => {
+          if (s2[f.label]) acc[f.label] = s2[f.label];
+          return acc;
+        }, {});
+        await fetch(`/api/leads?id=${leadId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ stage: "qualified", requirements }),
+        });
+      }
+      setStep(3);
+    } catch {
+      // Non-fatal — still advance
+      setStep(3);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  // Step 3: create Stripe Checkout Session and redirect
+  async function handleCheckout() {
+    if (!leadId) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          lead_id: leadId,
+          mode: "payment",
+          pillar: "LAUNCH",
+          package_id: pkg.id,
+          package_name: pkg.name,
+          package_price: pkg.price,
+          email: s1.email,
+          name: [s1.firstName, s1.lastName].filter(Boolean).join(" "),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to create checkout session");
+      if (data.url) window.location.href = data.url;
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to open checkout. Please try again.");
+      setSubmitting(false);
+    }
   }
 
   const steps = [
     { n: 1, label: "YOUR DETAILS" },
     { n: 2, label: "REQUIREMENTS" },
-    { n: 3, label: "CONFIRM" },
+    { n: 3, label: "REVIEW & PAY" },
   ];
 
   return (
@@ -95,24 +157,24 @@ export default function LaunchModal({ pkg, onClose }: Props) {
         {/* Header */}
         <div className="shrink-0 border-b border-[#1D1D1D] px-4 py-4 sm:px-6">
           <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[1.5px] md:tracking-[2px] break-words">⚡ LAUNCH · {pkg.name.toUpperCase()}</span>
-            <div className="mt-1 flex flex-wrap items-center gap-3">
-              <span className="font-grotesk text-[24px] sm:text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] leading-none">
-                £{pkg.price.toLocaleString()}
-              </span>
-              <span className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1px] border border-[#2D2D2D] px-2 py-1">
-                ⏱ {pkg.deliveryDays} DAYS
-              </span>
+            <div className="min-w-0">
+              <span className="font-ibm-mono text-[10px] text-[#999999] tracking-[1.5px] md:tracking-[2px] break-words">⚡ LAUNCH · {pkg.name.toUpperCase()}</span>
+              <div className="mt-1 flex flex-wrap items-center gap-3">
+                <span className="font-grotesk text-[24px] sm:text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] leading-none">
+                  £{pkg.price.toLocaleString()}
+                </span>
+                <span className="font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1px] border border-[#2D2D2D] px-2 py-1">
+                  ⏱ {pkg.deliveryDays} DAYS
+                </span>
+              </div>
             </div>
-          </div>
-          <button
-            onClick={onClose}
-            className="w-9 h-9 flex items-center justify-center border border-[#2D2D2D] hover:border-[#555] text-[#AAAAAA] hover:text-[#F5F5F0] transition-colors cursor-pointer bg-transparent"
-            aria-label="Close"
-          >
-            <span className="font-ibm-mono text-[12px]">✕</span>
-          </button>
+            <button
+              onClick={onClose}
+              className="w-9 h-9 flex items-center justify-center border border-[#2D2D2D] hover:border-[#555] text-[#AAAAAA] hover:text-[#F5F5F0] transition-colors cursor-pointer bg-transparent"
+              aria-label="Close"
+            >
+              <span className="font-ibm-mono text-[12px]">✕</span>
+            </button>
           </div>
         </div>
 
@@ -135,6 +197,13 @@ export default function LaunchModal({ pkg, onClose }: Props) {
             </div>
           ))}
         </div>
+
+        {/* Error banner */}
+        {error && (
+          <div className="shrink-0 border-b border-[#FF4444] bg-[#1A0000] px-5 py-3">
+            <p className="font-ibm-mono text-[11px] text-[#FF6666]">{error}</p>
+          </div>
+        )}
 
         {/* Scrollable content */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6">
@@ -172,11 +241,11 @@ export default function LaunchModal({ pkg, onClose }: Props) {
                 <input className={inputClass} placeholder="https://..." value={s1.website} onChange={(e) => setS1((p) => ({ ...p, website: e.target.value }))} />
               </div>
               <button
-                onClick={() => setStep(2)}
-                disabled={!s1Valid}
+                onClick={handleStep1Next}
+                disabled={!s1Valid || submitting}
                 className="mt-2 h-[52px] w-full border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                NEXT: PROJECT REQUIREMENTS →
+                {submitting ? "SAVING..." : "NEXT: PROJECT REQUIREMENTS →"}
               </button>
             </div>
           )}
@@ -243,22 +312,24 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               <div className="mt-2 flex flex-col gap-[2px] sm:flex-row">
                 <button
                   onClick={() => setStep(1)}
+                  disabled={submitting}
                   className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
                 >
                   ← BACK
                 </button>
                 <button
-                  onClick={() => setStep(3)}
-                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f]"
+                  onClick={handleStep2Next}
+                  disabled={submitting}
+                  className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-40"
                 >
-                  NEXT: REVIEW & CONFIRM →
+                  {submitting ? "SAVING..." : "NEXT: REVIEW & PAY →"}
                 </button>
               </div>
             </div>
           )}
 
-          {/* Step 3 — Confirm */}
-          {step === 3 && !done && (
+          {/* Step 3 — Review & Pay */}
+          {step === 3 && (
             <div className="flex flex-col gap-4">
               <h3 className="font-grotesk text-[18px] font-bold text-[#F5F5F0] tracking-[-0.5px]">
                 Review your order
@@ -284,9 +355,10 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               <div className="flex flex-col gap-2 p-4 bg-[#0A0A0A] border border-[#1D1D1D]">
                 <span className="font-ibm-mono text-[9px] font-bold text-[#D6E264] tracking-[1px] md:tracking-[2px]">WHAT HAPPENS NEXT</span>
                 {[
-                  "Your request is sent directly to our team",
+                  "Pay securely via Stripe — card or bank transfer",
+                  "Your workspace is created automatically on payment",
+                  "You receive a magic link to your portal within 30 seconds",
                   "Your dedicated PM contacts you within 2 business hours",
-                  "We confirm scope, send invoice, and kick off your project",
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <span className="font-ibm-mono text-[10px] text-[#D6E264] shrink-0 mt-0.5">{`0${i + 1}`}</span>
@@ -298,42 +370,22 @@ export default function LaunchModal({ pkg, onClose }: Props) {
               <div className="mt-2 flex flex-col gap-[2px] sm:flex-row">
                 <button
                   onClick={() => setStep(2)}
+                  disabled={submitting}
                   className="h-[52px] border border-[#2D2D2D] bg-[#111111] px-6 font-ibm-mono text-[10px] text-[#AAAAAA] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#555]"
                 >
                   ← BACK
                 </button>
                 <button
-                  onClick={handleSubmit}
-                  disabled={submitting}
+                  onClick={handleCheckout}
+                  disabled={submitting || !leadId}
                   className="h-[52px] flex-1 border-none bg-[#D6E264] font-grotesk text-[11px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer hover:bg-[#c9d64f] disabled:opacity-40"
                 >
-                  {submitting ? "OPENING EMAIL..." : `SUBMIT REQUEST — £${pkg.price.toLocaleString()} →`}
+                  {submitting ? "OPENING CHECKOUT..." : `PAY £${pkg.price.toLocaleString()} SECURELY →`}
                 </button>
               </div>
               <p className="font-ibm-mono text-[10px] text-[#777777] text-center tracking-[1px]">
-                OPENS YOUR EMAIL CLIENT · NO CARD REQUIRED YET
+                POWERED BY STRIPE · SSL ENCRYPTED · NO CARD STORED
               </p>
-            </div>
-          )}
-
-          {/* Done */}
-          {done && (
-            <div className="flex flex-col items-center text-center gap-5 py-6">
-              <div className="w-[64px] h-[64px] bg-[#D6E264] flex items-center justify-center">
-                <span className="text-[28px]">✓</span>
-              </div>
-              <div>
-                <h3 className="font-grotesk text-[22px] font-bold text-[#F5F5F0] tracking-[-1px]">Request sent!</h3>
-                <p className="font-ibm-mono text-[12px] text-[#AAAAAA] tracking-[0.5px] leading-[1.7] mt-2 max-w-[360px]">
-                  Check your email client — your order details have been pre-filled. We&apos;ll reply within 2 business hours to confirm and kick off your project.
-                </p>
-              </div>
-              <button
-                onClick={onClose}
-                className="h-[48px] border border-[#2D2D2D] bg-[#1A1A1A] px-8 font-grotesk text-[11px] font-bold text-[#F5F5F0] tracking-[1.5px] md:tracking-[2px] transition-colors cursor-pointer border-none hover:border-[#D6E264]"
-              >
-                CLOSE
-              </button>
             </div>
           )}
         </div>

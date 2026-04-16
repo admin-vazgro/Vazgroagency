@@ -3,7 +3,10 @@ import {
   requireWorkspaceAccess,
   getWorkspaceAdminClient,
   getGreeting,
+  firstParam,
+  type WorkspaceSearchParams,
 } from "@/app/workspace/lib";
+import WorkspaceDashboardShell from "./WorkspaceDashboardShell";
 
 const pillarColors: Record<string, string> = {
   LAUNCH: "var(--portal-accent)",
@@ -20,9 +23,11 @@ const statusBadge = {
   revision_requested: { bg: "var(--portal-warning-strong-soft)", text: "var(--portal-warning)", label: "Revisions" },
 } as const;
 
-export default async function WorkspaceDashboard() {
+export default async function WorkspaceDashboard(props: { searchParams?: Promise<WorkspaceSearchParams> }) {
   const { user } = await requireWorkspaceAccess();
   const admin = getWorkspaceAdminClient();
+  const searchParams = props.searchParams ? await props.searchParams : {};
+  const showWizard = firstParam(searchParams.welcome) === "1";
 
   const [profileResult, membershipResult] = await Promise.all([
     admin.from("profiles").select("first_name, last_name, email, timezone").eq("id", user.id).maybeSingle(),
@@ -130,7 +135,10 @@ export default async function WorkspaceDashboard() {
     recentDeliverables = (recentDelResult.data ?? []) as typeof recentDeliverables;
   }
 
+  const profileName = profile?.first_name ?? profile?.email?.split("@")[0] ?? "there";
+
   return (
+    <WorkspaceDashboardShell showWizard={showWizard} profileName={profileName}>
     <div className="p-8">
       {/* Header */}
       <div className="mb-8 border-b border-[var(--portal-border)] pb-6">
@@ -302,5 +310,6 @@ export default async function WorkspaceDashboard() {
         </div>
       </div>
     </div>
+    </WorkspaceDashboardShell>
   );
 }

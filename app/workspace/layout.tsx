@@ -74,13 +74,14 @@ const navGroups: NavGroup[] = [
     items: [
       { label: "Projects", href: "/workspace/engagements", icon: IconProjects },
       { label: "Requests", href: "/workspace/requests", icon: IconRequests },
-      { label: "Brand Hub", href: "/workspace/files", icon: IconBrandHub },
+      { label: "Brand Hub", href: "/workspace/brand-hub", icon: IconBrandHub },
     ],
   },
   {
     label: "ACCOUNT",
     items: [
-      { label: "Services & Billing", href: "/workspace/billing", icon: IconBilling },
+      { label: "Services", href: "/workspace/services", icon: IconBilling },
+      { label: "Billing", href: "/workspace/billing", icon: IconBilling },
       { label: "Team", href: "/workspace/team", icon: IconTeam },
       { label: "Settings", href: "/workspace/settings", icon: IconSettings },
     ],

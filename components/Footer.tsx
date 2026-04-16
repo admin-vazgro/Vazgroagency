@@ -22,8 +22,8 @@ const companyLinks: FooterLink[] = [
 ];
 
 const resourceLinks: FooterLink[] = [
-  { label: "PARTNER PROGRAMME", href: "/login" },
-  { label: "CLIENT PORTAL", href: "/login" },
+  { label: "PARTNER PROGRAMME", href: "/partner-programme" },
+  { label: "VAZGRO HUB", href: "/login" },
   { label: "PROGRIZE", href: "https://www.progrize.com", external: true },
 ];
 
