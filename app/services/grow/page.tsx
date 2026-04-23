@@ -5,17 +5,17 @@ import Link from "next/link";
 
 const plans = [
   // Design
-  { id: "design-starter", track: "Design", icon: "🎨", name: "Design Starter", capacity: "2 active requests · 48hr turnaround", price: 349, minMonths: 3, popular: false, features: ["2 active requests at a time", "Social graphics & banners", "Print & digital assets", "Unlimited revisions", "48hr avg turnaround"] },
-  { id: "design-pro", track: "Design", icon: "🎨", name: "Design Pro", capacity: "4 active requests · Priority queue", price: 649, minMonths: 3, popular: true, features: ["4 active requests at a time", "Custom illustrations", "UI mockups & wireframes", "Basic motion & GIFs", "Priority queue", "Monthly strategy call"] },
-  { id: "design-studio", track: "Design", icon: "🎨", name: "Design Studio", capacity: "6 active requests · 24hr turnaround", price: 999, minMonths: 3, popular: false, features: ["6 active requests at a time", "Video editing & short-form", "Full UI/UX design", "24hr priority turnaround", "Bi-weekly strategy calls"] },
+  { id: "design-starter", track: "Design", icon: "🎨", name: "Design Starter", capacity: "2 active requests · 48hr turnaround", price: 1, minMonths: 3, popular: false, features: ["2 active requests at a time", "Social graphics & banners", "Print & digital assets", "Unlimited revisions", "48hr avg turnaround"] },
+  { id: "design-pro", track: "Design", icon: "🎨", name: "Design Pro", capacity: "4 active requests · Priority queue", price: 1, minMonths: 3, popular: true, features: ["4 active requests at a time", "Custom illustrations", "UI mockups & wireframes", "Basic motion & GIFs", "Priority queue", "Monthly strategy call"] },
+  { id: "design-studio", track: "Design", icon: "🎨", name: "Design Studio", capacity: "6 active requests · 24hr turnaround", price: 1, minMonths: 3, popular: false, features: ["6 active requests at a time", "Video editing & short-form", "Full UI/UX design", "24hr priority turnaround", "Bi-weekly strategy calls"] },
   // Dev
-  { id: "dev-essentials", track: "Dev", icon: "💻", name: "Dev Essentials", capacity: "~10 hrs/week", price: 799, minMonths: 3, popular: false, features: ["~10 hrs/week capacity", "Bug fixes & updates", "Performance improvements", "Monthly progress report"] },
-  { id: "dev-growth", track: "Dev", icon: "💻", name: "Dev Growth", capacity: "~20 hrs/week", price: 1499, minMonths: 3, popular: true, features: ["~20 hrs/week capacity", "Feature development", "API & integrations", "Staging environment", "Monthly strategy call"] },
-  { id: "dev-scale", track: "Dev", icon: "💻", name: "Dev Scale", capacity: "~40 hrs/week dedicated", price: 2499, minMonths: 3, popular: false, features: ["~40 hrs/week dedicated dev", "Sprint-based delivery", "Full-stack development", "Weekly sync calls"] },
+  { id: "dev-essentials", track: "Dev", icon: "💻", name: "Dev Essentials", capacity: "~10 hrs/week", price: 1, minMonths: 3, popular: false, features: ["~10 hrs/week capacity", "Bug fixes & updates", "Performance improvements", "Monthly progress report"] },
+  { id: "dev-growth", track: "Dev", icon: "💻", name: "Dev Growth", capacity: "~20 hrs/week", price: 1, minMonths: 3, popular: true, features: ["~20 hrs/week capacity", "Feature development", "API & integrations", "Staging environment", "Monthly strategy call"] },
+  { id: "dev-scale", track: "Dev", icon: "💻", name: "Dev Scale", capacity: "~40 hrs/week dedicated", price: 1, minMonths: 3, popular: false, features: ["~40 hrs/week dedicated dev", "Sprint-based delivery", "Full-stack development", "Weekly sync calls"] },
   // Social
-  { id: "social-starter", track: "Social", icon: "📱", name: "Social Starter", capacity: "3 platforms · 12 posts/mo", price: 399, minMonths: 3, popular: false, features: ["3 platforms", "12 posts per month", "Scheduling & community replies", "Monthly performance report"] },
-  { id: "social-growth", track: "Social", icon: "📱", name: "Social Growth", capacity: "4 platforms · 20 posts/mo", price: 799, minMonths: 3, popular: true, features: ["4 platforms", "20 posts per month", "Ad management (£500 budget)", "Competitor analysis", "Monthly strategy call"] },
-  { id: "social-scale", track: "Social", icon: "📱", name: "Social Scale", capacity: "All platforms · Unlimited posts", price: 1299, minMonths: 3, popular: false, features: ["All platforms", "Unlimited posts", "Full SEO management", "Email marketing (monthly)", "Ads up to £2k budget"] },
+  { id: "social-starter", track: "Social", icon: "📱", name: "Social Starter", capacity: "3 platforms · 12 posts/mo", price: 1, minMonths: 3, popular: false, features: ["3 platforms", "12 posts per month", "Scheduling & community replies", "Monthly performance report"] },
+  { id: "social-growth", track: "Social", icon: "📱", name: "Social Growth", capacity: "4 platforms · 20 posts/mo", price: 1, minMonths: 3, popular: true, features: ["4 platforms", "20 posts per month", "Ad management (£500 budget)", "Competitor analysis", "Monthly strategy call"] },
+  { id: "social-scale", track: "Social", icon: "📱", name: "Social Scale", capacity: "All platforms · Unlimited posts", price: 1, minMonths: 3, popular: false, features: ["All platforms", "Unlimited posts", "Full SEO management", "Email marketing (monthly)", "Ads up to £2k budget"] },
 ];
 
 const tracks = ["Design", "Dev", "Social"] as const;
