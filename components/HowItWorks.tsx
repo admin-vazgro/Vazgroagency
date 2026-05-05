@@ -13,22 +13,22 @@ function StepCard({
   number,
   title,
   description,
-  bgColor = "#0A0A0A",
-  borderColor = "#2D2D2D",
+  bgColor = "#FFFFFF",
+  borderColor = "#D8D8D8",
   borderWidth = 1,
 }: StepCardProps) {
   return (
     <div
-      className="flex flex-col gap-4 p-8 lg:p-[40px] border w-full lg:flex-1 lg:h-[280px]"
+      className="flex flex-col gap-4 p-8 lg:p-[40px] border w-full lg:flex-1 lg:min-h-[240px]"
       style={{ backgroundColor: bgColor, borderColor, borderWidth }}
     >
-      <span className="font-grotesk text-[48px] font-normal text-[#D6E264] tracking-[-2px]">
+      <span className="font-grotesk text-[48px] font-normal text-[#6B7800] tracking-[-2px]">
         {number}
       </span>
-      <h3 className="font-grotesk text-[20px] font-normal text-[#F5F5F0] tracking-[1px] leading-[1.2] whitespace-pre-line">
+      <h3 className="font-grotesk text-[20px] font-normal text-[#0A0A0A] tracking-[1px] leading-[1.2] whitespace-pre-line">
         {title}
       </h3>
-      <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] leading-[1.5]">
+      <p className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] leading-[1.5]">
         {description}
       </p>
     </div>
@@ -37,7 +37,7 @@ function StepCard({
 
 export default function HowItWorks() {
   return (
-    <section id="process" className="flex flex-col w-full bg-[#0D0D0D] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
+    <section id="process" className="flex flex-col w-full bg-[#F8F8F8] py-16 px-6 md:py-[80px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <SectionHeader
         label="[02] // OUR PROCESS"
         title={"SIMPLE. HONEST.\nREPEATABLE."}
@@ -54,7 +54,7 @@ export default function HowItWorks() {
           number="02"
           title={"WE SCOPE\nAND ALIGN"}
           description="YOUR DEDICATED PM CONFIRMS SCOPE, BRIEF, AND TIMELINE. SPRINT 0 FOR BIGGER PROJECTS."
-          bgColor="#111111"
+          bgColor="#FAFDF0"
           borderColor="#D6E264"
           borderWidth={1}
         />
@@ -67,7 +67,7 @@ export default function HowItWorks() {
           number="04"
           title={"YOU OWN\nEVERYTHING"}
           description="FULL IP TRANSFER, SOURCE FILES, DOCUMENTED CODEBASE, AND ONGOING SUPPORT. NO LOCK-IN."
-          bgColor="#111111"
+          bgColor="#FFF8F5"
           borderColor="#FF6B35"
           borderWidth={1}
         />

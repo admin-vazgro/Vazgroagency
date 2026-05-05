@@ -193,18 +193,18 @@ export default function LaunchPage() {
   const filtered = filter === "All" ? packages : packages.filter((p) => p.category === filter);
 
   return (
-    <main className="flex flex-col w-full bg-[#0A0A0A] pt-[60px]">
+    <main className="flex flex-col w-full bg-white pt-[60px]">
       {/* Header */}
-      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-bold text-[#D6E264] tracking-[3px]">
+      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px]">
           // FIXED PRICE · FAST DELIVERY
         </span>
         <div className="h-5" />
-        <h1 className="font-grotesk text-[48px] md:text-[80px] font-bold text-[#F5F5F0] tracking-[-3px] leading-none">
+        <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#0A0A0A] tracking-[-3px] leading-none">
           ⚡ LAUNCH
         </h1>
         <div className="h-4" />
-        <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] leading-[1.6] max-w-[560px]">
+        <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[1px] leading-[1.6] max-w-[560px]">
           ONE-OFF PACKAGES WITH A FIXED PRICE AND A GUARANTEED DELIVERY DATE. NO HIDDEN COSTS. NO SURPRISES.
         </p>
         <div className="h-10" />
@@ -215,11 +215,11 @@ export default function LaunchPage() {
             ["FIXED PRICE", "NO HIDDEN COSTS"],
             ["2 REVISIONS", "INCLUDED FREE"],
           ].map(([val, label]) => (
-            <div key={label} className="flex flex-col gap-2 p-6 bg-[#111111] border border-[#2D2D2D]">
-              <span className="font-grotesk text-[28px] md:text-[36px] font-bold text-[#D6E264] tracking-[-2px] leading-none">
+            <div key={label} className="flex flex-col gap-2 p-6 bg-[#EFEFEF] border border-[#D8D8D8]">
+              <span className="font-grotesk text-[28px] md:text-[36px] font-normal text-[#6B7800] tracking-[-2px] leading-none">
                 {val}
               </span>
-              <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[2px]">{label}</span>
+              <span className="font-ibm-mono text-[14px] text-[#666666] tracking-[2px]">{label}</span>
             </div>
           ))}
         </div>
@@ -234,9 +234,9 @@ export default function LaunchPage() {
               onClick={() => setFilter(cat)}
               className="font-ibm-mono text-[14px] tracking-[2px] px-5 py-2.5 border transition-colors cursor-pointer"
               style={{
-                background: filter === cat ? "#D6E264" : "#111111",
-                color: filter === cat ? "#0A0A0A" : "#555",
-                borderColor: filter === cat ? "#D6E264" : "#2D2D2D",
+                background: filter === cat ? "#D6E264" : "#EFEFEF",
+                color: filter === cat ? "#0A0A0A" : "#444444",
+                borderColor: filter === cat ? "#D6E264" : "#D8D8D8",
               }}
             >
               {cat.toUpperCase()}
@@ -248,29 +248,29 @@ export default function LaunchPage() {
           {filtered.map((pkg) => (
             <div
               key={pkg.id}
-              className="relative flex min-w-0 flex-col gap-5 overflow-hidden bg-[#0F0F0F] border border-[#2D2D2D] p-6 md:p-8"
+              className="relative flex min-w-0 flex-col gap-5 overflow-hidden bg-[#F5F5F5] border border-[#D8D8D8] p-6 md:p-8"
             >
               {pkg.popular && (
-                <span className="absolute top-4 right-4 font-ibm-mono text-[14px] font-bold tracking-[2px] px-3 py-1 bg-[#D6E264] text-[#0A0A0A]">
+                <span className="absolute top-4 right-4 font-ibm-mono text-[14px] font-normal tracking-[2px] px-3 py-1 bg-[#D6E264] text-[#0A0A0A]">
                   POPULAR
                 </span>
               )}
               <div className="text-[28px]">{pkg.icon}</div>
               <div>
-                <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">{pkg.category.toUpperCase()}</span>
-                <h2 className="font-grotesk text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] leading-none mt-1">
+                <span className="font-ibm-mono text-[14px] text-[#777777] tracking-[2px]">{pkg.category.toUpperCase()}</span>
+                <h2 className="font-grotesk text-[28px] font-normal text-[#0A0A0A] tracking-[-1px] leading-none mt-1">
                   {pkg.name}
                 </h2>
-                <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] leading-[1.6] mt-2">
+                <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[1px] leading-[1.6] mt-2">
                   {pkg.description}
                 </p>
               </div>
 
               <div className="flex flex-wrap items-end gap-3">
-                <span className="font-grotesk text-[34px] md:text-[40px] font-bold text-[#F5F5F0] tracking-[-2px] leading-none">
+                <span className="font-grotesk text-[34px] md:text-[40px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none">
                   £{pkg.price.toLocaleString()}
                 </span>
-                <span className="font-ibm-mono text-[14px] md:text-[14px] text-[#AAAAAA] tracking-[1px] pb-1">
+                <span className="font-ibm-mono text-[14px] md:text-[14px] text-[#666666] tracking-[1px] pb-1">
                   ⏱ {pkg.deliveryDays} DAYS
                 </span>
               </div>
@@ -278,8 +278,8 @@ export default function LaunchPage() {
               <div className="flex flex-1 flex-col gap-2">
                 {pkg.features.map((f) => (
                   <div key={f} className="flex min-w-0 items-start gap-2">
-                    <span className="mt-0.5 font-ibm-mono text-[14px] text-[#D6E264]">+</span>
-                    <span className="min-w-0 break-words font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.4px] leading-[1.5]">{f}</span>
+                    <span className="mt-0.5 font-ibm-mono text-[14px] text-[#6B7800]">+</span>
+                    <span className="min-w-0 break-words font-ibm-mono text-[14px] text-[#444444] tracking-[0.4px] leading-[1.5]">{f}</span>
                   </div>
                 ))}
               </div>
@@ -288,7 +288,7 @@ export default function LaunchPage() {
                 onClick={() => setSelected(pkg)}
                 className="mt-auto flex items-center justify-center h-[48px] bg-[#D6E264] hover:bg-[#c9d64f] transition-colors cursor-pointer border-none w-full"
               >
-                <span className="text-center font-grotesk text-[14px] md:text-[14px] font-bold text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px]">
+                <span className="text-center font-grotesk text-[14px] md:text-[14px] font-normal text-[#0A0A0A] tracking-[1.5px] md:tracking-[2px]">
                   START THIS PACKAGE →
                 </span>
               </button>
@@ -298,35 +298,35 @@ export default function LaunchPage() {
       </section>
 
       {/* FAQ */}
-      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-bold text-[#D6E264] tracking-[3px] mb-4">// FAQ</span>
-        <h2 className="font-grotesk text-[32px] md:text-[48px] font-bold text-[#F5F5F0] tracking-[-2px] leading-none mb-10">
+      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// FAQ</span>
+        <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-10">
           COMMON QUESTIONS
         </h2>
         <div className="flex flex-col gap-[2px] max-w-[820px]">
           {faqs.map((faq) => (
-            <div key={faq.q} className="flex flex-col gap-3 p-6 md:p-8 bg-[#0F0F0F] border border-[#2D2D2D]">
-              <h3 className="font-grotesk text-[16px] font-bold text-[#F5F5F0] tracking-[-0.5px]">{faq.q}</h3>
-              <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[0.5px] leading-[1.7]">{faq.a}</p>
+            <div key={faq.q} className="flex flex-col gap-3 p-6 md:p-8 bg-[#F5F5F5] border border-[#D8D8D8]">
+              <h3 className="font-grotesk text-[16px] font-normal text-[#0A0A0A] tracking-[-0.5px]">{faq.q}</h3>
+              <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[0.5px] leading-[1.7]">{faq.a}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D] bg-[#0F0F0F]">
-        <span className="font-ibm-mono text-[14px] font-bold text-[#D6E264] tracking-[3px] mb-4">// NOT SURE WHICH PACKAGE?</span>
-        <h2 className="font-grotesk text-[32px] md:text-[52px] font-bold text-[#F5F5F0] tracking-[-2px] leading-none mb-3">
+      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5] bg-[#F5F5F5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// NOT SURE WHICH PACKAGE?</span>
+        <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-3">
           LET&apos;S FIND THE RIGHT FIT.
         </h2>
-        <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
+        <p className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
           BOOK A FREE 15-MINUTE CALL AND WE&apos;LL RECOMMEND THE RIGHT PACKAGE FOR YOUR GOALS.
         </p>
         <a
           href="mailto:hello@vazgro.com"
           className="flex items-center justify-center h-[56px] px-10 bg-[#D6E264] hover:bg-[#c9d64f] transition-colors no-underline"
         >
-          <span className="font-grotesk text-[14px] font-bold text-[#0A0A0A] tracking-[2px]">
+          <span className="font-grotesk text-[14px] font-normal text-[#0A0A0A] tracking-[2px]">
             BOOK A FREE STRATEGY CALL
           </span>
         </a>

@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-space-grotesk), "Space Grotesk", sans-serif;
-  --font-mono: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  --font-sans: var(--font-manrope), "Manrope", sans-serif;
+  --font-mono: var(--font-manrope), "Manrope", sans-serif;
 }
 
 :root {
   --yellow: #D6E264;
+  --yellow-text: #6B7800;
   --orange: #FF6B35;
-  --bg-primary: #0A0A0A;
-  --text-light: #F5F5F0;
-  --text-gray: #FFFFFF;
-  --text-muted: #D0D0C8;
-  --text-dim: #BDBDB6;
-  --border-dark: #2D2D2D;
-  --border-subtle: #1D1D1D;
+  --bg-primary: #FFFFFF;
+  --text-primary: #0A0A0A;
+  --text-secondary: #3A3A3A;
+  --text-muted: #666666;
+  --text-dim: #888888;
+  --border-light: #E5E5E5;
+  --border-medium: #D8D8D8;
 }
 
 .portal-shell {
@@ -76,9 +77,23 @@
 }
 
 @utility font-grotesk {
-  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
 }
 
 @utility font-ibm-mono {
-  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+}
+
+.site-typography {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.site-typography :where(h1, h2, h3, h4, h5, h6, p, span, a, button, label, input, textarea, select, li) {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+}
+
+.site-typography :where(.font-bold, .font-semibold, .font-medium) {
+  font-weight: 400;
 }

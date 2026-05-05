@@ -20,7 +20,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-      <section id="faq" className="flex flex-col w-full bg-[#060606] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px]">
+      <section id="faq" className="flex flex-col w-full bg-white py-16 px-6 md:py-[80px] md:px-8 lg:px-[120px]">
       <div className="w-full max-w-[480px]">
         <SectionHeader
           label="[08] // FAQ"
@@ -31,28 +31,26 @@ export default function FAQ() {
         />
       </div>
 
-      <div className="h-10 md:h-[64px]" />
-
       {/* FAQ items */}
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full mt-10 md:mt-16">
         {faqs.map((faq, i) => {
           const isOpen = openIndex === i;
           return (
-            <div key={i} className="flex flex-col w-full border-t border-t-[#1D1D1D]">
+            <div key={i} className="flex flex-col w-full border-t border-t-[#E5E5E5]">
               <button
                 className="flex items-center justify-between w-full py-5 md:h-[72px] text-left gap-4"
                 onClick={() => setOpenIndex(isOpen ? -1 : i)}
               >
-                <span className="font-grotesk text-[14px] md:text-[16px] font-normal text-[#F5F5F0] tracking-[1px]">
+                <span className="font-grotesk text-[14px] md:text-[16px] font-normal text-[#0A0A0A] tracking-[1px]">
                   {faq.question}
                 </span>
                 <div
                   className="flex items-center justify-center w-[32px] h-[32px] shrink-0"
-                  style={{ backgroundColor: isOpen ? "#D6E264" : "#1A1A1A", border: isOpen ? "none" : "1px solid #3D3D3D" }}
+                  style={{ backgroundColor: isOpen ? "#D6E264" : "#F0F0F0", border: isOpen ? "none" : "1px solid #D0D0D0" }}
                 >
                   <span
                     className="font-ibm-mono text-[14px] font-normal"
-                    style={{ color: isOpen ? "#0A0A0A" : "#FFFFFF" }}
+                    style={{ color: isOpen ? "#0A0A0A" : "#555555" }}
                   >
                     {isOpen ? "—" : "+"}
                   </span>
@@ -60,7 +58,7 @@ export default function FAQ() {
               </button>
               {isOpen && faq.answer && (
                 <div className="pb-8">
-                  <p className="font-ibm-mono text-[14px] md:text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.6]">
+                  <p className="font-ibm-mono text-[14px] md:text-[14px] text-[#444444] tracking-[1px] leading-[1.6]">
                     {faq.answer}
                   </p>
                 </div>
@@ -68,15 +66,15 @@ export default function FAQ() {
             </div>
           );
         })}
-        <div className="border-t border-t-[#1D1D1D]" />
+        <div className="border-t border-t-[#E5E5E5]" />
       </div>
 
       {/* CTA */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-[16px] pt-10 md:pt-[48px]">
-        <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">
+        <span className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px]">
           STILL HAVE QUESTIONS?
         </span>
-        <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[1px] cursor-pointer hover:underline no-underline">
+        <a href="mailto:hello@vazgro.com" className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[1px] cursor-pointer hover:underline no-underline">
           EMAIL US AT HELLO@VAZGRO.COM &gt;
         </a>
       </div>

@@ -38,18 +38,18 @@ const projects = [
 
 export default function WorkPage() {
   return (
-    <main className="flex flex-col w-full bg-[#0A0A0A] pt-[60px]">
+    <main className="flex flex-col w-full bg-white pt-[60px]">
       {/* Header */}
-      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">
+      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px]">
           // REAL PROJECTS · REAL RESULTS
         </span>
         <div className="h-5" />
-        <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-3px] leading-none">
+        <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#0A0A0A] tracking-[-3px] leading-none">
           OUR WORK
         </h1>
         <div className="h-6" />
-        <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] leading-[1.6] max-w-[560px]">
+        <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[1px] leading-[1.6] max-w-[560px]">
           FROM MVP BUILDS TO BRAND IDENTITIES — EVERY PROJECT DELIVERED ON TIME, TO BRIEF, WITH FULL IP TRANSFER.
         </p>
       </section>
@@ -60,14 +60,14 @@ export default function WorkPage() {
           <Link
             key={p.slug}
             href={`/work/${p.slug}`}
-            className="group flex flex-col lg:flex-row gap-8 p-8 md:p-[48px] bg-[#0F0F0F] border border-[#2D2D2D] hover:border-[#444444] transition-all no-underline"
+            className="group flex flex-col lg:flex-row gap-8 p-8 md:p-[48px] bg-[#F5F5F5] border border-[#D8D8D8] hover:border-[#444444] transition-all no-underline"
           >
             {/* Images */}
             <div className="flex gap-[2px] w-full lg:w-[420px] shrink-0">
               {p.images.slice(0, 3).map((img, i) => (
                 <div
                   key={img}
-                  className="relative bg-[#1A1A1A] overflow-hidden flex-1"
+                  className="relative bg-[#E8E8E8] overflow-hidden flex-1"
                   style={{ aspectRatio: "3/4", opacity: 1 - i * 0.15 }}
                 >
                   <Image
@@ -91,25 +91,25 @@ export default function WorkPage() {
                   >
                     {p.tag}
                   </span>
-                  <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">{p.year}</span>
+                  <span className="font-ibm-mono text-[14px] text-[#777777] tracking-[2px]">{p.year}</span>
                 </div>
-                <h2 className="font-grotesk text-[36px] md:text-[48px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-3">
+                <h2 className="font-grotesk text-[36px] md:text-[48px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-3">
                   {p.title}
                 </h2>
-                <p className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.6] mb-6 max-w-[480px]">
+                <p className="font-ibm-mono text-[14px] text-[#0A0A0A] tracking-[1px] leading-[1.6] mb-6 max-w-[480px]">
                   {p.description}
                 </p>
                 <div className="flex flex-wrap gap-[2px]">
                   {p.outcomes.map((o) => (
-                    <span key={o} className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] bg-[#1A1A1A] border border-[#2D2D2D] px-3 py-1.5">
+                    <span key={o} className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] bg-[#E8E8E8] border border-[#D8D8D8] px-3 py-1.5">
                       + {o}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 border-t border-[#1D1D1D] pt-6 sm:flex-row sm:items-center sm:justify-between">
-                <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">SERVICE // {p.service}</span>
+              <div className="mt-8 flex flex-col gap-3 border-t border-[#E5E5E5] pt-6 sm:flex-row sm:items-center sm:justify-between">
+                <span className="font-ibm-mono text-[14px] text-[#777777] tracking-[2px]">SERVICE // {p.service}</span>
                 <span className="font-ibm-mono text-[14px] font-normal tracking-[2px] group-hover:underline" style={{ color: p.tagColor }}>
                   VIEW CASE STUDY →
                 </span>
@@ -120,9 +120,9 @@ export default function WorkPage() {
       </section>
 
       {/* CTA */}
-      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// HAVE A PROJECT IN MIND?</span>
-        <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-6">
+      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// HAVE A PROJECT IN MIND?</span>
+        <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-6">
           LET&apos;S BUILD IT.
         </h2>
         <a

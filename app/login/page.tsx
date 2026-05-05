@@ -82,16 +82,16 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="flex items-center gap-3 mb-12">
           <div className="w-8 h-8 bg-[#D6E264] flex items-center justify-center">
-            <span className="font-grotesk text-[14px] font-bold text-[#0A0A0A]">V</span>
+            <span className="font-grotesk text-[14px] font-normal text-[#0A0A0A]">V</span>
           </div>
-          <span className="font-grotesk text-[14px] font-bold text-[#F5F5F0] tracking-[2px]">VAZGRO</span>
+          <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[2px]">VAZGRO</span>
         </div>
 
         <div className="border border-[#1D1D1D] bg-[#0F0F0F]">
           {/* Header */}
           <div className="px-8 pt-8 pb-6 border-b border-[#1D1D1D]">
             <span className="font-ibm-mono text-[14px] text-[#D6E264] tracking-[3px]">// SECURE LOGIN</span>
-            <h1 className="font-grotesk text-[28px] font-bold text-[#F5F5F0] tracking-[-1px] mt-2">
+            <h1 className="font-grotesk text-[36px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.05] mt-2">
               Welcome back.
             </h1>
             <p className="font-ibm-mono text-[14px] text-[#F0F0EA] tracking-[0.5px] mt-1">
@@ -122,7 +122,7 @@ export default function LoginPage() {
               <div className="flex flex-col items-center text-center gap-4 py-6">
                 <div className="w-14 h-14 bg-[#D6E264] flex items-center justify-center text-[24px]">✓</div>
                 <div>
-                  <p className="font-grotesk text-[18px] font-bold text-[#F5F5F0]">Check your email</p>
+                  <p className="font-grotesk text-[18px] font-normal text-[#F5F5F0]">Check your email</p>
                   <p className="font-ibm-mono text-[14px] text-[#F0F0EA] tracking-[0.5px] mt-2 leading-[1.7]">
                     We sent a magic link to <span className="text-[#D6E264]">{email}</span>.<br />Click it to sign in — no password needed.
                   </p>
@@ -134,7 +134,7 @@ export default function LoginPage() {
             ) : (
               <form onSubmit={mode === "magic" ? handleMagicLink : handlePassword} className="flex flex-col gap-4">
                 <div>
-                  <label className="font-ibm-mono text-[14px] font-bold text-[#F0F0EA] tracking-[2px] block mb-2">EMAIL ADDRESS</label>
+                  <label className="font-ibm-mono text-[14px] font-normal text-[#F0F0EA] tracking-[2px] block mb-2">EMAIL ADDRESS</label>
                   <input
                     type="email"
                     className={inputClass}
@@ -147,7 +147,7 @@ export default function LoginPage() {
 
                 {mode === "password" && (
                   <div>
-                    <label className="font-ibm-mono text-[14px] font-bold text-[#F0F0EA] tracking-[2px] block mb-2">PASSWORD</label>
+                    <label className="font-ibm-mono text-[14px] font-normal text-[#F0F0EA] tracking-[2px] block mb-2">PASSWORD</label>
                     <input
                       type="password"
                       className={inputClass}
@@ -168,7 +168,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full h-[52px] bg-[#D6E264] hover:bg-[#c9d64f] disabled:opacity-40 transition-colors cursor-pointer border-none font-grotesk text-[14px] font-bold text-[#0A0A0A] tracking-[2px] mt-2"
+                  className="w-full h-[52px] bg-[#D6E264] hover:bg-[#c9d64f] disabled:opacity-40 transition-colors cursor-pointer border-none font-grotesk text-[14px] font-normal text-[#0A0A0A] tracking-[2px] mt-2"
                 >
                   {loading
                     ? "PLEASE WAIT..."

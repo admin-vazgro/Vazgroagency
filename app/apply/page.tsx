@@ -18,8 +18,8 @@ export default async function ApplyPage({
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b border-gray-200 px-8 py-5 flex items-center justify-between">
-        <Link href="/" className="font-grotesk text-[20px] font-normal tracking-[-0.5px] text-gray-900">
-          Vazgro
+        <Link href="/" className="font-grotesk text-[14px] font-normal tracking-[2.5px] text-gray-900">
+          VAZGRO
         </Link>
         <Link
           href="/login"
@@ -35,7 +35,7 @@ export default async function ApplyPage({
             <div className="mb-6 inline-block border border-green-600 bg-green-50 px-6 py-4">
               <p className="font-ibm-mono text-[14px] text-green-700">Application received.</p>
             </div>
-            <h1 className="font-grotesk text-[32px] font-normal tracking-[-1px] text-gray-900">
+            <h1 className="font-grotesk text-[36px] md:text-[56px] font-normal tracking-[-1px] text-gray-900 leading-[1.05]">
               Thanks for applying.
             </h1>
             <p className="mt-4 font-ibm-mono text-[14px] leading-[1.8] text-gray-500">
@@ -53,7 +53,7 @@ export default async function ApplyPage({
           <>
             <div className="mb-10 border-b border-gray-200 pb-8">
               <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-400">// PARTNER PROGRAMME</span>
-              <h1 className="mt-2 font-grotesk text-[40px] font-normal tracking-[-1.5px] text-gray-900">
+              <h1 className="mt-2 font-grotesk text-[36px] md:text-[56px] font-normal tracking-[-1px] text-gray-900 leading-[1.05]">
                 Join as a Partner
               </h1>
               <p className="mt-3 font-ibm-mono text-[14px] leading-[1.8] text-gray-500">

@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { IconVazgroLogo } from "./Icons";
 
 const links = [
   { label: "SERVICES",  section: "features"  },
   { label: "PROCESS",   section: "process"   },
   { label: "SHOWCASE",  section: "showcase"  },
   { label: "FAQ",       section: "faq"       },
-  { label: "PRICING",   section: "pricing"   },
 ];
 
 function scrollToSection(id: string) {
@@ -26,16 +26,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen]           = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  // On the homepage the background is always dark, so use light text.
-  // On all other pages (white bg) use dark text until the user scrolls and
-  // the frosted-dark backdrop kicks in.
-  const isHomepage = pathname === "/";
-  const useLightText = isHomepage || scrolled;
-
-  const navTextColor   = useLightText ? "#E8E8E8" : "#1A1A1A";
-  const navHoverColor  = useLightText ? "#FFFFFF"  : "#000000";
-  const contactColor   = useLightText ? "#E8E8E8" : "#1A1A1A";
-  const mobileTextColor = "#E8E8E8"; // mobile drawer always has dark bg
 
   function navigateToSection(section: string) {
     setMenuOpen(false);
@@ -102,21 +92,18 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background:       scrolled ? "rgba(10,10,10,0.88)" : "transparent",
-        backdropFilter:   scrolled ? "blur(14px)"          : "none",
-        WebkitBackdropFilter: scrolled ? "blur(14px)"      : "none",
-        borderBottom:     scrolled ? "1px solid #1E1E1E" : useLightText ? "1px solid transparent" : "1px solid #E5E5E5",
+        background:           scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+        backdropFilter:       scrolled ? "blur(14px)"             : "none",
+        WebkitBackdropFilter: scrolled ? "blur(14px)"             : "none",
+        borderBottom:         scrolled ? "1px solid #E5E5E5"      : "1px solid transparent",
       }}
     >
         <div className="flex items-center justify-between h-[60px] px-6 md:px-[48px] max-w-[1400px] mx-auto">
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-[10px] shrink-0 group">
-          <span className="w-[10px] h-[10px] bg-[#D6E264] group-hover:scale-110 transition-transform" />
-          <span
-            className="font-grotesk text-[14px] font-normal tracking-[2.5px] transition-colors duration-300"
-            style={{ color: useLightText ? "#F5F5F0" : "#0A0A0A" }}
-          >
+          <IconVazgroLogo size={22} className="group-hover:scale-110 transition-transform" />
+          <span className="font-grotesk text-[14px] font-normal tracking-[2.5px] text-[#0A0A0A] transition-colors duration-300">
             VAZGRO
           </span>
         </Link>
@@ -131,12 +118,12 @@ export default function Navbar() {
                 type="button"
                 onClick={() => navigateToSection(section)}
                 className="relative font-ibm-mono text-[14px] tracking-[1.5px] transition-colors duration-150 bg-transparent border-none cursor-pointer"
-                style={{ color: isActive ? "#D6E264" : navTextColor }}
+                style={{ color: isActive ? "#6B7800" : "#1A1A1A" }}
                 onMouseEnter={(e) => {
-                  if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = navHoverColor;
+                  if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = "#000000";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.color = isActive ? "#D6E264" : navTextColor;
+                  (e.currentTarget as HTMLButtonElement).style.color = isActive ? "#6B7800" : "#1A1A1A";
                 }}
               >
                 {label}
@@ -153,18 +140,16 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-[14px]">
           <a
             href="mailto:hello@vazgro.com"
-            className="font-ibm-mono text-[14px] tracking-[1.5px] hover:text-[#FFFFFF] transition-colors"
-            style={{ color: contactColor }}
+            className="font-ibm-mono text-[14px] tracking-[1.5px] text-[#1A1A1A] hover:text-[#000000] transition-colors"
           >
             CONTACT
           </a>
-          <button
-            type="button"
-            onClick={() => navigateToSection("pricing")}
-            className="font-grotesk text-[14px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[9px] hover:bg-[#F5F5F0] transition-colors"
+          <a
+            href="mailto:hello@vazgro.com"
+            className="font-grotesk text-[14px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[9px] hover:bg-[#c9d64f] transition-colors"
           >
             BOOK A CALL
-          </button>
+          </a>
         </div>
 
         {/* ── Mobile burger ── */}
@@ -174,16 +159,16 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className="block w-[20px] h-[1.5px] transition-all duration-200 origin-center"
-            style={{ background: useLightText ? "#F5F5F0" : "#0A0A0A", transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : "none" }}
+            className="block w-[20px] h-[1.5px] bg-[#0A0A0A] transition-all duration-200 origin-center"
+            style={{ transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : "none" }}
           />
           <span
-            className="block w-[20px] h-[1.5px] transition-all duration-200"
-            style={{ background: useLightText ? "#F5F5F0" : "#0A0A0A", opacity: menuOpen ? 0 : 1 }}
+            className="block w-[20px] h-[1.5px] bg-[#0A0A0A] transition-all duration-200"
+            style={{ opacity: menuOpen ? 0 : 1 }}
           />
           <span
-            className="block w-[20px] h-[1.5px] transition-all duration-200 origin-center"
-            style={{ background: useLightText ? "#F5F5F0" : "#0A0A0A", transform: menuOpen ? "translateY(-6.5px) rotate(-45deg)" : "none" }}
+            className="block w-[20px] h-[1.5px] bg-[#0A0A0A] transition-all duration-200 origin-center"
+            style={{ transform: menuOpen ? "translateY(-6.5px) rotate(-45deg)" : "none" }}
           />
         </button>
       </div>
@@ -193,9 +178,9 @@ export default function Navbar() {
         className="md:hidden overflow-hidden transition-all duration-300"
         style={{
           maxHeight:    menuOpen ? "400px" : "0px",
-          background:   "rgba(10,10,10,0.97)",
+          background:   "rgba(255,255,255,0.97)",
           backdropFilter: "blur(14px)",
-          borderBottom: menuOpen ? "1px solid #1E1E1E" : "none",
+          borderBottom: menuOpen ? "1px solid #E5E5E5" : "none",
         }}
       >
         <nav className="flex flex-col px-6 py-5 gap-0">
@@ -206,12 +191,12 @@ export default function Navbar() {
                 key={label}
                 type="button"
                 onClick={() => navigateToSection(section)}
-                className="flex items-center gap-2 w-full font-ibm-mono text-[14px] tracking-[2px] py-[14px] border-b border-[#141414] transition-colors bg-transparent border-x-0 border-t-0 cursor-pointer"
-                style={{ color: isActive ? "#D6E264" : mobileTextColor }}
+                className="flex items-center gap-2 w-full font-ibm-mono text-[14px] tracking-[2px] py-[14px] border-b border-[#EBEBEB] transition-colors bg-transparent border-x-0 border-t-0 cursor-pointer"
+                style={{ color: isActive ? "#6B7800" : "#1A1A1A" }}
               >
                 <span
                   className="w-[4px] h-[4px] rounded-full shrink-0 transition-colors"
-                  style={{ background: isActive ? "#D6E264" : "#2D2D2D" }}
+                  style={{ background: isActive ? "#D6E264" : "#D0D0D0" }}
                 />
                 {label}
               </button>
@@ -220,18 +205,16 @@ export default function Navbar() {
           <div className="flex flex-col gap-[10px] pt-5">
             <a
               href="mailto:hello@vazgro.com"
-              className="font-ibm-mono text-[14px] tracking-[1.5px]"
-              style={{ color: contactColor }}
+              className="font-ibm-mono text-[14px] tracking-[1.5px] text-[#1A1A1A]"
             >
               CONTACT
             </a>
-            <button
-              type="button"
-              onClick={() => navigateToSection("pricing")}
-              className="font-grotesk text-[14px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[11px] text-center hover:bg-[#F5F5F0] transition-colors"
+            <a
+              href="mailto:hello@vazgro.com"
+              className="font-grotesk text-[14px] font-normal text-[#0A0A0A] bg-[#D6E264] tracking-[1.5px] px-[18px] py-[11px] text-center hover:bg-[#c9d64f] transition-colors"
             >
               BOOK A CALL
-            </button>
+            </a>
           </div>
         </nav>
       </div>

@@ -40,18 +40,18 @@ export default function GrowPage() {
   const accent = trackColors[activeTrack];
 
   return (
-    <main className="flex flex-col w-full bg-[#0A0A0A] pt-[60px]">
+    <main className="flex flex-col w-full bg-white pt-[60px]">
       {/* Header */}
-      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">
+      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px]">
           // YOUR ALWAYS-ON DIGITAL TEAM
         </span>
         <div className="h-5" />
-        <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-3px] leading-none">
+        <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#0A0A0A] tracking-[-3px] leading-none">
           📈 GROW
         </h1>
         <div className="h-4" />
-        <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] leading-[1.6] max-w-[560px]">
+        <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[1px] leading-[1.6] max-w-[560px]">
           DESIGN, DEVELOPMENT, AND MARKETING DELIVERED ON SUBSCRIPTION. FAST TURNAROUND, DEDICATED TEAM, FULL TRANSPARENCY.
         </p>
         <div className="h-10" />
@@ -63,11 +63,11 @@ export default function GrowPage() {
             ["UNLIMITED", "REVISIONS INCLUDED"],
             ["DEDICATED PM", "SLACK ACCESS"],
           ].map(([val, label]) => (
-            <div key={label} className="flex flex-col gap-2 p-6 bg-[#111111] border border-[#2D2D2D]">
-              <span className="font-grotesk text-[28px] md:text-[36px] font-normal text-[#D6E264] tracking-[-2px] leading-none">
+            <div key={label} className="flex flex-col gap-2 p-6 bg-[#EFEFEF] border border-[#D8D8D8]">
+              <span className="font-grotesk text-[28px] md:text-[36px] font-normal text-[#6B7800] tracking-[-2px] leading-none">
                 {val}
               </span>
-              <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[2px]">{label}</span>
+              <span className="font-ibm-mono text-[14px] text-[#666666] tracking-[2px]">{label}</span>
             </div>
           ))}
         </div>
@@ -83,9 +83,9 @@ export default function GrowPage() {
               onClick={() => setActiveTrack(track)}
               className="font-ibm-mono text-[14px] tracking-[2px] px-5 py-2.5 border transition-colors cursor-pointer"
               style={{
-                background: activeTrack === track ? trackColors[track] : "#111111",
-                color: activeTrack === track ? "#0A0A0A" : "#555",
-                borderColor: activeTrack === track ? trackColors[track] : "#2D2D2D",
+                background: activeTrack === track ? trackColors[track] : "#EFEFEF",
+                color: activeTrack === track ? "#0A0A0A" : "#444444",
+                borderColor: activeTrack === track ? trackColors[track] : "#D8D8D8",
               }}
             >
               {track.toUpperCase()} TRACK
@@ -100,8 +100,8 @@ export default function GrowPage() {
               key={plan.id}
               className="flex flex-col gap-5 p-8 border relative"
               style={{
-                background: plan.popular ? "#0F0F0A" : "#0F0F0F",
-                borderColor: plan.popular ? accent : "#2D2D2D",
+                background: plan.popular ? "#FAFDF0" : "#F5F5F5",
+                borderColor: plan.popular ? accent : "#D8D8D8",
               }}
             >
               {plan.popular && (
@@ -114,38 +114,38 @@ export default function GrowPage() {
               )}
               <div className="text-[28px]">{plan.icon}</div>
               <div>
-                <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">{plan.track.toUpperCase()} TRACK</span>
-                <h2 className="font-grotesk text-[28px] font-normal text-[#F5F5F0] tracking-[-1px] leading-none mt-1">
+                <span className="font-ibm-mono text-[14px] text-[#777777] tracking-[2px]">{plan.track.toUpperCase()} TRACK</span>
+                <h2 className="font-grotesk text-[28px] font-normal text-[#0A0A0A] tracking-[-1px] leading-none mt-1">
                   {plan.name}
                 </h2>
-                <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] mt-2">{plan.capacity}</p>
+                <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[1px] mt-2">{plan.capacity}</p>
               </div>
 
               <div className="flex items-end gap-2">
-                <span className="font-grotesk text-[40px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none">
+                <span className="font-grotesk text-[40px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none">
                   £{plan.price.toLocaleString()}
                 </span>
-                <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] pb-1">/MO</span>
+                <span className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] pb-1">/MO</span>
               </div>
 
               <div className="flex flex-col gap-2">
                 {plan.features.map((f) => (
                   <div key={f} className="flex items-start gap-2">
                     <span className="font-ibm-mono text-[14px] mt-0.5" style={{ color: accent }}>+</span>
-                    <span className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.5]">{f}</span>
+                    <span className="font-ibm-mono text-[14px] text-[#444444] tracking-[0.5px] leading-[1.5]">{f}</span>
                   </div>
                 ))}
               </div>
 
-              <p className="font-ibm-mono text-[14px] text-[#999999] tracking-[1px] mt-1">
+              <p className="font-ibm-mono text-[14px] text-[#777777] tracking-[1px] mt-1">
                 MIN. {plan.minMonths} MONTH COMMITMENT
               </p>
 
               <a
                 href="mailto:hello@vazgro.com"
-                className="mt-auto flex items-center justify-center h-[48px] bg-[#1A1A1A] border border-[#2D2D2D] hover:border-[#D6E264] hover:bg-[#D6E264] hover:text-[#0A0A0A] transition-all no-underline group"
+                className="mt-auto flex items-center justify-center h-[48px] bg-[#E8E8E8] border border-[#D8D8D8] hover:border-[#D6E264] hover:bg-[#D6E264] hover:text-[#0A0A0A] transition-all no-underline group"
               >
-                <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[2px] group-hover:text-[#0A0A0A] transition-colors">
+                <span className="font-grotesk text-[14px] font-normal text-[#0A0A0A] tracking-[2px] group-hover:text-[#0A0A0A] transition-colors">
                   BOOK DISCOVERY CALL →
                 </span>
               </a>
@@ -155,29 +155,29 @@ export default function GrowPage() {
       </section>
 
       {/* What's included */}
-      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// EVERY GROW PLAN INCLUDES</span>
-        <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-10">
+      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// EVERY GROW PLAN INCLUDES</span>
+        <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-10">
           BUILT FOR SERIOUS<br />BUSINESSES.
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[2px]">
           {includes.map((item) => (
-            <div key={item.t} className="flex flex-col gap-3 p-8 bg-[#0F0F0F] border border-[#2D2D2D]">
+            <div key={item.t} className="flex flex-col gap-3 p-8 bg-[#F5F5F5] border border-[#D8D8D8]">
               <span className="text-[24px]">{item.ico}</span>
-              <h3 className="font-grotesk text-[18px] font-normal text-[#F5F5F0] tracking-[-0.5px]">{item.t}</h3>
-              <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[0.5px] leading-[1.7]">{item.d}</p>
+              <h3 className="font-grotesk text-[18px] font-normal text-[#0A0A0A] tracking-[-0.5px]">{item.t}</h3>
+              <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[0.5px] leading-[1.7]">{item.d}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D] bg-[#0F0F0F]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// READY FOR AN ALWAYS-ON TEAM?</span>
-        <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-3">
+      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5] bg-[#F5F5F5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// READY FOR AN ALWAYS-ON TEAM?</span>
+        <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-3">
           LET&apos;S MATCH YOU WITH<br />THE RIGHT PLAN.
         </h2>
-        <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
+        <p className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
           BOOK A FREE DISCOVERY CALL. WE&apos;LL RECOMMEND THE RIGHT TRACK AND PLAN FOR YOUR BUSINESS.
         </p>
         <a

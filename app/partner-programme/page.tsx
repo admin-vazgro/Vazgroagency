@@ -64,10 +64,10 @@ export default function PartnerProgrammePage() {
       <section className="border-b border-gray-200 px-8 py-20 lg:px-20">
         <div className="mx-auto max-w-[800px]">
           <span className="font-ibm-mono text-[14px] tracking-[3px] text-gray-500">// PARTNER PROGRAMME</span>
-          <h1 className="mt-4 font-grotesk text-[52px] font-normal tracking-[-2px] text-gray-900 leading-[1.05]">
+          <h1 className="mt-4 font-grotesk text-[48px] md:text-[80px] font-normal tracking-[-2px] text-gray-900 leading-none">
             Earn commissions<br />bringing clients to Vazgro.
           </h1>
-          <p className="mt-6 font-ibm-mono text-[15px] leading-[1.9] text-gray-700 max-w-[560px]">
+          <p className="mt-6 font-ibm-mono text-[14px] leading-[1.7] tracking-[1px] text-gray-700 max-w-[560px]">
             Refer clients or actively close deals — earn up to 15% commission on every project you bring in.
             Tiers upgrade automatically as your monthly revenue grows.
           </p>
@@ -102,7 +102,7 @@ export default function PartnerProgrammePage() {
           <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
             {tiers.map((t) => (
               <div key={t.tier} className="border border-gray-200 p-6">
-                <p className="font-ibm-mono text-[14px] tracking-[2px] text-gray-900 font-medium">{t.tier.toUpperCase()}</p>
+                <p className="font-ibm-mono text-[14px] tracking-[2px] text-gray-900 font-normal">{t.tier.toUpperCase()}</p>
                 <p className="mt-1 font-ibm-mono text-[14px] text-gray-600">{t.range}</p>
                 <div className="mt-5 space-y-3">
                   <div className="flex items-baseline justify-between">
@@ -130,7 +130,7 @@ export default function PartnerProgrammePage() {
           <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
             {pillars.map((p) => (
               <div key={p.name} className="border border-gray-200 p-6">
-                <p className="font-ibm-mono text-[14px] tracking-[3px] text-gray-900 font-medium">{p.name}</p>
+                <p className="font-ibm-mono text-[14px] tracking-[3px] text-gray-900 font-normal">{p.name}</p>
                 <p className="mt-2 font-grotesk text-[24px] text-gray-900">{p.range}</p>
                 <p className="mt-3 font-ibm-mono text-[14px] leading-[1.8] text-gray-700">{p.description}</p>
                 <p className="mt-3 font-ibm-mono text-[14px] text-gray-500 leading-[1.7]">{p.examples}</p>
@@ -153,9 +153,9 @@ export default function PartnerProgrammePage() {
               { step: "04", title: "Earn commission", desc: "When the deal closes, your commission is calculated automatically at your current tier rate and paid after the 30-day window." },
             ].map(({ step, title, desc }) => (
               <div key={step} className="flex gap-6">
-                <span className="font-ibm-mono text-[15px] text-gray-400 shrink-0 w-8 mt-0.5">{step}</span>
+                <span className="font-ibm-mono text-[14px] text-gray-400 shrink-0 w-8 mt-0.5">{step}</span>
                 <div>
-                  <p className="font-ibm-mono text-[14px] font-medium text-gray-900">{title}</p>
+                  <p className="font-ibm-mono text-[14px] font-normal text-gray-900">{title}</p>
                   <p className="mt-2 font-ibm-mono text-[14px] leading-[1.8] text-gray-600">{desc}</p>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export default function PartnerProgrammePage() {
           <div className="mt-6 space-y-0">
             {faqs.map(({ q, a }) => (
               <div key={q} className="border-b border-gray-200 py-6">
-                <p className="font-ibm-mono text-[14px] font-medium text-gray-900 mb-3">{q}</p>
+                <p className="font-ibm-mono text-[14px] font-normal text-gray-900 mb-3">{q}</p>
                 <p className="font-ibm-mono text-[14px] leading-[1.9] text-gray-600">{a}</p>
               </div>
             ))}

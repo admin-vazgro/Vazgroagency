@@ -20,7 +20,7 @@ export default function AppChrome({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
-      {children}
+      <div className="site-typography">{children}</div>
       <Footer />
     </>
   );

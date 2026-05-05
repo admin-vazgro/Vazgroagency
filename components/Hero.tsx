@@ -16,7 +16,7 @@ export default function Hero() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] overflow-hidden">
+    <section className="relative flex flex-col w-full bg-white py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] overflow-hidden">
 
       {/* ── Two-column layout ── */}
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 w-full max-w-[1200px] mx-auto">
@@ -24,9 +24,9 @@ export default function Hero() {
         {/* ── LEFT: copy ── */}
         <div className="flex flex-col items-start w-full lg:w-[52%] shrink-0">
           {/* Badge */}
-          <div className="flex items-center gap-[8px] h-[32px] px-[12px] md:px-[16px] bg-[#1A1A1A] border-2 border-[#D6E264]">
+          <div className="flex items-center gap-[8px] h-[32px] px-[12px] md:px-[16px] bg-[#F5F8DC] border-2 border-[#D6E264]">
             <div className="w-[8px] h-[8px] bg-[#D6E264] shrink-0" />
-            <span className="font-ibm-mono text-[14px] md:text-[14px] font-normal text-[#D6E264] tracking-[1px] md:tracking-[2px]">
+            <span className="font-ibm-mono text-[14px] md:text-[14px] font-normal text-[#6B7800] tracking-[1px] md:tracking-[2px]">
               [⚡] // UK DIGITAL AGENCY — LONDON
             </span>
           </div>
@@ -34,30 +34,30 @@ export default function Hero() {
           <div className="h-8" />
 
           {/* Headline */}
-          <h1 className="font-grotesk text-[clamp(36px,7vw,76px)] font-normal text-[#F5F5F0] tracking-[-2px] leading-[0.95] w-full">
+          <h1 className="font-grotesk text-[clamp(36px,7vw,76px)] font-normal text-[#0A0A0A] tracking-[-2px] leading-[0.95] w-full">
             <GlitchText text="MORE" speed={45} delay={100} />
             <br />
             <GlitchText text="CUSTOMERS." speed={45} delay={200} />
             <br />
-            <span className="text-[#D6E264]">
+            <span className="text-[#6B7800]">
               <GlitchText text="STRONGER" speed={45} delay={300} />
             </span>
             <br />
             <GlitchText text="BRAND." speed={45} delay={400} />
             <br />
-            <span className="text-[#D6E264]">
+            <span className="text-[#6B7800]">
               <GlitchText text="FASTER GROWTH." speed={45} delay={500} />
             </span>
           </h1>
 
-          <div className="h-8" />
+          <div className="h-6" />
 
           {/* Subheading */}
-          <p className="font-ibm-mono text-[14px] md:text-[14px] text-[#FFFFFF] tracking-[1px] leading-[1.7] max-w-[520px]">
+          <p className="font-ibm-mono text-[14px] text-[#444444] tracking-[1px] leading-[1.7] max-w-[520px]">
             WE BUILD THE WEBSITES, RUN THE MARKETING, AND SHIP THE AI PRODUCTS THAT TURN YOUR BUSINESS INTO A DIGITAL POWERHOUSE.
           </p>
 
-          <div className="h-10" />
+          <div className="h-12" />
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto">
@@ -68,9 +68,9 @@ export default function Hero() {
             </a>
             <button
               onClick={() => { const el = document.getElementById("features"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
-              className="flex items-center justify-center w-full sm:w-[200px] h-[56px] bg-[#0A0A0A] border-2 border-[#3D3D3D] hover:border-[#888888] transition-colors"
+              className="flex items-center justify-center w-full sm:w-[200px] h-[56px] bg-white border-2 border-[#D0D0D0] hover:border-[#888888] transition-colors"
             >
-              <span className="font-ibm-mono text-[14px] text-[#FFFFFF] tracking-[2px]">
+              <span className="font-ibm-mono text-[14px] text-[#1A1A1A] tracking-[2px]">
                 SEE WHAT WE DO &gt;
               </span>
             </button>
@@ -82,14 +82,14 @@ export default function Hero() {
           <div className="flex items-center gap-4">
             <div className="flex -space-x-3">
               {reviewAvatars.map((a) => (
-                <div key={a.src} className="relative w-[40px] h-[40px] border-2 border-[#0A0A0A] overflow-hidden rounded-full">
+                <div key={a.src} className="relative w-[40px] h-[40px] border-2 border-white overflow-hidden rounded-full">
                   <Image src={a.src} alt={a.alt} fill className="object-cover" sizes="40px" />
                 </div>
               ))}
             </div>
             <div className="flex flex-col gap-[2px]">
-              <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[0.5px]">500+ Reviews</span>
-              <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px]">4.9/5 · 94% RETENTION</span>
+              <span className="font-grotesk text-[14px] font-normal text-[#0A0A0A] tracking-[0.5px]">500+ Reviews</span>
+              <span className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px]">4.9/5 · 94% RETENTION</span>
             </div>
           </div>
         </div>
@@ -108,20 +108,20 @@ export default function Hero() {
           </div>
           {/* Floating stat cards */}
           <div className="absolute top-[10%] -left-4 hidden xl:block">
-            <div className="bg-[#111111] border border-[#2D2D2D] px-4 py-3 flex items-center gap-3">
+            <div className="bg-[#F2F2F2] border border-[#D8D8D8] px-4 py-3 flex items-center gap-3">
               <div className="w-[8px] h-[8px] bg-[#D6E264] shrink-0 animate-pulse" />
               <div>
-                <div className="font-grotesk text-[18px] font-normal text-[#D6E264] leading-none">7 DAYS</div>
-                <div className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] mt-1">AVG. DELIVERY</div>
+                <div className="font-grotesk text-[18px] font-normal text-[#6B7800] leading-none">7 DAYS</div>
+                <div className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] mt-1">AVG. DELIVERY</div>
               </div>
             </div>
           </div>
           <div className="absolute bottom-[12%] -right-4 hidden xl:block">
-            <div className="bg-[#111111] border border-[#2D2D2D] px-4 py-3 flex items-center gap-3">
+            <div className="bg-[#F2F2F2] border border-[#D8D8D8] px-4 py-3 flex items-center gap-3">
               <div className="w-[8px] h-[8px] bg-[#FF6B35] shrink-0 animate-pulse" />
               <div>
-                <div className="font-grotesk text-[18px] font-normal text-[#F5F5F0] leading-none">£149</div>
-                <div className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] mt-1">STARTS FROM</div>
+                <div className="font-grotesk text-[18px] font-normal text-[#0A0A0A] leading-none">£149</div>
+                <div className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] mt-1">STARTS FROM</div>
               </div>
             </div>
           </div>

@@ -74,18 +74,18 @@ const process = [
 
 export default function BuildPage() {
   return (
-    <main className="flex flex-col w-full bg-[#0A0A0A] pt-[60px]">
+    <main className="flex flex-col w-full bg-white pt-[60px]">
       {/* Header */}
-      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">
+      <section className="flex flex-col w-full py-16 px-6 md:py-[100px] md:px-[120px] border-b border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px]">
           // CUSTOM APPS · AI · DIGITAL BUILDS
         </span>
         <div className="h-5" />
-        <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#F5F5F0] tracking-[-3px] leading-none">
+        <h1 className="font-grotesk text-[48px] md:text-[80px] font-normal text-[#0A0A0A] tracking-[-3px] leading-none">
           🔧 BUILD
         </h1>
         <div className="h-4" />
-        <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] leading-[1.6] max-w-[560px]">
+        <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[1px] leading-[1.6] max-w-[560px]">
           SENIOR ENGINEERS WHO THINK LIKE FOUNDERS. DESIGN-LED, AI-ASSISTED, OUTCOME-OBSESSED DELIVERY FROM MVP THROUGH TO PRODUCTION-GRADE SYSTEMS.
         </p>
         <div className="h-10" />
@@ -97,11 +97,11 @@ export default function BuildPage() {
             ["SPRINT 0", "INCLUDED IN BIGGER BUILDS"],
             ["SENIOR TEAM", "PRODUCT + ENGINEERING"],
           ].map(([val, label]) => (
-            <div key={label} className="flex flex-col gap-2 p-6 bg-[#111111] border border-[#2D2D2D]">
-              <span className="font-grotesk text-[24px] md:text-[30px] font-normal text-[#D6E264] tracking-[-1px] leading-none">
+            <div key={label} className="flex flex-col gap-2 p-6 bg-[#EFEFEF] border border-[#D8D8D8]">
+              <span className="font-grotesk text-[24px] md:text-[30px] font-normal text-[#6B7800] tracking-[-1px] leading-none">
                 {val}
               </span>
-              <span className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[2px]">{label}</span>
+              <span className="font-ibm-mono text-[14px] text-[#666666] tracking-[2px]">{label}</span>
             </div>
           ))}
         </div>
@@ -109,28 +109,28 @@ export default function BuildPage() {
 
       {/* Offer cards */}
       <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#AAAAAA] tracking-[3px] mb-8">// WHAT WE BUILD</span>
+        <span className="font-ibm-mono text-[14px] font-normal text-[#666666] tracking-[3px] mb-8">// WHAT WE BUILD</span>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[2px]">
           {offers.map((item, i) => (
             <div
               key={item.title}
-              className="flex flex-col gap-5 p-8 bg-[#0F0F0F] border border-[#2D2D2D]"
+              className="flex flex-col gap-5 p-8 bg-[#F5F5F5] border border-[#D8D8D8]"
             >
               <div className="text-[28px]">{item.ico}</div>
               <div>
-                <span className="font-ibm-mono text-[14px] text-[#999999] tracking-[2px]">{item.category.toUpperCase()}</span>
-                <h2 className="font-grotesk text-[26px] font-normal text-[#F5F5F0] tracking-[-1px] leading-none mt-1">
+                <span className="font-ibm-mono text-[14px] text-[#777777] tracking-[2px]">{item.category.toUpperCase()}</span>
+                <h2 className="font-grotesk text-[26px] font-normal text-[#0A0A0A] tracking-[-1px] leading-none mt-1">
                   {item.title}
                 </h2>
-                <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[1px] leading-[1.6] mt-2 max-w-[320px]">
+                <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[1px] leading-[1.6] mt-2 max-w-[320px]">
                   {item.desc}
                 </p>
               </div>
               <div className="flex flex-col gap-2">
                 {item.items.map((feat) => (
                   <div key={feat} className="flex items-start gap-2">
-                    <span className="font-ibm-mono text-[14px] text-[#D6E264] mt-0.5">→</span>
-                    <span className="font-ibm-mono text-[14px] text-[#CCCCCC] tracking-[0.5px] leading-[1.5]">{feat}</span>
+                    <span className="font-ibm-mono text-[14px] text-[#6B7800] mt-0.5">→</span>
+                    <span className="font-ibm-mono text-[14px] text-[#444444] tracking-[0.5px] leading-[1.5]">{feat}</span>
                   </div>
                 ))}
               </div>
@@ -140,46 +140,46 @@ export default function BuildPage() {
       </section>
 
       {/* Pricing guide */}
-      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// TRANSPARENT PRICING</span>
-        <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-3">
+      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// TRANSPARENT PRICING</span>
+        <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-3">
           BUILD PRICING GUIDE
         </h2>
-        <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] leading-[1.6] mb-10 max-w-[500px]">
+        <p className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] leading-[1.6] mb-10 max-w-[500px]">
           EVERY PROJECT IS SCOPED INDIVIDUALLY. THESE RANGES HELP YOU BUDGET BEFORE WE SHAPE THE FINAL BRIEF.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[2px]">
           {pricing.map((item) => (
-            <div key={item.title} className="flex flex-col gap-3 p-8 bg-[#0F0F0F] border border-[#2D2D2D] text-center">
-              <h3 className="font-ibm-mono text-[14px] font-normal text-[#CCCCCC] tracking-[2px]">{item.title}</h3>
-              <span className="font-grotesk text-[24px] font-normal text-[#F5F5F0] tracking-[-1px] leading-none">
+            <div key={item.title} className="flex flex-col gap-3 p-8 bg-[#F5F5F5] border border-[#D8D8D8] text-center">
+              <h3 className="font-ibm-mono text-[14px] font-normal text-[#444444] tracking-[2px]">{item.title}</h3>
+              <span className="font-grotesk text-[24px] font-normal text-[#0A0A0A] tracking-[-1px] leading-none">
                 {item.price}
               </span>
-              <span className="font-ibm-mono text-[14px] text-[#D6E264] tracking-[2px]">{item.time}</span>
-              <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[0.5px] leading-[1.6]">{item.desc}</p>
+              <span className="font-ibm-mono text-[14px] text-[#6B7800] tracking-[2px]">{item.time}</span>
+              <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[0.5px] leading-[1.6]">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Process */}
-      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// OUR PROCESS</span>
-        <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-10">
+      <section className="flex flex-col w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// OUR PROCESS</span>
+        <h2 className="font-grotesk text-[32px] md:text-[48px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-10">
           HOW WE BUILD.
         </h2>
-        <div className="flex flex-col border-t border-[#1D1D1D]">
+        <div className="flex flex-col border-t border-[#E5E5E5]">
           {process.map((step) => (
             <div
               key={step.n}
-              className="grid gap-4 py-8 border-b border-[#1D1D1D] md:grid-cols-[80px_minmax(0,1fr)] md:gap-10"
+              className="grid gap-4 py-8 border-b border-[#E5E5E5] md:grid-cols-[80px_minmax(0,1fr)] md:gap-10"
             >
-              <span className="font-grotesk text-[32px] font-normal text-[#2D2D2D] tracking-[-2px] leading-none">
+              <span className="font-grotesk text-[32px] font-normal text-[#AAAAAA] tracking-[-2px] leading-none">
                 {step.n}
               </span>
               <div>
-                <h3 className="font-grotesk text-[22px] font-normal text-[#F5F5F0] tracking-[-1px] mb-2">{step.title}</h3>
-                <p className="font-ibm-mono text-[14px] text-[#BBBBBB] tracking-[0.5px] leading-[1.7] max-w-[680px]">{step.desc}</p>
+                <h3 className="font-grotesk text-[22px] font-normal text-[#0A0A0A] tracking-[-1px] mb-2">{step.title}</h3>
+                <p className="font-ibm-mono text-[14px] text-[#555555] tracking-[0.5px] leading-[1.7] max-w-[680px]">{step.desc}</p>
               </div>
             </div>
           ))}
@@ -187,12 +187,12 @@ export default function BuildPage() {
       </section>
 
       {/* CTA */}
-      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#1D1D1D] bg-[#0F0F0F]">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px] mb-4">// GOT AN IDEA?</span>
-        <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#F5F5F0] tracking-[-2px] leading-none mb-3">
+      <section className="flex flex-col items-center text-center w-full px-6 md:px-[120px] py-16 md:py-[80px] border-t border-[#E5E5E5] bg-[#F5F5F5]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px] mb-4">// GOT AN IDEA?</span>
+        <h2 className="font-grotesk text-[32px] md:text-[52px] font-normal text-[#0A0A0A] tracking-[-2px] leading-none mb-3">
           LET&apos;S BUILD IT.
         </h2>
-        <p className="font-ibm-mono text-[14px] text-[#AAAAAA] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
+        <p className="font-ibm-mono text-[14px] text-[#666666] tracking-[1px] leading-[1.6] mb-8 max-w-[440px]">
           FREE 30-MINUTE STRATEGY CALL. DETAILED PROPOSAL WITHIN 48 HOURS.
         </p>
         <div className="flex flex-col sm:flex-row gap-[2px]">
@@ -206,9 +206,9 @@ export default function BuildPage() {
           </a>
           <Link
             href="/work"
-            className="flex items-center justify-center h-[56px] px-10 bg-[#111111] border border-[#2D2D2D] hover:border-[#444] transition-colors no-underline"
+            className="flex items-center justify-center h-[56px] px-10 bg-[#EFEFEF] border border-[#D8D8D8] hover:border-[#444] transition-colors no-underline"
           >
-            <span className="font-grotesk text-[14px] font-normal text-[#F5F5F0] tracking-[2px]">
+            <span className="font-grotesk text-[14px] font-normal text-[#0A0A0A] tracking-[2px]">
               SEE OUR BUILD WORK →
             </span>
           </Link>

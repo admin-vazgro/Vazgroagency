@@ -9,19 +9,19 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="flex flex-col w-full bg-[#0A0A0A] py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
+    <section className="flex flex-col w-full bg-white py-16 px-6 md:py-[100px] md:px-8 lg:px-[120px] gap-12 md:gap-[64px]">
       <div className="flex flex-col gap-3">
-        <span className="font-ibm-mono text-[14px] font-normal text-[#D6E264] tracking-[3px]">
+        <span className="font-ibm-mono text-[14px] font-normal text-[#6B7800] tracking-[3px]">
           [03] // YOUR NEXT CUSTOMER IS ALREADY ONLINE
         </span>
-        <h2 className="font-grotesk text-[36px] md:text-[56px] font-normal text-[#F5F5F0] tracking-[-1px] leading-[1.05] max-w-[700px]">
+        <h2 className="font-grotesk text-[36px] md:text-[56px] font-normal text-[#0A0A0A] tracking-[-1px] leading-[1.05] max-w-[700px]">
           ARE YOU<br />READY?
         </h2>
       </div>
 
       <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
         {/* Image */}
-        <div className="relative w-full overflow-hidden bg-[#111111] border border-[#2D2D2D]" style={{ aspectRatio: "4/3" }}>
+        <div className="relative w-full overflow-hidden bg-[#F2F2F2] border border-[#D8D8D8]" style={{ aspectRatio: "4/3" }}>
           <Image
             src="/are-u-ready.svg"
             alt="Your next customer is already online"
@@ -34,11 +34,11 @@ export default function Stats() {
         {/* Stats grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[2px]">
           {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col gap-3 p-8 bg-[#111111] border border-[#2D2D2D]">
-              <span className="font-grotesk text-[52px] md:text-[64px] font-normal text-[#D6E264] tracking-[-3px] leading-none">
+            <div key={stat.label} className="flex flex-col gap-3 p-8 bg-[#F2F2F2] border border-[#D8D8D8]">
+              <span className="font-grotesk text-[52px] md:text-[64px] font-normal text-[#6B7800] tracking-[-3px] leading-none">
                 {stat.value}
               </span>
-              <span className="font-ibm-mono text-[14px] md:text-[14px] font-normal text-[#FFFFFF] tracking-[2px] leading-[1.6]">
+              <span className="font-ibm-mono text-[14px] md:text-[14px] font-normal text-[#0A0A0A] tracking-[2px] leading-[1.6]">
                 {stat.label}
               </span>
             </div>
